@@ -1,16 +1,31 @@
+<RetrievalPrompt
+  prompt="If three buyers will pay at most $12, $10, $8 for one widget, and three sellers will accept at minimum $7, $9, $11 — how many trades happen, and what determines the price?"
+  reveal="Two trades. Price clears in the $9–$10 band — set by the marginal buyer ($10) and marginal seller ($9). The $12 buyer and $7 seller exist but aren't setting the price; they're getting consumer/producer surplus."
+/>
+
+## See it before you read about it
+
+<SupplyDemand />
+
+Drag the shifters. Notice: the clearing point — where the two lines cross — moves whenever either curve shifts. The price always reflects whoever is on the cusp of not-trading.
+
 ## Markets clear at the margin
 
-Suppose three buyers will pay at most $12, $10, and $8 for one widget. Three sellers will accept at minimum $7, $9, and $11. Where does the market clear?
+Sort buyers descending by what they'll pay; sort sellers ascending by what they'll accept. They walk toward each other. The trade happens where they meet — and stops the moment the next-best buyer falls below the next-best seller's reservation price.
 
-The clearing price is the one where supply equals demand. Sort buyers descending and sellers ascending. The two cross between $9 and $10 — two trades happen, at whatever the negotiated price is in that band. The third buyer (who'd pay $8) and the third seller (who'd accept $11) do not trade.
+The clearing price is set by the **marginal buyer** and **marginal seller** — the ones who are almost not in the market. Move either of them, and the price moves. The infra-marginal participants (the $12 buyer, the $7 seller) get *surplus* — they would have happily transacted at less-favorable terms.
 
-What did the price *not* care about?
-
-- Whether the $12 buyer is wealthier than the $8 buyer.
-- Whether the $7 seller spent their lifetime mastering widget-craft.
-- Whether the trade is "fair."
-
-The clearing price is set by the marginal buyer and marginal seller — the ones who are *almost* not in the market. Move either of them, and the price moves. The infra-marginal participants are not setting the price; they are getting consumer surplus or producer surplus.
+<WorkedExample
+  title="Find the clearing in a 4×4 market"
+  problem="Buyers will pay up to $15, $12, $9, $6. Sellers will accept at minimum $5, $8, $10, $13. How many trades, at what price band?"
+  steps={[
+    { label: "Sort buyers descending", body: "$15, $12, $9, $6." },
+    { label: "Sort sellers ascending", body: "$5, $8, $10, $13." },
+    { label: "Walk pair by pair", body: "Buyer $15 vs Seller $5 → trade (any price 5–15 works). Buyer $12 vs Seller $8 → trade. Buyer $9 vs Seller $10 → buyer's max BELOW seller's min, NO trade. Stop." },
+    { label: "Count trades and identify the band", body: "Two trades. Clearing band: $8 (the marginal seller's minimum) to $9 (the marginal buyer's maximum). The price sits somewhere in this $1 band — exact location depends on bargaining power, auction rules, etc." },
+    { label: "Who gets surplus", body: "The $15 buyer gets $15 minus actual price = $6–7 of consumer surplus. The $5 seller gets actual price minus $5 = $3–4 of producer surplus. The marginal pair (Buyer $9, Seller $10) sat the trade out entirely." },
+  ]}
+/>
 
 ## Why marginalism matters in real markets
 
@@ -22,10 +37,11 @@ The same logic explains why insider selling can move a stock 10% on tiny volume:
 
 The clearing logic is clearest in an auction (one moment, one match), but continuous markets are just rolling auctions. NYSE has an opening auction (call market) at 9:30 ET and a closing auction at 4:00 ET. In between, it runs as a continuous double auction with a central limit order book. We'll come back to the order book mechanics in Layer 4.
 
-## Carrying forward
-
-- The clearing price is set at the margin, not the average.
-- The unsexy-but-true reason markets move: someone went from not-in to in (or vice versa) at the margin.
-- "Stocks are too high" is a claim about averages; "the marginal buyer is now retail without an income statement" is a claim about clearing fragility. The second is what matters.
+<LessonRecap points={[
+  "The clearing price is set at the margin, not the average.",
+  "Markets move when the marginal buyer or seller is replaced by a different kind of participant.",
+  "Averages tell you nothing about fragility — the marginal-buyer composition does.",
+  "Every continuous market is a rolling double auction."
+]} />
 
 <ExerciseRunner lessonId="00.2-buyer-seller-clearing" />

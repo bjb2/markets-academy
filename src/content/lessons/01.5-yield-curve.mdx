@@ -1,4 +1,15 @@
-## The picture you'll see every week
+<RetrievalPrompt
+  prompt="Why might investors demand HIGHER yield to lend to the government for 10 years vs 2 years? Why would they ever demand LOWER yield for 10 years than for 2 years?"
+  reveal="Normally: longer = more uncertainty about future inflation and Fed policy, so higher yield demanded. Inverted (lower 10y than 2y): the market expects future short rates to be LOWER than current ones — usually because they expect a recession in which the Fed will cut. Inversions have preceded every US recession since 1978 with high reliability."
+/>
+
+## Drag the curve before reading
+
+<YieldCurve />
+
+Try dragging the 10Y below the 2Y. Notice the shape label changes to "Inverted." Try making the 5Y the highest point — that's "Humped." Each shape is a market opinion about the future path of short rates.
+
+## What the picture means
 
 The **yield curve** plots Treasury yields on the Y-axis against maturity on the X-axis. The shapes have names:
 
@@ -18,6 +29,18 @@ The yield curve is the market's joint forecast of:
 
 If the curve inverts, the market is saying: "I expect rates to be LOWER in the future than they are now." The most common reason to expect lower rates is an expected recession (in which the Fed will cut).
 
+<WorkedExample
+  title="Decomposing a yield curve shape"
+  problem="The 2y yields 5.0%, the 10y yields 4.5%. Decompose this into expectations and term premium."
+  steps={[
+    { label: "Express the 10y as an average of future short rates", body: "Under the expectations hypothesis: 10y ≈ average of expected fed funds over the next 10 years + term premium. So the average expected short rate over 10y is around 4.5% minus the term premium." },
+    { label: "Compare to current short rate", body: "Current short rate is ~5%. Market expects average future short rate around 4.0–4.3% (after accounting for a positive term premium of 0.2–0.5%). So the market expects the Fed to CUT, on average, over the next decade." },
+    { label: "Pricing implications", body: "Forward 2y rates 2 years out are implied at roughly 4% (lower than current 5%). A 2-year bond purchased today locks in 5% per year. A 2-year bond purchased in 2 years would only lock in ~4%." },
+    { label: "The recession read", body: "Why would average short rates fall? Most likely: recession arrives, Fed cuts. The inversion is a probabilistic prediction about that path." },
+    { label: "But", body: "Term premia can be NEGATIVE too (compressed by QE, foreign reserve buying). When term premium is unusually low or negative, an inverted curve might reflect less of a recession signal than the historical pattern would suggest. NY Fed publishes ACM term premium estimates monthly." },
+  ]}
+/>
+
 The 2s10s has inverted before every US recession since 1978 — usually 6–18 months in advance — with no clean false positives. That track record is part of why bond traders treat it as the most important real-time macro indicator.
 
 ## What it does NOT tell you
@@ -32,6 +55,14 @@ The 2022–2024 inversion is a recent stress test of the indicator. It inverted 
 
 ## Where to track it
 
-Daily yields and the curve are at the [US Treasury daily Treasury yield curve](https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics) and on FRED (DGS2, DGS10, T10Y2Y). Memorize where these live; you'll come back weekly.
+Daily yields and the curve are at the [US Treasury daily yield curve page](https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics) and on FRED (DGS2, DGS10, T10Y2Y). Memorize where these live; you'll come back weekly.
+
+<LessonRecap points={[
+  "Yield curve = market's joint forecast of future short rates + term premium.",
+  "2s10s spread is the single most-watched macro indicator.",
+  "Inverted curve = market expects future short rates lower than today = usually a recession call.",
+  "Inversion preceded every US recession since 1978; 2022–24 inversion remains the open stress test of the indicator.",
+  "Tells you direction and rough timing; silent on magnitude and what gets hit."
+]} />
 
 <ExerciseRunner lessonId="01.5-yield-curve" />

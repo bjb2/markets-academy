@@ -1,3 +1,8 @@
+<RetrievalPrompt
+  prompt="From 1965 to 1982 US inflation averaged about 6.5%. From 1982 to 2020 it averaged about 2.5%. What changed? Was it monetary policy, fiscal policy, oil, demographics, globalization, or all of the above?"
+  reveal="All of the above, but the proximate trigger of the regime change was Volcker's willingness to hike rates to 19% in 1980–81 and cause a recession to break inflation expectations. Once expectations re-anchored, subsequent structural forces (globalization, demographics, tech disinflation) extended the regime. Regimes are jointly produced by policy + structure."
+/>
+
 ## Inflation has regimes, not levels
 
 It's tempting to think of inflation as a number that bounces around a constant target. The historical record shows something different: inflation operates in *regimes* that can last decades, separated by transition periods of a few years.
@@ -18,9 +23,20 @@ Almost everything investing-relevant:
 - **Real returns on cash**: deeply negative in inflationary regimes; positive in disinflationary ones.
 - **Bond returns**: a 40-year bull market in bonds (1982–2022) is the disinflation regime in price form. The shift can produce a multi-year bear market.
 - **Equity multiples**: contract in inflationary regimes (discount rates higher, real earnings under pressure). Expand in disinflationary regimes. Most P/E "history" is regime-mixed and misleading.
-- **Correlations**: stock-bond correlation flips. In disinflation, bonds hedge stocks (correlation ≈ -0.3). In inflation, both fall together (correlation ≈ +0.3 to +0.5). 60/40 portfolios that worked for 40 years stop working.
+- **Correlations**: stock-bond correlation flips. In disinflation, bonds hedge stocks (correlation ≈ −0.3). In inflation, both fall together (correlation ≈ +0.3 to +0.5). 60/40 portfolios that worked for 40 years stop working.
 
 This is why "inflation regime" is the single highest-leverage macro question for portfolio construction. Get it right and most other decisions cascade.
+
+<WorkedExample
+  title="The 60/40 portfolio in two regimes"
+  problem="A classic 60% equity / 40% Treasury portfolio. In a disinflation regime (correlation ≈ -0.3), how does it perform in a 10% equity drawdown? In an inflation regime (correlation ≈ +0.4)?"
+  steps={[
+    { label: "Disinflation regime (stocks down 10%)", body: "Bonds typically RALLY in this scenario — flight to safety + Fed easing expectations. Suppose bonds gain 4%. Portfolio: 0.6 × (−10%) + 0.4 × (+4%) = −6% + 1.6% = −4.4%. The bond rally cushioned ~60% of the equity loss." },
+    { label: "Inflation regime (stocks down 10%)", body: "If inflation/rate fear is the trigger, bonds FALL with stocks. Suppose bonds fall 4%. Portfolio: 0.6 × (−10%) + 0.4 × (−4%) = −6% − 1.6% = −7.6%. Bonds added to the drawdown instead of cushioning it." },
+    { label: "Real-world example: 2022", body: "S&P -18%. 60/40 was -16% — bonds added 1+ point to the drawdown rather than cushioning. Worst 60/40 year since 1937. The regime stress-tested 40 years of received wisdom." },
+    { label: "Implication", body: "60/40 is not a universal diversifier. It is a disinflation-regime diversifier. In an inflation regime, you need real assets (commodities, real estate, gold, sometimes bitcoin) to play the hedge role bonds used to play." },
+  ]}
+/>
 
 ## How to tell which regime you're in
 
@@ -33,5 +49,13 @@ Honest answer: only with hindsight. In real time you watch:
 - **Central bank credibility** — the more the Fed is willing to cause unemployment to break inflation expectations, the faster the regime resolves.
 
 The hardest part: regime-change calls are almost always early or wrong before they're right. In 2022 the "we're back to the 70s" call was clearly correct in the moment; in 2024 the "no, the regime held" call looked correct. Both can be right at different time slices.
+
+<LessonRecap points={[
+  "Inflation runs in regimes lasting decades, not a constant around a target.",
+  "Stock-bond correlation flips sign between regimes. 60/40 works in disinflation, fails in inflation.",
+  "Most multiple-history charts blend regimes and mislead.",
+  "Regime identification is hindsight; real-time you watch breakevens, wages, commodities, fiscal posture, central bank credibility.",
+  "Regime calls are usually early before they're right. Calibration matters."
+]} />
 
 <ExerciseRunner lessonId="01.6-inflation-regimes" />

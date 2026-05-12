@@ -1,16 +1,35 @@
+<RetrievalPrompt
+  prompt="If you had to give one person ONE piece of personal-finance advice that would dominate everything else they could possibly do, what would it be?"
+  reveal="Save at least 15–20% of gross income consistently, starting as early as possible. Bernstein argues this is hurdle #1 because no realistic strategy can rescue a low savings rate, while a high savings rate gets you most of the way to retirement regardless of strategy."
+/>
+
 ## The 27-page detour that does most of the work
 
-William Bernstein's *If You Can* is 27 pages, free, and contains roughly half of all sensible personal-finance advice ever written. It is structured around five "hurdles" any investor must clear. We'll cover the structure here and then send you to read the original.
+William Bernstein's *If You Can* is 27 pages, free, and contains roughly half of all sensible personal-finance advice ever written. It's structured around five "hurdles" any investor must clear.
 
-Get the PDF: <SourceLink id="bernstein-if-you-can" />. It is genuinely short. Read it cover to cover.
+Get the PDF: <SourceLink id="bernstein-if-you-can" />. Genuinely 27 pages. Read it cover to cover before continuing.
 
 ## The five hurdles (Bernstein's frame)
 
-1. **Save enough.** Bernstein argues for ~15–20% of gross income, invested early and consistently. No fancy strategy can rescue a low savings rate. No fancy strategy needs to overcome a high one.
+1. **Save enough.** ~15–20% of gross income, invested early and consistently. No fancy strategy can rescue a low savings rate. No fancy strategy needs to overcome a high one.
 2. **Understand finance basics.** What stocks and bonds are. What the market is. What inflation does. (Layers 0–2 of this curriculum are the same content, expanded.)
 3. **Learn the history.** Markets crash periodically. People who lived through 1973–74, 2000–02, 2008–09 know this in their bones. People who did not, panic-sell during the next one. Reading market history is the cheapest substitute for living through it.
 4. **Know thyself.** Most investing failures are behavioral, not analytical. The biggest enemy is the person in the mirror at 3am during a 30% drawdown. Build a portfolio you can hold through *that* moment, not through good times.
 5. **Recognize the industry's incentives.** Most of the financial industry is structured to extract fees from you. Their interests and yours are not aligned. Bernstein is blunt: assume any advisor charging a percentage of assets is your adversary until proven otherwise.
+
+## The math that makes hurdle #1 dominate
+
+<WorkedExample
+  title="Why 'save enough' is the only hurdle that can't be compensated for"
+  problem="Two scenarios over 30 years, both ending at age 65. Scenario A: save 5% of $80K income, earn 8% net annual. Scenario B: save 20% of $80K income, earn 5% net annual. Who retires with more?"
+  steps={[
+    { label: "Compute Scenario A's annual contribution", body: "5% × $80K = $4,000/year." },
+    { label: "Future value of A's contributions", body: "Annuity formula: FV = $4,000 × ((1.08^30 − 1) / 0.08) = $4,000 × 113.28 ≈ $453,000." },
+    { label: "Compute B's annual contribution", body: "20% × $80K = $16,000/year." },
+    { label: "Future value of B's contributions", body: "FV = $16,000 × ((1.05^30 − 1) / 0.05) = $16,000 × 66.44 ≈ $1,063,000." },
+    { label: "The implication", body: "B retires with 2.3× A's wealth despite earning 3 percentage points LESS annual return. The savings rate dominates by a wide margin. This is why Bernstein orders the hurdles the way he does — strategy can't fix a savings-rate gap." },
+  ]}
+/>
 
 ## Where Bernstein is right that most curricula get wrong
 
@@ -18,6 +37,21 @@ The biggest insight is the ordering. Save first, then learn. Most people invert 
 
 ## Bernstein's own reading list
 
-The back of *If You Can* recommends five further books. Treat that list as the next layer of the curriculum after this app. We've structured later layers to overlap with most of them.
+The back of *If You Can* recommends five further books. Treat that list as the next layer of curriculum after this app:
+
+- Bogle, *Common Sense on Mutual Funds* (hurdle #5)
+- Chancellor, *Devil Take the Hindmost* (hurdle #3)
+- Kindleberger, *Manias, Panics & Crashes* (hurdle #3)
+- Biggs, *Wealth, War & Wisdom* (hurdle #3)
+- Zweig, *Your Money & Your Brain* (hurdle #4)
+
+We overlap with most of them in later layers.
+
+<LessonRecap points={[
+  "Five hurdles, in order: save, understand basics, learn history, know thyself, beware the industry.",
+  "Savings rate dominates investment strategy by orders of magnitude over 30-year horizons.",
+  "Most investing failures are behavioral, not analytical.",
+  "Assume fee-based advisors are adversarial until proven otherwise — fee structure is the alignment problem."
+]} />
 
 <ExerciseRunner lessonId="00.7-bernstein-primer" />

@@ -1,24 +1,19 @@
+<RetrievalPrompt
+  prompt="What's the difference between the $20 bill in your wallet, the $20 balance in your checking account, and a $20 Treasury bill maturing tomorrow? Are they all 'money'?"
+  reveal="They're all promises to pay, but at different levels in a hierarchy. The bill is a Fed liability. The checking balance is a commercial bank liability promising to pay you Fed money on demand. The T-bill is a Treasury liability promising to pay Fed money tomorrow. In normal times these are interchangeable; in crises the hierarchy gets very real."
+/>
+
+## Visualize the hierarchy before reading the prose
+
+<MoneyHierarchy />
+
+Click each level. Each promises to pay the level above. The whole structure is held together by trust in those promises — and it's that trust which becomes the volatile variable in a crisis.
+
 ## A definition that actually works
 
 Money is not a thing. Money is a *credit instrument* — a record of who owes whom, denominated in a common unit. The thing in your wallet (a dollar bill) is one specific kind of money-token: a non-interest-bearing IOU issued by the Federal Reserve. The number in your checking account is a different kind: an IOU from your bank, denominated in Fed money. The savings bond in a drawer is yet another: an IOU from the US Treasury, denominated in Fed money.
 
-These distinctions matter because not all money is created equal. **Perry Mehrling's hierarchy of money** is the single best frame:
-
-```
-Gold (or external standard) — top of hierarchy
-        ↓ promises to pay
-Central bank money (Fed liabilities — base money)
-        ↓ promises to pay
-Commercial bank money (deposits — most of M1/M2)
-        ↓ promises to pay
-Securities (Treasuries, MBS, corporate paper)
-        ↓ promises to pay
-Other private credit (loans, IOUs)
-```
-
-Each level is a promise to pay the level above. In a crisis, promises further down get questioned first. "Cash is king" really means "Fed liabilities suddenly trade at a premium because everyone wants to climb the hierarchy."
-
-Watch Mehrling's first three Coursera lectures: <SourceLink id="mehrling-coursera" />. This frame will recur for every macro concept that follows.
+These distinctions matter because not all money is created equal. **Perry Mehrling's hierarchy of money** (the widget above) is the single best frame. Watch Mehrling's first three Coursera lectures: <SourceLink id="mehrling-coursera" />. This frame will recur for every macro concept that follows.
 
 ## The monetary aggregates
 
@@ -29,12 +24,25 @@ The Fed publishes a few measures of "the money supply":
 - **M2**: M1 + savings deposits + small time deposits (mostly bank money).
 - **M3 / broader**: was discontinued in 2006; was M2 + institutional money funds.
 
-For most analytical purposes M2 is the right number. It's what people refer to when they say "the money supply." Track it at FRED (series M2SL).
+For most analytical purposes M2 is the right number. It's what people refer to when they say "the money supply." Track it at [FRED M2SL](https://fred.stlouisfed.org/series/M2SL).
 
-## Why "money printing" is a bad mental model
+<WorkedExample
+  title="Why 2009–2019 QE didn't produce CPI inflation but 2020–2021 did"
+  problem="The Fed expanded its balance sheet by ~$4T over 2008–2014 (QE1, 2, 3). Headline CPI ran 1–2% throughout. The Fed expanded by another ~$4T in 2020–2021. CPI peaked at 9% in mid-2022. Same Fed, same tool. Why the different result?"
+  steps={[
+    { label: "What QE creates", body: "QE creates BASE money. The Fed buys Treasuries from primary dealers; the dealers' reserves at the Fed go up. That's it." },
+    { label: "What gets into M2", body: "M2 grows when banks LEND new credit to non-bank customers, or when the Treasury directly transfers money to households. Base money sitting as reserves doesn't move M2 by itself." },
+    { label: "2008-2014 outcome", body: "Reserves grew enormously. But banks were repairing balance sheets and didn't lend aggressively. Household demand for credit was weak. M2 grew modestly. CPI stayed low." },
+    { label: "2020-2021 outcome", body: "QE plus PPP plus direct stimulus checks plus expanded unemployment. The fiscal piece (Treasury wiring money to households) moved M2 directly. M2 jumped ~25% YoY. CPI followed with the usual lag." },
+    { label: "The lesson", body: "'Fed printing money' is shorthand that often misleads. The right question is: is BROAD money (M2) expanding, and what is creating that expansion? In 2020–21 the answer was 'fiscal transfers monetized by the Fed.' In 2009–14 the answer was 'reserves stacked at the Fed.' Materially different." },
+  ]}
+/>
 
-When the Fed buys Treasuries (QE), it creates base money — but base money mostly sits as bank reserves at the Fed. Whether that *becomes* broad money (M2) and propagates into prices depends on whether banks lend it out, which depends on demand, regulation, and capital constraints. The 2009–2019 QE programs expanded base money dramatically without producing equivalent M2 growth or CPI inflation. The 2020–2021 expansion did show up in M2 — because that round was paired with direct fiscal transfers, not just bank reserve creation.
-
-The lesson: "the Fed prints money" is shorthand that often misleads. The right question is "is broad money expanding, and what regime is the velocity in."
+<LessonRecap points={[
+  "Money is a credit instrument. Each level of the hierarchy promises to pay the level above.",
+  "M2 is the right operating measure of 'broad money' for almost every macro question.",
+  "'Money printing' (QE) creates base money, not necessarily M2 — the distinction matters.",
+  "Crises reveal the hierarchy: 'cash is king' = everyone wants to climb to Fed money."
+]} />
 
 <ExerciseRunner lessonId="01.1-what-is-money" />

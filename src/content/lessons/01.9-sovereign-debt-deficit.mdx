@@ -1,3 +1,8 @@
+<RetrievalPrompt
+  prompt="The US has $30T+ in federal debt against ~$28T GDP. The annual deficit is ~6% of GDP. Why doesn't this mechanically produce a debt crisis the way Greece had in 2010?"
+  reveal="Because the US borrows in its own currency that the US central bank can issue. Greece borrowed in euros it didn't control. Currency-issuing sovereigns cannot nominally default — they can always print to pay. The binding constraint is INFLATION (currency debasement, credibility loss), not default. The crisis form is different, not absent."
+/>
+
 ## A government balance sheet
 
 A government has three main sources of funding:
@@ -10,15 +15,17 @@ The **deficit** is the gap between spending and tax revenue in a given year. The
 
 For the US in 2026, federal debt held by the public is roughly $30T against ~$28T GDP — a debt/GDP ratio around 105–110%. Annual deficit is running ~5–7% of GDP in a non-recession year, which is historically extreme outside wartime.
 
-## The math that does or doesn't work
-
-Debt/GDP is the right denominator. A trillion in debt against $20T of GDP is structurally different from a trillion in debt against $2T of GDP. The key dynamic:
-
-```
-change in debt/GDP ≈ (deficit/GDP) − (debt/GDP) × (nominal GDP growth)
-```
-
-If nominal GDP grows faster than debt-to-GDP rises, the ratio falls even with positive deficits. This is how the US "paid down" WWII debt — it didn't, in absolute terms; it inflated and grew its way to a lower ratio.
+<WorkedExample
+  title="Will debt/GDP rise or fall?"
+  problem="A country has debt/GDP = 100%, nominal GDP growth of 4%, primary deficit (deficit ex interest) of 2% of GDP, and pays an average 5% interest on its debt. What happens to debt/GDP this year?"
+  steps={[
+    { label: "Interest cost", body: "5% × 100% (debt/GDP) = 5 percentage points of GDP. Total deficit = primary deficit + interest = 2% + 5% = 7% of GDP." },
+    { label: "Add to debt", body: "Debt goes up by 7% of GDP from the deficit. Numerator rises by 7 percentage points (in debt/GDP terms)." },
+    { label: "GDP also grows", body: "Nominal GDP grows 4%. The 'effective denominator' inflates by 4%. Debt/GDP gets divided by 1.04." },
+    { label: "Net change", body: "Approximate: Δ(debt/GDP) ≈ primary deficit + (r − g) × (debt/GDP) = 2% + (5% − 4%) × 100% = 2% + 1% = 3 percentage points." },
+    { label: "The intuition", body: "When growth (g) exceeds the interest rate (r), the second term goes NEGATIVE — economy outgrows the cost of carrying its debt. When r > g, debt mechanically compounds faster than the economy can service it. The US enjoyed r << g for 2009–2021. The shift to r > g since 2022 is why fiscal sustainability discussions have re-intensified." },
+  ]}
+/>
 
 The conditions for the math to work over decades:
 
@@ -36,5 +43,13 @@ Sovereign debt sustainability shows up in markets through several channels:
 - **Currency**. Persistent fiscal stress historically correlates with weaker currency (the dollar is the global reserve, so this works differently for the US than for others — but the same logic applies).
 - **Hard assets**. Gold and bitcoin have arguments rooted in fiscal-dominance fears (the "debasement trade" Alden writes about). Whether the arguments are right is contested; that they MATTER for some asset prices is not.
 - **Cross-border flows**. Foreign holdings of US Treasuries (~$8T) are politically and financially relevant. If those holders pull back, the marginal buyer changes — and per Layer 0.2, the marginal buyer is everything.
+
+<LessonRecap points={[
+  "Δ(debt/GDP) ≈ primary deficit + (r − g) × debt/GDP. Memorize.",
+  "When r < g, debt is mathematically sustainable even with positive deficits. When r > g, it compounds away from you.",
+  "Currency-issuing sovereigns can't nominally default. Their crisis form is inflation + currency debasement, not default.",
+  "Term premia, currency, and hard-asset prices all carry information about fiscal sustainability concerns.",
+  "Foreign holdings of US Treasuries (~$8T) are part of the marginal-buyer picture. Watch this composition."
+]} />
 
 <ExerciseRunner lessonId="01.9-sovereign-debt-deficit" />

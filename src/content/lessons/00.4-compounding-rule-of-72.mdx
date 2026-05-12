@@ -1,3 +1,14 @@
+<RetrievalPrompt
+  prompt="Without doing the math: how many years does it take money to double at 8% annual return? Rough answer is fine."
+  reveal="About 9 years. The shortcut is the Rule of 72: 72 ÷ 8 = 9. Memorize this — you'll do it in your head for the rest of your investing life."
+/>
+
+## Feel the exponent first
+
+<RuleOf72 />
+
+Sweep the rate. Notice the approximation gets better in the 4–15% band (the range that matters for almost every real portfolio question) and drifts at extremes.
+
 ## The exponential nobody respects
 
 Linear growth: add a fixed amount every period. Exponential growth: multiply by a fixed amount every period. Humans have terrible intuition for exponential growth. We feel small differences in growth rate as small differences in outcome. They are not.
@@ -9,11 +20,23 @@ Linear growth: add a fixed amount every period. Exponential growth: multiply by 
 | 10% | $174,494 |
 | 13% | $389,757 |
 
-The gap between 4% and 13% is not 3×. It is 12×. At 30 years, a 6-point spread in annual return is roughly an order of magnitude in terminal wealth.
+The gap between 4% and 13% is not 3×. It is 12×. At 30 years, a 9-point spread in annual return is roughly an order of magnitude in terminal wealth.
 
-This single fact is why fees matter, why starting early matters, why staying invested through drawdowns matters, and why almost every retirement-math piece of advice can be derived from it. Once you internalize compounding, you stop arguing about most personal-finance questions.
+This single fact is why fees matter, why starting early matters, why staying invested through drawdowns matters, and why almost every retirement-math piece of advice can be derived from it.
 
-## The Rule of 72
+<WorkedExample
+  title="The 1% fee tax over 30 years"
+  problem="Investor A earns 7% net of fees. Investor B earns the same 7% gross, but pays a 1% advisory fee. Both start with $100K. What's the gap after 30 years?"
+  steps={[
+    { label: "Compute A's terminal value", body: <>100,000 × (1.07)<sup>30</sup>. 1.07<sup>30</sup> ≈ 7.612. So A ends at $761,225.</> },
+    { label: "B's effective return", body: "7% gross minus 1% fee = 6% net annual." },
+    { label: "Compute B's terminal value", body: <>100,000 × (1.06)<sup>30</sup>. 1.06<sup>30</sup> ≈ 5.743. So B ends at $574,349.</> },
+    { label: "The gap", body: "$761,225 − $574,349 = $186,876. The 1% annual fee compounds into ~25% of B's final wealth lost vs A. This is the entire empirical case for low-cost index investing in one calculation." },
+    { label: "Why the gap is so large", body: "Each 1% lost EVERY YEAR compounds. Year 30 fee dollars are 30-years-of-growth dollars — not the small percentage they appear to be when you sign the paperwork at year zero." },
+  ]}
+/>
+
+## The Rule of 72 (memorize)
 
 A useful mental shortcut: **the number of years for money to double is approximately 72 ÷ annual return**.
 
@@ -21,7 +44,7 @@ A useful mental shortcut: **the number of years for money to double is approxima
 - At 9%: 72/9 = 8 years to double.
 - At 12%: 72/12 = 6 years to double.
 
-The rule of 72 is an approximation of the exact formula `years = ln(2) / ln(1 + r)`. It is accurate within a few percent for typical rates (4–15%) and useful enough to do in your head while someone is pitching you.
+The rule of 72 is an approximation of the exact formula `years = ln(2) / ln(1 + r)`. It is accurate within a few percent for typical rates (4–15%) and useful enough to do in your head while someone is pitching you. Why 72 specifically? It's close to `100 × ln(2) ≈ 69.3` but has more divisors (72 = 8 × 9 = 6 × 12 = 4 × 18), so mental math is faster.
 
 ## Why the math gets *less* respected with experience, not more
 
@@ -29,10 +52,11 @@ Most people accept compounding intellectually and then act inconsistently with i
 
 The discipline is not "understand compounding." The discipline is "do nothing for 30 years that taxes the exponent." The "do nothing" part is the hard part.
 
-## Carrying forward
-
-- Tiny differences in compounded return → enormous differences in terminal wealth.
-- 72 ÷ rate ≈ years to double. Memorize.
-- The trap isn't ignorance; it's behavior that drains the exponent.
+<LessonRecap points={[
+  "Tiny differences in compounded return → enormous differences in terminal wealth.",
+  "72 ÷ rate ≈ years to double. Memorize and use weekly.",
+  "1% annual fee ≈ 25% of terminal wealth over 30 years.",
+  "The trap isn't ignorance; it's behavior that drains the exponent."
+]} />
 
 <ExerciseRunner lessonId="00.4-compounding-rule-of-72" />

@@ -1,14 +1,13 @@
-## A dollar today vs a dollar in a year
+<RetrievalPrompt
+  prompt="If I offered you $100 today or $100 in exactly one year — same currency, zero risk of default, zero inflation — which would you take and why?"
+  reveal="Today. Even with no inflation and no risk, a dollar today can be invested, consumed, or used to remove optionality. The promised dollar has none of those properties yet. The exchange rate between today-dollars and future-dollars is the discount rate, and it's the most important number in finance."
+/>
 
-A dollar in your hand today is worth more than a dollar promised next year — even if there is no inflation and you fully trust the counterparty. Why? Because the dollar today can be invested, consumed, or used to remove optionality (pay down debt, settle a worry). The promised dollar has none of those properties yet.
+## Watch compounding before doing the math
 
-The exchange rate between today-dollars and future-dollars is called the **discount rate**. Most discount rates have three layered components:
+<Compounding />
 
-1. A risk-free real rate (compensation for delay)
-2. Expected inflation (so you're paid back in equivalent purchasing power)
-3. A risk premium (compensation for the chance the promise breaks)
-
-Add them and you get a nominal discount rate — what the market actually quotes.
+Drag the rate up by 3 percentage points. Notice how much the terminal value changes — especially at 30+ years. The math doesn't feel like much because it's exponential; you have to *see* it.
 
 ## The two equations you actually need
 
@@ -28,13 +27,18 @@ FV = PV × (1 + r)^n
 
 Same equation, solved the other direction. Everything else in fixed-income math is variations on these two.
 
-## A concrete example
+<WorkedExample
+  title="What is $100 in 10 years worth today at 6%?"
+  problem="You're promised $100 in 10 years. The market discount rate for that credit is 6% annually. Compute the present value."
+  steps={[
+    { label: "Set up the formula", body: <>PV = FV / (1 + r)<sup>n</sup>. Here FV = 100, r = 0.06, n = 10.</> },
+    { label: "Compute the discount factor", body: <>(1 + 0.06)<sup>10</sup> = 1.7908. (One way: 1.06 × 1.06 × ... ten times. Or use the rule of 72 sanity check: at 6%, money doubles in ~12 years, so 10 years is just under a double → discount factor close to 1.8. Matches.)</> },
+    { label: "Divide", body: "100 / 1.7908 ≈ $55.84." },
+    { label: "Sanity check the answer", body: "Future $100 is worth less than $100 today (correct sign). It's worth roughly half-ish (1.8× discount factor over a long horizon). $55.84 sits in the right neighborhood." },
+  ]}
+/>
 
-You're promised $100 in 10 years. The market discount rate for that credit is 6% annually. What's it worth today?
-
-```
-PV = 100 / (1.06)^10 = 100 / 1.7908 ≈ $55.84
-```
+## A second case: same money, longer horizon
 
 If the same $100 is promised in 30 years at the same 6%:
 
@@ -44,10 +48,31 @@ PV = 100 / (1.06)^30 ≈ $17.41
 
 A factor-of-3 difference in time horizon produces a factor-of-3 difference in present value. This sensitivity is why long-duration assets (30-year bonds, growth stocks, real estate) reprice violently when rates move.
 
+<YouTubeEmbed
+  videoId="hsoEctgN54E"
+  caption="The basic intuition of present value, animated."
+  source="Khan Academy — Time Value of Money"
+/>
+
 ## The discount rate is the most important number in finance
 
 Almost every valuation question reduces to "what's the right discount rate?" Get the cash flows roughly right and the discount rate roughly right, and you've done 90% of the analysis. Most disagreements between bulls and bears on a stock are not disagreements about cash flows — they're disagreements about discount rates.
 
+Most discount rates have three layered components:
+
+1. A risk-free real rate (compensation for delay)
+2. Expected inflation (so you're paid back in equivalent purchasing power)
+3. A risk premium (compensation for the chance the promise breaks)
+
+Add them and you get a nominal discount rate — what the market actually quotes.
+
 Carry this into every later lesson: when someone tells you a stock is "worth" X, the next question is *at what discount rate*.
+
+<LessonRecap points={[
+  "PV = FV / (1 + r)^n. Memorize.",
+  "Long-duration assets reprice violently to small rate changes because of the exponent.",
+  "Discount rate = real rate + expected inflation + risk premium.",
+  "'Worth X' is meaningless without the discount rate that produced it."
+]} />
 
 <ExerciseRunner lessonId="00.3-time-value-of-money" />

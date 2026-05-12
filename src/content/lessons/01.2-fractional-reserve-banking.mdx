@@ -1,10 +1,25 @@
+<RetrievalPrompt
+  prompt="When you deposit $1,000 at your bank, where does it actually go? Is it sitting in a vault somewhere with your name on it?"
+  reveal="No. The bank holds a small fraction (or these days, none required) and lends or invests the rest. Your deposit becomes the bank's liability — a promise to pay you back — and the loan becomes its asset. This is how broad money is created."
+/>
+
 ## What banks actually do
 
 A bank is a balance-sheet operation. On the liability side: deposits (what it owes you) and equity (what it owes shareholders). On the asset side: loans, securities, and reserves at the Fed.
 
 When you deposit $1,000, the bank doesn't put $1,000 in a vault and wait for you to come back. It holds a *fraction* in reserve (the namesake of "fractional reserve banking") and lends or invests the rest. The borrower spends the loan; that money ends up as a deposit at another bank, which holds a fraction in reserve and lends out the rest. And so on.
 
-This is how broad money (M2) ends up being a multiple of base money. **The money multiplier** is roughly `1 / reserve_ratio`. A 10% reserve ratio implies that $1 of new base money supports up to $10 of deposits in equilibrium — assuming banks lend to capacity and borrowers want to borrow.
+<WorkedExample
+  title="The money multiplier in action"
+  problem="The reserve ratio is 10%. You deposit $1,000 of currency. Trace what happens through the banking system — how much new broad money is created in equilibrium?"
+  steps={[
+    { label: "Round 1", body: "Bank A receives $1,000 in deposits. It holds 10% ($100) as reserves. It lends out $900. The borrower now has $900 in checking, the bank has $1,000 in deposits + $900 in loans on its balance sheet." },
+    { label: "Round 2", body: "The borrower spends $900. The recipient deposits it at Bank B. Bank B holds 10% ($90) and lends out $810." },
+    { label: "Round 3 and onward", body: "Bank C receives $810, holds $81, lends $729. Each round shrinks by the reserve fraction." },
+    { label: "Sum the geometric series", body: "Total new deposits = $1,000 × (1 / 0.10) = $10,000. The $1,000 of base money supported $10,000 of deposits in equilibrium. The 'money multiplier' is 1 / reserve_ratio." },
+    { label: "Why it usually doesn't reach the theoretical max", body: "The math assumes banks lend to capacity AND borrowers want to borrow. Both can fail. Post-2008 the multiplier collapsed because banks held excess reserves. 'Money multiplier' is a textbook concept; what actually constrains lending today is bank capital and demand." },
+  ]}
+/>
 
 ## Reserve requirements (sort of) don't exist anymore
 
@@ -19,10 +34,18 @@ The mechanism that *does* still constrain US bank lending:
 
 ## Bank runs
 
-A bank is solvent if its assets exceed its liabilities. It is liquid if it can meet near-term obligations as they come due. These are different. A bank can be solvent (the loans are good, just illiquid) and still fail (depositors all demand cash on the same day). This is the structure of a bank run — and the reason FDIC insurance exists.
+A bank is **solvent** if its assets exceed its liabilities. It is **liquid** if it can meet near-term obligations as they come due. These are different. A bank can be solvent (the loans are good, just illiquid) and still fail (depositors all demand cash on the same day). This is the structure of a bank run — and the reason FDIC insurance exists.
 
-SVB in March 2023 was the canonical modern example. Most of its assets were long-duration Treasuries (safe) marked to market at large losses (illiquid at face value). Depositors realized this, demanded their money, and the bank failed in 48 hours despite being economically solvent on a hold-to-maturity basis.
+**SVB in March 2023** was the canonical modern example. Most of its assets were long-duration Treasuries — credit-safe, but marked to market at large losses because rates had risen. Depositors realized this, demanded their money, and the bank failed in 48 hours despite being economically solvent on a hold-to-maturity basis.
 
-The lesson: bank balance sheets blow up when asset *liquidity* fails, not just when asset *quality* fails.
+The deeper lesson: bank balance sheets blow up when asset *liquidity* fails, not just when asset *quality* fails. SVB's Treasuries were the highest-quality assets in the system; they just couldn't be sold at face value fast enough to honor deposits.
+
+<LessonRecap points={[
+  "Banks are balance sheets. Your deposit is their liability; their loans are their asset.",
+  "Theoretical money multiplier = 1 / reserve_ratio. Actual multiplier is much lower because bank capital and demand bind first.",
+  "US reserve requirements are zero since 2020. The binding constraint is capital, liquidity, and willingness.",
+  "Solvency ≠ liquidity. Banks can fail on the second alone — SVB 2023 is the case study.",
+  "FDIC insurance breaks the run coordination problem at the level of insured deposits."
+]} />
 
 <ExerciseRunner lessonId="01.2-fractional-reserve-banking" />

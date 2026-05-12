@@ -28,6 +28,12 @@ npm run preview
 
 Pushes to `main` deploy to GitHub Pages via the workflow in `.github/workflows/deploy.yml`.
 
+## Contributing — lesson template
+
+Every lesson follows the same evidence-based pedagogical pattern (retrieval → concrete → visual → abstract → worked example → recap). The full template, component reference, and failure-mode checklist are in [`docs/lesson-template.md`](docs/lesson-template.md). Read that before writing your first lesson.
+
+The rationale for the template (cognitive load theory, retrieval practice, dual coding, Khan Academy's mastery-learning model) is captured in the parent org's KB.
+
 ## License
 
 MIT.

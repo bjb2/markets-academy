@@ -1,3 +1,8 @@
+<RetrievalPrompt
+  prompt="The unemployment rate is at a 50-year low. The yield curve has been inverted for 18 months. Capacity utilization is high. Are you EARLY-cycle or LATE-cycle?"
+  reveal="Late cycle. Low unemployment + tight capacity = expansion is mature. Inverted curve = market expecting Fed to cut, usually because of an expected recession. Together: late expansion with rising recession risk. Defensive positioning starts here, not when the recession is officially declared."
+/>
+
 ## The cycle that organizes everything
 
 The business cycle is the alternation of expansion and contraction in real economic activity (real GDP, employment, industrial production). The official US arbiter is the NBER, which dates recessions in retrospect — usually 6–12 months after they start.
@@ -11,6 +16,18 @@ A stylized cycle has four phases:
 
 This is a description, not a clock. Cycles vary in length and severity. The 2009–2020 expansion was the longest on record. The 2020 recession was the shortest. Cycle phase identification in real time is harder than retrospective charts suggest.
 
+<WorkedExample
+  title="Classify the current cycle phase from a checklist"
+  problem="Given the following data points, classify the cycle phase: unemployment 3.7%, capacity utilization 79%, ISM manufacturing 47 (contracting), Conference Board LEI down 6 months in a row, 2s10s inverted 14 months, S&P 500 at all-time highs."
+  steps={[
+    { label: "Coincident indicators", body: "Unemployment 3.7% (very low) + capacity utilization near 80% = labor market and factories near full use. Coincident signal: expansion still active." },
+    { label: "Leading indicators", body: "ISM manufacturing below 50 (contraction). LEI declining 6 months. 2s10s inverted 14 months. Three leading indicators all point to slowdown ahead." },
+    { label: "Equity market", body: "All-time highs. Markets often top BEFORE the recession arrives. Strong equities are not evidence we're not late-cycle; they're typical late-cycle behavior." },
+    { label: "Classification", body: "Late expansion / early late cycle. Coincident is hot, leading is rolling over. Most consistent prior: recession within 6–12 months." },
+    { label: "Position implications", body: "Tilt allocation toward defensives (utilities, staples, healthcare). Build cash for redeployment. Avoid leveraging into the cycle. Recognize this is probabilistic — the call can be early by months." },
+  ]}
+/>
+
 ## What leads, coincides, and lags
 
 The Conference Board's Leading Economic Index (LEI) bundles indicators that tend to turn first:
@@ -22,9 +39,9 @@ The Conference Board's Leading Economic Index (LEI) bundles indicators that tend
 - Consumer expectations surveys
 - Equity market
 
-Coincident: nonfarm payrolls, personal income, industrial production, real retail sales.
+**Coincident**: nonfarm payrolls, personal income, industrial production, real retail sales.
 
-Lagging: unemployment rate, inflation, average duration of unemployment, business loan rates.
+**Lagging**: unemployment rate, inflation, average duration of unemployment, business loan rates.
 
 Two practical implications:
 
@@ -41,5 +58,13 @@ Cycle-aware investors do not try to time the cycle precisely — that requires f
 - Recognize that early-cycle is when fortunes are made — by people who had cash and conviction.
 
 The Marks memos in the next lesson take this further into the credit-cycle frame, which is the more powerful one for understanding *severity* of downturns.
+
+<LessonRecap points={[
+  "Four phases: expansion, late, recession, recovery. Stylized — actual cycles vary in length.",
+  "Unemployment is LAGGING. Don't wait for it to rise to call a recession.",
+  "LEI, ISM, initial claims, yield curve — these lead. Watch these, not the headlines.",
+  "Cycle-aware positioning is gradual tilt + cash buildup in late cycle, deploy in early cycle. Don't try to time exact tops.",
+  "Strongest forward returns historically come from early-cycle deployment by investors who held cash through late cycle."
+]} />
 
 <ExerciseRunner lessonId="01.7-business-cycle" />
