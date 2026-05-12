@@ -44,7 +44,7 @@
       "subtitle": "Stocks, bonds, ETFs, FX, commodities, crypto. Read a 10-K. Compute a yield-to-maturity.",
       "objective": "Given a 10-K, a bond prospectus, or an ETF fact sheet, identify the cash flows, the risks, the price, and whether the price looks reasonable.",
       "estWeeks": "3–4 weeks",
-      "lessons": []
+      "lessons": ["02.1-equity-as-claim"]
     },
     {
       "id": 3,
@@ -84,7 +84,7 @@
       "subtitle": "Payoff diagrams, Greeks, IV, time decay, LEAPS. Bridges into the longcall sleeve.",
       "objective": "Draw the payoff diagram and Greeks profile for every position in the longcall sleeve from memory.",
       "estWeeks": "2–3 weeks",
-      "lessons": []
+      "lessons": ["07.1-call-put-basics"]
     },
     {
       "id": 8,
@@ -311,6 +311,26 @@
       "estMinutes": 75,
       "sources": ["fomc-statements"],
       "exerciseCount": 1
+    },
+    "02.1-equity-as-claim": {
+      "id": "02.1-equity-as-claim",
+      "layer": 2,
+      "order": 1,
+      "title": "Equity as a claim",
+      "prereqs": ["01.12-capstone-fomc-brief"],
+      "estMinutes": 45,
+      "sources": ["mit-15.401", "shiller-yale-econ-252", "buffett-letters"],
+      "exerciseCount": 4
+    },
+    "07.1-call-put-basics": {
+      "id": "07.1-call-put-basics",
+      "layer": 7,
+      "order": 1,
+      "title": "Call & put basics",
+      "prereqs": ["02.1-equity-as-claim"],
+      "estMinutes": 45,
+      "sources": ["cboe-options-institute", "tastytrade-learn"],
+      "exerciseCount": 4
     }
   }
 }

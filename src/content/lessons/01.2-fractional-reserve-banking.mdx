@@ -1,6 +1,6 @@
 <RetrievalPrompt
   prompt="When you deposit $1,000 at your bank, where does it actually go? Is it sitting in a vault somewhere with your name on it?"
-  reveal="No. The bank holds a small fraction (or these days, none required) and lends or invests the rest. Your deposit becomes the bank's liability — a promise to pay you back — and the loan becomes its asset. This is how broad money is created."
+  reveal="No. The bank holds a small fraction (or these days, none required) and lends or invests the rest. Your deposit becomes the bank's liability, a promise to pay you back, and the loan becomes its asset. This is how broad money is created."
 />
 
 ## What banks actually do
@@ -11,7 +11,7 @@ When you deposit $1,000, the bank doesn't put $1,000 in a vault and wait for you
 
 <WorkedExample
   title="The money multiplier in action"
-  problem="The reserve ratio is 10%. You deposit $1,000 of currency. Trace what happens through the banking system — how much new broad money is created in equilibrium?"
+  problem="The reserve ratio is 10%. You deposit $1,000 of currency. Trace what happens through the banking system, how much new broad money is created in equilibrium?"
   steps={[
     { label: "Round 1", body: "Bank A receives $1,000 in deposits. It holds 10% ($100) as reserves. It lends out $900. The borrower now has $900 in checking, the bank has $1,000 in deposits + $900 in loans on its balance sheet." },
     { label: "Round 2", body: "The borrower spends $900. The recipient deposits it at Bank B. Bank B holds 10% ($90) and lends out $810." },
@@ -34,9 +34,9 @@ The mechanism that *does* still constrain US bank lending:
 
 ## Bank runs
 
-A bank is **solvent** if its assets exceed its liabilities. It is **liquid** if it can meet near-term obligations as they come due. These are different. A bank can be solvent (the loans are good, just illiquid) and still fail (depositors all demand cash on the same day). This is the structure of a bank run — and the reason FDIC insurance exists.
+A bank is **solvent** if its assets exceed its liabilities. It is **liquid** if it can meet near-term obligations as they come due. These are different. A bank can be solvent (the loans are good, just illiquid) and still fail (depositors all demand cash on the same day). This is the structure of a bank run, and the reason FDIC insurance exists.
 
-**SVB in March 2023** was the canonical modern example. Most of its assets were long-duration Treasuries — credit-safe, but marked to market at large losses because rates had risen. Depositors realized this, demanded their money, and the bank failed in 48 hours despite being economically solvent on a hold-to-maturity basis.
+**SVB in March 2023** was the canonical modern example. Most of its assets were long-duration Treasuries, credit-safe, but marked to market at large losses because rates had risen. Depositors realized this, demanded their money, and the bank failed in 48 hours despite being economically solvent on a hold-to-maturity basis.
 
 The deeper lesson: bank balance sheets blow up when asset *liquidity* fails, not just when asset *quality* fails. SVB's Treasuries were the highest-quality assets in the system; they just couldn't be sold at face value fast enough to honor deposits.
 
@@ -44,7 +44,7 @@ The deeper lesson: bank balance sheets blow up when asset *liquidity* fails, not
   "Banks are balance sheets. Your deposit is their liability; their loans are their asset.",
   "Theoretical money multiplier = 1 / reserve_ratio. Actual multiplier is much lower because bank capital and demand bind first.",
   "US reserve requirements are zero since 2020. The binding constraint is capital, liquidity, and willingness.",
-  "Solvency ≠ liquidity. Banks can fail on the second alone — SVB 2023 is the case study.",
+  "Solvency ≠ liquidity. Banks can fail on the second alone, SVB 2023 is the case study.",
   "FDIC insurance breaks the run coordination problem at the level of insured deposits."
 ]} />
 

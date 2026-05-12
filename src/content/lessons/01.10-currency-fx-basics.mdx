@@ -1,6 +1,6 @@
 <RetrievalPrompt
   prompt="USD/JPY went from 100 to 150 over five years. Did the dollar 'strengthen' or did the yen 'weaken'? Are these the same statement?"
-  reveal="They are the same statement — by definition. USD/JPY rising = more yen needed to buy one dollar = dollar stronger relative to yen. WHICH side moved more is a separate analytical question that requires comparing each currency against a basket. The pair price alone is symmetric."
+  reveal="They are the same statement, by definition. USD/JPY rising = more yen needed to buy one dollar = dollar stronger relative to yen. WHICH side moved more is a separate analytical question that requires comparing each currency against a basket. The pair price alone is symmetric."
 />
 
 ## Why currencies move
@@ -23,13 +23,13 @@ A few mechanisms dominate FX over different horizons:
     { label: "Year 5 carry continues", body: "Another 3.5% in carry. Cumulative now ~18.7%." },
     { label: "Year 5 exchange rate hit", body: "JPY appreciates 25%. Your AUD-denominated position, when converted back to JPY to close the borrow, loses 25% on the exchange rate. The trade's currency exposure was the hidden short-vol bet." },
     { label: "Net P&L", body: "+18.7% carry − 25% FX loss = approximately -6.3% net over 5 years. Five years of patient carry wiped out and then some in one quarter." },
-    { label: "The lesson", body: "Sharpe-style stats over the quiet 4 years looked excellent. The honest Sharpe over the full 5 years was bad. Sharpe over arbitrary windows hides tail risk. This is the fundamental pattern of carry trades — long quiet accumulation, sharp unwinds. The 2008 yen carry unwind played out exactly this way, but more dramatically." },
+    { label: "The lesson", body: "Sharpe-style stats over the quiet 4 years looked excellent. The honest Sharpe over the full 5 years was bad. Sharpe over arbitrary windows hides tail risk. This is the fundamental pattern of carry trades, long quiet accumulation, sharp unwinds. The 2008 yen carry unwind played out exactly this way, but more dramatically." },
   ]}
 />
 
 ## The carry trade and its deeper lesson
 
-The carry trade has been one of the most-traded FX strategies for 30 years. It works for years and then unwinds violently when risk sentiment turns. The 2008 unwind of yen carry trades produced ~30% JPY appreciation in 6 months — wiping out years of carry profits in a quarter.
+The carry trade has been one of the most-traded FX strategies for 30 years. It works for years and then unwinds violently when risk sentiment turns. The 2008 unwind of yen carry trades produced ~30% JPY appreciation in 6 months, wiping out years of carry profits in a quarter.
 
 This is the deepest lesson in FX: high carry currencies look like free money until they're not. They're paying you a risk premium for tail risk that materializes infrequently but catastrophically. Most "uncorrelated" FX strategies turn out to be hidden short-vol bets.
 
@@ -38,13 +38,13 @@ This is the deepest lesson in FX: high carry currencies look like free money unt
 The US dollar is the global reserve currency. ~60% of global FX reserves, ~80% of trade finance, the denominator of most commodities. This produces unique features:
 
 - Persistent demand from non-US actors needing dollar liquidity (foreign banks, EM corporates with USD debt).
-- "Dollar smile" — USD strengthens in BOTH US-led booms AND global crises. Most currencies do one or the other; USD does both.
+- "Dollar smile", USD strengthens in BOTH US-led booms AND global crises. Most currencies do one or the other; USD does both.
 - Fed policy spills onto every other economy. A Fed hike tightens financial conditions globally because dollar borrowing costs everywhere rise.
 
 Foreign currency exposure is not the obvious "diversifier" it seems. Most US investors' optimal currency exposure to non-USD is close to zero, because the dollar's safe-haven property already hedges what a foreign currency would supposedly hedge against.
 
 <LessonRecap points={[
-  "FX rates are relative prices — joint outcome of two countries' policies and economies.",
+  "FX rates are relative prices, joint outcome of two countries' policies and economies.",
   "Days/weeks: rate differentials drive flows. Months/years: relative growth + credibility. Decades: PPP + current account.",
   "Carry trade works for years, unwinds in weeks. Looks Sharpe-attractive in quiet windows; isn't.",
   "Dollar Smile: USD strengthens in both US booms AND global crises (flight to safety).",

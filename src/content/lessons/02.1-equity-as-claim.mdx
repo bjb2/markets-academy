@@ -1,0 +1,50 @@
+<RetrievalPrompt
+  prompt="A company earns $10 per share this year and trades at $150. A second company also earns $10 per share but trades at $300. Why would a rational buyer pay twice as much for the same current earnings?"
+  reveal="Because price is not a multiple of today's earnings, it's the present value of ALL future earnings (or free cash flows). If the second company's earnings are expected to grow faster or last longer, its future cash flow stream is worth more today. The P/E ratio is shorthand for that growth and duration premium."
+/>
+
+## Apple as a residual claimant
+
+In Q1 2024, Apple (AAPL) earned $2.18 per share on revenue of $119 billion. Its shares traded around $183, an 84× multiple of that one quarter's earnings. No one buying at $183 was buying one quarter of profits. They were buying a claim on every dollar of free cash flow Apple generates for as long as it operates, discounted back to today.
+
+That's what equity is: the **residual claim**. After every creditor, supplier, employee, and tax authority is paid, whatever is left belongs to the equity holder. In good years the residual is large. In bad years it can be zero. In bankruptcy, equity holders are last in line and often receive nothing. The right to the upside and the exposure to total loss are the same instrument.
+
+## The abstraction
+
+Equity is not earnings. Equity is a promise of future free cash flows, minus everything owed to everyone with a higher claim. Its value is the present value of those residual flows:
+
+```
+Price = FCF₁/(1+r) + FCF₂/(1+r)² + FCF₃/(1+r)³ + ...
+```
+
+This is the Gordon Growth Model in its general form. `r` is the required return (discount rate); `FCF` is free cash flow available to equity. Two companies with identical current earnings can have radically different prices if their growth rate `g` or their discount rate `r` differ. The sources for this framework in their rigorous form: <SourceLink id="mit-15.401" /> (Finance Theory I) and Shiller's lectures on equity valuation in <SourceLink id="shiller-yale-econ-252" />.
+
+<WorkedExample
+  title="Intrinsic value from free cash flow, simple two-stage estimate"
+  problem="A company generates $5 of free cash flow per share this year. You expect it to grow at 10% per year for 5 years, then level off at 3% permanently. Your required return is 9%. What is a rough intrinsic value per share?"
+  steps={[
+    { label: "Stage 1: discount each of the first 5 years", body: "Year 1: 5.00 / 1.09 = $4.59. Year 2: 5.50 / 1.09² = $4.63. Year 3: 6.05 / 1.09³ = $4.67. Year 4: 6.66 / 1.09⁴ = $4.71. Year 5: 7.32 / 1.09⁵ = $4.76. Stage 1 sum: $23.36." },
+    { label: "Stage 2: terminal value at end of Year 5", body: "FCF in Year 6 = 7.32 × 1.03 = $7.54. Terminal value = 7.54 / (0.09 - 0.03) = $125.67. This is the value at the end of Year 5; discount back 5 years: 125.67 / 1.09⁵ = $81.68." },
+    { label: "Sum the stages", body: "Intrinsic value = $23.36 + $81.68 = $105.04 per share." },
+    { label: "Sensitivity check", body: "If the required return rises from 9% to 10%, one percentage point, recalculate terminal value: 7.54 / (0.10 - 0.03) = $107.71, discounted back: $66.92. New intrinsic value ≈ $90. A 1 pp rate move cut the estimate by ~15%. This is why growth stocks are long-duration assets that reprice sharply on rate moves." },
+  ]}
+/>
+
+## Why this matters going forward
+
+Three things follow from treating equity as a discounted cash flow claim:
+
+**Price/earnings is a duration signal.** A 30× P/E implies the market expects earnings (or FCF) to grow for a long time. A 10× P/E implies low growth or high risk. Neither is inherently "cheap" or "expensive" without knowing the discount rate and the growth assumption embedded in the price. Buffett's letters show this discipline applied rigorously over 50 years: <SourceLink id="buffett-letters" />.
+
+**Rate sensitivity scales with duration.** The worked example above shows a 1 pp rate increase cuts the estimate ~15%. For a company with most cash flows 15-20 years out, the cut is larger. This is identical to the long-bond price math from Layer 0. Equity analysts who ignored this in 2021-2022 were surprised; they shouldn't have been.
+
+**Residual means last.** If a company goes bankrupt, equity is wiped out before bond holders receive a cent. Understanding the capital structure is understanding whose claim is senior. Layer 2 will cover bonds next, they are a senior, fixed claim on the same underlying enterprise.
+
+<LessonRecap points={[
+  "Equity is a residual claim: after all creditors are paid, whatever remains belongs to the equity holder.",
+  "Price equals the present value of all future free cash flows discounted at the required return, not a multiple of current earnings.",
+  "P/E ratio is a shorthand for the market's embedded growth and duration assumption, not a standalone measure of cheapness.",
+  "Equity is a long-duration asset: a 1 pp rise in the discount rate can cut intrinsic value by 10-20% or more, depending on when cash flows arrive.",
+]} />
+
+<ExerciseRunner lessonId="02.1-equity-as-claim" />

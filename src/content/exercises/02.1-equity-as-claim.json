@@ -1,0 +1,39 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "A company is liquidated. It has $500K of cash, owes $600K to bond holders, and has 100K shares outstanding. How much does each share receive?",
+    "choices": [
+      "$5.00 per share",
+      "$0 per share — equity is wiped out",
+      "$1.00 per share (pro-rata on remaining assets)",
+      "Equity holders share equally with bond holders"
+    ],
+    "correctIndex": 1,
+    "explanation": "Equity is a residual claim. Bond holders ($600K owed) are senior and absorb all available assets ($500K) first — they don't even recover in full. Equity holders receive nothing. This is the downside of being last in the capital structure."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "A company is expected to pay $8 of free cash flow per share next year, growing at 3% per year forever. Your required return is 8%. Using the Gordon Growth Model (Price = FCF / (r - g)), what is the intrinsic value per share?",
+    "expected": 160,
+    "tolerance": 2,
+    "unit": "$",
+    "explanation": "Price = 8 / (0.08 - 0.03) = 8 / 0.05 = $160. The Gordon Growth Model is the simplest DCF form for a perpetuity with constant growth. Note how sensitive this is: if r rises to 9%, price = 8 / 0.06 = $133 — a 17% drop from a 1 pp rate move."
+  },
+  {
+    "id": "q3",
+    "kind": "free-text",
+    "prompt": "A stock has a P/E of 35. A skeptic says it is 'too expensive.' A bull says it is 'reasonably priced for the growth rate.' Who is right, and what information would you need to settle the argument?",
+    "reference": "Neither can be right without specifying the discount rate and the expected growth rate embedded in the price. A 35× P/E can be cheap if the company grows free cash flow at 20%+ for a decade; it can be expensive if growth stalls at 4%. The P/E alone is a duration signal, not a verdict. You need: (1) a free-cash-flow growth estimate for at least a 5-year horizon, (2) a terminal growth rate assumption, and (3) a required return (discount rate). Run the DCF — if the implied price is materially above or below market, you have a view worth defending.",
+    "rubricKeywords": ["discount rate", "growth rate", "DCF", "present value", "duration", "free cash flow"]
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Open the Berkshire Hathaway shareholder letters. Read the 1992 letter (or any letter from 1988-1995). Find at least one passage where Buffett discusses what he is actually buying when he buys a stock — the underlying business economics, not the ticker.",
+    "url": "https://www.berkshirehathaway.com/letters/letters.html",
+    "title": "Berkshire Hathaway — Shareholder Letters",
+    "reflectionPrompt": "In your own words: what does Buffett say he is buying, and how does that square with the definition of equity as a residual claim on future free cash flows? Copy the passage that struck you most."
+  }
+]

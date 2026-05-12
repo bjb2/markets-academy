@@ -1,0 +1,74 @@
+<RetrievalPrompt
+  prompt="You buy 100 shares of a stock at $50 each. What is the maximum you can lose? Now suppose you could pay a small fixed fee upfront that gave you the right to buy those same 100 shares at $50 any time in the next six months, without owning them yet. If the stock fell to $10, what would you lose on that arrangement?"
+  reveal="Owning 100 shares outright, you can lose the full $5,000 if the stock goes to zero. With the arrangement described, you lose only the upfront fee: you simply don't exercise the right. That asymmetry, capped downside against uncapped upside, is the core idea of a call option. The fee you pay for it is the premium."
+/>
+
+## One AAPL contract, March 2024
+
+On January 19, 2024, with Apple (AAPL) trading at $182, a call option giving you the right to buy 100 shares at $185 by March 15, 2024 cost roughly $4.50 per share, or $450 for the contract. If AAPL closed above $185 on expiry, you could buy at $185 and immediately hold stock worth more. If it closed at or below $185, the option expired worthless and you lost $450, full stop. A shareholder who bought 100 shares that day at $182 had $18,200 at risk. The option buyer had $450 at risk.
+
+That tradeoff is the whole game in one example.
+
+<YouTubeEmbed
+  videoId="nnl3x1wo25g"
+  caption="American call options: payoff at expiry, the right-not-obligation mechanic."
+  source="Khan Academy, Finance and Capital Markets"
+/>
+
+## The vocabulary
+
+Every option has five attributes:
+
+- **Underlying:** the asset the option is written on (AAPL stock, SPY, crude oil futures).
+- **Strike (K):** the price at which you may buy (call) or sell (put).
+- **Expiry (T):** the date the right lapses. After this date, the option is gone.
+- **Premium:** what you pay today for the right. It is paid upfront and is not refundable.
+- **Type:** a **call** gives the right to buy; a **put** gives the right to sell.
+
+**Moneyness** describes where the stock price (S) sits relative to the strike (K) right now:
+
+| Term | Condition | Meaning |
+|------|-----------|---------|
+| In-the-money (ITM) | Call: S > K, Put: S < K | Would have positive value if exercised today |
+| At-the-money (ATM) | S ≈ K | Strike equals current price |
+| Out-of-the-money (OTM) | Call: S < K, Put: S > K | Would be worthless if exercised today |
+
+The $185 call in the AAPL example was OTM when purchased: the stock was at $182 and the strike was $185. The buyer needed a $3+ move just to reach the money.
+
+A **put** is the mirror. A put gives the right to sell at the strike. You buy a put when you expect the stock to fall, or to protect a position you already own. A put on AAPL with a $175 strike would gain value if AAPL dropped below $175 before expiry.
+
+<WorkedExample
+  title="Call option payoff at expiry"
+  problem="You buy one AAPL call: strike $185, premium $4.50/share, contract size 100 shares. Cost: $450. Compute your profit or loss at expiry if AAPL closes at (a) $175, (b) $185, (c) $195, (d) $210."
+  steps={[
+    { label: "Setup: payoff formula", body: "At expiry, call value = max(S - K, 0). Your profit = call value - premium paid. For this contract: profit = max(S - 185, 0) - 4.50, per share. Multiply by 100 for the contract." },
+    { label: "(a) S = $175, OTM", body: "max(175 - 185, 0) = 0. Option expires worthless. Profit per share = 0 - 4.50 = -$4.50. Contract P&L = -$450. You lose the premium, nothing more." },
+    { label: "(b) S = $185, ATM", body: "max(185 - 185, 0) = 0. Still worthless. Profit = -$4.50 per share, -$450 total. Reaching the strike is not enough; you need to cover the premium too." },
+    { label: "(c) S = $195, ITM", body: "max(195 - 185, 0) = $10. Profit = 10 - 4.50 = +$5.50 per share, +$550 total. Break-even was at $189.50 (strike + premium)." },
+    { label: "(d) S = $210, deep ITM", body: "max(210 - 185, 0) = $25. Profit = 25 - 4.50 = +$20.50 per share, +$2,050 total. A $28 rise in the stock turned $450 into $2,500 - a 4.5x return on capital risked. The leverage is structural, not borrowed." },
+  ]}
+/>
+
+## Why this matters going forward
+
+Options are not primarily speculation tools. They are **risk-transfer instruments**: buyers transfer downside risk to sellers in exchange for a premium. Every position in the longcall sleeve is long calls, meaning you know precisely what you can lose before you enter.
+
+Three things follow immediately from understanding the payoff at expiry:
+
+**Break-even is strike plus premium.** A call is profitable only if the stock rises past strike + premium. Buying ATM options and expecting "any move up" to profit is a common beginner error.
+
+**Leverage is asymmetric.** In case (d) above, the stock moved 15% and the option returned 4.5x. But in case (a), the stock moved -4% and the option returned -100%. The leverage amplifies both directions, with a hard floor at zero.
+
+**Puts are insurance.** A put on a stock you own limits your downside to strike - premium paid. The CBOE Options Institute covers the full put-as-insurance setup: <SourceLink id="cboe-options-institute" />. Tastytrade's learn center covers entry-level mechanics with live order-flow context: <SourceLink id="tastytrade-learn" />.
+
+The next Layer 7 lessons will cover pricing (why that $4.50 premium was what it was), the Greeks, and how time decay erodes an option's value every day until expiry.
+
+<LessonRecap points={[
+  "A call gives the right to buy the underlying at the strike before expiry; a put gives the right to sell. Neither obligates you to exercise.",
+  "Premium is paid upfront and is the maximum loss for a long option position.",
+  "Call profit at expiry = max(S - K, 0) - premium; break-even = strike + premium.",
+  "ITM means the option has intrinsic value if exercised today; OTM means it does not.",
+  "Options transfer risk: the buyer pays a known premium to cap downside; the seller collects premium and takes on the tail exposure.",
+]} />
+
+<ExerciseRunner lessonId="07.1-call-put-basics" />

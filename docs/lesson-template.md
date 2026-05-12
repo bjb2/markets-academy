@@ -76,6 +76,7 @@ Before committing a lesson:
 - [ ] Is the recap a list of CLAIMS the learner can produce, or a list of TOPICS covered? Topics fail. Rewrite as claims.
 - [ ] Did you load every primary source via `<SourceLink id="..." />` rather than a bare URL? Bare URLs bypass the source registry and break the global resources index.
 - [ ] **For each `<YouTubeEmbed videoId="..." />`**: did you OPEN `https://www.youtube.com/watch?v=<id>` in a browser (or `WebFetch` it) and confirm the title, channel, and that it loads? Guessing video IDs from memory or from a confident-sounding LLM is the canonical bug. A wrong ID renders as a "Video unavailable" placeholder that the build won't catch.
+- [ ] **No em-dashes anywhere.** Grep your output: `grep -c "—" your-output.mdx` must return 0. Em-dash (U+2014) is a HARD ban across this entire repo. Use commas, hyphens (-), colons, or sentence splits instead. This rule overrides any apparent inconsistency in older lessons.
 
 ## Components available
 

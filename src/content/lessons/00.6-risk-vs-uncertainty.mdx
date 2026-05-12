@@ -1,6 +1,6 @@
 <RetrievalPrompt
   prompt="What's the difference between 'this stock has a 30% chance of being down tomorrow' and 'this technology might be obsolete in 5 years'? Are they the same kind of statement?"
-  reveal="No. The first is RISK — quantifiable, distribution-shaped, modellable. The second is UNCERTAINTY — outcome space unclear, past frequency not a guide. Frank Knight drew this distinction in 1921 and most catastrophic financial losses stem from confusing them."
+  reveal="No. The first is RISK, quantifiable, distribution-shaped, modellable. The second is UNCERTAINTY, outcome space unclear, past frequency not a guide. Frank Knight drew this distinction in 1921 and most catastrophic financial losses stem from confusing them."
 />
 
 ## The distinction Knight drew in 1921
@@ -8,7 +8,7 @@
 Frank Knight separated two concepts that are usually conflated:
 
 - **Risk**: situations where you can list the possible outcomes and assign probabilities to each. Card games. Insured fires. The roulette wheel.
-- **Uncertainty**: situations where you cannot meaningfully assign probabilities — either because the outcome space isn't enumerable, or because past frequencies are not a guide to future frequencies. Wars. Technological transitions. The introduction of a new currency.
+- **Uncertainty**: situations where you cannot meaningfully assign probabilities, either because the outcome space isn't enumerable, or because past frequencies are not a guide to future frequencies. Wars. Technological transitions. The introduction of a new currency.
 
 Markets contain both. The question of "will this stock be up or down tomorrow" is risk-shaped (you can model volatility and assign a distribution). The question of "will this technology displace the entire incumbent industry within 5 years" is uncertainty-shaped.
 
@@ -24,14 +24,14 @@ If you confuse the two, you do dangerous things:
   title="The same number, two interpretations"
   problem="An analyst tells you 'this stock has a 30% probability of declining more than 20% in the next year.' How should you treat this number?"
   steps={[
-    { label: "Ask: where does the 30% come from", body: "If it's from a model fit on the last 10 years of price data, it's a RISK estimate — assumes future regime resembles past. If it's from a fundamental analyst's subjective view, it's a structured guess about UNCERTAINTY presented as risk." },
+    { label: "Ask: where does the 30% come from", body: "If it's from a model fit on the last 10 years of price data, it's a RISK estimate, assumes future regime resembles past. If it's from a fundamental analyst's subjective view, it's a structured guess about UNCERTAINTY presented as risk." },
     { label: "Identify the regime assumption", body: "The model assumes volatility-of-volatility behaves like it did historically. The fundamental view assumes the current business has the same growth and competitive dynamics as the analyst's mental model." },
-    { label: "Stress test", body: "If the regime changes — new competitor, regulatory shift, AI displacement, demand collapse — the 30% number is silent. The model can't price what it never saw; the analyst is making the same regime assumption with a story attached." },
+    { label: "Stress test", body: "If the regime changes, new competitor, regulatory shift, AI displacement, demand collapse, the 30% number is silent. The model can't price what it never saw; the analyst is making the same regime assumption with a story attached." },
     { label: "What to do with it", body: "Use the number as a starting point. Then SEPARATELY ask: what about this is uncertainty, not risk? Size the position by your uncertainty tolerance, not by the model's risk estimate. The 2008 hedge funds that blew up had perfect risk models and zero uncertainty discipline." },
   ]}
 />
 
-Taleb's career — read <SourceLink id="taleb-essays" /> for the long form — is built on the observation that most catastrophic losses come from uncertainty mistakenly handled as risk. The trader who blows up in a 6-sigma event is the trader who modeled the world as Gaussian when the underlying process was Pareto-tailed.
+Taleb's career, read <SourceLink id="taleb-essays" /> for the long form, is built on the observation that most catastrophic losses come from uncertainty mistakenly handled as risk. The trader who blows up in a 6-sigma event is the trader who modeled the world as Gaussian when the underlying process was Pareto-tailed.
 
 ## Knightian uncertainty in your own decisions
 
@@ -41,12 +41,12 @@ If risk: you can size by Kelly, hedge, model. Standard tools apply.
 
 If uncertainty: standard tools mislead. The honest response is to (1) keep the position small relative to ruin, (2) buy optionality where available, (3) prefer reversible bets over irreversible ones, and (4) survive long enough to learn.
 
-The longcall sleeve we run takes a Knightian view of upside (where will the AI infra capex cycle go? Unknowable) and a risk view of downside (premium can decay to zero — bound by structure). That asymmetry is the whole point.
+The longcall sleeve we run takes a Knightian view of upside (where will the AI infra capex cycle go? Unknowable) and a risk view of downside (premium can decay to zero, bound by structure). That asymmetry is the whole point.
 
 <LessonRecap points={[
   "Risk is bounded by probability. Uncertainty is bounded by imagination.",
   "Most blow-ups come from treating uncertainty as risk and using risk-shaped tools on it.",
-  "Probability estimates carry their regime assumption with them — make the assumption explicit.",
+  "Probability estimates carry their regime assumption with them, make the assumption explicit.",
   "When in doubt: downsize, buy optionality, prefer reversible bets, survive."
 ]} />
 

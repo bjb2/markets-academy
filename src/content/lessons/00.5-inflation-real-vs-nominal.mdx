@@ -1,6 +1,6 @@
 <RetrievalPrompt
   prompt="If your portfolio returned 10% last year and inflation was 8%, did you 'make money'? What's the right measure?"
-  reveal="In purchasing-power terms — what your money will actually buy — you made about 2%. That's the real return, computed via the Fisher equation. Headline (nominal) return is what got reported; real return is what you actually have."
+  reveal="In purchasing-power terms, what your money will actually buy, you made about 2%. That's the real return, computed via the Fisher equation. Headline (nominal) return is what got reported; real return is what you actually have."
 />
 
 ## Practice the Fisher equation
@@ -23,11 +23,11 @@ The formal relationship is the **Fisher equation**:
 
 <WorkedExample
   title="A 1970s-style real return"
-  problem="Nominal return is 12%. Inflation is 9%. What's the EXACT real return — and how badly off would you be using the linear approximation?"
+  problem="Nominal return is 12%. Inflation is 9%. What's the EXACT real return, and how badly off would you be using the linear approximation?"
   steps={[
     { label: "Approximation", body: "Linear: 12 − 9 = 3%. Looks reasonable." },
     { label: "Exact via Fisher", body: "(1 + nominal) / (1 + inflation) = 1.12 / 1.09 = 1.02752. So real return = 2.75%." },
-    { label: "The gap", body: "Linear approximation overstated real return by 0.25 percentage points — a 9% relative error. Tolerable for a single year, dangerous over decades." },
+    { label: "The gap", body: "Linear approximation overstated real return by 0.25 percentage points, a 9% relative error. Tolerable for a single year, dangerous over decades." },
     { label: "Why it matters", body: "In the 1970s (when inflation ran 7–13% for a decade), the linear shortcut compounded into materially wrong retirement-planning numbers. The lesson: at high inflation, use the multiplicative form." },
   ]}
 />
@@ -41,25 +41,25 @@ Track them yourself at <SourceLink id="fred-cpi" />. Every Fed decision is downs
 <YouTubeEmbed
   videoId="AaR1mPrdbTc"
   caption="What inflation is, how CPI measures it, and the canonical 'basket' framing."
-  source="Khan Academy — Introduction to inflation"
+  source="Khan Academy, Introduction to inflation"
 />
 
 ## Why this matters for every market
 
 - **Bonds**: a 5% Treasury yield with 4% inflation is a 1% real yield. The same yield with 2% inflation is a 3% real yield. The bond did not change; the world's claim on you did.
-- **Stocks**: revenue and earnings are nominal. In high-inflation regimes, headline EPS growth flatters because input costs and wages haven't caught up yet — they will. Real EPS is the durable signal.
+- **Stocks**: revenue and earnings are nominal. In high-inflation regimes, headline EPS growth flatters because input costs and wages haven't caught up yet, they will. Real EPS is the durable signal.
 - **Cash**: cash always has a 0% real yield minus inflation. In 2022 cash earned roughly −8% real. The "safe" asset can be the most lethal one.
 - **Wages and salaries**: most of your felt experience of "am I doing better" is real wage growth. Headline raises in inflationary periods feel hollow because they are.
 
 ## The discipline
 
-When anyone gives you a return number, mentally tag it nominal or real. If they didn't say, assume nominal — and immediately calculate the real version. Most "outperformance" stories collapse when re-stated in real terms. Most "stocks for the long run" arguments are real-return arguments in disguise.
+When anyone gives you a return number, mentally tag it nominal or real. If they didn't say, assume nominal, and immediately calculate the real version. Most "outperformance" stories collapse when re-stated in real terms. Most "stocks for the long run" arguments are real-return arguments in disguise.
 
 <LessonRecap points={[
   "(1 + nominal) = (1 + real) × (1 + inflation). Multiplicative, not linear.",
   "Linear approximation works at low inflation, breaks above ~5%.",
   "Headline EPS and headline raises are inflation-flattered in high-inflation regimes.",
-  "Cash's real yield is negative whenever inflation > the nominal yield it earns — a regular condition, not an exotic one."
+  "Cash's real yield is negative whenever inflation > the nominal yield it earns, a regular condition, not an exotic one."
 ]} />
 
 <ExerciseRunner lessonId="00.5-inflation-real-vs-nominal" />
