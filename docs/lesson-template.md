@@ -75,6 +75,7 @@ Before committing a lesson:
 - [ ] Does the worked example have a structural pattern that an exercise tests transfer of? If no, the exercises are disconnected from the example. Add a transfer exercise.
 - [ ] Is the recap a list of CLAIMS the learner can produce, or a list of TOPICS covered? Topics fail. Rewrite as claims.
 - [ ] Did you load every primary source via `<SourceLink id="..." />` rather than a bare URL? Bare URLs bypass the source registry and break the global resources index.
+- [ ] **For each `<YouTubeEmbed videoId="..." />`**: did you OPEN `https://www.youtube.com/watch?v=<id>` in a browser (or `WebFetch` it) and confirm the title, channel, and that it loads? Guessing video IDs from memory or from a confident-sounding LLM is the canonical bug. A wrong ID renders as a "Video unavailable" placeholder that the build won't catch.
 
 ## Components available
 
