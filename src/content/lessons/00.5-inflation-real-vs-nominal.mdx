@@ -1,0 +1,32 @@
+## Two ways to measure the same thing
+
+Everything in finance has two versions: **nominal** and **real**. Nominal means "in dollars as printed." Real means "in dollars adjusted for inflation, so they buy the same basket of goods."
+
+When you see "stocks returned 10% last year," the next question is whether that 10% is nominal or real. A 10% nominal return in a year with 8% inflation is a 2% real return. Compounded over 30 years, the difference between 10% nominal and 2% real is the difference between "comfortable retirement" and "ate the cat food in the end."
+
+The formal relationship is the Fisher equation:
+
+```
+(1 + nominal) = (1 + real) × (1 + inflation)
+```
+
+For small numbers it linearizes to `real ≈ nominal − inflation`, which is the approximation almost everyone uses. The exact form matters only when inflation is high (think emerging markets, or US in the 1970s).
+
+## What inflation actually measures
+
+In the US, the headline inflation number is **CPI** (Consumer Price Index), produced by the BLS. It's a price index for a fixed basket of consumer goods. There are variants: core CPI (ex food and energy, less noisy), PCE (the Fed's preferred measure, slightly different basket), trimmed-mean PCE (removes the most extreme components).
+
+Track them yourself at <SourceLink id="fred-cpi" />. Every Fed decision is downstream of these series. Reading the latest BLS release before the financial press writes about it is a 30-minute habit that pays off forever.
+
+## Why this matters for every market
+
+- **Bonds**: a 5% Treasury yield with 4% inflation is a 1% real yield. The same yield with 2% inflation is a 3% real yield. The bond did not change; the world's claim on you did.
+- **Stocks**: revenue and earnings are nominal. In high-inflation regimes, headline EPS growth flatters because input costs and wages haven't caught up yet — they will. Real EPS is the durable signal.
+- **Cash**: cash always has a 0% real yield minus inflation. In 2022 cash earned roughly -8% real. The "safe" asset can be the most lethal one.
+- **Wages and salaries**: most of your felt experience of "am I doing better" is real wage growth. Headline raises in inflationary periods feel hollow because they are.
+
+## The discipline
+
+When anyone gives you a return number, mentally tag it nominal or real. If they didn't say, assume nominal — and immediately calculate the real version. Most "outperformance" stories collapse when re-stated in real terms. Most "stocks for the long run" arguments are real-return arguments in disguise.
+
+<ExerciseRunner lessonId="00.5-inflation-real-vs-nominal" />

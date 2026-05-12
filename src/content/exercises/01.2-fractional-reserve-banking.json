@@ -1,0 +1,43 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "With a 10% reserve ratio, what is the theoretical maximum money multiplier?",
+    "expected": 10,
+    "tolerance": 0,
+    "explanation": "1 / 0.10 = 10. $1 of base money supports up to $10 of deposits in the limit."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Since March 2020, US bank lending is primarily constrained by:",
+    "choices": [
+      "Reserve requirements.",
+      "Capital ratios, liquidity rules, bank risk appetite, and borrower demand.",
+      "Fed discretion.",
+      "Money multiplier math."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Fed cut reserve requirements to zero. The binding constraints now live elsewhere — capital, liquidity, and the two-sided willingness of banks and borrowers."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Silicon Valley Bank's collapse in March 2023 is best characterized as:",
+    "choices": [
+      "A solvency failure — the loans were bad.",
+      "A liquidity failure — high-quality long-duration assets at a deep mark-to-market loss could not be sold at face value as depositors withdrew.",
+      "A regulatory failure that doesn't generalize.",
+      "An accounting fraud."
+    ],
+    "correctIndex": 1,
+    "explanation": "SVB's assets were Treasuries — credit-safe but with massive duration risk. As deposits ran, it had to crystallize losses, which evaporated capital. Solvent on hold-to-maturity accounting, insolvent at fair value once forced to sell."
+  },
+  {
+    "id": "q4",
+    "kind": "free-text",
+    "prompt": "Why is FDIC insurance, as a system, more important for STABILITY than for protecting any individual depositor?",
+    "reference": "Individual protection is the visible benefit, but the systemic value is that FDIC insurance breaks the bank-run coordination problem. A run happens because each depositor's best individual move (withdraw before others do) destroys collective value. If everyone knows their deposit is guaranteed up to $250K, no one needs to be first in line. The run mechanism stops working at the level of insured deposits. The 2023 SVB episode was instructive: most SVB deposits were OVER the insurance limit (corporate cash balances), which is exactly why the run materialized despite SVB being economically solvent. The fix was extending the insurance, not propping up the bank.",
+    "rubricKeywords": ["run", "coordination", "insurance"]
+  }
+]

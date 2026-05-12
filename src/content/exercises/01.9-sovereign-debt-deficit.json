@@ -1,0 +1,45 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "A country has debt/GDP = 100%, nominal GDP growth of 4%, primary deficit of 2% of GDP, and pays an average 5% interest on its debt. What is the approximate change in debt/GDP this year, in percentage points?",
+    "expected": 3,
+    "tolerance": 0.5,
+    "unit": "pp",
+    "explanation": "Δ(debt/GDP) ≈ primary deficit + (r − g) × debt/GDP = 2% + (5% − 4%) × 100% = 2% + 1% = 3% rise. r > g by 1 point times a 100% debt ratio adds 1 point of drift; primary deficit of 2 adds the rest."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Why is the relationship r < g (interest rate below growth rate) so critical for debt sustainability?",
+    "choices": [
+      "It's a coincidence.",
+      "When growth exceeds interest cost, the economy outgrows the cost of carrying its debt, so even small primary deficits don't increase debt/GDP. When r > g, debt mechanically compounds faster than the economy can service it.",
+      "It only matters in emerging markets.",
+      "It's an accounting identity."
+    ],
+    "correctIndex": 1,
+    "explanation": "This is the central debt-sustainability arithmetic. The US enjoyed r << g for most of 2009–2021. The shift toward r > g since 2022 is why fiscal sustainability discussions have re-intensified."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which is the WEAKEST argument that the US faces a debt crisis in the conventional sense?",
+    "choices": [
+      "The US borrows in its own currency that it controls — outright nominal default is structurally unlikely; the binding constraint is inflation, not default.",
+      "Foreign holders of Treasuries are large.",
+      "Interest costs are rising as a share of revenue.",
+      "Primary deficits are structurally elevated."
+    ],
+    "correctIndex": 0,
+    "explanation": "Sovereign borrowers in their own currency can always nominally pay (print). The real constraint is what that printing does to currency value and inflation. 'Debt crisis' for the US looks like inflation and currency weakness, not nominal default. The other three are real concerns; the first is the structural feature that DEFERS the form a crisis would take."
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Read a recent Lyn Alden or Cullen Roche piece on fiscal dynamics.",
+    "url": "https://www.lynalden.com/newsletter-archives/",
+    "title": "Lyn Alden — newsletter archive",
+    "reflectionPrompt": "What's the strongest argument the piece makes, and what would falsify it?"
+  }
+]

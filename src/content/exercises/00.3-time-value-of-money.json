@@ -1,0 +1,49 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "What is the present value of $100 received in 10 years at a 5% annual discount rate?",
+    "expected": 61.39,
+    "tolerance": 0.5,
+    "unit": "$",
+    "explanation": "PV = 100 / (1.05)^10 = 100 / 1.6289 ≈ $61.39."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "What is the present value of $100 received in 10 years at a 12% annual discount rate?",
+    "expected": 32.20,
+    "tolerance": 0.5,
+    "unit": "$",
+    "explanation": "PV = 100 / (1.12)^10 ≈ $32.20. Higher discount rate, less present value. The 5% and 12% answers differ by ~2× — small rate changes create large PV changes at long horizons."
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "$10,000 grows for 30 years at 8% annual. What is the future value, rounded to the nearest dollar?",
+    "expected": 100627,
+    "tolerance": 50,
+    "unit": "$",
+    "explanation": "FV = 10000 × (1.08)^30 ≈ $100,627. A ~10× multiplier from a 30-year compounding window at 8%."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Two bonds promise identical cash flows. Bond A is risk-free. Bond B is from a junk-rated issuer. Which has the higher present value at the same nominal market discount rate?",
+    "choices": [
+      "Bond A.",
+      "Bond B.",
+      "They have the same PV by construction — same cash flows, same discount rate.",
+      "It depends on the inflation expectation."
+    ],
+    "correctIndex": 2,
+    "explanation": "If the question fixes the discount rate, then identical cash flows produce identical PV. The real point: in practice the market quotes a *higher* discount rate for Bond B precisely to compensate for default risk, so its PV ends up lower. Discount rates absorb risk premia — that's their job."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A friend says a growth stock is 'worth' $200 a share. What follow-up question matters most?",
+    "reference": "At what discount rate. Most growth-stock valuations are extreme functions of the discount rate assumption because most of the present value comes from cash flows far in the future. Two analysts can agree exactly on revenue projections, margin trajectory, and terminal growth, and still differ by 50% on price target solely because one uses an 8% discount rate and the other uses 11%. Always ask the discount rate, not just the cash flow assumptions.",
+    "rubricKeywords": ["discount", "rate"]
+  }
+]

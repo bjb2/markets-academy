@@ -1,0 +1,403 @@
+[
+  {
+    "id": "hayek-1945",
+    "title": "Hayek 1945 — The Use of Knowledge in Society",
+    "type": "paper",
+    "url": "https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945",
+    "cost": "free",
+    "primaryLayers": [0, 10],
+    "format": ["pdf"],
+    "estimatedHours": 1,
+    "notes": "Eight pages. Foundational. Read twice — once for the argument, once for the epistemic frame."
+  },
+  {
+    "id": "khan-supply-demand",
+    "title": "Khan Academy — Supply and Demand",
+    "type": "course",
+    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance",
+    "cost": "free",
+    "primaryLayers": [0],
+    "format": ["video", "exercises"]
+  },
+  {
+    "id": "khan-tvm",
+    "title": "Khan Academy — Time Value of Money",
+    "type": "course",
+    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial",
+    "cost": "free",
+    "primaryLayers": [0, 2],
+    "format": ["video", "exercises"]
+  },
+  {
+    "id": "khan-inflation",
+    "title": "Khan Academy — Inflation basics",
+    "type": "course",
+    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/inflation-tutorial",
+    "cost": "free",
+    "primaryLayers": [0, 1],
+    "format": ["video"]
+  },
+  {
+    "id": "khan-banking",
+    "title": "Khan Academy — Money, banking & central banks",
+    "type": "course",
+    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["video"]
+  },
+  {
+    "id": "khan-fx",
+    "title": "Khan Academy — Foreign exchange",
+    "type": "course",
+    "url": "https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking/foreign-exchange-tut",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["video"]
+  },
+  {
+    "id": "fred-cpi",
+    "title": "FRED — Consumer Price Index series",
+    "type": "site",
+    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+    "cost": "free",
+    "primaryLayers": [0, 1],
+    "format": ["data"],
+    "notes": "Primary source for inflation. Every macro discussion eventually reduces to a FRED chart."
+  },
+  {
+    "id": "taleb-essays",
+    "title": "Nassim Taleb — fooledbyrandomness.com essays",
+    "type": "essay",
+    "url": "https://www.fooledbyrandomness.com/",
+    "cost": "free",
+    "primaryLayers": [0, 8, 10],
+    "format": ["essays", "papers"]
+  },
+  {
+    "id": "bernstein-if-you-can",
+    "title": "William Bernstein — If You Can (PDF, 27 pages)",
+    "type": "book",
+    "url": "https://www.etf.com/docs/IfYouCan.pdf",
+    "cost": "free",
+    "primaryLayers": [0, 3],
+    "format": ["pdf"],
+    "estimatedHours": 2,
+    "notes": "Includes its own reading list at the back. Treat that list as a meta-curriculum."
+  },
+  {
+    "id": "shiller-yale-econ-252",
+    "title": "Yale ECON 252 — Financial Markets (Shiller)",
+    "type": "course",
+    "url": "https://oyc.yale.edu/economics/econ-252-11",
+    "cost": "free",
+    "primaryLayers": [1, 2, 3, 5, 10],
+    "format": ["video", "transcript", "problem-set"],
+    "estimatedHours": 32
+  },
+  {
+    "id": "shiller-coursera",
+    "title": "Coursera — Financial Markets (Shiller, updated)",
+    "type": "course",
+    "url": "https://www.coursera.org/learn/financial-markets-global",
+    "cost": "free",
+    "primaryLayers": [1, 2, 5, 10],
+    "format": ["video"],
+    "notes": "Audit-free. Updated 2016–17, more polished than 2011 OYC version."
+  },
+  {
+    "id": "mit-15.401",
+    "title": "MIT OCW 15.401 — Finance Theory I",
+    "type": "course",
+    "url": "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/",
+    "cost": "free",
+    "primaryLayers": [2, 3, 7],
+    "format": ["video", "notes", "problem-set"]
+  },
+  {
+    "id": "mit-15.402",
+    "title": "MIT OCW 15.402 — Finance Theory II",
+    "type": "course",
+    "url": "https://ocw.mit.edu/courses/15-402-finance-theory-ii-spring-2003/",
+    "cost": "free",
+    "primaryLayers": [6],
+    "format": ["notes", "problem-set"]
+  },
+  {
+    "id": "mit-15.433",
+    "title": "MIT OCW 15.433 — Investments",
+    "type": "course",
+    "url": "https://ocw.mit.edu/courses/15-433-investments-spring-2003/",
+    "cost": "free",
+    "primaryLayers": [3, 8],
+    "format": ["notes"]
+  },
+  {
+    "id": "mehrling-coursera",
+    "title": "Coursera — Economics of Money and Banking (Mehrling)",
+    "type": "course",
+    "url": "https://www.coursera.org/learn/money-banking",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["video"],
+    "estimatedHours": 30,
+    "notes": "The single best free macro primer in the world. Audit free. Mehrling's monetary plumbing approach is what you actually need."
+  },
+  {
+    "id": "fed-education-central-banking",
+    "title": "Federal Reserve Education — Central Banking",
+    "type": "site",
+    "url": "https://www.federalreserveeducation.org/teaching-resources/economics/monetary-policy-the-federal-reserve/central-banking",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["video", "lessons"]
+  },
+  {
+    "id": "fomc-statements",
+    "title": "FOMC statements & minutes (primary)",
+    "type": "site",
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["text"],
+    "notes": "Primary source. Read every release. The Wall Street Journal headlines are derivatives of this text."
+  },
+  {
+    "id": "marks-memos-best-of",
+    "title": "Howard Marks — The Best Of (memos)",
+    "type": "memo",
+    "url": "https://www.oaktreecapital.com/insights/memo/the-best-of",
+    "cost": "free",
+    "primaryLayers": [1, 5, 6, 8],
+    "format": ["pdf"],
+    "notes": "Curated by Marks himself. Each memo is 10–20 pages. The 'cycle awareness' frame here will recur for the rest of your investing life."
+  },
+  {
+    "id": "buffett-letters",
+    "title": "Berkshire Hathaway shareholder letters 1977–present",
+    "type": "memo",
+    "url": "https://www.berkshirehathaway.com/letters/letters.html",
+    "cost": "free",
+    "primaryLayers": [2, 6],
+    "format": ["pdf"]
+  },
+  {
+    "id": "bogleheads-cs-investing",
+    "title": "Bogleheads — Common Sense Investing",
+    "type": "site",
+    "url": "https://www.bogleheads.org/wiki/Common_Sense_Investing",
+    "cost": "free",
+    "primaryLayers": [2, 10],
+    "format": ["wiki"]
+  },
+  {
+    "id": "lyn-alden-newsletter",
+    "title": "Lyn Alden — free newsletter archive",
+    "type": "newsletter",
+    "url": "https://www.lynalden.com/newsletter-archives/",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["essay"]
+  },
+  {
+    "id": "lyn-alden-start",
+    "title": "Lyn Alden — Let's Get Started",
+    "type": "site",
+    "url": "https://www.lynalden.com/lets-get-started/",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["essay"]
+  },
+  {
+    "id": "pragmatic-capitalism",
+    "title": "Cullen Roche — Pragmatic Capitalism (essays)",
+    "type": "site",
+    "url": "https://www.pragcap.com/",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["essay"]
+  },
+  {
+    "id": "mru-macro",
+    "title": "Marginal Revolution University — Macro principles",
+    "type": "course",
+    "url": "https://mru.org/courses/principles-economics-macroeconomics",
+    "cost": "free",
+    "primaryLayers": [1],
+    "format": ["video"]
+  },
+  {
+    "id": "hasbrouck-emm",
+    "title": "Joel Hasbrouck — Empirical Market Microstructure (PDF host)",
+    "type": "book",
+    "url": "http://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Hasbrouck's%20book.pdf",
+    "cost": "free",
+    "primaryLayers": [4],
+    "format": ["pdf"],
+    "notes": "Dense. Read selectively."
+  },
+  {
+    "id": "coursera-microstructure",
+    "title": "Coursera — Market Microstructure (Federico II)",
+    "type": "course",
+    "url": "https://www.coursera.org/learn/market-microstructure",
+    "cost": "free",
+    "primaryLayers": [4],
+    "format": ["video"]
+  },
+  {
+    "id": "bachelier-microstructure",
+    "title": "Louis Bachelier Institute — Practical Intro to Market Microstructure",
+    "type": "course",
+    "url": "https://mooc.institutlouisbachelier.org/en/mooc/practical-introduction-to-market-microstructure-2/",
+    "cost": "free",
+    "primaryLayers": [4],
+    "format": ["video"],
+    "estimatedHours": 2
+  },
+  {
+    "id": "cboe-options-institute",
+    "title": "CBOE Options Institute",
+    "type": "course",
+    "url": "https://www.cboe.com/optionsinstitute/",
+    "cost": "free",
+    "primaryLayers": [7],
+    "format": ["video", "tools"]
+  },
+  {
+    "id": "tastytrade-learn",
+    "title": "Tastytrade — Learn Center",
+    "type": "site",
+    "url": "https://tastytrade.com/learn/",
+    "cost": "free",
+    "primaryLayers": [7],
+    "format": ["video"]
+  },
+  {
+    "id": "ibkr-options",
+    "title": "Interactive Brokers Campus — Options Education",
+    "type": "site",
+    "url": "https://www.interactivebrokers.com/campus/options-education/",
+    "cost": "free",
+    "primaryLayers": [7],
+    "format": ["video"]
+  },
+  {
+    "id": "quantconnect-tutorials",
+    "title": "QuantConnect — Tutorials (GitHub)",
+    "type": "tutorial",
+    "url": "https://github.com/QuantConnect/Tutorials",
+    "cost": "free",
+    "primaryLayers": [9],
+    "format": ["notebook"]
+  },
+  {
+    "id": "quantconnect-research",
+    "title": "QuantConnect — Research notebooks (GitHub)",
+    "type": "tutorial",
+    "url": "https://github.com/QuantConnect/Research",
+    "cost": "free",
+    "primaryLayers": [9],
+    "format": ["notebook"]
+  },
+  {
+    "id": "quantopian-lectures",
+    "title": "Quantopian Lectures — saved gist (archive)",
+    "type": "tutorial",
+    "url": "https://gist.github.com/ih2502mk/50d8f7feb614c8676383431b056f4291",
+    "cost": "free",
+    "primaryLayers": [9],
+    "format": ["notebook"],
+    "notes": "Quantopian shut down but the lectures survived via community archive."
+  },
+  {
+    "id": "awesome-quant",
+    "title": "wilsonfreitas — awesome-quant (curated index)",
+    "type": "site",
+    "url": "https://github.com/wilsonfreitas/awesome-quant",
+    "cost": "free",
+    "primaryLayers": [9],
+    "format": ["list"]
+  },
+  {
+    "id": "pyquant-news",
+    "title": "PyQuant News — free Python resources",
+    "type": "site",
+    "url": "https://www.pyquantnews.com/free-python-resources/",
+    "cost": "free",
+    "primaryLayers": [9],
+    "format": ["essay", "tutorial"]
+  },
+  {
+    "id": "markowitz-1952",
+    "title": "Markowitz 1952 — Portfolio Selection (paper)",
+    "type": "paper",
+    "url": "https://www.math.hkust.edu.hk/~maykwok/courses/ma362/07F/markowitz_JF.pdf",
+    "cost": "free",
+    "primaryLayers": [3],
+    "format": ["pdf"]
+  },
+  {
+    "id": "fama-french-1992",
+    "title": "Fama & French 1992 — Cross-section of expected stock returns",
+    "type": "paper",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1992.tb04398.x",
+    "cost": "free",
+    "primaryLayers": [3, 6],
+    "format": ["pdf"]
+  },
+  {
+    "id": "fama-1970",
+    "title": "Fama 1970 — Efficient Capital Markets",
+    "type": "paper",
+    "url": "https://www.jstor.org/stable/2325486",
+    "cost": "free",
+    "primaryLayers": [10],
+    "format": ["pdf"]
+  },
+  {
+    "id": "kahneman-tversky-1974",
+    "title": "Kahneman & Tversky 1974 — Judgment Under Uncertainty",
+    "type": "paper",
+    "url": "https://www2.psych.ubc.ca/~schaller/Psyc590Readings/TverskyKahneman1974.pdf",
+    "cost": "free",
+    "primaryLayers": [5],
+    "format": ["pdf"]
+  },
+  {
+    "id": "thaler-2016-aea",
+    "title": "Thaler 2016 AEA Address — Behavioral Economics: Past, Present, Future",
+    "type": "paper",
+    "url": "http://paulgp.com/speeches/thaler_2016_aea.pdf",
+    "cost": "free",
+    "primaryLayers": [5],
+    "format": ["pdf"]
+  },
+  {
+    "id": "barberis-survey",
+    "title": "Barberis — A Survey of Behavioral Finance",
+    "type": "paper",
+    "url": "https://nicholasbarberis.github.io/ch18_6.pdf",
+    "cost": "free",
+    "primaryLayers": [5],
+    "format": ["pdf"]
+  },
+  {
+    "id": "shiller-nobel-2014",
+    "title": "Shiller 2014 Nobel Lecture",
+    "type": "paper",
+    "url": "https://www.nobelprize.org/uploads/2018/06/shiller-lecture.pdf",
+    "cost": "free",
+    "primaryLayers": [10],
+    "format": ["pdf"]
+  },
+  {
+    "id": "buffett-superinvestors",
+    "title": "Buffett 1984 — The Superinvestors of Graham-and-Doddsville",
+    "type": "essay",
+    "url": "https://www8.gsb.columbia.edu/sites/default/files/the_superinvestors_of_graham-and-doddsville_by_warren_buffett.pdf",
+    "cost": "free",
+    "primaryLayers": [6],
+    "format": ["pdf"]
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "In Mehrling's hierarchy, what does a commercial bank deposit (the number in your checking account) actually represent?",
+    "choices": [
+      "Gold held in a vault.",
+      "A promise from the bank to pay you Federal Reserve money (currency or reserves) on demand.",
+      "A direct claim on the US Treasury.",
+      "An interest-bearing security."
+    ],
+    "correctIndex": 1,
+    "explanation": "Bank deposits are commercial bank liabilities. The bank owes you Fed-issued money on demand. Most of the time the IOU is honored seamlessly; in bank runs the gap between 'deposit' and 'currency' becomes very real."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Which monetary aggregate best captures 'broad money in active use' in the US economy?",
+    "choices": [
+      "MB (base money)",
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "correctIndex": 2,
+    "explanation": "M2 = M1 + savings + small time deposits. It's the standard measure for tracking purchasing power. MB alone misleads because reserves can sit idle at the Fed."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Why didn't 2009–2019 quantitative easing produce the CPI inflation many predicted?",
+    "choices": [
+      "The Fed reversed course quickly.",
+      "Base money was created but mostly remained as bank reserves at the Fed; it did not flow into broad money (M2) at a pace that would push prices in the consumption basket.",
+      "Globalization absorbed all the new money.",
+      "Inflation actually did spike; the data was suppressed."
+    ],
+    "correctIndex": 1,
+    "explanation": "QE expanded the Fed's balance sheet and bank reserves but didn't directly fund spending. The 2020 round was different because it was paired with direct fiscal transfers, which is why M2 (and eventually CPI) actually moved."
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Pull up FRED's M2SL series. Note the YoY growth rate now vs the 2020–2022 spike.",
+    "url": "https://fred.stlouisfed.org/series/M2SL",
+    "title": "FRED — M2 Money Stock",
+    "reflectionPrompt": "One sentence: how does the current M2 YoY compare to 2020's peak?"
+  }
+]

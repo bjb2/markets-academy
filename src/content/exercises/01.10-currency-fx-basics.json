@@ -1,0 +1,31 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "You borrow $1M JPY at 0.5% for one year and invest in AUD at 4.0%. The AUD/JPY exchange rate is unchanged over the year. Approximate carry profit in percentage points (ignoring transaction costs)?",
+    "expected": 3.5,
+    "tolerance": 0.05,
+    "unit": "%",
+    "explanation": "4.0 - 0.5 = 3.5%. The trade earns the differential as long as the exchange rate doesn't move. The catch: it rarely stays still indefinitely, and unwinds are sharp."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The 'Dollar Smile' frame predicts the USD strengthens in WHICH of these scenarios?",
+    "choices": [
+      "Only when the US economy outperforms.",
+      "Only when there's a global crisis.",
+      "Both when the US economy outperforms AND when there's a global crisis (flight to safety).",
+      "Neither — the USD is essentially random."
+    ],
+    "correctIndex": 2,
+    "explanation": "Hence 'smile' — strength at both ends. The middle (USD weak, rest of world strong, no crisis) is where USD loses ground. This bimodal behavior is a feature of reserve currency status."
+  },
+  {
+    "id": "q3",
+    "kind": "free-text",
+    "prompt": "Why are 'high carry' currencies usually NOT free lunches?",
+    "reference": "Because the carry is compensation for an embedded risk premium. The currency pays more because (a) the central bank is forced to defend it with high rates, often against credibility problems, (b) holders need to be paid to bear sudden devaluation risk, and (c) the trade itself is crowded. The pattern: long quiet periods of accumulating carry, then violent unwinds. The Sharpe-style stats look great in the quiet years and disastrous over a full cycle. The yen-carry unwinds of 1998 and 2008 are canonical. Any 'free' yield premium in markets is typically compensation for an infrequent-but-large negative event you'll eventually meet.",
+    "rubricKeywords": ["premium", "tail", "unwind"]
+  }
+]

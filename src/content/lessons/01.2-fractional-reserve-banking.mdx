@@ -1,0 +1,28 @@
+## What banks actually do
+
+A bank is a balance-sheet operation. On the liability side: deposits (what it owes you) and equity (what it owes shareholders). On the asset side: loans, securities, and reserves at the Fed.
+
+When you deposit $1,000, the bank doesn't put $1,000 in a vault and wait for you to come back. It holds a *fraction* in reserve (the namesake of "fractional reserve banking") and lends or invests the rest. The borrower spends the loan; that money ends up as a deposit at another bank, which holds a fraction in reserve and lends out the rest. And so on.
+
+This is how broad money (M2) ends up being a multiple of base money. **The money multiplier** is roughly `1 / reserve_ratio`. A 10% reserve ratio implies that $1 of new base money supports up to $10 of deposits in equilibrium — assuming banks lend to capacity and borrowers want to borrow.
+
+## Reserve requirements (sort of) don't exist anymore
+
+In March 2020 the Fed cut the US reserve requirement to zero. The constraint on bank lending is no longer a reserve floor; it's bank *capital* (regulatory capital ratios) and credit demand. This is a meaningful change from the textbook story.
+
+The mechanism that *does* still constrain US bank lending:
+
+- **Capital ratios**: how much equity backs the loan book. Bank regulators (the Fed, OCC, FDIC) enforce minimum ratios.
+- **Liquidity coverage ratio**: banks must hold high-quality liquid assets equal to projected 30-day net outflows.
+- **Bank willingness**: in 2008 and 2020, banks pulled back on lending even with capital. Sentiment and risk appetite matter.
+- **Borrower demand**: you can't make people borrow. In recessions credit demand collapses.
+
+## Bank runs
+
+A bank is solvent if its assets exceed its liabilities. It is liquid if it can meet near-term obligations as they come due. These are different. A bank can be solvent (the loans are good, just illiquid) and still fail (depositors all demand cash on the same day). This is the structure of a bank run — and the reason FDIC insurance exists.
+
+SVB in March 2023 was the canonical modern example. Most of its assets were long-duration Treasuries (safe) marked to market at large losses (illiquid at face value). Depositors realized this, demanded their money, and the bank failed in 48 hours despite being economically solvent on a hold-to-maturity basis.
+
+The lesson: bank balance sheets blow up when asset *liquidity* fails, not just when asset *quality* fails.
+
+<ExerciseRunner lessonId="01.2-fractional-reserve-banking" />

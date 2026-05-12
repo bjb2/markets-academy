@@ -1,0 +1,17 @@
+[
+  {
+    "id": "q1",
+    "kind": "free-text",
+    "prompt": "Pick one of the four macro voices (Mehrling, Alden, Roche, MMT, Austrian, Dalio) and identify ONE empirical claim they've made over the past 5 years that was clearly correct, and ONE that was clearly wrong or premature. Why does honest tracking like this matter?",
+    "reference": "Sample answer for Alden: clearly correct was the long-running call that fiscal-driven inflation in 2021–22 would surprise to the upside (her framework anticipated it more cleanly than the Fed's 'transitory' framing). Clearly wrong/premature was the more aggressive timing on a sustained 1970s-style regime — 2024 disinflation pushed back against the structural-inflation-already-here read. The reason to track honestly: every macro voice is partly right. The ones who say they're always right aren't credible. Tracking when each is right vs wrong calibrates how much to weight their current views and prevents you from anchoring to any single voice.",
+    "rubricKeywords": ["right", "wrong", "calibrat"]
+  },
+  {
+    "id": "q2",
+    "kind": "read-primary",
+    "prompt": "Read one recent piece from Lyn Alden AND one recent piece from Cullen Roche on a similar topic.",
+    "url": "https://www.lynalden.com/newsletter-archives/",
+    "title": "Lyn Alden + Cullen Roche",
+    "reflectionPrompt": "What concrete claim do they disagree on, and what would resolve the disagreement empirically?"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "q1",
+    "kind": "read-primary",
+    "prompt": "Read Howard Marks's 2001 memo 'You Can't Predict, You Can Prepare.'",
+    "url": "https://www.oaktreecapital.com/insights/memo/the-best-of",
+    "title": "Marks — The Best Of",
+    "reflectionPrompt": "Marks distinguishes 'predicting' from 'preparing.' What does the distinction mean in his own words, and how would you apply it to your own positioning?"
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "According to Marks's credit-cycle frame, when is RISK objectively highest?",
+    "choices": [
+      "When HY spreads are at 800 bp and headlines are panicked.",
+      "When HY spreads are at 250 bp and CCC issuance is robust on covenant-lite terms.",
+      "When the yield curve is steep.",
+      "When unemployment is rising."
+    ],
+    "correctIndex": 1,
+    "explanation": "The cruel symmetry. Tight spreads + aggressive underwriting = lowest perceived risk = highest objective risk. This is when the next default cycle is being incubated."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which time series is the SINGLE BEST real-time gauge of credit cycle position?",
+    "choices": [
+      "Unemployment rate",
+      "S&P 500 P/E ratio",
+      "ICE BofA US High Yield Index OAS (HY spread)",
+      "FOMC dot plot median"
+    ],
+    "correctIndex": 2,
+    "explanation": "HY spread is sensitive to default expectations, lender risk appetite, and refinancing conditions all at once. It moves before equities in severe cycles and is the cleanest summary of where we are in credit terms."
+  }
+]

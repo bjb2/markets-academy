@@ -1,0 +1,35 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Which is a LAGGING indicator of the business cycle?",
+    "choices": [
+      "New manufacturing orders",
+      "Building permits",
+      "Unemployment rate",
+      "Yield curve"
+    ],
+    "correctIndex": 2,
+    "explanation": "Unemployment is lagging. Firms cut hours, then halt hiring, then layoff — by the time the unemployment RATE rises, the recession is well underway. This is why economists watch initial claims (leading) rather than the headline unemployment number."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Historically, which phase of the business cycle has produced the STRONGEST forward equity returns?",
+    "choices": [
+      "Late expansion (capacity tight, inflation rising)",
+      "Recession (active GDP contraction)",
+      "Early cycle / recovery (activity bottoming, unemployment peaking, Fed easing)",
+      "Mid-cycle (steady growth)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Early-cycle wins. By the time recession is widely acknowledged the bottom is often near, and the recovery from depressed multiples + recovering earnings is where most multi-year returns are generated."
+  },
+  {
+    "id": "q3",
+    "kind": "free-text",
+    "prompt": "Why is it so hard to identify cycle phase in real time, even with the data we have?",
+    "reference": "Three reasons. First, data is lagged and revised. Headline GDP is reported with a 1-month lag and revised for years. Second, no single indicator is decisive — you're combining a basket of signals, each noisy, each pointing in different directions at any given moment. Third, the cycle's shape varies. The 2020 recession was 2 months. The 2008–09 recession was 18. Historical pattern-matching gives partial guidance at best. The honest answer is that cycle identification is probabilistic, not deterministic, and that confidence intervals on 'where are we' should always be wide.",
+    "rubricKeywords": ["lag", "revision", "noise"]
+  }
+]

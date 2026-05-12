@@ -1,0 +1,36 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Which of the following typically becomes a LESS effective diversifier when inflation regime shifts from disinflationary to inflationary?",
+    "choices": [
+      "Gold",
+      "Long-duration Treasury bonds",
+      "Commodities",
+      "TIPS"
+    ],
+    "correctIndex": 1,
+    "explanation": "Long Treasuries hedge equities WHEN stock-bond correlation is negative — which holds in disinflation. In inflation regimes the correlation flips positive: both fall together. 60/40 portfolios calibrated to 1982–2020 underperformed badly in 2022 for this reason."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Why are P/E multiples typically LOWER in inflationary regimes?",
+    "choices": [
+      "Companies earn less.",
+      "Discount rates rise mechanically with nominal rates AND real earnings are more uncertain, both of which compress the present value of future cash flows.",
+      "Investors panic.",
+      "Inflation reduces share count."
+    ],
+    "correctIndex": 1,
+    "explanation": "Both a rate-mechanics effect and an uncertainty-premium effect. Multiples ARE rates in disguise — that's why every multi-decade equity multiple chart correlates with the inflation/rate regime."
+  },
+  {
+    "id": "q3",
+    "kind": "read-primary",
+    "prompt": "Pull up Lyn Alden's newsletter archive and find a recent letter discussing inflation regime.",
+    "url": "https://www.lynalden.com/newsletter-archives/",
+    "title": "Lyn Alden — Newsletter archive",
+    "reflectionPrompt": "One sentence: what's Alden's current read on whether we're in a new structural inflation regime?"
+  }
+]

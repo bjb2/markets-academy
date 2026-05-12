@@ -1,0 +1,49 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The 2s10s spread goes from +50 bp to −20 bp. This is most accurately described as:",
+    "choices": [
+      "The curve steepening into an upward slope.",
+      "The curve flattening, then inverting.",
+      "The 10-year yield rising sharply.",
+      "A Fed cut."
+    ],
+    "correctIndex": 1,
+    "explanation": "Going from positive to negative means the 10-year is now BELOW the 2-year. That's an inversion, reached by flattening first."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "An inverted yield curve typically reflects which market expectation?",
+    "choices": [
+      "Higher inflation in the long run.",
+      "Lower short-term rates in the future, usually because of an anticipated recession in which the Fed will cut.",
+      "Falling term premia.",
+      "A flight to quality in long-duration assets."
+    ],
+    "correctIndex": 1,
+    "explanation": "The expectations-hypothesis read of an inversion: long rates are a weighted average of expected future short rates. If long < short, the market expects future short rates to be even lower — usually because of a recession-driven Fed cut."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "The 2s10s has inverted before every US recession since 1978 with few false positives. What is the most reasonable interpretation?",
+    "choices": [
+      "It's a perfect recession forecaster.",
+      "It's a strong but imperfect leading indicator; the historical track record is meaningful but the lag is variable (6–18 months) and the magnitude is silent.",
+      "It only works in the US.",
+      "It's spurious correlation."
+    ],
+    "correctIndex": 1,
+    "explanation": "It's a leading indicator with a credible mechanism (expected Fed cuts into recession) and a strong base rate. The 'imperfect' part is timing and severity — the curve says 'something coming,' not 'when' or 'how big.'"
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Look at the current US Treasury yield curve.",
+    "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics",
+    "title": "US Treasury — Daily yield curve rates",
+    "reflectionPrompt": "Note: what is the current 2-year yield, 10-year yield, and 2s10s spread (in bps)?"
+  }
+]

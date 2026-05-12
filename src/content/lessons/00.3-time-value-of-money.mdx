@@ -1,0 +1,53 @@
+## A dollar today vs a dollar in a year
+
+A dollar in your hand today is worth more than a dollar promised next year — even if there is no inflation and you fully trust the counterparty. Why? Because the dollar today can be invested, consumed, or used to remove optionality (pay down debt, settle a worry). The promised dollar has none of those properties yet.
+
+The exchange rate between today-dollars and future-dollars is called the **discount rate**. Most discount rates have three layered components:
+
+1. A risk-free real rate (compensation for delay)
+2. Expected inflation (so you're paid back in equivalent purchasing power)
+3. A risk premium (compensation for the chance the promise breaks)
+
+Add them and you get a nominal discount rate — what the market actually quotes.
+
+## The two equations you actually need
+
+**Present value of a single future cash flow:**
+
+```
+PV = FV / (1 + r)^n
+```
+
+Where `FV` is the future value, `r` is the per-period discount rate, and `n` is the number of periods.
+
+**Future value of a present amount:**
+
+```
+FV = PV × (1 + r)^n
+```
+
+Same equation, solved the other direction. Everything else in fixed-income math is variations on these two.
+
+## A concrete example
+
+You're promised $100 in 10 years. The market discount rate for that credit is 6% annually. What's it worth today?
+
+```
+PV = 100 / (1.06)^10 = 100 / 1.7908 ≈ $55.84
+```
+
+If the same $100 is promised in 30 years at the same 6%:
+
+```
+PV = 100 / (1.06)^30 ≈ $17.41
+```
+
+A factor-of-3 difference in time horizon produces a factor-of-3 difference in present value. This sensitivity is why long-duration assets (30-year bonds, growth stocks, real estate) reprice violently when rates move.
+
+## The discount rate is the most important number in finance
+
+Almost every valuation question reduces to "what's the right discount rate?" Get the cash flows roughly right and the discount rate roughly right, and you've done 90% of the analysis. Most disagreements between bulls and bears on a stock are not disagreements about cash flows — they're disagreements about discount rates.
+
+Carry this into every later lesson: when someone tells you a stock is "worth" X, the next question is *at what discount rate*.
+
+<ExerciseRunner lessonId="00.3-time-value-of-money" />

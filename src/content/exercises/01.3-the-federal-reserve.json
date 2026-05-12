@@ -1,0 +1,49 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "What is the Fed's official dual mandate?",
+    "choices": [
+      "Currency stability and inflation control",
+      "Maximum employment and stable prices",
+      "Financial stability and gold price control",
+      "Bank regulation and unemployment minimization"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maximum employment + stable prices. (Moderate long-term rates is technically a third mandate from the original 1977 law but is almost never the binding constraint and is generally folded into the other two.)"
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "What is the primary mechanism by which the Fed currently pins the fed funds rate?",
+    "choices": [
+      "Reserve requirement enforcement",
+      "Interest on Reserve Balances (IORB) — banks won't lend each other reserves for less than the Fed pays them on reserves",
+      "Direct dictation to banks",
+      "Open market operations alone"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pre-2008, the Fed managed a scarce-reserves regime via OMO. Since 2008 reserves are abundant; the floor is set by IORB. Open market operations still happen but they're no longer the primary rate-setting tool."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which of the following does the Fed NOT directly control?",
+    "choices": [
+      "The fed funds target range",
+      "Interest paid on bank reserves",
+      "The 10-year Treasury yield",
+      "The size of its own balance sheet"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 10-year yield is market-determined. The Fed can INFLUENCE it (via QE — buying long-duration assets) but does not set it. This distinction is critical for understanding yield-curve behavior."
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Open the most recent FOMC statement.",
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "title": "FOMC — Meeting calendars & statements",
+    "reflectionPrompt": "Note: what is the current target range, and what's the most recent change (cut/hike/hold) and date?"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "q1",
+    "kind": "free-text",
+    "prompt": "Write your one-sentence essay summary here. What was your core claim, and what was your strongest piece of supporting evidence?",
+    "reference": "A strong summary will name the central tension (start early vs hold through drawdown / vs save enough / vs avoid fee drag) and resolve it with a concrete formulation. Example: 'Starting early is necessary but not sufficient — the math of compounding is dominant only if you survive the behavioral side, which is why early investors who don't also learn to hold through drawdowns underperform late starters who do.' The rubric is mainly: did you actually engage with the compounding math AND with the failure modes?",
+    "rubricKeywords": ["compound", "early", "behavior"]
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "q1",
+    "kind": "read-primary",
+    "prompt": "Read the most recent FOMC statement end to end, plus the Powell press conference transcript, plus the latest dot plot.",
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "title": "Fed — FOMC calendar (statements + press conf + SEP)",
+    "reflectionPrompt": "Write a one-paragraph brief: what did the Fed do, what does the statement signal about their read of the economy, what is the dot plot implying about the next 4 quarters, and where would you push back on the Fed's framing?"
+  }
+]

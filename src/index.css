@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.prose {
+  max-width: 68ch;
+  line-height: 1.65;
+}
+.prose h1 { @apply text-3xl font-bold mt-8 mb-4 tracking-tight; }
+.prose h2 { @apply text-2xl font-semibold mt-8 mb-3 tracking-tight; }
+.prose h3 { @apply text-xl font-semibold mt-6 mb-2; }
+.prose p { @apply my-4; }
+.prose ul { @apply list-disc pl-6 my-4 space-y-1; }
+.prose ol { @apply list-decimal pl-6 my-4 space-y-1; }
+.prose li > p { @apply my-1; }
+.prose blockquote { @apply border-l-4 border-rule pl-4 italic text-ink/80 my-4; }
+.prose a { @apply text-accent underline underline-offset-2 hover:no-underline; }
+.prose code { @apply bg-ink/5 px-1 py-0.5 rounded text-sm font-mono; }
+.prose pre { @apply bg-ink text-paper p-4 rounded overflow-x-auto my-4; }
+.prose pre code { @apply bg-transparent text-paper p-0; }
+.prose table { @apply w-full my-6 border-collapse; }
+.prose th { @apply text-left font-semibold border-b-2 border-rule px-3 py-2; }
+.prose td { @apply border-b border-rule/50 px-3 py-2; }
+.prose hr { @apply border-rule my-8; }
+.prose strong { @apply font-semibold; }

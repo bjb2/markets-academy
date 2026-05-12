@@ -1,0 +1,44 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "After a surprise FOMC rate HIKE, which yield typically moves the MOST in absolute terms?",
+    "choices": [
+      "2-year Treasury",
+      "10-year Treasury",
+      "30-year Treasury",
+      "3-month T-bill"
+    ],
+    "correctIndex": 0,
+    "explanation": "The 2-year is most sensitive to the near-term Fed path. The 3-month is essentially already pinned to current fed funds. Longer maturities reflect blended expectations and move less per unit of surprise. The 2-year is the canonical 'how surprised was the market' indicator."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "What is 'quantitative tightening' (QT)?",
+    "choices": [
+      "The Fed actively selling securities to drain reserves",
+      "Letting maturing Treasury and MBS holdings roll off the Fed balance sheet without reinvesting",
+      "Raising the IORB rate",
+      "Imposing higher reserve requirements"
+    ],
+    "correctIndex": 1,
+    "explanation": "QT is passive: maturing assets are not reinvested, so the balance sheet shrinks over time. The Fed CAN also sell outright but rarely has. The slower runoff form is what's typically meant by 'QT.'"
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "The Fed hikes 50 bp. Bank prime rate moves correspondingly. A consumer's variable rate is prime + 3%. If old prime was 8.5%, what is the new variable rate, in percent?",
+    "expected": 12,
+    "tolerance": 0.05,
+    "unit": "%",
+    "explanation": "Old prime 8.5% + 50 bp = 9.0%. Variable rate = 9.0% + 3% = 12%. The mechanical transmission to consumer rates is fast: usually within a billing cycle."
+  },
+  {
+    "id": "q4",
+    "kind": "free-text",
+    "prompt": "Friedman wrote that monetary policy operates with 'long and variable lags.' Why does this make Fed decision-making structurally difficult, even with good data?",
+    "reference": "Because the Fed must act on conditions it expects to exist 12–18 months in the future, using tools whose full effect won't be visible until then. Real-time economic data is itself lagged by 1–3 months. Policy that looks correct in the moment may be wrong by the time it takes effect; policy that looks wrong now (e.g., hiking into a slowing economy) may be necessary to prevent overshooting later. This creates a structural temptation to do too little too late or too much too soon — and there is no clean signal in the moment for which error you're making. The 'long and variable lags' is the reason the Fed can be both hated for being too hawkish AND too dovish about the same decision, depending on when you ask.",
+    "rubricKeywords": ["lag", "future", "data"]
+  }
+]

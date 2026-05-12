@@ -1,0 +1,50 @@
+[
+  {
+    "id": "q1",
+    "kind": "read-primary",
+    "prompt": "Read all 27 pages of Bernstein's If You Can.",
+    "url": "https://www.etf.com/docs/IfYouCan.pdf",
+    "title": "Bernstein — If You Can (PDF)",
+    "reflectionPrompt": "Which of the five hurdles is the one you're personally most behind on right now?"
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Bernstein's argument about WHY learning history matters in markets is best summarized as:",
+    "choices": [
+      "History repeats exactly.",
+      "Investors who haven't experienced a major drawdown firsthand tend to underestimate it and panic-sell when one occurs. Reading market history is a substitute for that experience.",
+      "Past returns predict future returns.",
+      "Macro analysis is the highest-leverage activity in investing."
+    ],
+    "correctIndex": 1,
+    "explanation": "The argument is behavioral, not predictive. History inoculates you against the temptation to interpret a 30% drawdown as 'unprecedented' when in fact it's happened once a decade for 200 years."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Bernstein's stance on the financial advisory industry is best characterized as:",
+    "choices": [
+      "The industry is well-aligned with retail investor interests.",
+      "Most fee-based advice extracts value from the client; assume adversarial alignment by default and demand evidence to the contrary.",
+      "Advisors are useful for tax planning only.",
+      "Robo-advisors solve the alignment problem entirely."
+    ],
+    "correctIndex": 1,
+    "explanation": "The fee structure is the alignment problem. A 1% AUM fee compounded over 30 years is structurally inconsistent with maximizing client outcomes; it maximizes advisor revenue."
+  },
+  {
+    "id": "q4",
+    "kind": "free-text",
+    "prompt": "Bernstein orders the five hurdles deliberately. Why is 'save enough' #1 rather than 'understand finance' or 'pick the right portfolio'?",
+    "reference": "Because at the savings rates most people actually have, no realistic portfolio strategy can compensate. If you save 5% of income and need to fund 25 years of retirement, no equity allocation gets you there at sustainable risk. If you save 20%, almost any reasonable broadly-diversified portfolio gets you there. The savings rate dominates the strategy choice by an order of magnitude. Putting it first is Bernstein's way of saying: the math literally doesn't work without it, so stop trying to skip step one.",
+    "rubricKeywords": ["savings", "rate", "compound"]
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Look at Bernstein's reading list at the back of the booklet. Pick one of the five books and explain why he might have included it.",
+    "reference": "The five are: Common Sense on Mutual Funds (Bogle — case for indexing + low cost), Devil Take the Hindmost (Chancellor — speculative manias through history, inoculation against 'this time is different'), Manias Panics & Crashes (Kindleberger — taxonomy of credit bubbles), Wealth War & Wisdom (Biggs — markets through political catastrophe), Your Money & Your Brain (Zweig — behavioral). Each maps to one of the five hurdles. Bogle for #5 (industry), Chancellor/Kindleberger/Biggs for #3 (history), Zweig for #4 (behavior).",
+    "rubricKeywords": ["history", "behavioral", "Bogle"]
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "id": "q1",
+    "kind": "free-text",
+    "prompt": "In your own words: what information does a spot price aggregate that no single observer could assemble alone?",
+    "reference": "A spot price aggregates the marginal preferences, beliefs, costs, and constraints of every buyer and seller currently transacting. It compresses supply conditions (mine output, weather, freight, labor), demand conditions (substitution, end-use trends, sentiment), expectations about all of those, and even the financing terms of the trade itself. No single observer can collect those facts; the price does the collection by being the clearing point.",
+    "rubricKeywords": ["clearing", "buyer", "seller", "marginal", "information"]
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Hayek's central claim in 'The Use of Knowledge in Society' is best summarized as:",
+    "choices": [
+      "Markets are always right.",
+      "Central planners can match market efficiency if they collect enough data.",
+      "Knowledge relevant to economic coordination is distributed and tacit; the price mechanism aggregates it without anyone holding the whole picture.",
+      "Free markets produce just outcomes."
+    ],
+    "correctIndex": 2,
+    "explanation": "Hayek's argument is epistemological, not normative. He is not saying markets are right or just — he is saying that the kind of knowledge needed for coordination cannot be centralized, and prices solve that distributed-knowledge problem."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which statement is *most* susceptible to the 'I know better than the market' bias?",
+    "choices": [
+      "AAPL closed at $189.43.",
+      "AAPL is obviously overvalued — anyone can see it.",
+      "AAPL trades at 29× forward earnings, which historically corresponds to ~5% forward 10-year returns.",
+      "AAPL revenue grew 3% YoY last quarter."
+    ],
+    "correctIndex": 1,
+    "explanation": "Option B is a moral/aesthetic claim disguised as analysis. Option C is the same intuition reframed as a price relationship — testable, falsifiable, useful."
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Read Hayek's 1945 paper end to end.",
+    "url": "https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945",
+    "title": "Hayek 1945 — The Use of Knowledge in Society",
+    "reflectionPrompt": "After reading: name one specific present-day market price whose movement you've previously second-guessed. What knowledge might the marginal trader have had that you didn't?"
+  }
+]

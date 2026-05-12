@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Using the Rule of 72, how many years does it take money to double at 9% annual return?",
+    "expected": 8,
+    "tolerance": 0.1,
+    "unit": "yrs",
+    "explanation": "72 / 9 = 8. The exact answer is ln(2)/ln(1.09) ≈ 8.04 — the rule is accurate to within a few percent."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "$1,000 compounds for 40 years at 10%. What is the final value, rounded to the nearest dollar?",
+    "expected": 45259,
+    "tolerance": 20,
+    "unit": "$",
+    "explanation": "FV = 1000 × (1.10)^40 ≈ $45,259. Doubling every ~7.2 years means roughly 5.5 doublings in 40 years → ~45×."
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "Investor A earns 7% net of fees for 30 years. Investor B earns the same 7% gross but pays a 1% annual fee. Starting at $10K, how many DOLLARS does A end with MINUS B's ending value?",
+    "expected": 18164,
+    "tolerance": 200,
+    "unit": "$",
+    "explanation": "A: 10000 × 1.07^30 ≈ $76,123. B: 10000 × 1.06^30 ≈ $57,435. Difference ≈ $18,688. A 1% fee compounds into about 25% of B's final wealth over 30 years. This is the entire case for passive index investing in one calculation."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Why is the Rule of 72 specifically an approximation rather than exact?",
+    "choices": [
+      "Because it doesn't account for inflation.",
+      "Because it is a first-order approximation of the exact log-based formula years = ln(2) / ln(1+r).",
+      "Because it doesn't include taxes.",
+      "Because it only works for stock returns, not bonds."
+    ],
+    "correctIndex": 1,
+    "explanation": "The exact answer is ln(2)/ln(1+r). For small r, ln(1+r) ≈ r, so the formula collapses to ln(2)/r ≈ 0.693/r. To make it work in percentages we use 69.3 ≈ 72 (72 has more divisors, so it does mental math better). It's a numeric convenience built on a logarithm."
+  }
+]

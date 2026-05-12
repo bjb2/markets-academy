@@ -1,0 +1,316 @@
+{
+  "layers": [
+    {
+      "id": 0,
+      "title": "Mental Models",
+      "subtitle": "Price as information, time value, compounding. The epistemic frame for everything that follows.",
+      "objective": "Explain in one breath why a free-floating price is the most information-dense signal in a complex society, and why compounding swamps almost every other variable.",
+      "estWeeks": "1–2 weeks",
+      "lessons": [
+        "00.1-prices-as-information",
+        "00.2-buyer-seller-clearing",
+        "00.3-time-value-of-money",
+        "00.4-compounding-rule-of-72",
+        "00.5-inflation-real-vs-nominal",
+        "00.6-risk-vs-uncertainty",
+        "00.7-bernstein-primer",
+        "00.8-capstone-essay"
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Macro & Monetary Plumbing",
+      "subtitle": "The Fed, money, rates, business cycles. Trace a rate decision from statement to real economy.",
+      "objective": "Trace a Fed rate decision from FOMC statement through bond market through equity market into the real economy.",
+      "estWeeks": "3–4 weeks",
+      "lessons": [
+        "01.1-what-is-money",
+        "01.2-fractional-reserve-banking",
+        "01.3-the-federal-reserve",
+        "01.4-fomc-open-market-ops",
+        "01.5-yield-curve",
+        "01.6-inflation-regimes",
+        "01.7-business-cycle",
+        "01.8-credit-cycle-marks",
+        "01.9-sovereign-debt-deficit",
+        "01.10-currency-fx-basics",
+        "01.11-macro-voices-heterodox",
+        "01.12-capstone-fomc-brief"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Asset Classes & Valuation",
+      "subtitle": "Stocks, bonds, ETFs, FX, commodities, crypto. Read a 10-K. Compute a yield-to-maturity.",
+      "objective": "Given a 10-K, a bond prospectus, or an ETF fact sheet, identify the cash flows, the risks, the price, and whether the price looks reasonable.",
+      "estWeeks": "3–4 weeks",
+      "lessons": []
+    },
+    {
+      "id": 3,
+      "title": "Portfolio Theory",
+      "subtitle": "MPT, CAPM, factor models. Where the math behind our own sleeve gate comes from.",
+      "objective": "Explain why the sleeve-diversification gate in paper-trading-longcall is the practical application of Markowitz — and where the model breaks.",
+      "estWeeks": "2–3 weeks",
+      "lessons": []
+    },
+    {
+      "id": 4,
+      "title": "Market Microstructure",
+      "subtitle": "Order books, market makers, slippage. What actually happens between 'buy' and the fill.",
+      "objective": "Explain what really happens between hitting 'buy' and seeing the fill, and how much that costs you per round trip.",
+      "estWeeks": "2–3 weeks",
+      "lessons": []
+    },
+    {
+      "id": 5,
+      "title": "Behavioral Finance",
+      "subtitle": "Heuristics, biases, prospect theory, bubbles. Why EMH is not the whole story.",
+      "objective": "Identify five biases that have personally cost you money, with the trade or decision attached to each.",
+      "estWeeks": "2 weeks",
+      "lessons": []
+    },
+    {
+      "id": 6,
+      "title": "Active Strategy Archetypes",
+      "subtitle": "Value, momentum, mean-reversion, carry, factor. Where each named investor sits in the taxonomy.",
+      "objective": "Place every named investor (Buffett, Marks, Asness, Simons, Carver, Soros) into an archetype, and explain what they're trading and against whom.",
+      "estWeeks": "3–4 weeks",
+      "lessons": []
+    },
+    {
+      "id": 7,
+      "title": "Options & Derivatives",
+      "subtitle": "Payoff diagrams, Greeks, IV, time decay, LEAPS. Bridges into the longcall sleeve.",
+      "objective": "Draw the payoff diagram and Greeks profile for every position in the longcall sleeve from memory.",
+      "estWeeks": "2–3 weeks",
+      "lessons": []
+    },
+    {
+      "id": 8,
+      "title": "Risk & Position Sizing",
+      "subtitle": "Kelly, drawdowns, ruin risk, sequence-of-returns. The math behind why YOLO stacks lose.",
+      "objective": "Explain the math that makes 'stacking dials degrades Sharpe' inevitable, not surprising.",
+      "estWeeks": "2–3 weeks",
+      "lessons": []
+    },
+    {
+      "id": 9,
+      "title": "Backtesting & Systematic",
+      "subtitle": "Survivorship bias, look-ahead, regime dependence, walk-forward. Pyodide-powered.",
+      "objective": "Take any strategy idea and backtest it correctly. Output an honest equity curve you'd stake real money on.",
+      "estWeeks": "3–4 weeks",
+      "lessons": []
+    },
+    {
+      "id": 10,
+      "title": "Epistemology of Markets",
+      "subtitle": "EMH (Fama) vs behavioral (Shiller). Via negativa. Closes the loop with Layer 0.",
+      "objective": "Hold the two contradictory positions (efficient / inefficient) simultaneously and explain when each is operative.",
+      "estWeeks": "2 weeks",
+      "lessons": []
+    }
+  ],
+  "lessons": {
+    "00.1-prices-as-information": {
+      "id": "00.1-prices-as-information",
+      "layer": 0,
+      "order": 1,
+      "title": "Prices as information",
+      "prereqs": [],
+      "estMinutes": 35,
+      "sources": ["hayek-1945", "khan-supply-demand"],
+      "exerciseCount": 4
+    },
+    "00.2-buyer-seller-clearing": {
+      "id": "00.2-buyer-seller-clearing",
+      "layer": 0,
+      "order": 2,
+      "title": "Buyer, seller, clearing",
+      "prereqs": ["00.1-prices-as-information"],
+      "estMinutes": 30,
+      "sources": ["khan-supply-demand"],
+      "exerciseCount": 4
+    },
+    "00.3-time-value-of-money": {
+      "id": "00.3-time-value-of-money",
+      "layer": 0,
+      "order": 3,
+      "title": "Time value of money",
+      "prereqs": ["00.2-buyer-seller-clearing"],
+      "estMinutes": 40,
+      "sources": ["khan-tvm"],
+      "exerciseCount": 5
+    },
+    "00.4-compounding-rule-of-72": {
+      "id": "00.4-compounding-rule-of-72",
+      "layer": 0,
+      "order": 4,
+      "title": "Compounding & the Rule of 72",
+      "prereqs": ["00.3-time-value-of-money"],
+      "estMinutes": 30,
+      "sources": ["khan-tvm"],
+      "exerciseCount": 4
+    },
+    "00.5-inflation-real-vs-nominal": {
+      "id": "00.5-inflation-real-vs-nominal",
+      "layer": 0,
+      "order": 5,
+      "title": "Inflation: real vs nominal",
+      "prereqs": ["00.4-compounding-rule-of-72"],
+      "estMinutes": 30,
+      "sources": ["khan-inflation", "fred-cpi"],
+      "exerciseCount": 4
+    },
+    "00.6-risk-vs-uncertainty": {
+      "id": "00.6-risk-vs-uncertainty",
+      "layer": 0,
+      "order": 6,
+      "title": "Risk vs uncertainty (Knight, Taleb)",
+      "prereqs": ["00.5-inflation-real-vs-nominal"],
+      "estMinutes": 35,
+      "sources": ["taleb-essays"],
+      "exerciseCount": 3
+    },
+    "00.7-bernstein-primer": {
+      "id": "00.7-bernstein-primer",
+      "layer": 0,
+      "order": 7,
+      "title": "Bernstein's If You Can",
+      "prereqs": ["00.6-risk-vs-uncertainty"],
+      "estMinutes": 60,
+      "sources": ["bernstein-if-you-can"],
+      "exerciseCount": 5
+    },
+    "00.8-capstone-essay": {
+      "id": "00.8-capstone-essay",
+      "layer": 0,
+      "order": 8,
+      "title": "Capstone — Compounding essay",
+      "prereqs": ["00.7-bernstein-primer"],
+      "estMinutes": 60,
+      "sources": [],
+      "exerciseCount": 1
+    },
+    "01.1-what-is-money": {
+      "id": "01.1-what-is-money",
+      "layer": 1,
+      "order": 1,
+      "title": "What is money?",
+      "prereqs": ["00.8-capstone-essay"],
+      "estMinutes": 40,
+      "sources": ["mehrling-coursera", "khan-banking"],
+      "exerciseCount": 4
+    },
+    "01.2-fractional-reserve-banking": {
+      "id": "01.2-fractional-reserve-banking",
+      "layer": 1,
+      "order": 2,
+      "title": "Fractional-reserve banking",
+      "prereqs": ["01.1-what-is-money"],
+      "estMinutes": 40,
+      "sources": ["mehrling-coursera", "khan-banking"],
+      "exerciseCount": 4
+    },
+    "01.3-the-federal-reserve": {
+      "id": "01.3-the-federal-reserve",
+      "layer": 1,
+      "order": 3,
+      "title": "The Federal Reserve",
+      "prereqs": ["01.2-fractional-reserve-banking"],
+      "estMinutes": 35,
+      "sources": ["fed-education-central-banking"],
+      "exerciseCount": 4
+    },
+    "01.4-fomc-open-market-ops": {
+      "id": "01.4-fomc-open-market-ops",
+      "layer": 1,
+      "order": 4,
+      "title": "FOMC, open market ops, IORB",
+      "prereqs": ["01.3-the-federal-reserve"],
+      "estMinutes": 45,
+      "sources": ["fomc-statements"],
+      "exerciseCount": 4
+    },
+    "01.5-yield-curve": {
+      "id": "01.5-yield-curve",
+      "layer": 1,
+      "order": 5,
+      "title": "The yield curve",
+      "prereqs": ["01.4-fomc-open-market-ops"],
+      "estMinutes": 40,
+      "sources": ["shiller-yale-econ-252"],
+      "exerciseCount": 4
+    },
+    "01.6-inflation-regimes": {
+      "id": "01.6-inflation-regimes",
+      "layer": 1,
+      "order": 6,
+      "title": "Inflation regimes",
+      "prereqs": ["01.5-yield-curve"],
+      "estMinutes": 40,
+      "sources": ["lyn-alden-newsletter"],
+      "exerciseCount": 3
+    },
+    "01.7-business-cycle": {
+      "id": "01.7-business-cycle",
+      "layer": 1,
+      "order": 7,
+      "title": "The business cycle",
+      "prereqs": ["01.6-inflation-regimes"],
+      "estMinutes": 35,
+      "sources": ["mru-macro"],
+      "exerciseCount": 3
+    },
+    "01.8-credit-cycle-marks": {
+      "id": "01.8-credit-cycle-marks",
+      "layer": 1,
+      "order": 8,
+      "title": "The credit cycle (Marks)",
+      "prereqs": ["01.7-business-cycle"],
+      "estMinutes": 60,
+      "sources": ["marks-memos-best-of"],
+      "exerciseCount": 3
+    },
+    "01.9-sovereign-debt-deficit": {
+      "id": "01.9-sovereign-debt-deficit",
+      "layer": 1,
+      "order": 9,
+      "title": "Sovereign debt & deficit dynamics",
+      "prereqs": ["01.8-credit-cycle-marks"],
+      "estMinutes": 40,
+      "sources": ["pragmatic-capitalism", "lyn-alden-newsletter"],
+      "exerciseCount": 4
+    },
+    "01.10-currency-fx-basics": {
+      "id": "01.10-currency-fx-basics",
+      "layer": 1,
+      "order": 10,
+      "title": "Currency, FX basics",
+      "prereqs": ["01.9-sovereign-debt-deficit"],
+      "estMinutes": 35,
+      "sources": ["khan-fx"],
+      "exerciseCount": 3
+    },
+    "01.11-macro-voices-heterodox": {
+      "id": "01.11-macro-voices-heterodox",
+      "layer": 1,
+      "order": 11,
+      "title": "Macro voices — heterodox edition",
+      "prereqs": ["01.10-currency-fx-basics"],
+      "estMinutes": 50,
+      "sources": ["lyn-alden-newsletter", "pragmatic-capitalism"],
+      "exerciseCount": 2
+    },
+    "01.12-capstone-fomc-brief": {
+      "id": "01.12-capstone-fomc-brief",
+      "layer": 1,
+      "order": 12,
+      "title": "Capstone — Read the latest FOMC statement",
+      "prereqs": ["01.11-macro-voices-heterodox"],
+      "estMinutes": 75,
+      "sources": ["fomc-statements"],
+      "exerciseCount": 1
+    }
+  }
+}

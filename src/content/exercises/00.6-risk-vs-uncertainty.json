@@ -1,0 +1,35 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Which of the following is best described as RISK (in Knight's sense) rather than UNCERTAINTY?",
+    "choices": [
+      "Will quantum computing render current encryption obsolete by 2035?",
+      "What is the probability that a randomly chosen S&P 500 stock has a daily return between −2% and +2%?",
+      "Which political party will win the next US election?",
+      "Will a startup with no revenue reach $100M ARR?"
+    ],
+    "correctIndex": 1,
+    "explanation": "The S&P stock daily return question has a long, stable empirical distribution you can characterize. The others are uncertainty: outcome spaces are vague and past frequency is not a useful guide."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Why did the 2007–2008 financial crisis catch so many models off-guard?",
+    "choices": [
+      "The math was wrong.",
+      "The processes generating CDO returns were modeled as if outcomes were independent draws from a known distribution (RISK), when in fact systemic correlations and regime change (UNCERTAINTY) dominated.",
+      "Regulators failed to enforce existing rules.",
+      "Rating agencies miscalculated."
+    ],
+    "correctIndex": 1,
+    "explanation": "The deeper error was epistemic. The math worked given its assumptions; the assumptions were that risk, not uncertainty, governed the system. When correlations went to 1 — the canonical signature of regime change — the models had no language for it."
+  },
+  {
+    "id": "q3",
+    "kind": "free-text",
+    "prompt": "Name one decision in your own life that you currently model as RISK but is actually closer to UNCERTAINTY. What would change if you re-framed it?",
+    "reference": "Common examples: 'My salary will grow at ~4% annually for the next 20 years' is risk-shaped only inside a stable regime; technology displacement, industry collapse, illness, or geographic moves make it uncertainty-shaped. 'My house will appreciate at the historical 3% real rate' assumes a future that resembles a specific window of US history. Reframing as uncertainty usually leads to: smaller position sizes, more optionality, more diversification, more conservative drawdown assumptions, and a higher cash buffer than the risk model would prescribe.",
+    "rubricKeywords": ["uncertainty", "optionality"]
+  }
+]

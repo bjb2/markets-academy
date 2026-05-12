@@ -1,0 +1,43 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Three buyers will pay up to $12, $9, $6. Three sellers will accept at minimum $5, $8, $11. How many trades occur at equilibrium?",
+    "expected": 2,
+    "tolerance": 0,
+    "explanation": "Sort buyers desc: 12, 9, 6. Sort sellers asc: 5, 8, 11. Pairs that can trade: (12 ≥ 5) yes, (9 ≥ 8) yes, (6 ≥ 11) no. Two trades."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "In the scenario above, what determines the clearing price?",
+    "choices": [
+      "The average of all buyers' willingness to pay.",
+      "The marginal buyer and marginal seller — the ones who barely trade.",
+      "The first buyer's bid.",
+      "The auctioneer's discretion."
+    ],
+    "correctIndex": 1,
+    "explanation": "Prices are set at the margin. The $9 buyer and the $8 seller set the band; the $12 buyer and $5 seller get surplus."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which of these is the strongest *structural* reason a market might crash on relatively small bad news?",
+    "choices": [
+      "Average valuations are above their historical mean.",
+      "Many participants are bullish.",
+      "The marginal buyer has become a leveraged retail trader with no fundamental anchor.",
+      "Insider selling has slowed."
+    ],
+    "correctIndex": 2,
+    "explanation": "Fragility lives at the margin. If the people on the cusp of not-buying have no anchor, a small shock removes them from the market and the clearing price falls discontinuously."
+  },
+  {
+    "id": "q4",
+    "kind": "free-text",
+    "prompt": "Give one example, real or hypothetical, where two markets had identical *average* valuations but very different *marginal-buyer* compositions, and explain how that would change your view of their fragility.",
+    "reference": "Example: Two equity markets each trading at 22× forward earnings. Market A's marginal buyer is a pension fund rebalancing under a fixed asset-allocation policy; Market B's marginal buyer is a retail momentum trader holding leveraged 0DTE call options. Identical multiples, radically different fragility. On a 5% bad-news shock, A barely flinches (the pension still has its allocation rule); B has its marginal buyer wiped out and reprices ~20%. Average tells you nothing about how the market behaves under stress; the marginal-buyer mix is what matters.",
+    "rubricKeywords": ["marginal", "fragility", "structural"]
+  }
+]

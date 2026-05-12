@@ -1,0 +1,41 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Nominal return is 7%. Inflation is 3%. What is the EXACT (not approximate) real return, in percent?",
+    "expected": 3.88,
+    "tolerance": 0.05,
+    "unit": "%",
+    "explanation": "Fisher: (1 + r_real) = (1.07) / (1.03) = 1.0388. Real ≈ 3.88%. The 4% approximation is close enough at low inflation but drifts at higher levels."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "Nominal return is 25%. Inflation is 20% (think Turkey, Argentina, 1970s US). What is the EXACT real return, in percent?",
+    "expected": 4.17,
+    "tolerance": 0.1,
+    "unit": "%",
+    "explanation": "(1.25) / (1.20) = 1.0417. Real ≈ 4.17%, not 5%. The approximation breaks at high inflation — the multiplicative form is necessary."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which is generally the BETTER signal of corporate health in an inflationary period?",
+    "choices": [
+      "Headline nominal revenue growth.",
+      "Real revenue growth (volume × real price changes).",
+      "Stock price.",
+      "Number of employees."
+    ],
+    "correctIndex": 1,
+    "explanation": "In inflation, headline revenue inflates with prices even if real volume is shrinking. Real revenue strips out the price effect and reveals whether the underlying business is actually growing."
+  },
+  {
+    "id": "q4",
+    "kind": "read-primary",
+    "prompt": "Look up the most recent BLS CPI release. Note both headline CPI YoY and core CPI YoY.",
+    "url": "https://www.bls.gov/cpi/",
+    "title": "BLS — Consumer Price Index",
+    "reflectionPrompt": "What's the headline–core gap right now? Which components (food, energy, shelter, services) are driving it?"
+  }
+]
