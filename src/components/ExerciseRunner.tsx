@@ -31,7 +31,7 @@ export default function ExerciseRunner({ lessonId }: Props) {
         <span>Exercise {idx + 1} / {exercises.length}</span>
         <span className="uppercase tracking-wide text-xs">{ex.kind}</span>
       </header>
-      <ExerciseView exercise={ex} lessonId={lessonId} />
+      <ExerciseView key={ex.id} exercise={ex} lessonId={lessonId} />
       <nav className="mt-5 flex justify-between text-sm">
         <button
           className="text-ink/60 disabled:opacity-30"
