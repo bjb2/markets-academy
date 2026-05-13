@@ -1,0 +1,108 @@
+<RetrievalPrompt
+  prompt="You want exposure to the S&P 500. You can buy: a mutual fund tracking it (VFIAX), an ETF tracking it (VOO), or 500 individual stocks in cap-weighted proportions. The first two are nearly identical economically. What is the mechanical difference between them, why does it matter, and what's the price difference between them and the direct-replication option?"
+  reveal="A mutual fund settles ONCE per day at NAV; an ETF trades continuously on an exchange at market price (usually within a basis point of NAV). The intraday tradeability is the major mechanical difference. Both pool capital into a professionally-managed basket and charge an ongoing expense ratio. Direct replication (buying 500 stocks individually) is impractical: dividend reinvestment, rebalancing, lot management would dominate any small fee saving. Modern fees are tiny: Vanguard charges 0.03-0.04% per year for S&P 500 access; the convenience gap from direct ownership is enormous."
+/>
+
+## Two structures, near-identical economics
+
+A **mutual fund** is a pooled investment that:
+- Issues and redeems shares ONCE per day at NAV (net asset value), computed after market close.
+- Sends redemption cash within 1-2 days.
+- Charges an expense ratio plus sometimes loads (front-end or back-end sales charges).
+
+An **ETF (exchange-traded fund)** is a pooled investment that:
+- Trades continuously on an exchange like a stock.
+- Creates and redeems large blocks (typically 50,000 shares) through Authorized Participants (APs) who arbitrage any discrepancy between the ETF's market price and the NAV of its holdings.
+- Charges an expense ratio; no loads.
+
+Both pool capital into a basket of underlying holdings; both pay you a proportional share of dividends and interest; both report holdings periodically. The main differences:
+
+| Dimension | Mutual fund | ETF |
+|---|---|---|
+| Trading | Once per day at NAV | Continuous; market price ± small premium/discount |
+| Tax efficiency | Triggers capital gain distributions for ALL holders when fund sells appreciated positions | In-kind creation/redemption avoids most capital gain triggers; very tax-efficient |
+| Fees | 0.03% to 1%+ range | 0.03% to 0.75% range |
+| Minimum | Sometimes $1,000-$3,000+ | One share (often $50-$500) |
+| Intraday flexibility | None | Full (limit orders, stops, options on it) |
+
+The TAX EFFICIENCY of ETFs is genuine and meaningful. When a mutual fund holder redeems, the fund may have to sell underlying holdings, triggering capital gains that are distributed to ALL remaining holders. ETF redemptions go through APs via in-kind exchanges (AP delivers ETF shares, receives basket of underlying), so no taxable sale happens inside the fund. Over decades, this can mean 0.5-1% per year less drag from capital gains taxes for taxable accounts holding ETFs vs equivalent mutual funds.
+
+## The Authorized Participant mechanism
+
+ETF prices stay tight to NAV because of arbitrage:
+
+If ETF market price > NAV (ETF trading rich):
+- AP buys the underlying basket on exchanges.
+- AP delivers the basket to the issuer in exchange for newly-CREATED ETF shares.
+- AP sells the new ETF shares at the premium.
+- Profit: premium minus a few bp of transaction cost.
+- Effect: ETF supply increases, premium compresses toward NAV.
+
+If ETF market price < NAV (ETF trading cheap):
+- AP buys ETF shares cheap on exchange.
+- Redeems them with the issuer, receiving the underlying basket worth NAV.
+- Sells the basket on exchanges.
+- Profit: discount minus transaction cost.
+- Effect: ETF supply decreases, discount compresses.
+
+The arbitrage works to within a basis point or two for liquid ETFs (SPY, QQQ, IWM); a few basis points for moderately-traded ones; can break down for thinly-traded ETFs in volatile markets (e.g., bond ETFs during March 2020 traded at 4-7% discounts to stale NAV for hours).
+
+## Index funds vs active mutual funds
+
+Mutual funds and ETFs come in two flavors:
+
+- **Index (passive) funds**: track a specific benchmark (S&P 500, Russell 2000, MSCI EAFE). Holdings are mechanical; expense ratios are very low (0.03-0.10% common). Performance matches benchmark minus fees.
+- **Active funds**: manager picks securities trying to beat a benchmark. Expense ratios higher (0.4-1.2% typical; some funds charge 1.5%+). Performance varies widely; mostly trails the benchmark net of fees over long horizons.
+
+The next lesson (2.9) covers the empirical case for passive in depth. For now: passive index funds and ETFs are the dominant DEFAULT for retail and a growing default for institutional. Total US ETF assets crossed $10T in 2024; passive mutual funds have surpassed active in equity assets.
+
+## What's INSIDE the fund: the holdings file
+
+Both mutual funds and ETFs publish their holdings:
+- Mutual funds: quarterly (sometimes monthly).
+- ETFs: daily (mostly; some specialized ETFs are quarterly).
+
+Pull the holdings file for any ETF you're considering. For SPY you'll find ~500 stocks with cap-weighted percentages. For a sector ETF you'll find that sector's universe with the index methodology's weights. For a thematic ETF you'll find the manager's interpretation of the theme, which is often more arbitrary than the marketing suggests.
+
+This is where "smart beta" lives: ETFs that tilt the holdings toward documented factor exposures (value, momentum, quality, low-vol). They're still systematic (the rule is public) but they deviate from cap-weighted benchmarks. Expense ratios 0.15-0.45%.
+
+<WorkedExample
+  title="Fee drag over a working career"
+  problem="Two investors save $10,000/year for 30 years and earn 7% gross. Investor A pays a 0.04% ER on an S&P 500 ETF. Investor B pays a 1.0% ER on an actively managed equity mutual fund. Compute terminal wealth for each. What's the gap?"
+  steps={[
+    { label: "Step 1: net returns", body: "A: 7% - 0.04% = 6.96%. B: 7% - 1.0% = 6.0%. The 96 bp gap compounds over 30 years." },
+    { label: "Step 2: future value of annuity", body: "FV = C × [(1+r)^N - 1] / r. A: $10K × [(1.0696)^30 - 1] / 0.0696 ≈ $10K × 99.6 = $996,000. B: $10K × [(1.06)^30 - 1] / 0.06 ≈ $10K × 79.1 = $791,000." },
+    { label: "Step 3: gap", body: "$996K - $791K = $205K. Investor A is 26% richer at retirement, purely from fee compression." },
+    { label: "Step 4: caveat", body: "This assumes the active fund matches index PRE-FEE. In reality, most active funds underperform their benchmark gross of fees too. The gap is typically WORSE than this 96 bp implies." },
+    { label: "Step 5: institutional context", body: "This is Bogle's central argument, repeated in his books and Bogleheads wiki. Fee drag is the single largest controllable factor in long-run retail investment outcomes." },
+  ]}
+/>
+
+## Mutual fund classes (briefly)
+
+Mutual funds historically came in multiple share classes with different fee structures:
+
+- **A-shares**: front-end load (e.g., 5% on purchase), lower ongoing fee.
+- **B-shares**: back-end load that fades over years, higher ongoing fee. Mostly retired.
+- **C-shares**: no load but higher annual fee, often 12b-1 distribution fees.
+- **Institutional / I-shares**: lowest fees, minimums of $100K-$1M+.
+- **No-load funds (Investor / Admiral)**: no front- or back-end load; pricing primarily through expense ratio. Vanguard, Fidelity Zero, Schwab Equity Index lines all follow this model.
+
+Modern retail brokerages (Fidelity, Schwab, Vanguard) sell no-load funds without commissions. Loads are largely an artifact of older broker-sold distribution channels.
+
+## ETF gotchas worth knowing
+
+- **Tracking error**: an ETF's NAV may drift slightly from the benchmark due to sampling, replication, or fees. Trivial for liquid US-equity ETFs; noticeable for international, factor, leveraged.
+- **Leveraged / inverse ETFs (SQQQ, TQQQ, UVXY)**: REBALANCE DAILY to target leverage. Over multi-day periods, their performance diverges from "Nx the index" in path-dependent ways. They are short-term tactical instruments, not long-term holdings.
+- **Tax structure variations**: most equity ETFs are RIC (regulated investment companies). Some commodity ETFs (USO, GLD) are partnerships or grantor trusts, taxed differently. Read the prospectus.
+- **Bid-ask spread**: liquid ETFs (SPY, QQQ) have 1¢ spreads. Less-liquid ETFs can have 10-50 bp spreads, eating into the value of holding the structure. Check median spread before buying.
+
+<LessonRecap points={[
+  "ETFs and mutual funds both pool capital into a managed basket; ETFs trade continuously on exchange, mutual funds settle once daily at NAV.",
+  "ETF in-kind creation/redemption produces strong tax efficiency vs mutual funds in taxable accounts; this is often 50-100 bp/yr of effective alpha for long-horizon taxable investors.",
+  "Authorized Participants arbitrage ETF price-vs-NAV gaps, keeping liquid ETFs tight; this can break down in stressed markets.",
+  "Index (passive) funds and ETFs charge 0.03-0.10% vs active 0.4-1.2%; the 1% gap compounds to ~26% of terminal wealth over 30 years.",
+  "Modern retail defaults: no-load index ETFs or mutual funds at major brokerages; loads are a legacy distribution artifact."
+]} />
+
+<ExerciseRunner lessonId="02.8-etfs-and-mutual-funds" />

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "A perpetuity pays $50 per year forever. Discount rate 10%. What is its present value (in $)?",
+    "answer": 500,
+    "tolerance": 5,
+    "unit": "$",
+    "explanation": "PV(perpetuity) = CF / r = $50 / 0.10 = $500. This is the simplest case of a DCF: no growth, constant cash flow. The Gordon Growth Model is a generalization: PV = CF × (1+g)/(r-g)."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "Gordon Growth Model: a company's next-year free cash flow will be $20. Long-run growth: 3%. Discount rate: 9%. What is the present value of all future cash flows (in $)?",
+    "answer": 333,
+    "tolerance": 10,
+    "unit": "$",
+    "explanation": "PV = $20 / (0.09 - 0.03) = $20 / 0.06 ≈ $333.33. This is the Gordon Growth formula with CF_1 (next year's, not this year's) in the numerator. Note the sensitivity: change r to 8% and PV jumps to $20/0.05 = $400 (a 20% increase from a 1pp change in r)."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "For a typical large-cap company DCF, what fraction of total value usually comes from the TERMINAL VALUE (post-explicit-forecast period)?",
+    "choices": [
+      "0-10% (the explicit forecast dominates).",
+      "20-40% (split roughly evenly).",
+      "50-80% (terminal value usually dominates).",
+      "Always 100% (TV captures everything)."
+    ],
+    "correctIndex": 2,
+    "explanation": "For typical 5-10 year explicit forecasts with mature companies, terminal value is 50-80% of total DCF value. For high-growth companies it can be 80-95%. The implication: most of your DCF answer depends on assumptions that go BEYOND your explicit forecast period, making the terminal-growth and discount-rate assumptions the load-bearing ones."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Which type of company is DCF MOST useful for?",
+    "choices": [
+      "Pre-revenue biotech with one drug in trials.",
+      "Mature consumer staples company with steady margins and predictable demand.",
+      "Cyclical commodity producer.",
+      "Early-stage tech startup growing 80%/year."
+    ],
+    "correctIndex": 1,
+    "explanation": "DCF requires stable, predictable cash flows. Mature staples (Coca-Cola, P&G, Colgate) fit because demand is stable, margins are stable, and the discount rate has a defensible derivation. Biotech, cyclicals, and high-growth startups all violate the stability assumption; for them, optionality models or multi-scenario approaches work better."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A DCF you build says a stock is worth $200 vs its current price of $50. Before recommending the trade, what TWO sensitivity checks should you run, and what would change your conclusion?",
+    "rubric": [
+      "Sensitivity 1: vary the discount rate. A 1pp change typically moves DCF by 20-40%; if a small change in r flips your conclusion, your view depends on knowing r better than is plausible.",
+      "Sensitivity 2: vary the terminal growth rate. If TV is 70% of total and g varies by 1pp, similar fragility shows up.",
+      "Conclusion: if EITHER sensitivity shows the DCF range overlapping the current $50 price, the trade is not as obvious as the point estimate suggests; you need a margin of safety AND robustness across reasonable input ranges.",
+      "Bonus credit: notes that the DCF point estimate of $200 is best treated as 'this stock is likely undervalued at $50' rather than 'this stock is worth exactly $200'; the latter implies false precision."
+    ]
+  }
+]

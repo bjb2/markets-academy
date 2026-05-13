@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "A bond has modified duration 6.5. Yields rise 80 bp. Estimate the percentage price change (in %, signed). Round to one decimal.",
+    "answer": -5.2,
+    "tolerance": 0.2,
+    "unit": "%",
+    "explanation": "% price change ≈ -mod duration × Δy = -6.5 × 0.008 = -0.052 = -5.2%. The negative sign is conventional: yields up, price down."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Two bonds, identical maturity (10 years) and identical YTM (5%). Bond A pays a 2% coupon. Bond B pays an 8% coupon. Which has HIGHER duration?",
+    "choices": [
+      "Bond A (lower coupon → higher duration).",
+      "Bond B (higher coupon → higher duration).",
+      "Identical (same maturity).",
+      "Cannot determine without convexity data."
+    ],
+    "correctIndex": 0,
+    "explanation": "Higher coupons return cash sooner, lowering the weighted-average time-to-cash (Macaulay duration). Low-coupon bond A pays back most of its value at maturity (the $100 face), so its duration is closer to its 10-year maturity. High-coupon bond B's duration is materially shorter because lots of cash arrives during the 10 years. Zero-coupon: duration = maturity exactly."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Convexity is the second-order correction to duration's price-change estimate. It is always ___ for non-callable bonds:",
+    "choices": [
+      "Zero (duration is exact).",
+      "Negative (makes price changes worse than predicted).",
+      "Positive (makes price changes slightly better than predicted).",
+      "Variable (depends on yield direction)."
+    ],
+    "correctIndex": 2,
+    "explanation": "Convexity is always positive for non-callable bonds because the price-yield curve is always convex (curves upward). This means actual price moves are slightly better than duration alone would predict, in BOTH directions: smaller drops on yield rises, larger gains on yield falls. Convexity is the friend of the long bondholder. Negative convexity exists only for callable bonds and MBS, where embedded options break the convex curvature in one direction."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Mortgage-backed securities (MBS) typically yield 50-150 bp MORE than comparable-duration Treasuries. The primary reason is:",
+    "choices": [
+      "Credit risk (defaults on the underlying mortgages).",
+      "Negative convexity from the prepayment option: when rates fall, homeowners refinance, capping the MBS price gain at exactly the moment Treasury bonds would benefit most.",
+      "Lower liquidity.",
+      "Less standardization."
+    ],
+    "correctIndex": 1,
+    "explanation": "Agency MBS (Fannie/Freddie/Ginnie) carry effectively zero credit risk; the explicit or implicit government guarantee covers it. The spread over Treasuries is almost entirely option-adjusted spread: compensation for the prepayment risk that gives MBS negative convexity. Investors require extra yield to bear the wrong asymmetry (rate falls cap price gains, rate rises don't cap losses)."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A pension fund has $1B in liabilities due in 12 years (Macaulay duration of liabilities = 12). To immunize against rate moves, what assets should it hold and what does 'immunization' mean operationally?",
+    "rubric": [
+      "Hold assets with portfolio duration matching the 12-year liability duration: e.g., 12-year zero-coupon Treasuries, or a mix of bonds whose weighted-average duration is 12.",
+      "Operational meaning: when rates move, the asset and liability values move proportionally (same % change), so the funded ratio (assets / liabilities) stays approximately stable.",
+      "Bonus credit: notes that this is only first-order matching; convexity mismatch (assets and liabilities with same duration but different convexities) means the funded ratio is still exposed to large rate moves; advanced ALM also matches convexity."
+    ]
+  }
+]

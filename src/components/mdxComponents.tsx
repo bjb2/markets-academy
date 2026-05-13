@@ -14,6 +14,7 @@ import FisherCalculator from "./widgets/FisherCalculator";
 import RuleOf72 from "./widgets/RuleOf72";
 import PortfolioFrontier from "./widgets/PortfolioFrontier";
 import OrderBook from "./widgets/OrderBook";
+import BondPriceYield from "./widgets/BondPriceYield";
 
 export const mdxComponents = {
   ExerciseRunner,
@@ -31,6 +32,7 @@ export const mdxComponents = {
   RuleOf72,
   PortfolioFrontier,
   OrderBook,
+  BondPriceYield,
   a: (props: ComponentProps<"a">) => (
     <a {...props} target={props.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" />
   ),

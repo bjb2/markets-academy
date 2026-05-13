@@ -1,0 +1,100 @@
+<RetrievalPrompt
+  prompt="The S&P 500 has returned roughly 10% annualized over the last century. Most professional equity mutual funds attempt to beat the S&P 500. What fraction succeed, over 10-year or 20-year windows, after fees? And what does that tell you about the equilibrium logic of paying for active management?"
+  reveal="Over 10-year windows, roughly 10-15% of actively-managed US equity funds beat the S&P 500 NET OF FEES. Over 20-year windows, the figure drops to about 5-10%. This is the headline empirical claim driving the rise of passive: most active managers can't deliver after fees, and SELECTING the few that do in advance is roughly impossible. The equilibrium argument is Bogle's: investors as a group ARE the market, so the average dollar invested earns the market return minus average fees. Active and passive averages must add up to the market; since active fees are higher, active in AGGREGATE must underperform passive."
+/>
+
+## Bogle's argument
+
+John Bogle (founder of Vanguard, 1929-2019) formalized the case for passive investing in <em>Common Sense Investing</em> and decades of writing. The core argument:
+
+1. **All investors collectively ARE the market.** Active and passive investors together own every share. The aggregate return = market return.
+2. **Passive investors earn the market return MINUS their fees** (typically a few basis points). They by definition track the index.
+3. **Active investors EARN the market return MINUS their fees**, BUT their fees are much higher (1%+ in the US historically).
+4. **Therefore: passive investors as a group, after fees, outperform active investors as a group, after fees.** This is arithmetic, not empirical.
+
+The empirical part is showing that DISPERSION around the average doesn't help individual investors much because picking winners in advance is hard.
+
+## The S&P SPIVA report
+
+S&P publishes the SPIVA (S&P Indices Versus Active) report annually. Across markets and styles, the headline numbers (2024 SPIVA US):
+
+| Time horizon | % of US large-cap active funds beaten by S&P 500 |
+|---|---|
+| 1 year | ~60% |
+| 3 years | ~70% |
+| 5 years | ~80% |
+| 10 years | ~85% |
+| 15 years | ~90% |
+| 20 years | ~92% |
+
+The pattern: short-horizon results are noisy, but over a working career, the active fund universe trails the benchmark essentially completely. Specific funds beat it; the average doesn't.
+
+The SAME pattern holds in international equities, small-caps, fixed income (mostly), and emerging markets. Active managers persistently underperform their benchmarks net of fees, across geographies and styles.
+
+## Why active typically loses
+
+Three reasons, in roughly the order of their importance:
+
+1. **Fees**. The 1.0% active ER vs 0.05% passive ER is 95 bp of guaranteed annual drag for the active manager to overcome.
+2. **Costs the ER doesn't show**: transaction costs from turnover, market impact on size, tax inefficiency from frequent realized gains. These add another 50-100 bp for typical actively-managed equity funds.
+3. **Zero-sum gross of fees**: even gross of fees, active managers as a group earn the market average (by point 1 of Bogle's argument). So they need to be among the BETTER half of active managers gross of fees to break even against passive net of fees. Persistence studies show this is rare.
+
+## Persistence: can past performance predict future winners?
+
+The natural defense of active is "pick the GOOD active managers." Empirically:
+
+- Funds in the TOP QUARTILE for the previous 5 years have only a 20-30% chance of staying in the top quartile for the next 5 years. Random would be 25%.
+- Funds in the TOP DECILE have similar reversion: most fall out within 5-10 years.
+- The exceptions (Buffett, Lynch's Magellan, Klarman) are visible BECAUSE they're exceptions; they don't form a screenable category in advance.
+
+The implication for retail: even if you believed active CAN win, you can't reliably identify in advance which managers will. Selection costs and selection errors typically exceed the alpha of the actual winners.
+
+<WorkedExample
+  title="The arithmetic of average active vs passive"
+  problem="An equity market returns 8% annualized. Average active equity fund charges 1.0% in fees plus 50 bp in unreported transaction costs (turnover, impact). Average passive fund charges 5 bp. What does each average earn, and what does this say about WHICH active fund I should pick?"
+  steps={[
+    { label: "Step 1: passive average", body: "8.0% - 0.05% = 7.95%." },
+    { label: "Step 2: active aggregate (before fees)", body: "Active funds COLLECTIVELY also earn 8.0% before fees (Bogle's arithmetic). Average active manager: 8.0% gross." },
+    { label: "Step 3: average active fund net of fees and costs", body: "8.0% - 1.0% - 0.5% = 6.5%. About 1.5% behind passive." },
+    { label: "Step 4: which active to pick", body: "To match passive (7.95%), active needs 9.45% gross (to overcome 1.5% in costs). That's 1.45 pp above the active aggregate. Roughly the TOP quartile or better, every year, sustainably. SPIVA data: this rate of sustainability is below random." },
+    { label: "Step 5: implication", body: "It's not that active is impossible; specific managers do beat passive. It's that selecting them in advance is roughly impossible, and average outcomes look terrible for the active strategy. For a retail investor without manager-selection edge, the default of 'low-fee broad index passive' is robust." },
+  ]}
+/>
+
+## Three honest caveats to the passive case
+
+The passive argument is strong but not absolute. Three legitimate refinements:
+
+### 1. Passive cap-weighted indexes have factor exposures of their own
+
+Cap-weighted indexes mechanically tilt toward whatever is currently expensive: bubble winners, megacaps. In the late 1990s, the S&P 500 became increasingly tech-heavy at exactly the wrong moment. In 2024, AAPL+MSFT+GOOGL+NVDA+AMZN+META exceeded 30% of the S&P 500.
+
+This isn't a critique of passive per se, but of CAP-WEIGHTED passive specifically. Equal-weighted, factor-tilted, or fundamental-weighted variants exist and have their own empirical record (mixed; some marginal alpha but with higher costs).
+
+### 2. Inefficient markets may genuinely reward active
+
+US large-cap is exceptionally efficient (thousands of full-time analysts, instant pricing, vast research). Small-cap, emerging market, distressed credit, niche real estate, private equity: these have more dispersion and (arguably) more room for skill to matter. Empirically: small-cap active funds beat their benchmarks somewhat more often than large-cap active. The premium is small and uncertain.
+
+### 3. Some retail-skill premium is real
+
+A small fraction of skilled retail traders (perhaps 1-5%) earn persistent alpha after costs. Studies (Barber & Odean) consistently show this is a tiny minority, mostly explained by either survivorship bias or short windows. The base rate of skill at retail level is very low.
+
+## What this means for our work
+
+For the paper-trading-longcall project, we're explicitly running an ACTIVE STRATEGY. The diversification gate (lesson 3.8) and the strategy-validated-rules KB exist to manage the risk that we're paying for fake alpha. We should:
+
+- Benchmark ourselves against the S&P 500 (the obvious passive comparator).
+- Account for our friction (commissions, slippage, taxes).
+- Be honest if and when the strategy stops beating buy-and-hold net of those costs.
+
+The default option is always "give up the active strategy and buy SPY." That's not failure; it's the rational fallback when the active hypothesis stops paying.
+
+<LessonRecap points={[
+  "Bogle's arithmetic: investors collectively earn the market return; passive earns market - low fees; active earns market - high fees; therefore aggregate active underperforms aggregate passive.",
+  "S&P SPIVA: 85-92% of actively-managed US large-cap funds trail the S&P 500 over 10-20 year horizons.",
+  "Persistence of top-quartile performance is no better than random; selecting tomorrow's winners is roughly impossible.",
+  "Three honest refinements: cap-weighted indexes carry their own tilts; less efficient markets reward active more often (small caps, EM, niche credit); a small minority of skilled retail traders earn real alpha.",
+  "Default: low-fee broad index ETFs/mutual funds. Active is for cases where you have specific edge AND are honest about its absence when results disagree."
+]} />
+
+<ExerciseRunner lessonId="02.9-index-funds-passive" />

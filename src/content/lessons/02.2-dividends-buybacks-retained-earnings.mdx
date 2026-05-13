@@ -1,0 +1,103 @@
+<RetrievalPrompt
+  prompt="From lesson 2.1, owning equity is a claim on a company's residual cash flows. The company has THREE ways to handle each year's earnings. List them. Which ones produce a return for shareholders, and which one defers the return into the future?"
+  reveal="(1) Pay dividends, cash to shareholders now. (2) Buy back shares, retiring some of the float so each remaining share owns a bigger slice. (3) Retain earnings, reinvest into the business, with the bet that future cash flows will be larger. The first two are current returns; the third is a deferred return that compounds only if the reinvestment earns above the cost of capital. Total shareholder yield is the sum of dividend yield and net buyback yield, and historically tracks the equity risk premium closely."
+/>
+
+## What companies do with profits
+
+A profitable company at the end of the year has cash. It chooses among:
+
+- **Dividends**: cash distributed proportionally to shareholders. Taxed annually (qualified dividends at 0/15/20% in the US plus state).
+- **Buybacks (share repurchases)**: company buys its own shares in the open market, retiring them. Float shrinks, each remaining share owns a larger fraction. No immediate taxable event for non-selling shareholders.
+- **Retained earnings**: cash stays inside the company. Funds new investment, M&A, debt paydown, or sits as a cash buffer.
+
+These aren't mutually exclusive. A typical S&P 500 company does some combination of all three each year. The MIX is itself a signal of management's view on opportunities (high reinvestment when ROIC > cost of capital; high return-of-capital when not).
+
+## Why buybacks function like dividends
+
+A common confusion: "buybacks reward only those who sell." This is wrong. When a company spends $10B buying back its own shares, ALL remaining shareholders own a proportionally larger piece of the same business. If you owned 1% before and 99% of shares get bought back, you now own a much bigger fraction. Your economic claim grew.
+
+Mechanically: earnings per share (EPS) goes up because share count went down. Future dividends are split among fewer shares. Future cash flows accrue to fewer claimants. The buyback is mathematically equivalent to a dividend reinvested in the same company at the current price.
+
+The two differ in:
+
+| Dimension | Dividend | Buyback |
+|---|---|---|
+| Tax timing | Annual; can't defer | Deferred until you sell |
+| Tax rate | Qualified div rates (0/15/20%) | LTCG (often 0/15/20%, depending) |
+| Signal | "We have stable cash and won't disappoint by cutting" | "We think our shares are cheap" |
+| Reversibility | Cut signals stress | Easy to reduce or pause |
+| Per-share effect | None on EPS, lowers shareholder cash | Raises EPS mechanically |
+
+Dividends are stickier because cutting them signals trouble. Buybacks are more flexible because reducing or pausing isn't a clear distress signal.
+
+## Total shareholder yield
+
+The most useful single metric for "what is this company returning to shareholders" is **total shareholder yield**:
+
+`Total Shareholder Yield = Dividend Yield + Net Buyback Yield`
+
+Where:
+- Dividend yield = annual dividends paid / market cap
+- Net buyback yield = (shares retired - shares issued) × price / market cap
+
+Net buyback yield is "net" because companies issue new shares (employee stock comp, secondary offerings) at the same time they buy back. The relevant figure is the NET change in share count, not gross buyback dollars.
+
+A company with 2% dividend yield and 3% net buyback yield is returning 5% to shareholders annually. A company with 4% dividend yield and -2% net buyback yield (issuing more than it's retiring, common in early-stage tech with heavy stock comp) is only returning 2%, despite the headline dividend.
+
+<WorkedExample
+  title="Two return-of-capital programs"
+  problem="Company A: market cap $100B, annual dividends $3B, net buybacks $4B. Company B: market cap $100B, annual dividends $1B, net buybacks $6B. Both have the same earnings. Compare total shareholder yield and the tax implications for a US holder."
+  steps={[
+    { label: "Step 1: total shareholder yield", body: "A: ($3B + $4B) / $100B = 7%. B: ($1B + $6B) / $100B = 7%. Identical." },
+    { label: "Step 2: composition", body: "A returns more via dividends (3% of yield is dividends). B returns more via buybacks (1% dividends, 6% buybacks)." },
+    { label: "Step 3: tax for a US holder in a TAXABLE account, 15% LTCG/dividend bracket", body: "A: 3% × 15% = 0.45% drag from dividend tax annually. B: 1% × 15% = 0.15% drag, plus deferred LTCG on the buyback-driven appreciation when you eventually sell. After-tax annual yield: A ≈ 6.55%, B ≈ 6.85% (better, by tax deferral)." },
+    { label: "Step 4: tax in tax-advantaged (401k/IRA)", body: "No difference. Both return 7%." },
+    { label: "Step 5: interpret", body: "For a long-horizon investor in a TAXABLE account, buyback-heavy companies have a small tax-deferral advantage. For income-seeking retirees relying on regular cash, dividend-heavy companies are more practical. Both can be right." },
+  ]}
+/>
+
+## Retained earnings: the deferred bet
+
+When a company retains earnings (rather than returning them), it's making a bet on its own reinvestment. The math:
+
+- Retain $1 of earnings.
+- Reinvest at the company's ROIC (return on invested capital), say 15%.
+- Next year, that $1 generates $0.15 of additional pre-tax earnings.
+- Continuing to reinvest at 15% (or paying out and the shareholder reinvesting at the market rate, say 8%) is the comparison.
+
+If ROIC > cost of capital, reinvestment is value-creating. If ROIC < cost of capital, the company is destroying value by retaining: shareholders would be better off if it returned the cash, even with the tax drag, because they can reinvest at the market rate.
+
+Buffett's <SourceLink id="buffett-letters" /> repeatedly emphasizes this calculus. The "dollar test": retain a dollar only if it produces at least a dollar of market value. If retention destroys market value, return the cash.
+
+In practice, most mature US large-caps return 50-100% of earnings each year (Apple has returned more than 100% by drawing down cash). High-growth companies retain everything (Amazon paid no dividend until 2024; Berkshire still hasn't). The mix is a signal of where management sees the marginal-investment opportunity.
+
+## Signals embedded in the policy mix
+
+Watching how a company allocates its earnings tells you what management thinks:
+
+| Policy | Implicit message |
+|---|---|
+| High retention, no dividend | "We have lots of high-ROIC reinvestment opportunities" |
+| Heavy buybacks, light dividend | "Our shares are cheap relative to intrinsic value; we have flexibility" |
+| Heavy dividend, light buyback | "Cash flow is stable, growth is slow, return to shareholders is the right use of capital" |
+| Special / one-time dividend | "We have excess cash from a sale or unusual event; one-time distribution" |
+| Dividend cut | "Cash flow has materially weakened; this is a distress signal" |
+
+The signal isn't perfectly reliable (management can be wrong about their own opportunities), but it correlates with the underlying economics most of the time. Buffett's berating of capital allocation by other CEOs is a major theme of the letters.
+
+## Dividend traps
+
+A high dividend yield can be a value signal OR a death signal. Mechanism: if a stock is collapsing (say, an oil company in 2014 or a retailer being disrupted), the dividend stays the same (slow to cut) but the price drops. Yield = dividends / price rises mechanically. Naive screening for "high yield stocks" thus over-selects for companies in trouble.
+
+The check: look at PAYOUT RATIO (dividends / earnings). If payout ratio is > 100%, the dividend is being funded from debt or savings, not earnings. That's likely to be cut. Reasonable mature companies pay out 30-70% of earnings; anything above 80-90% is fragile.
+
+<LessonRecap points={[
+  "Three uses of earnings: dividends (cash out, taxed now), buybacks (shares retired, tax deferred), retained earnings (deferred bet on reinvestment at ROIC).",
+  "Buybacks and dividends are mathematically equivalent in their effect on a non-selling shareholder; they differ in tax timing and signal.",
+  "Total shareholder yield = dividend yield + NET buyback yield (accounting for share issuance). This is the cleanest single yield metric.",
+  "Retain earnings only when ROIC > cost of capital; otherwise return the cash. This is Buffett's 'dollar test.'",
+  "High dividend yield can signal value or distress; check payout ratio (above 80-90% of earnings is fragile)."
+]} />
+
+<ExerciseRunner lessonId="02.2-dividends-buybacks-retained-earnings" />

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The credit spread compensates a corporate bondholder for which THREE things?",
+    "choices": [
+      "Inflation, default risk, currency risk.",
+      "Expected default loss, liquidity premium, risk premium (investor's risk aversion beyond expected loss).",
+      "Coupon timing, maturity risk, callability.",
+      "Tax differences and brokerage costs."
+    ],
+    "correctIndex": 1,
+    "explanation": "Expected default loss (PD × LGD) is the actuarially-fair compensation. Liquidity premium compensates for corporate bonds being less tradable than Treasuries. Risk premium captures the additional yield investors demand because they DON'T want to bear default uncertainty for free, even if it pays in expectation. For IG, the risk and liquidity premia dominate; for HY, expected default loss dominates."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A bond is downgraded from BBB to BB. The price typically falls more than the immediate default-probability change would suggest. Why?",
+    "choices": [
+      "Bond mathematics changes.",
+      "Many institutional investors (pension funds, insurance, money market funds) are restricted to investment grade; the downgrade triggers FORCED SELLING by these holders, amplifying the price move beyond what the credit fundamentals alone would justify.",
+      "The coupon is automatically reduced.",
+      "Interest rates change."
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'fallen angel' phenomenon. Institutional mandates force exits across the BBB/BB boundary. This creates supply pressure that pushes prices below their fundamental value, often producing attractive entry points for unconstrained credit-focused investors. Funds that specialize in fallen angels (some HY managers, distressed-debt funds) explicitly hunt these forced-seller dislocations."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "ICE BofA High-Yield Option-Adjusted Spread (OAS) has been sub-400 bp for 12 months. It then widens to 700 bp in two weeks. The most likely interpretation:",
+    "choices": [
+      "Bond yields are now more attractive overall.",
+      "A risk-off event has hit; default expectations are repricing higher and/or risk aversion has spiked; historically this kind of move has often preceded or coincided with broader recession concerns.",
+      "Treasury yields have changed.",
+      "Government has changed regulation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Sharp HY spread widening from a compressed level is one of the most reliable real-time risk signals. The mechanism: default expectations rise AND/OR risk premium rises; both push spreads wider. The 2008, 2020, and 2022 windows all saw exactly this pattern. Marks' memos teach reading this signal as a cycle-awareness tool, not a precise timing trigger."
+  },
+  {
+    "id": "q4",
+    "kind": "calc-input",
+    "prompt": "BBB bond yields 5.5%. Matching-maturity Treasury yields 4.2%. What is the credit spread in basis points?",
+    "answer": 130,
+    "tolerance": 5,
+    "unit": "bp",
+    "explanation": "Spread = 5.5% - 4.2% = 1.3% = 130 bp. BBB spreads in normal markets run 100-200 bp; this is a typical mid-cycle reading. Recessions can push BBB spreads to 400-500 bp."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Howard Marks' memo 'You Can't Predict, You Can Prepare' (December 2001).",
+    "url": "https://www.oaktreecapital.com/insights/memo/you-cant-predict-you-can-prepare",
+    "title": "Marks - You Can't Predict, You Can Prepare",
+    "reflectionPrompt": "In one sentence: what does Marks claim is the PRACTITIONER consequence of accepting that you can't predict the credit cycle precisely?"
+  }
+]

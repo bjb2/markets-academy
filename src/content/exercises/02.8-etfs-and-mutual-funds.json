@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Which structural feature makes ETFs typically MORE tax-efficient than mutual funds for a US taxable-account holder?",
+    "choices": [
+      "ETFs have lower expense ratios.",
+      "In-kind creation/redemption: when an Authorized Participant redeems, the ETF delivers the underlying basket rather than selling securities, avoiding capital gain triggers that mutual fund redemptions create.",
+      "ETFs are not subject to capital gains tax.",
+      "ETFs distribute fewer dividends."
+    ],
+    "correctIndex": 1,
+    "explanation": "Mutual fund redemptions force the fund to sell securities when cash isn't available, triggering capital gains DISTRIBUTED TO ALL HOLDERS (including non-redeemers). ETF redemptions go through in-kind transfers with APs, so no sales happen inside the fund. Over long horizons in taxable accounts, this saves 50-100 bp/year in tax drag, a meaningful structural advantage."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Authorized Participants (APs) arbitrage ETF prices toward NAV. If SPY is trading at $451.50 but the underlying basket of 500 stocks is worth $451.00 per SPY share (NAV), what does the AP do?",
+    "choices": [
+      "Buy SPY shares directly.",
+      "Buy the 500 underlying stocks in cap-weighted proportions, deliver to the issuer in exchange for newly-created SPY shares, sell those new SPY shares at the premium.",
+      "Wait for the next mutual fund close.",
+      "File a regulatory complaint."
+    ],
+    "correctIndex": 1,
+    "explanation": "When ETF price > NAV, AP CREATES new ETF shares from the cheaper underlying basket and sells them at the rich market price. The arbitrage profit is the premium minus transaction costs. The mechanism increases ETF supply (since new shares are created), pushing the premium back toward zero. Symmetrically: when ETF price < NAV, AP buys cheap ETF shares, redeems for the underlying basket worth NAV, sells the basket."
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "Investor pays 0.05% ER on an index ETF vs 0.80% ER on an actively-managed mutual fund with the same gross 8% return. Over 25 years, what is the cumulative gap in terminal wealth on $50,000 lump-sum invested, in $? Round to nearest $1,000.",
+    "answer": 51000,
+    "tolerance": 5000,
+    "unit": "$",
+    "explanation": "ETF net return: 7.95%. Mutual fund: 7.20%. Lump-sum FV: ETF: $50K × 1.0795^25 ≈ $50K × 6.785 ≈ $339K. Active: $50K × 1.072^25 ≈ $50K × 5.752 ≈ $288K. Gap: ~$51K, or 18% of the active outcome. Fee drag compounds substantially over decades."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Leveraged ETFs (e.g., TQQQ, 3x daily QQQ) reset their leverage DAILY. Over multi-month or multi-year holding periods, their returns diverge from '3x the underlying index return' because of:",
+    "choices": [
+      "Tracking error from management fees only.",
+      "Volatility decay: the daily rebalancing creates path-dependent returns; in volatile choppy markets, a 3x ETF can LOSE money even if the underlying is roughly flat over the period.",
+      "Counterparty default risk.",
+      "Survivorship bias."
+    ],
+    "correctIndex": 1,
+    "explanation": "Daily rebalancing means: after a +10% day, the ETF rebalances to be 3x leveraged AT THE NEW HIGHER LEVEL; after a -10% day, similar. This compounding works AGAINST holders in choppy markets. Example: if QQQ goes -10% one day then +11.1% the next, it ends flat. TQQQ goes -30%, then +33.3%, ending at 0.7 × 1.333 = 0.933, i.e., -6.7%. Leveraged ETFs are short-term tactical instruments only; their long-term path-dependent decay is well-documented and predictable."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "March 2020: liquid investment-grade corporate bond ETFs (LQD) traded at 5-7% discounts to their stated NAV for several hours during peak panic. The AP arbitrage failed to close the gap quickly. Speculate (in 2-3 sentences) on what mechanism caused this and what it reveals about the ETF structure's limits.",
+    "rubric": [
+      "Stated NAV was based on indicative pricing of underlying bonds, which had become illiquid; the actual transactable price of the underlying basket was much lower than the stated NAV.",
+      "APs faced their own balance-sheet constraints (capital costs, risk limits) that prevented them from soaking up the gap; the arbitrage mechanism requires APs to be willing AND able to put on the trade.",
+      "Reveals: ETF prices reflect REAL transactable underlying liquidity. When the underlying market dislocates, the ETF can be a more accurate price-discovery vehicle than stale NAV; the 'NAV gap' may not be ETF mispricing but rather honest pricing of stress-bid corporate bonds."
+    ]
+  }
+]

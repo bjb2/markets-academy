@@ -1,0 +1,107 @@
+<RetrievalPrompt
+  prompt="From lesson 2.5, all bond prices fall when yields rise. But not equally: a 30-year zero-coupon Treasury falls much more in price than a 2-year coupon bond, for the same yield change. What single number summarizes this sensitivity? And what does the SECOND-order term (the curvature) capture?"
+  reveal="Duration measures the percentage price change of a bond per 1 percentage point yield change. A bond with modified duration 7 falls about 7% in price for a 100 bp yield rise. Convexity is the second-order correction: actual price moves are LESS painful than duration alone predicts, because the price-yield curve is convex (curves upward). Long-maturity, low-coupon bonds have high duration; short-maturity, high-coupon bonds have low duration. Portfolio managers run on duration; advanced managers also watch convexity."
+/>
+
+## Duration is the bond market's beta
+
+In equities, β tells you how much a stock moves per 1% market move. In bonds, **duration** tells you how much a bond's PRICE moves per 1 percentage point YIELD change.
+
+Two flavors:
+
+- **Macaulay duration**: weighted-average time to receive cash flows, in years. Conceptual: "When (on average) do I get my money back?"
+- **Modified duration**: Macaulay duration divided by (1 + y/freq). Gives the actual % price change per 100 bp yield move.
+
+`% price change ≈ -Modified Duration × Δy`
+
+Where Δy is in decimal (1 percentage point = 0.01).
+
+If modified duration = 8 and yields rise 50 bp: % price change ≈ -8 × 0.005 = -4%. The bond loses about 4% of its price.
+
+The negative sign captures the inverse relationship. Higher yield, lower price.
+
+<BondPriceYield />
+
+The same widget from lesson 2.5. Notice the slope at any point on the curve: that's duration. At 5% YTM (par), the slope is steepest near par; further from par, the curve flattens. That changing slope IS the convexity story.
+
+## Determinants of duration
+
+A bond's duration depends on:
+
+| Factor | Effect on duration |
+|---|---|
+| Time to maturity | Longer maturity → higher duration |
+| Coupon rate | Higher coupon → lower duration |
+| Yield level | Higher yield → lower duration |
+| Frequency of coupons | More frequent → lower duration |
+
+The intuition: duration is the weighted-average time-to-cash. Higher coupons mean more cash is paid earlier, shortening the weighted average. Longer maturity means more cash later, lengthening it.
+
+A 30-year zero-coupon bond has Macaulay duration = 30 (single payment 30 years out). A 30-year 5% coupon bond has Macaulay duration around 14-15 (most cash received earlier as coupons).
+
+## Why portfolio managers track duration
+
+Portfolio duration is the weighted average of individual bond durations. A pension fund managing $1B in liabilities due in 15 years has 15-year duration on its liability side. To IMMUNIZE against rate moves, it holds bonds with portfolio duration also 15 years. Then if rates move, the asset and liability sides move by the same percentage, leaving the funded ratio unchanged.
+
+For corporate treasurers, banks, insurance companies, and any institution with rate-sensitive assets and liabilities, **asset-liability matching** by duration is the central risk-management discipline.
+
+Active fixed-income managers VIEW duration as a direction. Bullish on falling rates → run long duration (own long-dated bonds → they gain more if rates fall). Bearish → run short duration.
+
+<WorkedExample
+  title="Duration in action"
+  problem="A 10-year, 5% semi-annual coupon, $100-face bond trades at par ($100). Macaulay duration ≈ 8.0, modified duration ≈ 7.8. Yields rise 75 bp (0.75 percentage points). Estimate the new price using duration alone. Then explain why the actual price will be slightly higher than that estimate."
+  steps={[
+    { label: "Step 1: estimate using duration", body: "% price change ≈ -modified duration × Δy = -7.8 × 0.0075 = -0.0585, i.e., -5.85%." },
+    { label: "Step 2: apply to current price", body: "New price ≈ $100 × (1 - 0.0585) = $94.15." },
+    { label: "Step 3: what duration misses", body: "Duration is a linear approximation. The actual price-yield relationship is CONVEX. For a yield rise, the actual price drop is SLIGHTLY LESS than the duration estimate (price doesn't fall as fast as a straight line would predict)." },
+    { label: "Step 4: convexity correction", body: "Add: + (1/2) × Convexity × (Δy)². For a 10-year 5% bond, convexity ≈ 80. Correction: 0.5 × 80 × 0.0075² ≈ 0.00225 = +0.225%." },
+    { label: "Step 5: corrected estimate", body: "New price ≈ $100 × (1 - 0.0585 + 0.00225) ≈ $94.37. Actual computed price using the full DCF: about $94.45. Duration alone is off by 30 bp; duration + convexity is off by 8 bp." },
+    { label: "Step 6: the value of convexity", body: "Convexity is the friend of long bondholders during rate moves: it dampens losses on rises and amplifies gains on falls. High-convexity bonds (long-maturity zeros) command a slight premium for this property." },
+  ]}
+/>
+
+## Convexity, structurally
+
+Convexity is the second derivative of price with respect to yield, normalized. It captures the CURVATURE of the price-yield relationship.
+
+`% price change ≈ -Mod Dur × Δy + (1/2) × Convexity × (Δy)²`
+
+The convexity term is ALWAYS positive (for non-callable bonds), which means actual price changes are always slightly better than duration alone predicts:
+
+- On a yield RISE: price falls slightly less than duration predicts (good for holder).
+- On a yield FALL: price rises slightly more than duration predicts (also good for holder).
+
+Higher convexity is unambiguously better, holding everything else constant. Bonds with similar duration but higher convexity are more attractive.
+
+What drives convexity high?
+- Long maturity (more years of curvature)
+- Low or no coupon (zero-coupon bonds maximize convexity at a given duration)
+- Single bullet payment (not amortizing)
+
+Convexity-trading is a niche but real activity at fixed-income desks: trade duration-matched portfolios of different convexities, profit when yields move large enough that the convexity differential dominates.
+
+## Negative convexity: callable bonds and MBS
+
+Some bonds have NEGATIVE convexity. The two main culprits:
+
+1. **Callable corporate bonds**: issuer can repay early at a fixed call price. When yields fall (price wants to rise), the issuer calls and refinances cheap. So the bond's price is CAPPED at the call price. Convexity at low yields is negative.
+
+2. **Mortgage-backed securities (MBS)**: homeowners can refinance their mortgage. When rates fall, refinancings spike, and the MBS holder gets prepaid at par exactly when they wanted to keep the high-coupon cash flow. Negative convexity (price gain capped on rate falls), known in MBS parlance as the "negative convexity profile."
+
+Investors HATE negative convexity because it's the wrong asymmetry: pain on rises, capped joy on falls. They demand higher yield (an "option-adjusted spread" premium) to compensate. MBS routinely yield 50-150 bp over comparable-duration Treasuries for exactly this reason.
+
+## Effective vs modified duration
+
+For bonds without embedded options (Treasuries, non-callable corporates), modified duration is the right number. For bonds WITH embedded options (callable bonds, MBS, structured products), you need **effective duration**: re-price the bond under +Δy and -Δy scenarios, observe the price change empirically, and back out the implied duration. Effective duration accounts for the option behavior; modified duration assumes the cash flow stream is fixed, which is wrong for callables.
+
+A 5% coupon callable bond with stated maturity 10 years might have modified duration 7 (computed naively) but effective duration 3 (because in low-rate scenarios it gets called and behaves like a 2-3 year bond). Treating it as a 7-duration bond for portfolio purposes would be a significant risk-management error.
+
+<LessonRecap points={[
+  "Duration: percentage price change of a bond per 100 bp yield change. Modified duration = Macaulay duration / (1 + y/freq).",
+  "Determinants: longer maturity → higher duration; higher coupon → lower duration; higher yield → lower duration.",
+  "Duration is a linear approximation; convexity is the curvature correction. Actual price changes are slightly better than duration alone predicts.",
+  "Asset-liability matching by duration is the central risk-management discipline for pensions, insurance, banks.",
+  "Callable bonds and MBS have NEGATIVE convexity (price gain capped when rates fall); investors demand option-adjusted spread to bear this asymmetry."
+]} />
+
+<ExerciseRunner lessonId="02.6-duration-and-convexity" />

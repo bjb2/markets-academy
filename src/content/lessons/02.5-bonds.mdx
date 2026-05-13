@@ -1,0 +1,96 @@
+<RetrievalPrompt
+  prompt="A 10-year US Treasury bond paying a 4% coupon sells today for $98 per $100 of face value. What return will you earn if you hold to maturity? Is that return greater or less than 4%? Why?"
+  reveal="The yield-to-maturity (YTM) is greater than 4%. You'll receive the 4% coupon each year PLUS a capital gain of $2 on $98 invested over 10 years. That gain adds roughly 0.2% per year to your return, so YTM is approximately 4.2%. The general rule: when a bond trades below par, YTM > coupon rate. When it trades above par, YTM < coupon rate. The price and yield move inversely because higher market yields force existing bonds' prices DOWN to make their fixed coupons competitive."
+/>
+
+## Bond anatomy
+
+A bond is a contract to pay:
+- **Coupon**: periodic interest payments (semi-annual in the US for most Treasuries and corporates; annual in Europe; sometimes zero, in which case the bond is sold at a discount).
+- **Face value (par)**: the principal repaid at maturity. Conventionally $1,000 per bond; quoted as a percentage of face (e.g., "99.50" means $995).
+- **Maturity**: the date the principal is repaid. Short (less than 1 year, "bills"), medium (2-10 years, "notes"), long (10-30 years, "bonds"), perpetual (rare; UK consols historically).
+
+A 10-year, 5% semi-annual-coupon, $1,000-face bond pays $25 every 6 months for 10 years, then $1,000 at maturity. Cash flow stream: 19 × $25 + 1 × $1,025 (the last coupon plus principal).
+
+## Price and yield are linked
+
+The MARKET price of a bond is the present value of its remaining cash flows discounted at the current market yield for similar bonds:
+
+`Price = Σ Coupon_t / (1 + y/freq)^t + Face / (1 + y/freq)^N`
+
+Where y is the annualized YTM, freq is the coupon frequency (2 for semi-annual), and N is total periods to maturity.
+
+When market yield = coupon rate, price = face. Otherwise:
+- Yield > coupon: price < face (bond trades at DISCOUNT)
+- Yield < coupon: price > face (bond trades at PREMIUM)
+
+This is the most important single fact in fixed income: **price and yield move opposite**. When the Fed hikes rates, all existing fixed-coupon bond prices fall. When the Fed cuts, prices rise.
+
+<BondPriceYield />
+
+Drag the YTM slider. At 5% (the coupon rate), price equals $100 (face). Push YTM up to 8% and price falls to about $80; pull YTM down to 2% and price rises to about $127. The curve is convex (curves upward as yield falls), which matters for the next lesson on duration and convexity.
+
+## Three yield concepts
+
+Confusingly, "yield" can mean three different things:
+
+1. **Coupon yield**: coupon / face. Fixed at issuance. For a 5% coupon $100-face bond, always 5%, regardless of where the bond trades.
+2. **Current yield**: coupon / current price. If price is $90, current yield = 5/90 ≈ 5.56%. A snapshot of cash yield ignoring capital gain/loss to maturity.
+3. **Yield to maturity (YTM)**: the discount rate that makes the bond's present value equal to its market price. The "right" answer; accounts for both coupons and the price-to-face capital gain or loss. Quoted everywhere financial professionals talk about bonds.
+
+YTM is the bond-market equivalent of a stock's expected return: the return you'll earn if (a) you hold to maturity and (b) all coupons are reinvested at YTM. Both assumptions can fail, which is why realized yield often differs from YTM at purchase.
+
+<WorkedExample
+  title="Yield-to-maturity from price"
+  problem="A 5-year, 4% annual-coupon, $100-face bond currently trades at $93. Estimate YTM."
+  steps={[
+    { label: "Step 1: cash flow stream", body: "Years 1-4: $4 each. Year 5: $4 + $100 = $104. Five cash flows total." },
+    { label: "Step 2: solve for y in the present-value equation", body: "$93 = $4/(1+y) + $4/(1+y)² + $4/(1+y)³ + $4/(1+y)⁴ + $104/(1+y)⁵. No closed form; solve numerically." },
+    { label: "Step 3: estimate by approximation", body: "Approximate YTM ≈ coupon + (face - price) / years / average price = 0.04 + (100-93)/5 / 96.5 ≈ 0.04 + 0.0145 ≈ 5.45%." },
+    { label: "Step 4: refine via iteration", body: "Try y = 5.5%. PV at 5.5%: $4 × (1 - 1.055^-5)/0.055 + $100 × 1.055^-5 ≈ $4 × 4.27 + $100 × 0.7651 = $17.09 + $76.51 = $93.60. Close to $93. Try y = 5.6%: PV ≈ $92.97. Y ≈ 5.6% gives a tight match." },
+    { label: "Step 5: interpret", body: "Buying at $93, you earn the 4% coupon AND a 7-point capital gain over 5 years. That gain contributes roughly 1.5% per year of return on top of the 4% coupon, totaling ~5.5% YTM. In practice, brokers and Bloomberg display YTM to 2-3 decimals." },
+  ]}
+/>
+
+## Treasury yield curve basics
+
+US Treasuries are the universal benchmark: nominally risk-free, deeply liquid, span 1 month to 30 years. The yield curve plots Treasury yield vs maturity at a single moment (you saw this in lesson 1.5).
+
+Tenor naming:
+- **Bills**: 1, 3, 6, 12 months (zero-coupon, sold at discount)
+- **Notes**: 2, 3, 5, 7, 10 years
+- **Bonds**: 20, 30 years
+- **TIPS**: 5, 10, 30 years (inflation-protected; principal indexed to CPI)
+
+Treasury yields are the discount rate for all other US-dollar-denominated fixed income, in two ways:
+
+1. **Direct**: a corporate bond's yield is the Treasury yield at the same maturity PLUS a CREDIT SPREAD reflecting default risk (lesson 2.7).
+2. **Indirect**: even unrelated assets (equities, real estate, commodities) are valued against a discount rate built from Treasury yields. When Treasury yields move, everything reprices.
+
+The 10-year Treasury yield is the single most-watched benchmark in finance. The 2-year reflects expected near-term Fed policy. The 30-year reflects very-long-term expectations and term premium. The shape of the curve is the bond market's joint forecast (lesson 1.5).
+
+## Reinvestment risk
+
+YTM at purchase assumes coupons get reinvested at YTM. In practice, coupons get reinvested at whatever rates prevail when each coupon arrives. If rates fall, reinvestment happens at lower yields and realized total return < YTM. If rates rise, realized total return > YTM.
+
+For long-maturity bonds, reinvestment risk dominates. A 30-year bond purchased at 5% YTM where rates immediately drop to 2% and stay there will realize a return MUCH closer to 2-3% than to 5%, because every coupon for 30 years gets reinvested at the lower rate.
+
+This is why zero-coupon bonds (no coupons; only the final principal payment) have NO reinvestment risk and are often preferred by liability-matching investors (pensions, insurance) who want a certain payout at a certain date.
+
+## Premium vs discount, intuitively
+
+If you buy a bond above par (e.g., $105 for $100 face), you'll lose $5 of principal over the bond's life. The high coupon you receive each period is compensation in advance for the certain capital loss at maturity. YTM nets this out.
+
+If you buy a bond below par, you'll GAIN principal. The low coupon (or zero, for a strip) is the rest of the return.
+
+Same total YTM in either case, just distributed differently between coupon and capital change.
+
+<LessonRecap points={[
+  "Bonds are contracts: coupon + face value at maturity. Price = present value of remaining cash flows at the market yield.",
+  "Price and yield move opposite. YTM is the discount rate that equates a bond's cash flows to its current market price.",
+  "Three yields: coupon (fixed at issuance), current (coupon/price), YTM (accounts for both). YTM is the right metric.",
+  "US Treasury yield curve is the universal discount-rate benchmark; corporate yields are Treasury + credit spread (lesson 2.7).",
+  "Reinvestment risk: YTM assumes coupons reinvest at YTM; reality reinvests at prevailing rates. Long-maturity bonds are reinvestment-risk-heavy; zero-coupon bonds remove it."
+]} />
+
+<ExerciseRunner lessonId="02.5-bonds" />

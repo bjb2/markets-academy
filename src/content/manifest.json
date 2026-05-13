@@ -44,7 +44,18 @@
       "subtitle": "Stocks, bonds, ETFs, FX, commodities, crypto. Read a 10-K. Compute a yield-to-maturity.",
       "objective": "Given a 10-K, a bond prospectus, or an ETF fact sheet, identify the cash flows, the risks, the price, and whether the price looks reasonable.",
       "estWeeks": "3–4 weeks",
-      "lessons": ["02.1-equity-as-claim"]
+      "lessons": [
+        "02.1-equity-as-claim",
+        "02.2-dividends-buybacks-retained-earnings",
+        "02.3-dcf-valuation",
+        "02.4-multiples",
+        "02.5-bonds",
+        "02.6-duration-and-convexity",
+        "02.7-credit-risk-and-spreads",
+        "02.8-etfs-and-mutual-funds",
+        "02.9-index-funds-passive",
+        "02.10-commodities-fx-crypto"
+      ]
     },
     {
       "id": 3,
@@ -497,6 +508,96 @@
       "prereqs": ["04.6-hft-latency-colocation"],
       "estMinutes": 40,
       "sources": ["hasbrouck-emm"],
+      "exerciseCount": 5
+    },
+    "02.2-dividends-buybacks-retained-earnings": {
+      "id": "02.2-dividends-buybacks-retained-earnings",
+      "layer": 2,
+      "order": 2,
+      "title": "Dividends, buybacks, retained earnings",
+      "prereqs": ["02.1-equity-as-claim"],
+      "estMinutes": 35,
+      "sources": ["buffett-letters", "bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "02.3-dcf-valuation": {
+      "id": "02.3-dcf-valuation",
+      "layer": 2,
+      "order": 3,
+      "title": "DCF valuation",
+      "prereqs": ["02.2-dividends-buybacks-retained-earnings"],
+      "estMinutes": 50,
+      "sources": ["mit-15.401"],
+      "exerciseCount": 5
+    },
+    "02.4-multiples": {
+      "id": "02.4-multiples",
+      "layer": 2,
+      "order": 4,
+      "title": "Multiples (P/E, EV/EBITDA, P/B)",
+      "prereqs": ["02.3-dcf-valuation"],
+      "estMinutes": 40,
+      "sources": ["mit-15.401"],
+      "exerciseCount": 5
+    },
+    "02.5-bonds": {
+      "id": "02.5-bonds",
+      "layer": 2,
+      "order": 5,
+      "title": "Bonds: coupon, maturity, yield",
+      "prereqs": ["02.4-multiples"],
+      "estMinutes": 45,
+      "sources": ["khan-banking", "mehrling-coursera"],
+      "exerciseCount": 5
+    },
+    "02.6-duration-and-convexity": {
+      "id": "02.6-duration-and-convexity",
+      "layer": 2,
+      "order": 6,
+      "title": "Duration and convexity",
+      "prereqs": ["02.5-bonds"],
+      "estMinutes": 45,
+      "sources": ["mit-15.401"],
+      "exerciseCount": 5
+    },
+    "02.7-credit-risk-and-spreads": {
+      "id": "02.7-credit-risk-and-spreads",
+      "layer": 2,
+      "order": 7,
+      "title": "Credit risk and spreads",
+      "prereqs": ["02.6-duration-and-convexity"],
+      "estMinutes": 40,
+      "sources": ["marks-memos-best-of"],
+      "exerciseCount": 5
+    },
+    "02.8-etfs-and-mutual-funds": {
+      "id": "02.8-etfs-and-mutual-funds",
+      "layer": 2,
+      "order": 8,
+      "title": "ETFs and mutual funds",
+      "prereqs": ["02.7-credit-risk-and-spreads"],
+      "estMinutes": 35,
+      "sources": ["bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "02.9-index-funds-passive": {
+      "id": "02.9-index-funds-passive",
+      "layer": 2,
+      "order": 9,
+      "title": "Index funds and the case for passive",
+      "prereqs": ["02.8-etfs-and-mutual-funds"],
+      "estMinutes": 35,
+      "sources": ["bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "02.10-commodities-fx-crypto": {
+      "id": "02.10-commodities-fx-crypto",
+      "layer": 2,
+      "order": 10,
+      "title": "Commodities, FX, crypto",
+      "prereqs": ["02.9-index-funds-passive"],
+      "estMinutes": 40,
+      "sources": ["lyn-alden-newsletter", "khan-fx"],
       "exerciseCount": 5
     }
   }

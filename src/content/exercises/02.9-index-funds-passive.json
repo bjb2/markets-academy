@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Bogle's central argument for passive investing is sometimes called 'the cost matters hypothesis.' What is its arithmetic logic?",
+    "choices": [
+      "Active managers are intellectually inferior.",
+      "Investors collectively own the entire market; aggregate return is the market return; lower-fee passive funds keep more of that aggregate, so passive in aggregate must outperform active in aggregate net of fees.",
+      "Indexes are mathematically optimal.",
+      "Passive funds have better governance."
+    ],
+    "correctIndex": 1,
+    "explanation": "Bogle's argument is structural, not behavioral. Active and passive together own every share, so they earn the market return COLLECTIVELY. After fees, the higher-fee group must trail. This is true definitionally regardless of any manager's skill. The empirical SPIVA data confirms the prediction year after year."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Over 20-year horizons, roughly what fraction of US large-cap actively managed funds OUTPERFORM the S&P 500 net of fees?",
+    "choices": [
+      "About 50%.",
+      "About 30%.",
+      "About 5-10%.",
+      "Essentially zero."
+    ],
+    "correctIndex": 2,
+    "explanation": "SPIVA consistently shows 90-95% of US large-cap active funds trail the S&P 500 over 20-year windows. The 5-10% that beat are a real minority but cannot be reliably selected in advance from PAST performance (no persistence)."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "A fund was in the TOP DECILE for performance over the last 5 years. What is the approximate probability it stays in the top decile over the NEXT 5 years?",
+    "choices": [
+      "About 80% (skill persists).",
+      "About 50% (regression to mean from top half).",
+      "About 10% (the same as random chance).",
+      "About 25%."
+    ],
+    "correctIndex": 2,
+    "explanation": "Persistence studies show top-decile funds revert to roughly random over 5-year windows. About 10% stay in the top decile, the same fraction you'd expect if all funds were equally skilled and outcomes were luck. This is the empirical foundation for the claim that past performance is uninformative; specific exceptions exist (Buffett, Klarman) but cannot be screened-for in advance from past outperformance."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Which equity market should you expect active managers to beat the benchmark in MORE OFTEN (though still not most of the time)?",
+    "choices": [
+      "US large-cap.",
+      "US small-cap.",
+      "Equally in both.",
+      "Active never beats benchmarks in any market."
+    ],
+    "correctIndex": 1,
+    "explanation": "Smaller, less-followed markets have more dispersion and arguably more room for skill to matter. SPIVA shows small-cap active funds beat their benchmarks somewhat more often than large-cap active (maybe 25-35% vs 10-15% over 10 years), though the majority still trail. The premium for active in less-efficient markets is real but small."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Bogle's 'Common Sense on Mutual Funds' summary on the Bogleheads wiki.",
+    "url": "https://www.bogleheads.org/wiki/Common_Sense_Investing",
+    "title": "Bogleheads - Common Sense Investing",
+    "reflectionPrompt": "List the two factors Bogle identifies as the MOST IMPORTANT determinants of long-term investment success that the average investor CAN control. (Note: these are NOT 'pick the right stocks' or 'time the market.')"
+  }
+]

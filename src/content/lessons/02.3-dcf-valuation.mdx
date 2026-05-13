@@ -1,0 +1,94 @@
+<RetrievalPrompt
+  prompt="From Layer 0, time value of money: a dollar today is worth more than a dollar in a year, because you could earn interest on today's dollar. From lesson 2.2, a company's value is its claim on future cash flows. How do you COMBINE these two ideas to compute the value of an asset that pays cash over many years? What's the formula, and what is the most important and most fragile input?"
+  reveal="Discounted Cash Flow (DCF). Compute each future cash flow, discount it back to present value at an appropriate rate, sum them. Value = Σ CF_t / (1 + r)^t. The most fragile input is the discount rate r, sometimes computed via CAPM (Layer 3.4). A 1 percentage point change in r can move a DCF by 20-40%. The second most fragile input is the terminal value: what happens after the explicit forecast period, often the majority of total value. DCF is more useful as a way of THINKING about value than as a precise number."
+/>
+
+## The basic DCF identity
+
+The value of any cash-producing asset is the present value of its future cash flows:
+
+`PV = CF_1 / (1+r)^1 + CF_2 / (1+r)^2 + ... + CF_n / (1+r)^n`
+
+Where:
+- CF_t: cash flow in period t
+- r: discount rate (typically the asset's cost of capital, derived from CAPM or WACC)
+- n: number of periods you forecast explicitly
+
+For a stock, this is conceptually `Value = PV of all future dividends + PV of all future buybacks + terminal value`. In practice, analysts use "free cash flow to equity" (or FCFE) as the cash flow stream that, in steady state, equals dividends + buybacks combined.
+
+## Why three pieces almost always matter
+
+A standard equity DCF has three components:
+
+1. **Explicit forecast period** (typically 5-10 years): year-by-year cash flow estimates based on revenue growth, margin assumptions, capex, working capital.
+2. **Terminal value**: the value of all cash flows AFTER the explicit forecast. Usually computed as `TV = CF_terminal × (1+g) / (r - g)` where g is the assumed long-run growth rate. This is the **Gordon Growth Model** applied to the post-explicit-forecast period.
+3. **Discount rate** (the WACC for a firm-level DCF, or cost of equity for an equity DCF).
+
+Terminal value is typically 50-80% of total DCF value for a mature company, more for growth companies. Small changes to the terminal growth rate (g) or discount rate (r) move terminal value substantially.
+
+<WorkedExample
+  title="A 5-year DCF with terminal value"
+  problem="A company earns $100/yr in free cash flow now. Growth: 8% for years 1-5, then 3% in perpetuity. Discount rate: 10%. What is the per-share DCF value? Assume one share outstanding for simplicity."
+  steps={[
+    { label: "Step 1: project explicit cash flows", body: "Year 1: $108. Year 2: $116.64. Year 3: $125.97. Year 4: $136.05. Year 5: $146.93." },
+    { label: "Step 2: discount each to present", body: "PV(Y1) = 108 / 1.10 = $98.18. PV(Y2) = 116.64 / 1.21 = $96.40. PV(Y3) = 125.97 / 1.331 = $94.64. PV(Y4) = 136.05 / 1.4641 = $92.92. PV(Y5) = 146.93 / 1.61051 = $91.23." },
+    { label: "Step 3: sum the explicit period", body: "$98.18 + $96.40 + $94.64 + $92.92 + $91.23 = $473.37." },
+    { label: "Step 4: terminal value at end of year 5", body: "TV = CF_5 × (1 + g) / (r - g) = $146.93 × 1.03 / (0.10 - 0.03) = $151.34 / 0.07 = $2,161.99. This is the year-5 PV of all flows from year 6 onward." },
+    { label: "Step 5: discount terminal value to today", body: "PV(TV) = $2,161.99 / 1.61051 = $1,342.46." },
+    { label: "Step 6: total DCF value per share", body: "$473.37 + $1,342.46 = $1,815.83. Terminal value is 74% of total value. Most of the answer is what happens after year 5." },
+    { label: "Sensitivity to discount rate", body: "Re-run with r = 11% instead of 10%. Explicit sum drops to about $450; terminal value (with TV = 146.93 × 1.03 / 0.08 = $1,892) discounted back drops to about $1,123. Total falls to ~$1,573, a 13% reduction from a 1 percentage point change in r. The DCF is hypersensitive to r." },
+  ]}
+/>
+
+## The terminal value problem
+
+The Gordon Growth Model for terminal value, `TV = CF × (1+g) / (r - g)`, has a famously fragile denominator. As g approaches r, TV explodes.
+
+For a typical large-cap with r = 8-10% and long-run g = 2-3% (about nominal GDP growth), TV is 14-25x the terminal cash flow. Get the discount rate wrong by a percent in either direction, and the multiple changes by 20-30%.
+
+Two pragmatic adjustments:
+
+1. **Sanity-check terminal value against multiples**. If your DCF says TV is 25x the terminal cash flow, but mature companies in this industry trade at 12-15x current FCF, the DCF is implying valuation multiples that haven't been observed. Either your assumptions are too optimistic or the market is wrong. Usually the former.
+
+2. **Use a longer explicit forecast for high-growth companies**. If a company grows at 25%/yr now, projecting only 5 years of explicit forecast pushes a lot of growth into the terminal value (where g is required to drop to 2-3%). Instead, fade growth explicitly over 10-15 years.
+
+## Where DCF works and where it doesn't
+
+DCF works best for:
+
+- Stable, predictable cash flow businesses (mature consumer staples, utilities, integrated oil majors).
+- Real estate (rents and growth are observable and contracted).
+- Bonds (cash flows are KNOWN; only the discount rate is uncertain).
+
+DCF struggles with:
+
+- High-growth tech (cash flows in the explicit period are tiny; terminal value dominates).
+- Pre-revenue or pre-profit companies (no cash flows to project).
+- Cyclical businesses (when is "normal"? what discount rate captures cyclicality?).
+- Companies with optionality (drug pipelines, R&D-heavy firms; DCF doesn't price the optionality).
+
+In all these cases, multiples (next lesson) or scenario-based valuations are more honest about the uncertainty.
+
+## DCF as a way of thinking, not a precise tool
+
+A common practitioner attitude (Marks, Buffett, McKinsey's <em>Valuation</em> textbook): a DCF's specific number is approximate, but the EXERCISE of building one forces you to confront the actual assumptions. You have to take a view on:
+
+- Revenue growth and how it fades.
+- Operating margin (will it expand, contract, hold?).
+- Capex intensity and working capital needs.
+- Discount rate (cost of equity + cost of debt, weighted).
+- Terminal growth rate.
+
+Each assumption is a falsifiable claim about the future. If you build a DCF saying a company is worth 3x its current price, you can ASK: which assumption am I most uncertain about, and what does the world look like if it's wrong? This is more useful than the point estimate.
+
+A useful sensitivity table: vary discount rate and terminal growth rate in a 2D grid; the resulting price range tells you how much your valuation depends on these inputs. If the range is $50-$500 and you're uncertain about the inputs, you've learned that the company's value is just "uncertain."
+
+<LessonRecap points={[
+  "DCF: discount each future cash flow back to present at the cost of capital, sum them. Value = Σ CF_t / (1+r)^t.",
+  "Three pieces: explicit forecast (5-10 yrs), terminal value (Gordon Growth, typically 50-80% of total), discount rate r.",
+  "1 percentage point change in r typically moves DCF value 20-40%. Hypersensitive.",
+  "DCF works for stable cash flow businesses; struggles for high-growth, pre-revenue, cyclical, or optionality-rich companies.",
+  "Most useful as a structured way of identifying assumptions, not as a precise valuation number. Sensitivity analysis dominates point estimates."
+]} />
+
+<ExerciseRunner lessonId="02.3-dcf-valuation" />

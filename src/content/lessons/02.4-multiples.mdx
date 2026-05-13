@@ -1,0 +1,100 @@
+<RetrievalPrompt
+  prompt="From lesson 2.3, DCF is hypersensitive to inputs nobody can know precisely. So how do practitioners actually compare two companies' valuations day-to-day, without running a full DCF for each? They use MULTIPLES. Name the three most common. What does each implicitly assume, and what does each get wrong?"
+  reveal="P/E (price-to-earnings), EV/EBITDA (enterprise value to earnings before interest, tax, depreciation, amortization), and P/B (price-to-book). P/E assumes earnings are clean and capital structure is comparable, miss-state when accounting choices differ or leverage varies. EV/EBITDA neutralizes capital structure and non-cash charges, but ignores capex differences. P/B assumes book value is a meaningful anchor, broken for asset-light businesses and companies with major intangibles. Each multiple is a shortcut around a piece of the DCF and the shortcuts have predictable failure modes."
+/>
+
+## The three core multiples
+
+| Multiple | Formula | What it captures | What it ignores |
+|---|---|---|---|
+| **P/E** | Price / Earnings per share | How many years of earnings to pay back the stock | Capital structure, growth, non-cash charges |
+| **EV/EBITDA** | Enterprise value / EBITDA | Operating performance independent of leverage | Capex differences, debt-driven returns |
+| **P/B** | Price / Book value per share | Premium to accounting net assets | Intangibles, asset productivity, growth |
+
+Plus a few specialized siblings:
+- **P/S** (price-to-sales): for unprofitable companies where E and EBITDA are missing/negative.
+- **PEG** (P/E ÷ growth): rough adjustment for growth expectations.
+- **EV/EBIT**: like EV/EBITDA but penalizes capex-heavy businesses appropriately (depreciation matters).
+- **P/FCF**: price-to-free-cash-flow, closer to economic reality but harder to standardize across companies.
+
+## P/E in detail
+
+P/E = market price / earnings per share. Equivalent: market cap / total net income.
+
+The reciprocal, **earnings yield** = E/P, is the implied return if earnings flow through 1-for-1 to shareholders (which they don't, due to retention vs. distribution choices).
+
+Three flavors:
+
+- **Trailing P/E**: using last 12 months of earnings. Backward-looking; reflects actual results.
+- **Forward P/E**: using consensus estimated earnings for next 12 months. Forward-looking; analyst estimates are biased optimistic.
+- **Shiller (CAPE) P/E**: using 10-year average inflation-adjusted earnings. Cyclically adjusted; smooths through booms and busts.
+
+Historical S&P 500 P/E has averaged 15-18x over long periods, with notable ranges:
+- 5-9x in deeply distressed periods (1933, 1949, 1981, 2008 lows)
+- 15-20x in normal periods
+- 25-35x in expansionary booms (1999, 2021)
+- 40-100x for individual hot stocks (NVDA at various points, Tesla circa 2020)
+
+Headline P/E without context is meaningless. The same 25x can be expensive (mature staples) or cheap (high-growth tech).
+
+<WorkedExample
+  title="Same company, three multiples, different conclusions"
+  problem="Two companies. A: market cap $50B, debt $5B, cash $10B, net income $4B, EBITDA $8B, book value $20B, FCF $3B. B: market cap $50B, debt $30B, cash $2B, net income $4B, EBITDA $10B, book value $5B, FCF $3.5B. Compare P/E, EV/EBITDA, P/B."
+  steps={[
+    { label: "Step 1: P/E", body: "A: $50B / $4B = 12.5x. B: $50B / $4B = 12.5x. Identical." },
+    { label: "Step 2: EV/EBITDA", body: "EV = market cap + debt - cash. A: $50B + $5B - $10B = $45B. EV/EBITDA = $45B / $8B = 5.6x. B: $50B + $30B - $2B = $78B. EV/EBITDA = $78B / $10B = 7.8x. Different. B looks more expensive when capital structure is normalized." },
+    { label: "Step 3: P/B", body: "A: $50B / $20B = 2.5x. B: $50B / $5B = 10x. Very different. B trades at 4x more premium to book." },
+    { label: "Step 4: interpret", body: "P/E says they're identical. EV/EBITDA says A is cheaper on operating performance. P/B says A has more accounting cushion. The full picture: B is more LEVERAGED and has a more INTANGIBLE-HEAVY balance sheet (low book value relative to earning power). Whether B's profile is acceptable depends on the durability of those intangibles and the riskiness of the leverage." },
+    { label: "Step 5: which multiple to favor", body: "For asset-heavy capital-intensive businesses (banks, utilities, REITs), P/B is most informative. For services and software, P/B is nearly useless and EV/EBITDA or P/E is dominant. For comparing across capital structures (some leveraged, some not), EV/EBITDA neutralizes the leverage effect that P/E ignores." },
+  ]}
+/>
+
+## EV/EBITDA in detail
+
+Enterprise Value = market cap + total debt - cash and marketable securities. EV represents what you'd pay to acquire the entire business, including assuming its debt and getting its cash.
+
+EBITDA = Earnings Before Interest, Taxes, Depreciation, Amortization. It strips out:
+- Capital structure effects (interest)
+- Tax differences (corporate tax rate, jurisdiction)
+- Non-cash accounting charges (depreciation, amortization)
+
+The result: EBITDA approximates operating cash flow before capex. It's the most apples-to-apples profitability metric across companies with different capital structures, tax positions, and accounting choices.
+
+EV/EBITDA is the dominant multiple in:
+- Private equity acquisition pricing (almost always "Xx EBITDA" deals).
+- Cross-border comparisons (tax-neutralized).
+- Cross-industry comparisons (capital-structure-neutralized).
+
+The Buffett critique of EBITDA, famously: "EBITDA is what you have left if you take out the parts you don't want to think about." Specifically, depreciation IS a real economic cost (you have to replace assets), so excluding it can mask businesses that look profitable on EBITDA but actually consume cash on capex. The fix: use **EV/EBIT** (which keeps depreciation) for capital-intensive businesses, or directly look at P/FCF.
+
+## P/B in detail
+
+P/B = market cap / book equity. Book equity = total assets - total liabilities, the accounting net worth.
+
+Historically influential because, in the 1930s-1950s, book value approximated liquidation value, providing a "floor" for valuation. Graham's "net-net" strategy (buy stocks trading below 2/3 of liquidation value) explicitly used this anchor.
+
+Today, P/B works for asset-heavy businesses where book value is meaningful (banks, insurance, REITs, basic manufacturing) and is largely useless for asset-light businesses (software, services, brands, IP-heavy firms).
+
+The reason: GAAP doesn't capitalize internally-developed intangibles. Apple's brand, Google's search algorithm, McKinsey's reputation: all immensely valuable, all carry near-zero book value. P/B for these companies is mechanically high regardless of how cheap they really are. The Fama-French value premium (Layer 3.5) is computed on book-to-market and has weakened substantially in recent decades partly because of the rise of intangible-intensive companies.
+
+## When multiples lie
+
+Three common pitfalls:
+
+1. **Single-period earnings are noisy**. A company with $1B normalized earnings might earn $0.2B in a recession year. Trailing P/E spikes from 15x to 75x while the actual business hasn't changed. Use multi-year averages (CAPE) or normalized earnings.
+
+2. **Accounting choices matter**. Two companies with identical economics can report different earnings depending on revenue recognition, inventory method, depreciation schedule. Cross-company comparisons require footnote-level checking, not just headline numbers.
+
+3. **One-time items distort EBITDA more than P/E**. Restructuring charges, gains on asset sales, write-downs all show up in EBITDA. "Adjusted EBITDA" (what management presents) often strips these out, but the strip-out can be aggressive. Cross-check against P/FCF.
+
+A useful practitioner habit: compute SEVERAL multiples for the same company, and if they tell different stories, ask why. The differences are the diagnostic.
+
+<LessonRecap points={[
+  "Three core multiples: P/E (price-to-earnings), EV/EBITDA (capital-structure-neutral), P/B (price-to-book).",
+  "P/E is intuitive but misses leverage and non-cash charges. EV/EBITDA fixes those but ignores capex differences. P/B works for asset-heavy businesses and fails for intangible-heavy ones.",
+  "Forward P/E uses analyst estimates (biased optimistic). Trailing uses last-12-months. CAPE smooths through 10 years.",
+  "S&P 500 P/E historical range: 5-9x in deep distress, 15-20x normal, 25-35x exuberant.",
+  "Compute several multiples for the same company; when they disagree, the disagreement is the diagnostic, not noise."
+]} />
+
+<ExerciseRunner lessonId="02.4-multiples" />

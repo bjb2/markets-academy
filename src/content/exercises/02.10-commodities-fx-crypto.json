@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The structural reason gold compounds differently than equities over the very long run is:",
+    "choices": [
+      "Gold has higher trading costs.",
+      "Gold doesn't produce cash flows; equities do (the company reinvests earnings at ROIC). Gold's price tracks supply-demand and money debasement, while equities also compound retained earnings into productive capital.",
+      "Gold is more volatile.",
+      "Equities have tax advantages."
+    ],
+    "correctIndex": 1,
+    "explanation": "Equities have an internal compounding engine: a company earning 15% ROIC on retained earnings grows its earnings base, multiplying future cash flows. Gold doesn't reinvest anything. Its long-run real return tracks roughly the rate of money debasement (positive in inflationary periods, near zero in disinflationary ones). Equities' long-run real return of 6-7% reflects both the cash-flow yield and the compounding of retained earnings."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A 'carry trade' in FX involves:",
+    "choices": [
+      "Buying and selling the same currency for arbitrage.",
+      "Borrowing in a low-interest-rate currency, investing in a high-interest-rate currency, earning the rate differential as long as the high-yielder doesn't depreciate enough to offset the spread.",
+      "Hedging foreign equity positions.",
+      "Buying physical currency notes."
+    ],
+    "correctIndex": 1,
+    "explanation": "Classic carry trade: borrow JPY at 0%, invest in AUD or BRL at 5-10%, pocket the differential. Works in calm regimes when high-yield currencies don't sell off; explodes in risk-off episodes (Aug 2007, Oct 2008, Aug 2024) when the high-yield currencies sell off and the borrowed JPY appreciates simultaneously, producing fast large losses. Carry trades are 'eating like a chicken, sh*tting like an elephant' in the trader parlance: small steady gains, occasional catastrophic losses."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Bitcoin's correlation with US equity indices (especially NASDAQ) has been WHAT pattern since 2020?",
+    "choices": [
+      "Consistently negative (BTC moves opposite to stocks).",
+      "Approximately zero (uncorrelated, as the 'digital gold' narrative claims).",
+      "Positive and often elevated, especially in risk-off episodes; BTC has behaved more like a high-beta risk asset than like a non-correlated store of value.",
+      "Inverted; BTC leads equities."
+    ],
+    "correctIndex": 2,
+    "explanation": "Empirically, BTC correlation with NASDAQ has been 0.3-0.6 in normal periods and spiked higher (0.7+) in risk-off episodes (Q1 2022, May 2022 LUNA, Nov 2022 FTX, others). This contradicts the 'digital gold / uncorrelated alternative' marketing. The structural reason: BTC's marginal buyer is risk-seeking; when risk-on capital retreats, BTC sells off WITH equities. The 'BTC as macro hedge' claim is weaker empirically than the narrative suggests."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Graham's distinction between INVESTMENT and SPECULATION is best summarized as:",
+    "choices": [
+      "Investment is long-term, speculation is short-term.",
+      "Investment is ownership of an asset that produces cash flows whose value can be derived from those flows; speculation is a bet on price anchored only by the next buyer's willingness to pay.",
+      "Investment is in stocks, speculation is in derivatives.",
+      "Investment is regulated, speculation is not."
+    ],
+    "correctIndex": 1,
+    "explanation": "The duration doesn't determine the category. A 5-minute equity day trade based on a quarterly earnings report is INVESTMENT analysis (cash flow anchor). A 20-year hold of an art collection is SPECULATION (no cash flow anchor; the value depends on what future buyers will pay). The distinction matters because the SKILLS that produce returns differ: investment rewards fundamental analysis; speculation rewards reading sentiment and momentum."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "You're considering adding 5% gold to a 60/40 stock/bond portfolio. Using the lesson 3.8 'sleeve diversification gate' framework, what TWO empirical checks would you run on historical data before deciding to add it?",
+    "rubric": [
+      "Check 1: standalone Sharpe of gold over the test window. If gold's standalone Sharpe is dismally low (close to zero or negative), even a low-correlation asset adds little risk-adjusted value to the portfolio.",
+      "Check 2: correlation of gold's monthly/quarterly returns with the existing 60/40 portfolio's returns. If correlation is below ~0.5 (the gate threshold), the diversification math works in your favor.",
+      "Bonus credit: notes that gold's role is REGIME-DEPENDENT; correlations are different in inflationary vs disinflationary periods. A robust framework would test across multiple regimes (1970s, 1980s-90s, 2000s, 2010s, 2020s) and ask whether the diversification holds out-of-sample, not just in the average."
+    ]
+  }
+]

@@ -1,0 +1,99 @@
+<RetrievalPrompt
+  prompt="Stocks and bonds produce cash flows (dividends, coupons, residual claims). Gold doesn't. Bitcoin doesn't. Crude oil doesn't. Yet all three trade actively at substantial market caps. What anchors their prices, and how are they conceptually DIFFERENT from cash-flow-producing assets?"
+  reveal="Cash-flow-producing assets have intrinsic value derived from future cash flows: a DCF gives an answer that doesn't depend purely on what other buyers will pay. Commodities, FX, and crypto have NO intrinsic cash flows; their value is anchored by demand for the underlying use case (industrial commodity, store of value, transactional medium, speculation) and constrained by supply (mining, oil reserves, fixed crypto supply, central bank policy). They're priced more like Keynes's 'beauty contest' than like a DCF anchor: pure interaction of supply, demand, and expectations. This is a structurally different valuation problem."
+/>
+
+## Three commodity-like asset classes
+
+| Class | Examples | Supply driver | Demand driver |
+|---|---|---|---|
+| **Commodities** | Crude oil, gold, copper, wheat, corn | Production cost, geopolitics, weather | Industrial use, store-of-value (gold), strategic stockpiles |
+| **FX** | USD, EUR, JPY, GBP | Central bank policy, money supply | Trade flows, capital flows, store-of-value |
+| **Crypto** | BTC, ETH, stablecoins | Algorithmic issuance, mining costs | Speculation, transactional use, store-of-value narrative |
+
+None of these throw off cash flows in the way equities do. They are priced by supply-demand interaction with the relevant use case anchoring the LEVEL.
+
+## Commodities
+
+The classical theory (Hotelling 1931 for exhaustible resources; supply-demand for renewable):
+
+- **Industrial commodities** (oil, copper, iron ore, lithium): price moves with global industrial activity. Strong inverse correlation with USD (commodities priced in USD; weaker dollar mechanically raises non-USD-denominated demand). Long-cycle supply response: oil takes 5-7 years from greenfield discovery to first barrel; new copper mines take 10-15 years.
+- **Agricultural commodities** (wheat, corn, soy): annual supply cycle; weather-driven. Government intervention significant (subsidies, tariffs, strategic reserves). Storage and quality issues.
+- **Precious metals** (gold, silver, platinum): primarily store-of-value (gold) plus some industrial demand. Gold has the longest store-of-value history (4,000+ years); its monetary role survived the gold standard's end and persists in central bank reserves.
+
+Commodities don't compound the way equities do; you can't "buy and hold" gold for 30 years and expect the same kind of growth as SPY. Gold's REAL return over the very long run has been close to zero. Equities' long-run real return has been around 6-7%. The difference is intrinsic: equities reinvest cash flows; gold sits there.
+
+Investors hold commodities for INFLATION HEDGING (real assets retain purchasing power when fiat depreciates), CRISIS DIVERSIFICATION (gold has a low correlation with stocks in many regimes), and TACTICAL TRADING (cycles, momentum, mean reversion within commodity bull/bear cycles).
+
+## FX (foreign exchange)
+
+The largest financial market by daily volume (~$7.5T/day). Exchanges currency pairs (EUR/USD, USD/JPY, GBP/USD, etc.). Prices reflect:
+
+- **Interest rate differentials**: higher-rate currency tends to appreciate (carry trade flows in); lower-rate depreciates.
+- **Trade flows**: trade surplus countries see structural currency demand; deficit countries see structural supply.
+- **Capital flows**: foreign portfolio investment, FDI, central bank reserves, sovereign wealth funds.
+- **Inflation differentials**: countries with higher inflation see currency depreciation (purchasing power parity).
+- **Political risk premia**: instability, sanctions, default risk depress the currency.
+
+For US retail, FX is mostly an indirect exposure: international stocks and bonds expose you to FX implicitly. Direct FX speculation is a small niche; most retail FX trading is high-cost and produces poor outcomes (high leverage, wide spreads, tax inefficiency).
+
+A useful institutional concept: **carry trade**. Borrow in a low-yielding currency (JPY, historically), invest in a high-yielding currency (AUD, BRL, ZAR). Earn the rate differential as long as the high-yielder doesn't depreciate by more than the differential. Works in calm regimes; explodes catastrophically in risk-off episodes (the 2008 JPY carry unwind was a global financial event).
+
+## Crypto
+
+A separate animal that's hard to classify cleanly:
+
+- **Bitcoin** (BTC): closest to "digital gold" framing. Fixed supply (21M coins). Volatile (50-80% annual vol historically). Store-of-value thesis from the bitcoin community. Highly correlated with risk-on/risk-off sentiment despite the "uncorrelated alternative" pitch.
+- **Ethereum** (ETH): platform layer with programmable contracts (DeFi, NFTs, etc.). Fundamental "yield" exists via staking. Closer to equity-like cash flows than Bitcoin.
+- **Stablecoins** (USDT, USDC): pegged to USD; function as on-chain cash. Massive transactional volume; mostly used for moving value between exchanges and DeFi protocols.
+- **Altcoins**: thousands of others, mostly speculation-driven.
+
+The honest summary of crypto's investment case as of writing (mid-2026):
+
+- BTC has produced extraordinary long-run returns from 2010-2020. Returns since 2021 have been more modest.
+- BTC's correlation with risk assets (NASDAQ in particular) has been higher than the "digital gold" narrative suggests.
+- ETH and other platform tokens have an actual underlying use case but valuation methods are unsettled.
+- The asset class is high-vol, regulation-sensitive, and exposed to operational risks (exchange failures, key management, smart contract bugs) absent from traditional asset classes.
+
+A reasonable retail position size for crypto, if held at all, is small (1-5% of portfolio for typical investors; some crypto-focused investors hold much more, accepting the vol). Treating it as an asset class on par with equities or fixed income overstates its current institutional standing.
+
+<WorkedExample
+  title="What's gold's job in a portfolio?"
+  problem="A 60/40 stock/bond portfolio sees its bond ballast fail in 2022 (bonds and stocks both fell). The argument for adding 5% gold to make 57/38/5: does it make sense, and what's the structural test?"
+  steps={[
+    { label: "Step 1: gold's empirical role", body: "Gold has historically had low (sometimes negative) correlation with both stocks and bonds. In 2022, it was approximately flat while stocks and bonds both fell ~15%. Meets the 'crisis diversification' criterion." },
+    { label: "Step 2: but at what cost", body: "Gold's long-run real return is approximately zero (with significant variance). Stocks' long-run real return is ~6-7%. Holding 5% in gold permanently is a ~30 bp drag on the portfolio's long-run expected return." },
+    { label: "Step 3: framework", body: "The diversification benefit (lower drawdowns, better tail behavior) trades against the expected-return drag. Whether the trade is worth it depends on how much you care about drawdown vs return." },
+    { label: "Step 4: practitioner test (from Layer 3 logic)", body: "Compute the portfolio's σ with and without gold; compute its Sharpe ratio. If Sharpe improves (better risk-adjusted return), keep gold; if it doesn't, drop it. The math from lesson 3.8 (sleeve diversification gate) applies one-for-one." },
+    { label: "Step 5: empirical answer", body: "For most 60/40 portfolios, adding 5-10% gold modestly improves Sharpe (~5-15% Sharpe improvement) at the cost of slightly lower absolute return. Many practitioners settle on 5-10% as the default. The case is stronger in inflation-shock periods (2022-2023) and weaker in disinflation (1990-2020)." },
+  ]}
+/>
+
+## Speculation vs investment
+
+A useful distinction (Graham, Bogle, Marks all use it):
+
+- **Investment**: ownership of an asset that produces cash flows over time. Value can be derived from those cash flows. Return comes from (a) cash flows received and (b) sale price.
+- **Speculation**: bet on the price of an asset whose value is anchored by expected sale price to another buyer. Return depends entirely on the next buyer paying more.
+
+Stocks: mostly investment (cash flows exist, even if you don't receive them as dividends, the company reinvests them).
+Bonds: investment (cash flows are contractual).
+Real estate: investment (rents) or speculation (flipping).
+Commodities: typically speculation (no cash flows; bet on the next buyer).
+FX: speculation (no cash flows; carry trades earn interest differential but the price level is speculation).
+Crypto: speculation (BTC), or partially investment (ETH with staking, DeFi tokens with revenue).
+Art, collectibles: pure speculation.
+
+Speculation isn't a moral category, it's a structural one. Speculation can be profitable. But it's a fundamentally different game: there's no anchor to value, only an evolving consensus about what others will pay. The Keynesian "beauty contest" framing is exact: you're trying to predict what others will predict that others will think.
+
+The investment-vs-speculation frame matters because the SKILL involved is different. Investment rewards careful fundamental analysis. Speculation rewards reading sentiment, momentum, and crowd dynamics. Conflating the two leads to applying the wrong tools.
+
+<LessonRecap points={[
+  "Commodities, FX, crypto have NO intrinsic cash flows; their value is supply-demand interaction anchored by use case (industrial, monetary, store-of-value, speculative).",
+  "Commodities don't compound like equities; gold's long-run real return is near zero. Hold for inflation hedging, diversification, or tactical cycles, not for compounding.",
+  "FX is the largest market by volume but mostly indirect exposure for retail (via international stocks/bonds). Direct retail FX is high-cost and produces poor outcomes.",
+  "Crypto: BTC is closest to 'digital gold'; ETH has staking yield closer to equity-like cash flows; stablecoins function as on-chain USD. Reasonable retail allocation is small (1-5%).",
+  "Investment vs speculation: investment has cash flow anchor; speculation depends entirely on the next buyer's willingness to pay. Different skill set, different risk profile."
+]} />
+
+<ExerciseRunner lessonId="02.10-commodities-fx-crypto" />

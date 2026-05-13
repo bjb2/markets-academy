@@ -1,0 +1,61 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "A 10-year, 4% coupon, $100-face bond trades at $105. Which statement is TRUE?",
+    "choices": [
+      "YTM is greater than 4%.",
+      "YTM is less than 4%.",
+      "YTM equals 4%.",
+      "Cannot determine without more information."
+    ],
+    "correctIndex": 1,
+    "explanation": "Premium bond (price > face) means YTM < coupon. Reason: you pay $105 to receive $4/yr coupon plus $100 back in 10 years, so you've baked in a $5 capital loss. The 4% coupon overstates your true return; YTM (probably around 3.4%) is what you actually earn."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "1-year zero-coupon $100-face bond trades at $96. What is its yield to maturity (in %)? Round to one decimal.",
+    "answer": 4.2,
+    "tolerance": 0.1,
+    "unit": "%",
+    "explanation": "For a 1-year zero: Price × (1+y) = Face, so y = Face/Price - 1 = 100/96 - 1 = 0.04166... ≈ 4.17%. Zero-coupon bonds are the simplest case: YTM is the implied compounding rate from price to face."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Why are zero-coupon bonds preferred by pension funds matching specific future liabilities?",
+    "choices": [
+      "Higher yields.",
+      "No reinvestment risk: the bond pays only at maturity, so coupon reinvestment uncertainty is removed; the realized return equals the YTM at purchase.",
+      "Tax advantages.",
+      "Lower default risk."
+    ],
+    "correctIndex": 1,
+    "explanation": "A pension that owes a retiree $1M in 20 years needs $1M with certainty in 20 years. A 20-year zero-coupon Treasury delivers exactly that, at a known YTM today. A coupon bond delivers periodic cash flows that must be reinvested at uncertain future rates; over 20 years, that uncertainty can compound to large differences in realized total return. Zeros eliminate the reinvestment leg."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The Fed unexpectedly hikes the policy rate by 50 bp. What happens to the prices of existing fixed-coupon bonds across maturities?",
+    "choices": [
+      "All bond prices fall, with long-maturity bonds falling more in price terms (this is the duration effect, lesson 2.6).",
+      "All bond prices rise.",
+      "Short bonds fall, long bonds rise (yield curve effect).",
+      "Nothing changes until the new bonds settle."
+    ],
+    "correctIndex": 0,
+    "explanation": "When market yields rise, existing fixed-coupon bonds' prices fall to make their fixed coupons competitive with newly-issued bonds at higher yields. Long-maturity bonds fall MORE in price for a given yield change because their cash flows extend further into the future, getting discounted by a larger compounded factor change. This sensitivity is duration (next lesson)."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "An investor buys a 30-year 5% YTM Treasury. Three months later, market rates fall to 2% and stay there. Will the investor's REALIZED return over 30 years be close to 5%, close to 2%, or something else? Explain why.",
+    "rubric": [
+      "Realized return will be much closer to 2% than to 5%.",
+      "Mechanism: YTM at purchase assumes coupons reinvest at 5%. In practice, every coupon for the next 30 years gets reinvested at the new 2% rate, dragging the compound realized return down toward 2-3%.",
+      "Conclusion: YTM at purchase is the realized return ONLY if rates stay flat for the holding period. Long-maturity bonds carry significant reinvestment risk; zero-coupon bonds avoid it entirely.",
+      "Bonus credit: notes that the investor DOES benefit from a capital gain on the bond itself (price rises when yield falls), but if held to maturity that gain reverses; if sold early, it's realized. Reinvestment dominates hold-to-maturity outcomes for long bonds."
+    ]
+  }
+]

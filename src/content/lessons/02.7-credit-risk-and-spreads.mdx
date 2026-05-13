@@ -1,0 +1,116 @@
+<RetrievalPrompt
+  prompt="A 10-year US Treasury yields 4.5%. A 10-year corporate bond from the same issuer matures on the same day, has the same coupon frequency, and trades at a yield of 6.5%. What is the 200 bp difference compensating bondholders for? In what regimes does this gap WIDEN, and what does that signal about the economy?"
+  reveal="The 200 bp is the CREDIT SPREAD: compensation for the risk that the corporate defaults. Spreads compensate for expected default loss, illiquidity, and a risk premium (investors don't want to bear credit risk for free even if it pays in expectation). Spreads widen when default risk rises (recession, leverage cycle), when investors become risk-averse (panic), or when liquidity dries up. Widening spreads are one of the most reliable real-time recession signals; Marks' memos call this 'the credit cycle.'"
+/>
+
+## Credit spread = corporate yield minus Treasury yield
+
+`Credit spread = Corporate YTM - Treasury YTM (same maturity)`
+
+It's quoted in basis points (1 bp = 0.01%). A "150 bp spread" means the corporate yields 150 bp more than the matching-maturity Treasury.
+
+The spread compensates the bondholder for three things:
+
+1. **Expected default loss**: probability of default × loss given default.
+2. **Liquidity premium**: corporate bonds are less liquid than Treasuries; investors demand extra yield to bear that.
+3. **Risk premium**: even after expected loss is priced, investors don't want to bear default risk for free; they demand a risk premium on top.
+
+For investment-grade bonds, expected default loss is small (basis points) and the spread is mostly liquidity + risk premium. For high-yield ("junk") bonds, expected default loss is the largest term.
+
+## Credit rating ladders
+
+Two main rating agencies dominate US fixed income: **Moody's** and **S&P**. Their ratings:
+
+| Moody's | S&P | Category | Default risk |
+|---|---|---|---|
+| Aaa | AAA | Highest investment grade | Near zero (US Treasury, a few corporates) |
+| Aa | AA | High investment grade | Very low |
+| A | A | Upper investment grade | Low |
+| Baa | BBB | Lower investment grade | Moderate |
+| Ba | BB | Upper high yield | Elevated |
+| B | B | High yield | High |
+| Caa-C | CCC-C | Distressed | Very high |
+| D | D | In default | 100% |
+
+The boundary between BBB and BB is the boundary between **investment grade (IG)** and **high yield (HY) / junk**. This boundary matters because many institutional buyers (pensions, insurance, money funds) are restricted to IG; a downgrade across the line ("fallen angel") triggers FORCED SELLING and amplifies the price move.
+
+Historical default rates over 5 years (Moody's data, multi-decade averages):
+- AAA: ~0.1%
+- AA: ~0.5%
+- A: ~1.5%
+- BBB: ~3%
+- BB: ~10%
+- B: ~25%
+- Caa-C: ~50%+
+
+These are CUMULATIVE 5-year defaults, not annual. The point is the curvature: defaults rise faster than linearly as you descend the ladder.
+
+## The credit cycle
+
+Credit spreads are not constant. They oscillate with the economy, the Fed, and investor sentiment. <SourceLink id="marks-memos-best-of" /> documents this cycle obsessively; the canonical Marks framing:
+
+| Phase | Spread behavior | Investor behavior |
+|---|---|---|
+| **Expansion** | Tight (near historical lows) | Reaching for yield; covenant-lite issuance; record-low spreads |
+| **Late-cycle** | Compressed but starting to widen on specific names | Discriminating among credits begins |
+| **Crisis / recession** | Wide (often 2-4x normal) | Forced selling; correlations spike; fallen-angel cascades |
+| **Recovery** | Wide but stable, then tightening | Patient capital deployed at high spreads; future-good-vintage |
+
+Marks' "the buy of a lifetime" episodes correspond to the recession-trough widening: 2002 (telecom bust), 2008-09 (GFC), 2020 (COVID). Each saw HY spreads top 1,000 bp; each was followed by extraordinary returns for buyers brave enough to deploy.
+
+In late-cycle expansions (2007, 2019, late 2021), spreads compress to record-low levels and risk premia disappear. Buying at these moments produces poor risk-adjusted returns: you bear elevated default risk for minimal extra yield.
+
+<WorkedExample
+  title="Spread implies what default probability?"
+  problem="A BB-rated corporate bond yields 8.5%. The matching-maturity Treasury yields 4.5%. The bond has 5 years to maturity. Assume recovery in default = 40% (lose 60%). What probability of default over 5 years is the market pricing in, assuming the entire 400 bp spread is expected default loss (a stylized simplification)?"
+  steps={[
+    { label: "Step 1: spread", body: "Spread = 8.5% - 4.5% = 4.0% = 400 bp annual." },
+    { label: "Step 2: cumulative spread over 5 years (simplified)", body: "Total compensation over 5 years ≈ 5 × 4% = 20%, ignoring compounding." },
+    { label: "Step 3: imply default probability", body: "If loss given default = 60% (1 - 40% recovery), then PD × LGD = 20%. PD = 20% / 60% ≈ 33%." },
+    { label: "Step 4: cross-check vs historical BB", body: "5-year cumulative BB default rate historically ~10%. The market is pricing 33% PD vs historical 10% PD. That suggests EITHER (a) the market expects elevated defaults (late-cycle stress), OR (b) most of the spread is risk premium and liquidity premium rather than expected default loss." },
+    { label: "Step 5: real-world", body: "In reality, only 30-50% of investment-grade spreads represents expected default loss; the rest is risk and liquidity premium. For high-yield it's roughly 50-70% expected default loss. The 'implied PD' calculation overstates true expected defaults; the OBSERVED spread is broader than just expected loss." },
+  ]}
+/>
+
+## Spread products in practice
+
+The corporate bond universe is roughly:
+
+- **Investment grade (IG)** corporate: $7T+ in US alone. Issuers like AAPL, MSFT, JPM, KO. Spreads typically 50-200 bp.
+- **High yield (HY)** corporate: $1.5T+. Issuers like Carnival, Avis, energy producers, retailers. Spreads typically 300-700 bp in normal markets, 1,000+ bp in crises.
+- **Emerging market sovereign**: $4T+. Hard-currency or local-currency. Spreads from 100 bp (Korea) to 1,000+ bp (Argentina, Egypt).
+- **Leveraged loans**: $1.5T+. Floating-rate bank loans to leveraged-buyout companies. Different mechanics from bonds (floating rate, senior secured) but same credit-risk principles.
+- **Structured credit**: ABS, CLO, CMBS, RMBS. Pools of mortgages, auto loans, corporate loans, commercial mortgages, packaged into tranches with seniority rules.
+
+Each market has its own conventions, liquidity profile, and idiosyncratic risks, but all rest on the basic spread-over-Treasury construction.
+
+## Why spread is a real-time recession signal
+
+Credit spreads update every minute. Most other macro signals (GDP, employment, even most yield-curve calculations) update with lags. Spreads move on every news item that adjusts default expectations.
+
+In particular:
+- Industry-specific bad news (e.g., regional bank stress in March 2023) shows up immediately as widening in those credits.
+- Generalized risk-off shows up as broad spread widening.
+- "Fallen angel" events (BBB downgraded to BB) trigger forced institutional selling and visible spread spikes.
+
+Tracking HY OAS (option-adjusted spread, the ICE BofA HY index is the standard) is a low-cost real-time recession watch. Sustained breach of 600 bp from a sub-400 bp regime is a strong warning.
+
+## What this means for our work
+
+For the paper-trading-longcall project, credit considerations don't directly apply (we trade equity options). But the credit cycle frames the EQUITY environment:
+
+- When HY spreads compress to record-lows, equity valuations are typically also stretched and forward equity returns are below average.
+- When HY spreads widen sharply, equity has often (not always) followed with a drawdown.
+- The 2020 cycle saw both move together: HY spreads spiked to 1,100 bp and equities dropped 35% in March; HY tightened back below 400 bp and equities ran +100% over the next 18 months.
+
+Spread monitoring is an institutional discipline retail investors typically skip but that genuinely improves cycle awareness.
+
+<LessonRecap points={[
+  "Credit spread = corporate yield minus matching-maturity Treasury yield, in bp. Compensates for expected default loss + liquidity + risk premium.",
+  "Rating ladder: AAA → AAA (Moody's Aaa) at the top, D (default) at the bottom. BBB/BB boundary separates investment grade from high yield.",
+  "Spreads oscillate with the credit cycle: tight in expansions, wide in recessions. Marks' canonical framework treats this as the most-watched cycle for value-conscious capital.",
+  "Implied default probability from spreads OVERSTATES expected loss because spreads also contain risk and liquidity premia. For IG: maybe 30-50% of spread is expected loss; for HY: maybe 50-70%.",
+  "HY spread (ICE BofA OAS) is one of the cleanest real-time recession signals; sustained breach of 600 bp from a sub-400 bp regime warrants attention."
+]} />
+
+<ExerciseRunner lessonId="02.7-credit-risk-and-spreads" />

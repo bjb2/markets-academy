@@ -1,0 +1,59 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Company: market cap $20B, debt $4B, cash $2B, EBITDA $3B. What is EV/EBITDA?",
+    "answer": 7.3,
+    "tolerance": 0.2,
+    "explanation": "EV = market cap + debt - cash = $20B + $4B - $2B = $22B. EV/EBITDA = $22B / $3B ≈ 7.33x. Note that cash REDUCES EV (a buyer would inherit the cash); debt INCREASES EV (a buyer would assume the debt)."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Buffett's critique of EBITDA is best summarized as:",
+    "choices": [
+      "EBITDA is too volatile.",
+      "EBITDA excludes depreciation, which is a real economic cost; using EBITDA can make capital-intensive businesses appear more profitable than they actually are on a sustainable cash basis.",
+      "EBITDA is only useful in private markets.",
+      "EBITDA cannot be computed for tech companies."
+    ],
+    "correctIndex": 1,
+    "explanation": "Buffett's famous phrasing: 'EBITDA is what you have left if you take out the parts you don't want to think about.' Depreciation IS a real cost (assets eventually need replacing). A business with $100M EBITDA and $50M capex is much less attractive than a business with $100M EBITDA and $5M capex, despite identical EBITDA. EV/EBIT (or P/FCF) restore the depreciation visibility."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "For which type of company is P/B MOST useful?",
+    "choices": [
+      "Software company.",
+      "Consulting firm.",
+      "Bank or insurance company.",
+      "Branded consumer goods company."
+    ],
+    "correctIndex": 2,
+    "explanation": "Banks and insurance companies have most of their assets and liabilities marked to fair value (loans, securities, reserves). Book value reasonably approximates net worth. P/B near 1 means market values the bank at its accounting equity; below 1 implies the market doubts the asset values. Software, consulting, and branded consumer companies have most of their value in intangibles GAAP doesn't capitalize, so P/B is mechanically high regardless of actual valuation."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Shiller's CAPE (cyclically-adjusted P/E) uses 10-year average inflation-adjusted earnings instead of trailing-12-month earnings. The PRIMARY reason is:",
+    "choices": [
+      "It's easier to calculate.",
+      "Single-year earnings are cyclical and noisy; 10-year averages smooth through business cycles to give a less volatile valuation signal.",
+      "It accounts for inflation explicitly.",
+      "Required by regulators."
+    ],
+    "correctIndex": 1,
+    "explanation": "Trailing P/E spikes during recessions (denominator collapses) and looks cheap during booms (denominator inflates). Neither is the right reading. CAPE smooths through one full business cycle, giving a stable mean-reverting valuation signal. CAPE was useful (though imperfect) in flagging the 1999-2000 dotcom peak and the 1928-29 peak. It has been elevated since 2017 without a clean mean reversion, prompting debates about whether structural changes have raised the equilibrium CAPE level."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A company has P/E of 30 (high) but EV/EBITDA of 8 (moderate). What are the most likely reasons for this divergence, and what does it tell you about the business?",
+    "rubric": [
+      "High debt: leveraged company has high interest expense reducing net income (P/E numerator stays, denominator falls); EV/EBITDA strips out interest, so it's less affected.",
+      "Heavy depreciation/amortization: company has lots of D&A reducing earnings; EBITDA adds back D&A so the ratio is more flattering.",
+      "Bonus credit: notes the practitioner read is 'check whether the depreciation is real (capital-intensive business that needs the spend) or accounting (amortization of acquired intangibles)'; the former means EV/EBITDA is misleading and P/E is more honest; the latter means D&A is non-cash and the EV/EBITDA picture is more accurate."
+    ]
+  }
+]

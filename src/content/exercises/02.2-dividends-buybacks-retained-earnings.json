@@ -1,0 +1,58 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Company has market cap $50B, pays $1B in dividends, retires shares net $1.5B (after share issuance from stock comp). What is total shareholder yield (in %)?",
+    "answer": 5,
+    "tolerance": 0.1,
+    "unit": "%",
+    "explanation": "Total shareholder yield = ($1B + $1.5B) / $50B = 5%. Note this is the NET buyback yield (after issuance) plus dividend yield. If gross buybacks were $3B but stock comp issued $1.5B, the net is what matters."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A company spends $5B on buybacks. A long-term shareholder who doesn't sell anything. What happens to their economic claim?",
+    "choices": [
+      "Nothing; only sellers benefit.",
+      "Their share of the company's future cash flows grows proportionally as the float shrinks.",
+      "It depends on the buyback price.",
+      "Their basis goes up."
+    ],
+    "correctIndex": 1,
+    "explanation": "Buybacks shrink the denominator (share count). Every non-selling shareholder's percentage ownership rises. Future dividends, future buybacks, future liquidation value all accrue to fewer claimants. This is exactly equivalent to receiving a dividend and reinvesting it in the same company, except tax-deferred."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Buffett's 'dollar test' for retained earnings says management should retain a dollar of earnings only if:",
+    "choices": [
+      "The company has positive net income.",
+      "ROIC on the retained dollar is positive.",
+      "The retained dollar will produce at least a dollar of market value (i.e., ROIC exceeds cost of capital).",
+      "Shareholders prefer reinvestment over distribution."
+    ],
+    "correctIndex": 2,
+    "explanation": "ROIC must exceed cost of capital for retention to be value-creating. Merely-positive ROIC isn't enough; if ROIC is 4% and cost of capital is 8%, retention destroys value vs. distributing the cash so shareholders can reinvest elsewhere at the market rate."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A stock is yielding 12% in dividends. Same company's payout ratio (dividends / earnings) is 130%. Most likely:",
+    "choices": [
+      "Exceptional value opportunity.",
+      "Sustainable through cash reserves.",
+      "Dividend trap: the company is paying out more than it earns, funding the gap from debt or savings; cut is likely.",
+      "Indicates strong cash generation."
+    ],
+    "correctIndex": 2,
+    "explanation": "A payout ratio over 100% means earnings can't cover the dividend. The gap is funded from debt, cash reserves, or asset sales, none of which is sustainable indefinitely. Naive yield screens systematically pull these companies in because their stock prices have fallen (mechanically raising yield) while management hasn't cut the dividend yet. Checking payout ratio filters them out."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Berkshire's 2012 shareholder letter, pages 3-7 (Buffett's discussion of dividends and buybacks). Free at the official archive.",
+    "url": "https://www.berkshirehathaway.com/letters/2012ltr.pdf",
+    "title": "Berkshire 2012 Shareholder Letter",
+    "reflectionPrompt": "Buffett's argument for why Berkshire's shareholders are better off WITHOUT a dividend rests on a specific claim about reinvestment returns. State that claim in one sentence."
+  }
+]
