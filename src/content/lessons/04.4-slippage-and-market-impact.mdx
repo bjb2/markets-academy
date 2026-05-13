@@ -1,0 +1,93 @@
+<RetrievalPrompt
+  prompt="You want to buy 50,000 shares of a stock that displays only 2,000 shares at the best ask. From the lesson-4.1 widget intuition, you'll walk the book and pay a VWAP higher than the displayed ask. But there's a second effect that compounds this: AFTER your order prints, OTHER traders see what happened and react. What's the name of that second effect, and what does it cost?"
+  reveal="The first effect is 'temporary impact' or 'immediate slippage': the cost of consuming the available top-of-book liquidity. The second is 'permanent impact' or 'information leakage': your large order REVEALS that someone wants the stock badly, which causes other traders to update their priors and adjust their quotes. The combined cost is called 'market impact' or just 'impact.' For a typical institutional trade, permanent impact often EXCEEDS temporary impact. This is why large orders are sliced into smaller pieces (VWAP, TWAP, POV execution algos) over hours instead of being sent in a single sweep."
+/>
+
+## Two flavors of cost beyond the spread
+
+Even after you've accepted you'll pay the half-spread (lesson 4.3), large orders incur two ADDITIONAL costs:
+
+**Temporary impact**: the VWAP you pay walking the book exceeds the best displayed price. If best ask is 100.00 and you sweep through 100.01 and 100.02 to fill, your effective fill price might be 100.015. This is mechanical, instant, and a function of book depth.
+
+**Permanent impact**: after your trade prints, market participants update their estimate of the stock's "true" value. If a 50,000-share buy crosses, watchers think "someone with conviction is buying" and adjust quotes upward. The new equilibrium is higher than the pre-trade equilibrium. This is informational, persistent, and a function of how informative your order looks to observers.
+
+Total transaction cost for a large order:
+
+`Total Cost = ½ · Spread + Temporary Impact + Permanent Impact`
+
+For retail-sized orders (100-1,000 sh in liquid names), the half-spread dominates and impact is negligible. For institutional-sized orders (50,000+ sh, or any order > average daily volume), impact dominates and the spread becomes a rounding error.
+
+## The square-root law
+
+The most-cited empirical regularity in market impact research (Almgren, Torre, Hu, Bouchaud, and others):
+
+`Impact ≈ σ · √(Q/V)`
+
+Where:
+- σ: daily volatility of the stock (in price units)
+- Q: order size (shares)
+- V: average daily volume (shares)
+
+The square-root function is what matters: doubling order size doesn't double impact, it multiplies impact by √2 ≈ 1.41. Tripling multiplies by √3 ≈ 1.73. This is concave: each marginal share added to an already-large order has DIMINISHING impact, which is what makes "executing patiently over hours" a good strategy.
+
+Practical implication: if a 50,000-share order impacts 30 bp, the same order split into 10 chunks of 5,000 each impacts roughly 30 × √(1/10) ≈ 9.5 bp per chunk × ... well, it's more subtle because permanent impact of earlier chunks affects price for later chunks. But the directionality is correct: smaller pieces have lower per-share impact.
+
+## Execution algorithms
+
+Most institutional and many retail platforms offer EXECUTION ALGORITHMS that slice large orders over time to manage impact.
+
+| Algorithm | Logic | When to use |
+|---|---|---|
+| **VWAP** | Match the volume-weighted average price over a target window (typically full day). | Default for size; benchmark execution. |
+| **TWAP** | Time-weighted average price: equal-sized slices at equal time intervals. | When volume profile is unreliable; less common today. |
+| **POV** (Percent of Volume) | Maintain X% of market volume rate throughout execution. | Adaptive; speeds up in liquid windows, slows in thin. |
+| **IS** (Implementation Shortfall) | Optimize the tradeoff between impact (slow execution = less) and timing risk (slow execution = price might move). | Sophisticated; requires explicit cost model and risk preference. |
+| **Iceberg** | Limit order that displays only a piece of total size, refilling as it executes. | Add liquidity at a price while hiding total size. |
+
+The deeper machinery (Almgren-Chriss 2000 is the canonical reference): there's an optimal execution speed that trades impact (faster = more) against timing risk (slower = more chance the price moves before you finish). The optimum depends on σ, Q, V, your risk aversion, and how much you'd pay to avoid uncertainty in final cost. Real execution algos run a stochastic optimization in real time.
+
+<WorkedExample
+  title="Impact estimate for a sizeable order"
+  problem="You want to buy 100,000 shares of MSFT. Average daily volume: 25 million. Daily volatility: $4 (so σ ≈ 1.1% of a $360 price). Estimate market impact (in $ per share) using the square-root law with a typical coefficient of 0.5."
+  steps={[
+    { label: "Step 1: Q/V ratio", body: "100,000 / 25,000,000 = 0.004 = 0.4% of daily volume. Small in absolute terms; non-trivial for a single moment." },
+    { label: "Step 2: √(Q/V)", body: "√0.004 ≈ 0.0632." },
+    { label: "Step 3: impact estimate", body: "Impact ≈ coefficient × σ × √(Q/V) = 0.5 × $4 × 0.0632 ≈ $0.126/share. As a percent: 0.126/360 ≈ 3.5 bp." },
+    { label: "Step 4: total cost", body: "100,000 sh × $0.126 = $12,600 of impact cost on a $36M order, on top of any spread cost (~1¢ × 100,000 = $1,000) and commission." },
+    { label: "Step 5: now compare to sweeping in one shot", body: "A 100,000 share market order would walk through several levels of the book and probably cost 10-30 bp (rather than 3.5 bp), plus signal severely. Slicing over the day reduces visible impact AND lets market regenerate liquidity between slices." },
+    { label: "Step 6: caveat", body: "The 0.5 coefficient and the square-root form are approximations from regressed data. Actual impact varies with volatility regime, news flow, order-book depth, and presence of informed traders. The formula is a starting estimate, not a precise prediction." },
+  ]}
+/>
+
+## Information leakage and order-flow analytics
+
+Permanent impact comes from OTHER PARTICIPANTS inferring information from your order. The watchers include:
+
+- Designated MMs in the name watching for unusual volume.
+- HFTs running short-horizon signals on order-flow patterns.
+- Other institutional desks looking for "frontrun-able" flows.
+- Quant firms running cross-sectional models that flag "this stock is being accumulated."
+
+Defenses: dark pools (hide the trade until after execution), randomized slice timing (avoid predictable patterns), use of multiple venues (avoid concentration in one book), use of "VWAP guarantees" from brokers who absorb impact risk in exchange for a fee.
+
+For retail trading, the practical takeaway: at retail sizes you don't have information leakage to worry about, so don't pay for VWAP algos and dark pools. For trade sizes above 1-2% of average daily volume, impact becomes the dominant cost and is worth managing.
+
+## Measuring your own slippage
+
+For our paper-trading-longcall project we track:
+
+- **Implementation shortfall**: difference between decision price (at signal generation) and execution price (actual fill). Includes spread + impact + any delay-induced price moves.
+- **VWAP slippage**: difference between fill price and the day's VWAP. Measures how good our execution was vs the benchmark.
+- **Order-by-order**: every fill compared to mid at order time.
+
+These measurements are what makes "we beat the S&P by 4%" vs "we beat the S&P by 4% before $1,500 of unmeasured slippage" different conclusions. Layer 9 has a capstone exercise on this.
+
+<LessonRecap points={[
+  "Three transaction-cost components: half-spread (always), temporary impact (book-depth dependent), permanent impact (information leakage).",
+  "Square-root law: impact ≈ σ × √(Q/V). Doubling order size multiplies impact by √2, not 2; this makes patient execution beneficial.",
+  "Execution algorithms (VWAP, TWAP, POV, IS, Iceberg) slice large orders over time to trade impact against timing risk; Almgren-Chriss formalizes the optimal speed.",
+  "Permanent impact comes from observers inferring information; defenses include dark pools, randomized slicing, multi-venue routing.",
+  "For retail orders, impact is negligible; for orders > 1-2% of ADV, impact is the dominant cost. Knowing where you sit changes your execution choices."
+]} />
+
+<ExerciseRunner lessonId="04.4-slippage-and-market-impact" />

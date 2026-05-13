@@ -1,0 +1,67 @@
+<RetrievalPrompt
+  prompt="You hold an asset with σ = 20%. You add a second asset with the same σ = 20% and the same expected return. Did your portfolio's volatility go up, stay the same, or go down? On what does the answer depend?"
+  reveal="It depends entirely on the correlation between them. If ρ = +1 (move identically), portfolio σ stays 20%, you got nothing. If ρ = 0 (independent), portfolio σ falls to about 14.1%. If ρ = −1 (move opposite), portfolio σ can fall to zero. Diversification is not 'owning more things,' it is owning things that move differently."
+/>
+
+## Drag the correlation slider before reading
+
+<PortfolioFrontier />
+
+Try ρ = +1.0: the frontier is a straight line between the two assets. There is no diversification benefit. Now try ρ = +0.2 (the default): the frontier bows leftward. The minimum-variance portfolio has a vol LOWER than either asset alone. Push to ρ = −0.5 and the bow gets dramatic. At ρ = −1 the minimum-variance portfolio touches σ = 0.
+
+The slider is doing the math you saw in lesson 3.1. Everything you read below is just naming what you watched.
+
+## The diversification identity
+
+For two assets with weights w and (1-w):
+
+`σ_p² = w² · σ_A² + (1-w)² · σ_B² + 2 · w · (1-w) · ρ · σ_A · σ_B`
+
+The first two terms are always positive. The last term is positive when ρ > 0 and negative when ρ < 0. That last term is the entire reason diversification works. As ρ falls, more variance gets canceled by the cross-term, and the portfolio's σ drops.
+
+The intuition: variance is squared, so when you mix things that don't move together, the squared deviations on average partly offset. With perfect anti-correlation, they fully offset for some weight choice, and σ = 0.
+
+<WorkedExample
+  title="Same μ, same σ, three correlations"
+  problem="Both assets: μ = 10%, σ = 20%. You hold 50/50. Compute portfolio σ for ρ = +1, ρ = 0, ρ = −1."
+  steps={[
+    { label: "ρ = +1 (perfect correlation)", body: "σ²_p = (0.5)²(0.20)² + (0.5)²(0.20)² + 2(0.5)(0.5)(1)(0.20)(0.20) = 0.01 + 0.01 + 0.02 = 0.04. σ_p = 20%. Identical to either asset alone. Diversification did nothing." },
+    { label: "ρ = 0 (independence)", body: "σ²_p = 0.01 + 0.01 + 0 = 0.02. σ_p = √0.02 ≈ 14.14%. Vol dropped by factor of √2 ≈ 0.707, with no change in expected return. Free lunch." },
+    { label: "ρ = −1 (perfect hedge)", body: "σ²_p = 0.01 + 0.01 − 0.02 = 0. σ_p = 0. The portfolio is a riskless 10%. The two volatile assets synthesized cash." },
+    { label: "The takeaway", body: "Same μ, same σ, same weights. ρ alone determined portfolio vol. This is why pros obsess over correlations and why the 2008 lesson 'when you need diversification most, correlations go to 1' is so painful." },
+  ]}
+/>
+
+## The N-asset case (briefly)
+
+For N equally weighted assets each with σ:
+
+`σ_p² = σ²/N + ((N-1)/N) · ρ_bar · σ²`
+
+As N → ∞, the first term vanishes and you are left with `σ_p² → ρ_bar · σ²`. **Average correlation is the floor.** No matter how many stocks you own, if their average pairwise correlation is 0.4 and average vol is 25%, your portfolio's vol cannot go below √0.4 × 25% ≈ 15.8%. This is "systematic" or "market" risk, and it is irreducible by holding more of the same kind of thing.
+
+To get below that floor, you need assets in a DIFFERENT correlation cluster (bonds, gold, managed futures, international equities, real assets). This is the practical motivation for asset-class diversification, and the math behind why Bernstein's "If You Can" three-fund portfolio is closer to optimal than any 200-stock all-equity portfolio.
+
+## When diversification fails: tail correlation
+
+The empirical fact every active trader eventually learns: correlations are not constant. In calm markets, US tech and US financials might correlate at 0.4. In a panic (October 1987, October 2008, March 2020), they correlate at 0.9+. Stocks, corporate bonds, EM debt, REITs, commodities, crypto, everything ex-Treasuries (and even some Treasuries) goes the same direction down.
+
+This is sometimes called "tail dependence" or "diversification works until you need it." It is a hard fact about market structure: leverage unwinds force forced selling across uncorrelated names, which makes them correlated in the moment of unwinding. Genuine tail hedges are expensive (long vol, gold in some regimes, cash). Equity correlations among themselves give you middle-of-the-distribution diversification, not tail protection.
+
+## What this means for portfolio construction
+
+Three practical rules fall out of this math:
+
+1. **Don't count securities, count correlation clusters.** Holding SPY + QQQ + VTV is roughly one bet, not three.
+2. **The marginal diversification benefit drops fast.** Going from 1 stock to 10 stocks captures most of the within-equity benefit. Going from 50 to 500 is nearly noise.
+3. **Cross-asset is where the real diversification lives.** Stocks/bonds correlation has been close to zero (sometimes negative) for most of the last 25 years. That is why a 60/40 is more diversified than 100 stocks.
+
+<LessonRecap points={[
+  "Portfolio variance contains a cross-term proportional to correlation; that term is the entire engine of diversification.",
+  "Same μ, same σ, two assets at 50/50: σ_p = σ at ρ = +1, σ/√2 at ρ = 0, can hit 0 at ρ = −1.",
+  "For N equally-weighted assets, portfolio vol bottoms out at √(average correlation) × σ. Average correlation is the floor.",
+  "Correlations rise toward 1 in panics; equity-within-equity diversification fails at the moments it would matter most.",
+  "Count correlation clusters, not securities. Cross-asset diversification dominates within-equity diversification."
+]} />
+
+<ExerciseRunner lessonId="03.2-diversification-math" />

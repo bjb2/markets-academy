@@ -1,0 +1,89 @@
+<RetrievalPrompt
+  prompt="From lesson 4.1, the order book has resting bids and asks. SOMEONE has to post those resting limit orders, often continuously, on both sides, in size. What kind of trader does this, what economic function are they performing, and what compensates them for taking the other side of every retail trade?"
+  reveal="Market makers are firms whose business is continuously quoting BOTH bids and asks on a security, standing ready to buy from sellers and sell to buyers. They are paid by the SPREAD they capture on each round trip: if they buy at 99.98 and sell at 100.02, they earn 4¢ regardless of which direction the security moves. Their economic function is providing IMMEDIACY: a willing counterparty whenever you want to trade. Their risk is INVENTORY: between buying and selling, they hold the position, exposed to price moves."
+/>
+
+## What a market maker does
+
+A market maker (MM) posts simultaneous bids and asks on a security throughout the trading day. Examples:
+
+- **Designated MMs**: each NYSE-listed stock has a Designated Market Maker (formerly "specialist") with explicit obligations to maintain a continuous two-sided market.
+- **Electronic MMs**: firms like Citadel Securities, Virtu, Jane Street, Susquehanna run automated quoting in tens of thousands of securities simultaneously. Equities, options, ETFs, futures, crypto.
+- **Wholesalers**: a subset of electronic MMs that PAY brokers for retail order flow (payment for order flow, lesson 4.5), then internalize those orders against their own inventory.
+
+A typical day for an electronic MM:
+- Quote, say, AAPL with a 1¢ spread, 500 shares on each side, throughout the day.
+- Get hit on the bid (someone sold to them at 100.01); now LONG 500 shares.
+- A second later, someone lifts the offer (buys from them at 100.02); now FLAT, with 1¢ × 500 = $5 profit.
+- Repeat thousands of times per second across thousands of names.
+
+The aggregate edge per round trip is tiny. The aggregate VOLUME is enormous. Virtu reported 1,485 winning days out of 1,485 trading days in its first IPO-era window, with daily revenues averaging hundreds of thousands of dollars from spreads.
+
+## Why a market maker can profit even on a small spread
+
+Two things make the small-spread game viable at scale:
+
+1. **Volume**: a 1¢ edge × 10,000 trades/day × 500 shares × 0.5 fill rate ≈ $25,000/day per name. At 1,000 names that's $25M/day. (Numbers illustrative; real figures depend on inventory turnover and fill probability.)
+2. **Adverse selection management**: most retail and small-institutional flow is uninformed (no information edge). Most of the time, the trader sells because they need cash or have a non-information motive. Such flow is profitable for MMs. The hard cases are INFORMED flow: someone who knows something. MMs use models to detect this and widen quotes (or pull them entirely) when adverse selection signals fire.
+
+This is the core insight of the Glosten-Milgrom model (1985): the bid-ask spread is the MM's COMPENSATION FOR ADVERSE SELECTION RISK plus inventory cost. The spread isn't a tax; it's a price for a service rendered (immediacy) and a hedge against being picked off.
+
+## The Stoll-Ho inventory framework
+
+A second classic model (Stoll 1978, Ho-Stoll 1981): MMs manage inventory, not just spreads. Holding 50,000 shares of AAPL exposes the MM to AAPL price risk. They want to be FLAT (zero net position) at end of day.
+
+The mechanism: when inventory grows long, MM LOWERS its bid to discourage more selling and lowers its ask to encourage more buying. Quotes drift in the direction that returns inventory toward zero. This is sometimes called "skewing quotes."
+
+A useful observation: if you watch the bid and ask move while the mid stays constant, that's typically inventory management, not opinion. If you watch the mid move while the spread stays constant, that's typically opinion (or response to an external signal).
+
+<WorkedExample
+  title="Market maker P/L on a single round trip"
+  problem="MM is quoting GOOG: bid 149.98 (1,000 sh), ask 150.02 (1,000 sh). MM gets hit on the bid (sells happen TO the bid, so MM bought) for 500 sh. One second later, an aggressive buyer lifts the MM's offer for 500 sh. What is the MM's P/L from this round trip, ignoring fees?"
+  steps={[
+    { label: "Step 1: leg 1, MM bought 500 sh at 149.98", body: "Cost basis: 500 × 149.98 = $74,990. MM is now LONG 500 sh of GOOG." },
+    { label: "Step 2: leg 2, MM sold 500 sh at 150.02", body: "Proceeds: 500 × 150.02 = $75,010. MM is now FLAT (zero inventory)." },
+    { label: "Step 3: profit", body: "$75,010 − $74,990 = $20. That is the captured spread: 4¢/share × 500 sh = $20." },
+    { label: "Step 4: now adjust for adverse selection", body: "Half the time, between leg 1 and leg 2, the mid drifts AGAINST the MM (say to 149.95 because everyone is selling). If leg 2 happens at the new mid + half-spread (149.97), MM loses 1¢/share instead of earning 4¢. The MM's net edge per round trip is the spread MINUS the average adverse drift. Survival requires that the spread overcompensate the drift on net." },
+    { label: "Step 5: regulatory layer", body: "On NYSE-listed stocks, a Designated MM has obligations: must maintain continuous two-sided quotes, must participate in opening/closing auctions, must provide stabilizing fills during fast markets. These obligations limit their freedom to PULL QUOTES when adverse selection spikes. In return they get some preferential fees and inside-look at auction imbalances." },
+  ]}
+/>
+
+## Adverse selection in action
+
+The classic example: a stock is quoted 100.00 bid / 100.05 ask. A large news event (earnings beat) is about to hit. An informed trader (or algo) sees the news milliseconds before the MM and lifts the offer for 10,000 shares at 100.05.
+
+Two seconds later, the news is public, and the stock is trading at 100.50. The MM that sold at 100.05 is now SHORT 10,000 shares at a $45,000 loss.
+
+This is "getting picked off" or "adverse selection." Three mitigations:
+
+1. **Wider spreads around scheduled events**: MMs quote with bigger gaps near earnings, FOMC, NFP releases.
+2. **Order-type analytics**: large aggressive orders from unusual sources are flagged as potentially informed; quotes pull.
+3. **Latency arbitrage**: faster MMs see news feeds and update quotes BEFORE slower MMs can be picked off. This is one driver of the HFT arms race (lesson 4.6).
+
+For retail traders, the practical takeaway: trading right around scheduled news releases means trading against widened spreads (cost) AND high adverse selection risk (volatility). Most retail strategies should avoid the windows immediately surrounding scheduled announcements.
+
+## Where MM profits show up vs vanish
+
+MMs make money in:
+
+- High-volume, normal-volatility markets where flow is mostly uninformed.
+- Names with consistent two-way order flow.
+- Calm sessions where inventory can be flattened easily.
+
+MMs lose money in:
+
+- Surprise news cascades (one-sided flow from informed traders).
+- Trending markets where inventory accumulates one direction faster than it can be unwound.
+- Sudden volatility expansion (option MMs get hit hard when realized vol >> implied).
+
+The 2010 "Flash Crash" was partially an inventory crisis: market makers' algorithms detected unusual flow, widened their quotes drastically (or pulled entirely), and the resulting liquidity vacuum allowed prices to gap. Some MMs lost a great deal of money very quickly when they couldn't reduce inventory at any reasonable price.
+
+<LessonRecap points={[
+  "Market makers continuously quote BOTH sides of a security, profiting on the spread by capturing immediacy as a service.",
+  "Glosten-Milgrom: the spread is compensation for adverse selection (the risk of trading against someone with information) plus inventory cost.",
+  "Stoll-Ho: MMs SKEW QUOTES to manage inventory; if long, they lower both bid and ask to encourage selling and discourage further buying.",
+  "Adverse selection mitigations: wider spreads near news, order-type analytics, speed advantages. Retail should avoid trading in the seconds around scheduled announcements.",
+  "MMs lose money in surprise cascades, trending markets, and volatility expansion (Flash Crash). Their model assumes mostly two-sided, mostly uninformed flow."
+]} />
+
+<ExerciseRunner lessonId="04.2-market-makers" />

@@ -12,6 +12,8 @@ import MoneyHierarchy from "./widgets/MoneyHierarchy";
 import SupplyDemand from "./widgets/SupplyDemand";
 import FisherCalculator from "./widgets/FisherCalculator";
 import RuleOf72 from "./widgets/RuleOf72";
+import PortfolioFrontier from "./widgets/PortfolioFrontier";
+import OrderBook from "./widgets/OrderBook";
 
 export const mdxComponents = {
   ExerciseRunner,
@@ -27,6 +29,8 @@ export const mdxComponents = {
   SupplyDemand,
   FisherCalculator,
   RuleOf72,
+  PortfolioFrontier,
+  OrderBook,
   a: (props: ComponentProps<"a">) => (
     <a {...props} target={props.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" />
   ),

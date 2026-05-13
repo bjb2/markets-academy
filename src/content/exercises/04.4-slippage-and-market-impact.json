@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Square-root impact: Q/V = 1% (you trade 1% of average daily volume). Daily vol σ = 2% of price. Using coefficient 0.5, estimate impact as a % of price.",
+    "answer": 0.1,
+    "tolerance": 0.02,
+    "unit": "%",
+    "explanation": "Impact ≈ 0.5 × σ × √(Q/V) = 0.5 × 2% × √0.01 = 0.5 × 2% × 0.1 = 0.1%, or 10 bp. The square root of 1% is 0.1, not 0.01; this is the most-missed step. For a $100 stock, that's 10¢ of impact per share."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "You double your order size from 50,000 to 100,000 shares (everything else equal). Under the square-root law, what happens to expected market impact PER SHARE?",
+    "choices": [
+      "Doubles (2x).",
+      "Increases by ~41% (√2).",
+      "Stays the same (size doesn't matter).",
+      "Halves."
+    ],
+    "correctIndex": 1,
+    "explanation": "Impact ∝ √Q, so doubling Q multiplies impact by √2 ≈ 1.41. Per-share impact rises by 41%, not 100%. This concavity is what makes patient execution profitable: large orders sliced into smaller pieces don't pay the full per-share impact of the whole."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "VWAP and TWAP differ in:",
+    "choices": [
+      "VWAP weights by trading volume; TWAP slices equally over time regardless of volume.",
+      "VWAP uses dark pools; TWAP uses lit markets.",
+      "VWAP is for buy orders; TWAP is for sell orders.",
+      "They are the same algorithm."
+    ],
+    "correctIndex": 0,
+    "explanation": "VWAP matches the day's volume profile (trades more in high-volume windows like the open and close), so your execution matches the volume-weighted average price. TWAP slices into equal pieces at equal time intervals regardless of volume, so you trade as much in the slow midday as in the busy open. VWAP is the more common choice for size today because volume-following execution has less impact in liquid windows; TWAP is useful when you don't trust the day's volume profile or want predictable trade timing."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "For a retail trader placing a 200-share market order in SPY (average daily volume 80M shares), the dominant cost is:",
+    "choices": [
+      "Permanent impact.",
+      "Temporary impact (book walking).",
+      "The half-spread (~0.5¢).",
+      "Commission."
+    ],
+    "correctIndex": 2,
+    "explanation": "Q/V = 200/80,000,000 = 0.00000025, so √(Q/V) ≈ 0.0005, basically nothing. Square-root-law impact is < 0.001 bp, vanishingly small. The half-spread (~0.5¢ on a $450 SPY share = 0.1 bp) totally dominates. For retail in liquid names, only the spread matters; pay no attention to impact analytics until you're trading > 1% of ADV per order."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "An execution-shortfall analysis after the fact tells you: decision price (when signal generated) $50.00, fill price $50.07, end-of-day price $50.20. Decompose the 7¢ shortfall into 'cost' you bore (impact + delay) and 'opportunity benefit' from acting (better than waiting). Why is each component policy-relevant for future trades?",
+    "rubric": [
+      "Cost component: 7¢ shortfall between decision and fill = impact + delay cost. This is the EXECUTION TAX you paid; reducing it requires faster routing, better algos, or smaller orders.",
+      "Benefit component: 13¢ favorable move from fill to close = TIMING WIN. The signal was right, the market moved your way; this is alpha, not execution skill.",
+      "Policy: separating the two prevents misattribution. A trader who looks at +13¢ EOD return on a +7¢ shortfall trade and feels good might be ignoring chronic execution drag. Over thousands of trades, the execution tax compounds; minimizing it is one of the few certain wins available."
+    ]
+  }
+]

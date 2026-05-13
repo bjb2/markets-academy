@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Glosten-Milgrom (1985) decomposes the bid-ask spread into two components. They are:",
+    "choices": [
+      "Trading fees + commissions.",
+      "Adverse selection cost + inventory holding cost.",
+      "Bid-side risk + ask-side risk.",
+      "Liquidity premium + volatility premium."
+    ],
+    "correctIndex": 1,
+    "explanation": "Adverse selection: the risk that the counterparty has information you don't. Inventory holding cost: the risk that the price moves while the MM holds an unbalanced position. The spread must compensate for both expected costs in expectation; if it doesn't, the MM exits the business or widens quotes. Trading fees are a third component but Glosten-Milgrom abstracts from them; they layer on top."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "An electronic MM in AAPL is quoting 1¢ wide (e.g., 149.99 bid / 150.00 ask). Earnings are scheduled for after the close. As we approach 3:50 PM ET (10 minutes before close), what do you predict happens to the MM's quoted spread? Why?",
+    "choices": [
+      "Tightens (more competition before earnings).",
+      "Widens (adverse selection risk spikes; MMs less willing to take the other side of informed flow).",
+      "Stays the same (MMs are required to maintain quotes).",
+      "Disappears (MMs are forbidden from quoting before earnings)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Approaching scheduled events, MMs widen spreads (or reduce size, or both) because the probability of trading against informed flow rises. This is purely the adverse selection term of the spread becoming more expensive. Designated MMs have obligations to MAINTAIN quotes, but they can widen them within rules. Retail traders trying to enter or exit immediately before earnings pay a meaningful tax."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "A market maker observes its inventory in MSFT has grown to long 50,000 shares. What does the Stoll-Ho framework predict they do with their quotes?",
+    "choices": [
+      "Tighten the spread to attract more flow.",
+      "Lower BOTH the bid and the ask to discourage more selling and encourage more buying; this is 'skewing' quotes.",
+      "Stop quoting entirely.",
+      "Widen the spread symmetrically."
+    ],
+    "correctIndex": 1,
+    "explanation": "Inventory management is asymmetric. If long 50K shares, MM wants flow that REDUCES inventory: people buying from them (which requires posting a more attractive ask) and discouraging people selling to them (which requires posting a less attractive bid). Both quotes drift downward together, holding spread roughly constant but moving the mid. Watching mid drift while spread stays constant is often inventory management signaling, not opinion."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The 2010 Flash Crash saw the S&P 500 drop ~9% in minutes before recovering. From a market-microstructure standpoint, what was the proximate mechanism?",
+    "choices": [
+      "Aggressive directional selling alone.",
+      "Market makers pulled or drastically widened quotes when adverse-selection signals fired, creating a liquidity vacuum that let prices gap down rapidly.",
+      "Exchanges deliberately suspended trading.",
+      "Foreign currency intervention."
+    ],
+    "correctIndex": 1,
+    "explanation": "The CFTC-SEC joint report identified the trigger as a large algorithmic sell of E-mini S&P futures, but the AMPLIFICATION came from MMs withdrawing liquidity. When risk-management thresholds tripped, MMs pulled quotes or quoted absurdly wide (some 'stub quotes' at $0.01); without a competitive MM presence, even modest selling could clear price levels with no offsetting bids. Several institutions later traded at $0.01 momentarily before the rebound. The episode revealed that 'continuous liquidity' is a steady-state assumption, not a guarantee."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A retail trader places a market sell of 100 shares of a $100 stock with a 5¢ spread. The MM buys those shares at $99.975 (the bid). What is the retail trader's 'cost' from this trade, in dollars and as a percent of trade value? Then explain (one sentence) why this is the price of a service rather than a tax.",
+    "rubric": [
+      "Trade value: 100 × $100 (mid) = $10,000.",
+      "Cost paid: half-spread × 100 = $0.025 × 100 = $2.50, or 0.025% / 2.5 bp of trade value.",
+      "Service rendered: immediacy. The trader chose to sell NOW rather than wait for a counterparty at mid; the MM took the other side and bears the inventory and adverse-selection risk for that liquidity provision.",
+      "Bonus credit: notes that compared to the cost of waiting (which could include adverse price moves while waiting), 2.5 bp is often very cheap."
+    ]
+  }
+]

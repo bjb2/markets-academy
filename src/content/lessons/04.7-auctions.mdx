@@ -1,0 +1,87 @@
+<RetrievalPrompt
+  prompt="Continuous order books (lesson 4.1) run all day. But at 9:30 AM and 4:00 PM ET, US equity markets do something DIFFERENT: they aggregate orders for a brief window and clear them all at a single price simultaneously. Why these two specific moments, and what mechanism is being used instead of the continuous order book?"
+  reveal="Open and close are the highest-volume moments of the trading day, driven by index funds rebalancing at the close, institutional desks executing day-orders, and overnight news being absorbed at the open. Running these volumes through continuous order books would cause severe price dislocations from short-term imbalances. Instead, exchanges run AUCTIONS: collect orders for several minutes, compute a single clearing price that matches the most volume, and execute all eligible orders at that one price. This is the same mechanism used for IPOs (more on that below). Auctions trade off the continuous CLOB's speed for the auction's ability to absorb size without dislocation."
+/>
+
+## The two daily auctions
+
+US equity exchanges run two auctions per regular trading day on each listing venue:
+
+| Auction | Schedule | Indicative info | Volume share |
+|---|---|---|---|
+| **Opening Cross / Auction** | 9:30:00 AM ET (NYSE has a brief delay) | Imbalance feeds publish ~9:28 onward | ~5-8% of day's volume |
+| **Closing Cross / Auction** | 4:00:00 PM ET | Imbalance feeds from ~3:50 onward | ~10-20% of day's volume |
+
+The close is the bigger event. Index funds, ETFs, mutual funds, and risk-arb desks all want execution at the official 4:00 PM closing price (because their NAV is struck against it, or their performance is benchmarked against it). The result: 10-20% of an entire day's volume can print in the final auction window, depending on the name.
+
+For very heavily indexed stocks (large-caps), the closing auction can run 30%+ of daily volume. For illiquid names, the auction is a minor event.
+
+## How a cross actually works
+
+The mechanism (idealized):
+
+1. **Order collection** (e.g., 3:50 PM to 4:00 PM for the close): orders flow in, both market-on-close (MOC) and limit-on-close (LOC) types. They join the continuous book BUT are tagged for the auction.
+2. **Imbalance dissemination**: exchanges publish indicative imbalance data: "at the current indicative price, there are 500K more buyers than sellers." Other participants can SUBMIT IMBALANCE-OFFSETTING orders to reduce dislocation.
+3. **Cross at 4:00:00 PM**: the matching engine computes the price that matches the most volume given all eligible orders. That becomes the official closing print.
+4. **Print**: all auction-tagged orders execute at the single clearing price. Continuous trading then halts (post-market trades use a different mechanism).
+
+What makes this WORK: aggregating size into one window prevents repeated walking of the book. Instead of 100 sequential market orders each consuming a few cents of book depth, ONE auction clears all 100 at a single price. The price might be different from where the continuous book sat just before the auction, but the aggregate execution cost is lower because the book doesn't have to absorb each piece separately.
+
+## NYSE vs NASDAQ auction conventions
+
+NYSE and NASDAQ run slightly different auctions:
+
+- **NYSE** historically used a Designated Market Maker as auction coordinator; today the process is electronic but the DMM has special privileges (auction participation, opening price stabilization).
+- **NASDAQ** is purely algorithmic; no DMM equivalent; clean auction without a human in the loop.
+
+For practical trading purposes, the two are functionally similar. The auction "official" closing price is what indices use for NAV calculations.
+
+## What happens to liquidity around auctions
+
+Imbalance feeds make auctions partially transparent BEFORE the cross. This creates a specialized trading edge:
+
+- **Imbalance hunters**: see "300K buy imbalance in XYZ at 3:55 PM" and ANTICIPATE the cross price will be elevated. They might sell at the elevated indicative price, betting the imbalance reduces by 4:00.
+- **Liquidity providers**: see same imbalance, post offsetting LOC orders to capture the imbalance premium and reduce dislocation.
+
+The empirical effect: closing prices are LESS dislocated than they would be without imbalance feeds and the offsetting orders they attract. The "auction price discovery" is generally efficient for liquid names. For illiquid names, imbalance hunters can move closing prices significantly (the "5-minute drift" some quant funds harvest).
+
+<WorkedExample
+  title="Reading an imbalance feed"
+  problem="At 3:55 PM, NYSE imbalance feed shows: XYZ buy imbalance 200,000 shares at indicative price $50.30. Current continuous-book price is $50.20. ADV is 5M. What does this tell you, and what trades might it imply?"
+  steps={[
+    { label: "Step 1: imbalance size", body: "200K vs 5M ADV is 4% of daily volume in one direction. Significant for a liquid name; would be enormous for an illiquid one." },
+    { label: "Step 2: indicative price", body: "$50.30 is 0.2% (20 bp) above current continuous price. The auction is going to clear higher than the 3:55 continuous price unless sellers show up." },
+    { label: "Step 3: anticipated dynamics", body: "Other participants see the same imbalance. Some will submit LOC sells at, say, $50.28 to capture some premium while reducing dislocation. As more sellers arrive, indicative price drifts down toward, say, $50.25 by 4:00." },
+    { label: "Step 4: what a sophisticated trader might do", body: "If they believe the imbalance is forced (index fund rebalance) rather than informed (someone with conviction), they SELL into the imbalance: short at $50.28 in the 3:55-3:59 window, then buy back AT THE CROSS PRICE at $50.25 or wherever it lands. Profit = sell price minus cross price. This trade requires confidence that the imbalance is mechanical." },
+    { label: "Step 5: retail takeaway", body: "Retail trying to sell at 4:00 PM via market-on-close in a stock with this imbalance pattern: their MOC sell will fill at the cross price, which has been ARTIFICIALLY ELEVATED by the buy imbalance, so they get a slightly better price than mid-afternoon. The same logic in reverse if there's a sell imbalance." },
+  ]}
+/>
+
+## IPO auctions
+
+When a company goes public via traditional IPO, the first day of trading on the secondary market uses an EXTENDED OPENING AUCTION:
+
+1. **Pricing**: night before the IPO, the syndicate banks (underwriters) negotiate a price with the issuer and institutional book-building participants. This is the IPO PRICE (e.g., $20/share).
+2. **Allocation**: shares are allocated to institutional investors at $20. Retail typically gets a tiny piece via broker programs.
+3. **Secondary opening**: 9:30 AM the next day, the listing exchange runs an extended auction. Orders accumulate from public traders; the auction computes a clearing price based on supply and demand. THIS is the price the stock first trades at on Yahoo Finance.
+4. **First print**: the auction clears, usually 15-45 minutes after open. The first secondary print can be 50%+ above the IPO price (if popular) or below (if mispriced too high).
+
+The gap between IPO price and first secondary price is the "IPO pop" or "underpricing." Historical average: 15-20% pop on the first day, with massive variation. Some IPOs pop 100%+ (Beyond Meat 2019), some price flat or fall on opening (Facebook 2012 traded flat for months).
+
+**Alternative: Dutch auction IPOs** (Google 2004, Direct Listings without underwriting): orders are submitted with both price and quantity; the algorithm computes the highest price at which all shares can be sold. Direct Listings have largely replaced this, but the concept is the same: AUCTION as price-discovery mechanism for an asset whose prior price doesn't exist.
+
+## Halts and reopening auctions
+
+When a stock is halted (news pending, volatility breaker, regulatory), reopening uses an AUCTION rather than just resuming continuous trading. The auction mechanism's price-discovery advantage matters even more here: after a halt, the equilibrium price is unknown, and a continuous book might be dislocated for minutes as participants probe. An auction collects orders during the halt and clears at the best aggregate price.
+
+Volatility halts (Limit Up-Limit Down, or LULD) are the most common type: when a stock moves more than X% in N seconds, trading halts for 5 minutes, then reopens via auction. This dampens cascading dislocations during fast markets. The Flash Crash response of 2010-2012 added LULD to most NMS-listed securities precisely to prevent another crash-and-snapback episode.
+
+<LessonRecap points={[
+  "US equity exchanges run two daily auctions: opening (~5-8% of volume) and closing (~10-20%, sometimes 30%+ for indexed large-caps). Both clear all eligible orders at a single price.",
+  "Imbalance feeds publish before the auction, attracting offsetting liquidity that reduces dislocation. Closing auctions are generally well-functioning for liquid names.",
+  "Auctions trade continuous-book speed for the ability to absorb size without repeated book-walking; this matters most around index-driven volume spikes.",
+  "IPO opening on the secondary market uses an extended auction; the gap from IPO price to first secondary print (the 'pop') averages 15-20% historically with huge variance.",
+  "Volatility halts (LULD) and stock-specific halts reopen via auction, preventing cascading dislocation after pauses. Added system-wide after the 2010 Flash Crash."
+]} />
+
+<ExerciseRunner lessonId="04.7-auctions" />

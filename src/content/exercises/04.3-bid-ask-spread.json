@@ -1,0 +1,61 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "A trader makes 500 round-trip trades per year. Average position: 200 shares of a $25 stock with a 4¢ spread. Compute the annual spread cost in $.",
+    "answer": 4000,
+    "tolerance": 50,
+    "unit": "$",
+    "explanation": "Per round trip: $0.04 × 200 sh = $8 (the full spread; half on entry, half on exit). 500 round trips × $8 = $4,000/year. As a percent of position size ($5,000 per trade), that's the equivalent of 1.6% per round trip just to spread. Active strategies pay this constantly."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Two stocks: A trades 50M shares/day average daily volume, B trades 100K shares/day. Both are around $50/share. All else equal, which is more likely?",
+    "choices": [
+      "A and B have similar spreads.",
+      "A's spread is much tighter than B's (volume drives spread compression).",
+      "B's spread is tighter because retail traders prefer smaller stocks.",
+      "Spread is unrelated to volume."
+    ],
+    "correctIndex": 1,
+    "explanation": "Empirically, spread (in basis points) has a strong inverse relationship with average daily volume. A 500x volume difference would typically translate to a 5-20x spread difference. The mechanism is faster inventory turnover for MMs in the high-volume name, which lowers the inventory holding cost component of the spread."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "During the March 2020 COVID crash, the VIX spiked from ~15 to ~80. What happened to spreads on US equities (in basis-point terms)?",
+    "choices": [
+      "Spreads narrowed because exchanges added emergency liquidity.",
+      "Spreads widened sharply, often 5-10x normal levels, as MMs raised quotes to compensate for elevated inventory holding cost.",
+      "Spreads were unchanged because of tick-size rules.",
+      "Spreads went to zero in dark pools."
+    ],
+    "correctIndex": 1,
+    "explanation": "When volatility spikes, the inventory-holding-cost component of the spread spikes with it (because the expected adverse move while holding inventory is much larger). Spreads on even liquid mega-caps widened to 5-15¢ from their normal 1-2¢ floor during late-March 2020. The 'liquidity premium' is regime-dependent: cheapest exactly when you don't need it, most expensive exactly when you do."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A retail trader's market order in AAPL gets filled at $189.984 when the displayed best ask was $190.00. This 0.6¢ 'price improvement' is most likely the result of:",
+    "choices": [
+      "An exchange bug.",
+      "Internalization: the broker routed the order to a wholesaler (e.g., Citadel) who filled inside the NBBO, capturing some of the spread and sharing some with the customer.",
+      "A loyalty rebate.",
+      "Trading against a dark pool."
+    ],
+    "correctIndex": 1,
+    "explanation": "This is the dominant retail-execution model in US equities. Wholesalers (a few large electronic MMs) pay brokers for retail order flow (PFOF) and fill those orders against their own inventory at slightly better than NBBO. The economic surplus is split: wholesaler profits, broker collects PFOF, retail gets a fraction-of-a-cent price improvement. Whether this is a good or bad deal for retail depends on whether the lit-market price would have been the same absent internalization; SEC and academic studies are mixed, with some evidence that PFOF degrades NBBO quality system-wide."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Explain why low-turnover strategies (e.g., index funds, Buffett-style long holds) compound more cleanly than high-turnover strategies even when the high-turnover strategy has higher gross alpha. Use 'spread cost' and 'compounding' explicitly.",
+    "rubric": [
+      "Identifies that every round trip pays the spread (full spread cost per trade pair).",
+      "Notes that turnover N times per year multiplies spread cost by N.",
+      "Even modest 1-3% per year of friction compounds against the strategy: over 30 years, a 1% drag compounds to ~26% of terminal wealth lost.",
+      "Concludes that gross alpha must exceed friction cost AND exceed buy-and-hold by friction-equivalent margin to be worthwhile; many ostensibly successful active strategies don't clear this bar after careful friction accounting."
+    ]
+  }
+]

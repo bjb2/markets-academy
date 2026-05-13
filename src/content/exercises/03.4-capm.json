@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Risk-free rate is 5%. Expected market return is 11%. A stock has β = 0.8. What is its CAPM-implied required return (in %)?",
+    "answer": 9.8,
+    "tolerance": 0.1,
+    "unit": "%",
+    "explanation": "E[R] = 5% + 0.8 × (11% − 5%) = 5% + 0.8 × 6% = 5% + 4.8% = 9.8%. The low-β stock requires less return than the market (which would be 11%) because it adds less systematic risk."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A stock has ρ (correlation with the market) = 1.0 but its vol is twice the market's vol. What is its β?",
+    "choices": [
+      "1.0 (because correlation is 1).",
+      "2.0 (because vol is 2x).",
+      "0.5 (because correlation/vol = 0.5).",
+      "Cannot determine without expected returns."
+    ],
+    "correctIndex": 1,
+    "explanation": "β = (σ_i / σ_m) × ρ. With ρ = 1 and σ_i = 2σ_m, β = 2. This is the classic 'leveraged version of the market' case: same direction every day, twice the magnitude. β captures the magnitude, ρ captures only the direction."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Empirical work since the 1970s shows the realized Security Market Line is FLATTER than CAPM predicts. What does this mean for an investor?",
+    "choices": [
+      "High-β stocks earn less excess return than their β would imply; low-β stocks earn more.",
+      "Low-β stocks have higher β than reported.",
+      "The market portfolio has earned less than R_f historically.",
+      "Beta cannot be measured reliably."
+    ],
+    "correctIndex": 0,
+    "explanation": "The 'low-vol anomaly' or 'betting-against-beta' effect: low-β portfolios have outperformed high-β portfolios on a risk-adjusted basis for decades. The CAPM-predicted slope (= equity risk premium) is steeper than what shows up in the data. Plausible explanations include leverage constraints (you can't lever low-β stocks to get to the SML, so they stay cheap) and lottery-preference for high-vol payouts (overpaying for high-β names)."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Why does virtually every corporate DCF use CAPM for the cost-of-equity discount rate, even though academics have known for decades that CAPM is empirically wrong?",
+    "choices": [
+      "Habit and inertia, no real justification.",
+      "It's tractable, defensible, and the errors mostly cancel for the purpose of comparing one investment to another; precision matters less than consistency.",
+      "Multi-factor models are too complex for spreadsheet implementation.",
+      "Sarbanes-Oxley requires CAPM."
+    ],
+    "correctIndex": 1,
+    "explanation": "In a relative-valuation context (comparing two investments using the same discount-rate methodology), small absolute errors in cost-of-equity wash out, and CAPM is the framework everyone shares. Switching to Fama-French 3-factor or 5-factor would require justifying each factor exposure for the specific company, which adds dispute without much accuracy gain at the company-DCF level. For pension/endowment portfolio-level work, multi-factor models DO replace CAPM."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "CAPM says only systematic risk is priced; idiosyncratic risk is uncompensated because it can be diversified away. Suppose a US investor holds only 5 large-cap US stocks (not diversified). What does CAPM say about whether they are 'compensated' for the idiosyncratic risk they're carrying, and what does this imply about their expected risk-adjusted return vs the market?",
+    "rubric": [
+      "Identifies that the 5-stock investor IS bearing idiosyncratic risk.",
+      "Recognizes that under CAPM this is uncompensated; the market doesn't reward you for not diversifying.",
+      "Concludes that the investor's expected return is the same as the market's (β_avg ≈ 1 for 5 large-caps), but realized volatility is higher, so their Sharpe ratio is lower than the market's. They take more risk for the same expected return."
+    ]
+  }
+]

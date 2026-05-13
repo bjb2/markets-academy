@@ -1,0 +1,75 @@
+<RetrievalPrompt
+  prompt="MPT (lesson 3.3) says every rational investor holds the same risky-asset portfolio, and varies only the cash share to adjust risk. How does this prescription survive contact with: a 24-year-old saving for retirement, a 64-year-old already retired, a single working parent, and a tenured surgeon with stable high income? Same risky portfolio for all four?"
+  reveal="In strict MPT, yes; in practice, no. The textbook frontier ignores three things that dominate real allocation decisions: (1) HUMAN CAPITAL , future wage income changes how much financial-capital risk you can bear; (2) TIME HORIZON , longer horizons can absorb more volatility because mean reverts and contributions average down; (3) LIABILITIES , known future spending (tuition, retirement) creates a target-shaped risk profile MPT can't see. Practical asset allocation is MPT with human capital and time horizon added back in."
+/>
+
+## The simplest defensible default
+
+For a typical accumulator (working, decades to retirement, no exotic constraints), the Bogleheads three-fund portfolio is the prescription:
+
+- US total stock market (e.g., VTI)
+- International total stock market (e.g., VXUS)
+- US total bond market (e.g., BND)
+
+Typical weights for a long-horizon accumulator: 60-80% total stock (split US/international), 20-40% bonds. <SourceLink id="bogleheads-cs-investing" /> documents the rationale: ultra-low cost, broad diversification, no manager risk, behaviorally simple. <SourceLink id="bernstein-if-you-can" /> reaches a similar prescription from a more autobiographical angle.
+
+Why this is closer to MPT-optimal than it looks: total US + total international + total bond is roughly three different correlation clusters (you saw why this matters in lesson 3.2). Within each cluster, you own the cap-weighted market, which under CAPM IS the tangency portfolio of that cluster. The three-fund portfolio is the unconstrained-MPT prescription IF you accept that the global equity market is the tangency, IF you discount factor premia, and IF you want behavioral robustness above optimization precision.
+
+## Age-based glide paths
+
+Target-date funds (TDFs) automate one variant: start equity-heavy when young, shift to bond-heavy as retirement approaches. Vanguard's 2065 fund holds about 90% equities; their 2025 fund holds about 50%. The shift is gradual, on a "glide path."
+
+The justification:
+
+- **Human capital argument**: a 24-year-old's wealth is mostly future wages. Wages are roughly like a low-vol bond (you keep getting paychecks). So even 100% stocks financially is, in total-wealth terms, mostly bonds. As you age, human capital depletes and financial capital must take over the bond-like role.
+- **Sequence-of-returns argument**: drawdowns near retirement are catastrophic because you're about to withdraw. Reducing equity exposure as that risk approaches makes the portfolio less fragile to bad luck in the last decade of accumulation.
+
+The age-based glide path is not theoretically rigorous (it punts on every detail of the actual person), but it is robustly good ENOUGH that target-date funds are the default in most US employer plans and the median retirement saver does fine in them.
+
+## Risk parity (briefly)
+
+An alternative paradigm: allocate by RISK contribution, not capital contribution. In a typical 60/40, stocks contribute ~90% of portfolio volatility despite being 60% of capital, because stocks are ~3x more volatile than bonds. Risk parity instead sizes positions inversely to vol so each asset contributes equal risk.
+
+A simple two-asset risk-parity portfolio of S&P 500 (vol 16%) and 7-10y Treasuries (vol 7%) would weight roughly 30% stocks / 70% bonds. To get total-portfolio volatility back up to a target (typically matching 60/40 vol), you LEVER the whole thing 1.5-2.0x. Bridgewater's All Weather is the famous example.
+
+Risk parity rests on two assumptions: (1) all assets have positive long-run Sharpe ratios, so leveraging up the diversified mix dominates concentration in any one; (2) borrowing is cheap and stable. Both assumptions held nicely in the 2000-2020 disinflationary regime. Both became problematic in 2022 when stocks and bonds sold off together (correlation rose, both became negative-return) and borrowing costs spiked. Risk parity strategies had their worst year on record.
+
+## Why "right answer" isn't right
+
+A surprising fact: portfolios that differ by 10-20% in their stock/bond weights tend to have similar long-run outcomes for accumulators. The dispersion comes from contribution rates and behavioral mistakes (panic-selling in drawdowns), not from picking the perfect glide path. Bogle's argument was that fee drag (1% per year times 30 years ≈ 25-30% of terminal wealth lost) dwarfs the difference between any two defensible allocations.
+
+The corollary: choose an allocation you'll STICK WITH through a 50% drawdown, even if it's slightly off-optimal. A 60/40 you actually hold beats a 90/10 you panic out of.
+
+<WorkedExample
+  title="Two allocations, 30-year horizon"
+  problem="Investor A holds 80% stocks / 20% bonds. Investor B holds 60% / 40%. Long-run real returns assumed: stocks 6%, bonds 2%. Both contribute $10K/year. Compute terminal real wealth and the impact of a single 50% equity drawdown in year 5."
+  steps={[
+    { label: "Step 1: arithmetic expected return for each", body: "A: 0.8(6) + 0.2(2) = 5.2%. B: 0.6(6) + 0.4(2) = 4.4%." },
+    { label: "Step 2: compound $10K/year contributions over 30 years (annuity FV)", body: "FV(annuity) = C × [(1+r)^N − 1]/r. A: 10K × [(1.052)^30 − 1]/0.052 ≈ 10K × 75.4 ≈ $754K. B: 10K × [(1.044)^30 − 1]/0.044 ≈ 10K × 64.2 ≈ $642K." },
+    { label: "Step 3: now drop equities 50% at year 5 (year-5 starting from $50K, halve equity portion, then keep compounding)", body: "Crude check: investor A loses more in absolute dollars (80% of $50K = $40K equity, halved = -$20K). Investor B loses $15K. But A has 25 more years to recover. With contributions continuing, A typically ends ~$80-100K below the no-crash scenario; B ends ~$40K below. A's CRASH outcome of ~$655K still exceeds B's NO-CRASH outcome of $642K, by a hair." },
+    { label: "Step 4: behavior", body: "The math above assumes A doesn't panic-sell at the -50% drawdown. If A sells at year-5 trough and re-enters at year-7 (typical retail behavior), A's terminal wealth drops to roughly B's level OR BELOW. The 'right' answer (80/20) becomes the wrong answer if you can't hold it." },
+    { label: "Conclusion", body: "Difference between 80/20 and 60/40 is meaningful but small. Difference between either-held-through-drawdown and either-panic-sold is enormous. Behavioral robustness is more valuable than mean-variance precision." },
+  ]}
+/>
+
+## What changes with size and complexity
+
+The simple three-fund or TDF approach handles the vast majority of retail cases. As capital grows and circumstances complicate, additional layers enter:
+
+- **Tax efficiency**: tax-loss harvesting, asset location (bonds in tax-deferred, growth in taxable), Roth conversion ladders.
+- **Estate planning**: step-up basis at death changes optimal sell vs hold decisions.
+- **Concentrated stock**: employer equity (RSUs, ISOs, founder stock) creates idiosyncratic risk that needs hedging.
+- **Liquidity timing**: home down payment, college tuition, business buyouts. Each is a liability the portfolio must match.
+- **Alternatives**: REITs, commodities, managed futures, private credit. Each has a real but small marginal diversification benefit; access costs and lockup periods erode it for most investors.
+
+None of these obviate the three-fund spine. They complement it.
+
+<LessonRecap points={[
+  "Strict MPT prescribes the same risky portfolio for everyone; real allocation must add human capital, time horizon, and liabilities back in.",
+  "Three-fund (US stock + international stock + US bond) is the robust default for accumulators; ultra-low cost, broad diversification, behavioral simplicity.",
+  "Target-date funds automate an age-based glide path; the human-capital and sequence-of-returns arguments justify them adequately for most savers.",
+  "Risk parity is the alternative paradigm: equal RISK contribution by levering up a diversified mix. Works in disinflationary regimes; fragile when stocks and bonds correlate (2022).",
+  "Behavioral robustness (an allocation you'll stick with through a 50% drawdown) dominates mean-variance precision."
+]} />
+
+<ExerciseRunner lessonId="03.6-asset-allocation" />

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Asset A: μ = 6%, σ = 12%. Asset B: μ = 10%, σ = 20%. ρ = 0.5. You hold 70% A, 30% B. What is the portfolio's expected return (in %)?",
+    "answer": 7.2,
+    "tolerance": 0.05,
+    "unit": "%",
+    "explanation": "E[R_p] = 0.7·6 + 0.3·10 = 4.2 + 3.0 = 7.2%. Expected returns are weighted averages."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "Same portfolio (70% A, 30% B; σ_A = 12%, σ_B = 20%, ρ = 0.5). What is the portfolio volatility (in %)? Round to one decimal.",
+    "answer": 12.6,
+    "tolerance": 0.2,
+    "unit": "%",
+    "explanation": "σ²_p = (0.7)²(0.12)² + (0.3)²(0.20)² + 2(0.7)(0.3)(0.5)(0.12)(0.20) = 0.007056 + 0.0036 + 0.00504 = 0.0157. σ_p = √0.0157 ≈ 12.5-12.6%. Note this is BELOW the weighted-average vol of 14.4%."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Two assets each have σ = 25%. The correlation between them is exactly 0. What is the volatility of an equal-weighted portfolio of the two?",
+    "choices": [
+      "25% (the same).",
+      "About 17.7% (25% divided by √2).",
+      "12.5% (half).",
+      "Cannot say without expected returns."
+    ],
+    "correctIndex": 1,
+    "explanation": "σ²_p = 2·(0.5)²·(0.25)² + 0 = 0.5·(0.25)² = 0.03125. σ_p = √0.03125 ≈ 0.177. When ρ = 0 and components have equal σ, portfolio vol = σ/√N. This is the classic 'square-root benefit' of diversification."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "An asset has arithmetic mean return 12% and volatility 30%. Roughly what is its geometric (compound) return?",
+    "choices": [
+      "12% (volatility doesn't affect compounding).",
+      "About 7.5% (drag of σ²/2 ≈ 4.5%).",
+      "About 3% (drag of σ itself).",
+      "Negative (high vol means losing money on average)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Geometric ≈ arithmetic − σ²/2 = 12% − (0.30)²/2 = 12% − 4.5% = 7.5%. High vol carves a real wedge. This is why a smoother lower-vol portfolio with the same arithmetic mean compounds faster."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Of the three portfolio inputs (μ, σ, ρ), which is the LEAST reliably estimated from historical data, and why does that matter for any model built on top of them?",
+    "rubric": [
+      "Identifies μ (expected return) as least stable.",
+      "Notes that even a century of data may not pin down equity premium to within 3 percentage points.",
+      "Concludes that any optimization heavily weighted on μ inputs is fragile; this is the central practical critique of mean-variance optimization."
+    ]
+  }
+]

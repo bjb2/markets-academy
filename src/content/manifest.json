@@ -50,9 +50,18 @@
       "id": 3,
       "title": "Portfolio Theory",
       "subtitle": "MPT, CAPM, factor models. Where the math behind our own sleeve gate comes from.",
-      "objective": "Explain why the sleeve-diversification gate in paper-trading-longcall is the practical application of Markowitz — and where the model breaks.",
+      "objective": "Explain why the sleeve-diversification gate in paper-trading-longcall is the practical application of Markowitz, and where the model breaks.",
       "estWeeks": "2–3 weeks",
-      "lessons": []
+      "lessons": [
+        "03.1-expected-return-variance-correlation",
+        "03.2-diversification-math",
+        "03.3-modern-portfolio-theory",
+        "03.4-capm",
+        "03.5-factor-models",
+        "03.6-asset-allocation",
+        "03.7-rebalancing",
+        "03.8-sleeve-diversification"
+      ]
     },
     {
       "id": 4,
@@ -60,7 +69,15 @@
       "subtitle": "Order books, market makers, slippage. What actually happens between 'buy' and the fill.",
       "objective": "Explain what really happens between hitting 'buy' and seeing the fill, and how much that costs you per round trip.",
       "estWeeks": "2–3 weeks",
-      "lessons": []
+      "lessons": [
+        "04.1-order-books",
+        "04.2-market-makers",
+        "04.3-bid-ask-spread",
+        "04.4-slippage-and-market-impact",
+        "04.5-dark-pools-and-pfof",
+        "04.6-hft-latency-colocation",
+        "04.7-auctions"
+      ]
     },
     {
       "id": 5,
@@ -331,6 +348,156 @@
       "estMinutes": 45,
       "sources": ["cboe-options-institute", "tastytrade-learn"],
       "exerciseCount": 4
+    },
+    "03.1-expected-return-variance-correlation": {
+      "id": "03.1-expected-return-variance-correlation",
+      "layer": 3,
+      "order": 1,
+      "title": "Expected return, variance, correlation",
+      "prereqs": ["02.1-equity-as-claim"],
+      "estMinutes": 45,
+      "sources": ["mit-15.401", "shiller-yale-econ-252"],
+      "exerciseCount": 5
+    },
+    "03.2-diversification-math": {
+      "id": "03.2-diversification-math",
+      "layer": 3,
+      "order": 2,
+      "title": "Diversification math",
+      "prereqs": ["03.1-expected-return-variance-correlation"],
+      "estMinutes": 40,
+      "sources": ["mit-15.401", "bernstein-if-you-can"],
+      "exerciseCount": 5
+    },
+    "03.3-modern-portfolio-theory": {
+      "id": "03.3-modern-portfolio-theory",
+      "layer": 3,
+      "order": 3,
+      "title": "Modern Portfolio Theory (Markowitz)",
+      "prereqs": ["03.2-diversification-math"],
+      "estMinutes": 60,
+      "sources": ["markowitz-1952", "mit-15.401"],
+      "exerciseCount": 5
+    },
+    "03.4-capm": {
+      "id": "03.4-capm",
+      "layer": 3,
+      "order": 4,
+      "title": "CAPM",
+      "prereqs": ["03.3-modern-portfolio-theory"],
+      "estMinutes": 45,
+      "sources": ["mit-15.401", "mit-15.433"],
+      "exerciseCount": 5
+    },
+    "03.5-factor-models": {
+      "id": "03.5-factor-models",
+      "layer": 3,
+      "order": 5,
+      "title": "Factor models (Fama-French)",
+      "prereqs": ["03.4-capm"],
+      "estMinutes": 50,
+      "sources": ["fama-french-1992"],
+      "exerciseCount": 5
+    },
+    "03.6-asset-allocation": {
+      "id": "03.6-asset-allocation",
+      "layer": 3,
+      "order": 6,
+      "title": "Asset allocation in practice",
+      "prereqs": ["03.5-factor-models"],
+      "estMinutes": 45,
+      "sources": ["bernstein-if-you-can", "bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "03.7-rebalancing": {
+      "id": "03.7-rebalancing",
+      "layer": 3,
+      "order": 7,
+      "title": "Rebalancing",
+      "prereqs": ["03.6-asset-allocation"],
+      "estMinutes": 35,
+      "sources": ["bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "03.8-sleeve-diversification": {
+      "id": "03.8-sleeve-diversification",
+      "layer": 3,
+      "order": 8,
+      "title": "Sleeve diversification (our own KB)",
+      "prereqs": ["03.7-rebalancing"],
+      "estMinutes": 40,
+      "sources": ["mit-15.401"],
+      "exerciseCount": 5
+    },
+    "04.1-order-books": {
+      "id": "04.1-order-books",
+      "layer": 4,
+      "order": 1,
+      "title": "Order books",
+      "prereqs": ["03.8-sleeve-diversification"],
+      "estMinutes": 45,
+      "sources": ["bachelier-microstructure", "hasbrouck-emm"],
+      "exerciseCount": 5
+    },
+    "04.2-market-makers": {
+      "id": "04.2-market-makers",
+      "layer": 4,
+      "order": 2,
+      "title": "Market makers and quotes",
+      "prereqs": ["04.1-order-books"],
+      "estMinutes": 45,
+      "sources": ["hasbrouck-emm"],
+      "exerciseCount": 5
+    },
+    "04.3-bid-ask-spread": {
+      "id": "04.3-bid-ask-spread",
+      "layer": 4,
+      "order": 3,
+      "title": "The bid-ask spread",
+      "prereqs": ["04.2-market-makers"],
+      "estMinutes": 40,
+      "sources": ["hasbrouck-emm"],
+      "exerciseCount": 5
+    },
+    "04.4-slippage-and-market-impact": {
+      "id": "04.4-slippage-and-market-impact",
+      "layer": 4,
+      "order": 4,
+      "title": "Slippage and market impact",
+      "prereqs": ["04.3-bid-ask-spread"],
+      "estMinutes": 45,
+      "sources": ["hasbrouck-emm", "coursera-microstructure"],
+      "exerciseCount": 5
+    },
+    "04.5-dark-pools-and-pfof": {
+      "id": "04.5-dark-pools-and-pfof",
+      "layer": 4,
+      "order": 5,
+      "title": "Dark pools and PFOF",
+      "prereqs": ["04.4-slippage-and-market-impact"],
+      "estMinutes": 40,
+      "sources": ["coursera-microstructure"],
+      "exerciseCount": 5
+    },
+    "04.6-hft-latency-colocation": {
+      "id": "04.6-hft-latency-colocation",
+      "layer": 4,
+      "order": 6,
+      "title": "HFT, latency, colocation",
+      "prereqs": ["04.5-dark-pools-and-pfof"],
+      "estMinutes": 45,
+      "sources": ["coursera-microstructure"],
+      "exerciseCount": 5
+    },
+    "04.7-auctions": {
+      "id": "04.7-auctions",
+      "layer": 4,
+      "order": 7,
+      "title": "Auctions (open, close, IPO)",
+      "prereqs": ["04.6-hft-latency-colocation"],
+      "estMinutes": 40,
+      "sources": ["hasbrouck-emm"],
+      "exerciseCount": 5
     }
   }
 }

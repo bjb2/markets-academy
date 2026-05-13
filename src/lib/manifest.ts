@@ -34,12 +34,6 @@ export function nextLesson(currentId: string): Lesson | undefined {
   return manifest.lessons[next.lessons[0]];
 }
 
-export function prereqsMet(lessonId: string, mastery: (id: string) => number): boolean {
-  const lesson = getLesson(lessonId);
-  if (!lesson) return false;
-  return lesson.prereqs.every((pid) => mastery(pid) >= 0.8);
-}
-
 export function resourceById(id: string): Resource | undefined {
   return resources.find((r) => r.id === id);
 }

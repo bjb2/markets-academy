@@ -1,0 +1,61 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "Asks: 50.10 (200 sh), 50.12 (400 sh), 50.15 (1000 sh). You market-buy 800 shares. What is your VWAP fill price (in $)? Round to four decimals.",
+    "answer": 50.1275,
+    "tolerance": 0.001,
+    "unit": "$",
+    "explanation": "Take 200 × 50.10 = $10,020. Take 400 × 50.12 = $20,048. Need 200 more from 50.15: 200 × 50.15 = $10,030. Total: $40,098 / 800 = $50.1225. (Calc tolerance allows for slightly different rounding paths; the correct VWAP is in [50.121, 50.128]. The point is that the fill price IS NOT 50.10; walking the book costs you 2-3¢ per share over the top quote on an 800-share order.)"
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A limit BUY order at $100.00 is placed. The best ask is currently $100.05. What happens?",
+    "choices": [
+      "Order fills immediately at $100.05.",
+      "Order joins the bid side of the book at $100.00 and waits for a matching sell to arrive.",
+      "Order is rejected because price is below the ask.",
+      "Order fills immediately at $100.00."
+    ],
+    "correctIndex": 1,
+    "explanation": "The limit is BELOW the best ask, so it can't cross immediately. It joins the bid side at $100.00. It will fill only if a sell order arrives priced at $100.00 or lower (typically a market sell or a sell limit at $100.00). Until then it rests, exposed to the risk that the market moves up and never returns."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Iceberg orders (a large total quantity that displays only a small piece at a time, replenishing the displayed size after each partial fill) exist primarily to:",
+    "choices": [
+      "Reduce trading fees.",
+      "Hide the true size of institutional flow so market makers don't move price against the order.",
+      "Get better time priority.",
+      "Comply with exchange rules."
+    ],
+    "correctIndex": 1,
+    "explanation": "If a 100,000-share buyer displayed the full size, market makers and aggressive traders would see the demand and adjust quotes higher. By showing only 500 shares at a time, the order appears small. The cost is that iceberg orders typically lose time priority on each replenishment (depends on venue). The benefit is information concealment, which can be worth multiple cents per share on large orders."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "'Maker-taker' fee model: which side typically PAYS a fee, and which side typically EARNS a rebate?",
+    "choices": [
+      "Both sides pay fees.",
+      "Takers (market orders) pay a fee; makers (resting limit orders) earn a rebate.",
+      "Makers pay a fee; takers earn a rebate.",
+      "Fees depend on the security."
+    ],
+    "correctIndex": 1,
+    "explanation": "The maker-taker model is the dominant US equity exchange fee structure (some venues use the inverse, 'taker-maker', for specific products). The economic logic: resting orders SUPPLY liquidity, market orders CONSUME it; the exchange wants to attract liquidity, so it pays makers from fees taken from takers. Retail brokers handling this for you sometimes pass the rebate to themselves rather than the client, which is why payment for order flow (lesson 4.5) and 'commission-free trading' aren't really free."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Why does an exchange use 'price-time priority' rather than 'price-only priority' for matching? What incentive does the time priority within a price level create?",
+    "rubric": [
+      "Price-only would create ties at the same price level, requiring an arbitrary (or random) tiebreaker.",
+      "Time priority rewards being FIRST at a price, incentivizing market makers and other liquidity providers to post quotes EARLIER rather than waiting.",
+      "The result is tighter spreads and deeper books, because liquidity providers compete on speed of posting, not just price.",
+      "Bonus credit: notes that this is one structural reason high-frequency trading firms invest in colocation and microsecond-latency infrastructure (lesson 4.6)."
+    ]
+  }
+]

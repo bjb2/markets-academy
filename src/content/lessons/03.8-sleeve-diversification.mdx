@@ -1,0 +1,92 @@
+<RetrievalPrompt
+  prompt="You are running an active trading strategy with Sharpe = 1.0 (good). You have a candidate second strategy you've backtested, also Sharpe = 1.0. Should you add it to your stack? What single number on the candidate's backtest determines the answer, and why?"
+  reveal="The number is the daily-PnL CORRELATION between the candidate and your existing strategy. If ρ = 1, the combined Sharpe is still 1.0 (no diversification, just doubled exposure to the same bet). If ρ = 0, the combined Sharpe rises toward √2 ≈ 1.4. If ρ = −0.5, combined Sharpe can exceed 1.7. The diversification math from lesson 3.2 is the same math; it just applies to strategy sleeves rather than asset returns. This is exactly the gate used in this curriculum's companion project, paper-trading-longcall."
+/>
+
+## From assets to strategies
+
+Everything you learned in lessons 3.1-3.7 was framed around ASSETS. The same math applies one level up, to STRATEGIES (also called sleeves, often used interchangeably). A strategy's daily PnL series is just a return series; you can compute its μ, σ, and Sharpe; you can compute correlations between strategy PnL series; you can build portfolios of strategies the same way you build portfolios of assets.
+
+This is what hedge funds, multi-strategy shops, and multi-sleeve quant systems actually do. The fund-of-strategies architecture rests entirely on the same diversification identity from lesson 3.2.
+
+## The two-gate rule
+
+In our own paper-trading-longcall project we apply a specific gate when evaluating whether to add a new strategy sleeve. The gate has two conditions, both required:
+
+1. **Standalone viability**: candidate Sharpe > 0.5 over the backtest window.
+2. **Diversification**: daily-PnL correlation with each existing sleeve < 0.7.
+
+If either fails, the sleeve is rejected or de-scoped.
+
+The two-gate rule is the practical answer to the lesson-3.1 question: "what makes a portfolio's variance fall below its components' average?" It directly says: low correlation. The 0.7 ceiling is empirical , it's the threshold below which the combined Sharpe improves meaningfully over the standalone Sharpe of the existing sleeve.
+
+## Why correlation 0.7 is the chosen ceiling
+
+Recall the two-asset portfolio formula:
+
+`σ_p² = w_A² · σ_A² + w_B² · σ_B² + 2 · w_A · w_B · ρ · σ_A · σ_B`
+
+For two equal-Sharpe sleeves of equal vol, equally weighted, the combined Sharpe ratio is:
+
+`Sharpe_combined = Sharpe_standalone · √(2 / (1 + ρ))`
+
+This gives:
+
+| ρ | Sharpe multiplier | Combined Sharpe (each sleeve 1.0) |
+|---|---|---|
+| 1.0 | 1.000 | 1.00 |
+| 0.7 | 1.085 | 1.09 |
+| 0.5 | 1.155 | 1.15 |
+| 0.0 | 1.414 | 1.41 |
+| −0.5 | 2.000 | 2.00 |
+| −1.0 | ∞ (degenerate) | n/a |
+
+Above ρ = 0.7, the combined Sharpe is barely 9% better than standalone. Below ρ = 0.7, the math starts to pay off in earnest. 0.7 is the inflection where the math says "yes, this is worth the operational tax of adding a sleeve."
+
+## Why the standalone Sharpe floor
+
+If correlation is the diversification check, why also require a standalone Sharpe minimum? Because uncorrelated junk drags the portfolio. Adding a Sharpe-0.1 sleeve uncorrelated with your Sharpe-1.0 sleeve INCREASES portfolio Sharpe only marginally (you've diluted the good sleeve more than you've diversified it). The marginal benefit of adding a low-Sharpe sleeve is rarely worth the operational and monitoring cost.
+
+The 0.5 standalone floor is the empirical threshold above which a sleeve carries enough signal to be worth maintaining, even if mostly held for diversification.
+
+## What this prevents
+
+Three concrete failure modes the gate catches:
+
+1. **Disguised single-factor exposure**: two momentum strategies running on overlapping universes. Each has decent standalone Sharpe; their correlation is 0.85. Running both is equivalent to running ONE momentum sleeve at higher leverage, with twice the operational complexity and the same risk profile. The gate rejects the second sleeve.
+2. **Cosmetically different but mechanically same**: e.g., RSI(2) on SPY and Bollinger-mean-reversion on SPY. Different indicators, same underlying bet (S&P 500 short-term mean reversion). Correlation often 0.9+. Gate rejects.
+3. **Mediocre standalone hidden by 'diversification'**: a Sharpe-0.3 sleeve uncorrelated with your good one. Sounds free but isn't: it consumes capital, attention, and operational reliability for trivial portfolio-level benefit. Standalone gate rejects.
+
+## A subtle case: intentional hedges
+
+Sometimes you add a sleeve SPECIFICALLY because it has negative or near-zero correlation with an existing sleeve , a momentum strategy with a mean-reversion overlay, for example. In that case the correlation ceiling can be tightened (e.g., ρ < 0.3) and the standalone Sharpe floor relaxed (the sleeve's job is hedging, not primary return).
+
+The structural form is the same. You're still applying the diversification identity. You're just optimizing for variance reduction first, expected return second.
+
+<WorkedExample
+  title="Two-sleeve combination Sharpe"
+  problem="Sleeve A: Sharpe 1.0, σ = 12%/yr. Sleeve B: Sharpe 0.8, σ = 10%/yr. Daily-PnL correlation 0.4. Equal weights. Compute combined portfolio Sharpe."
+  steps={[
+    { label: "Step 1: compute each sleeve's expected return (μ - R_f)", body: "A: 1.0 × 12% = 12%/yr excess. B: 0.8 × 10% = 8%/yr excess." },
+    { label: "Step 2: combined excess return (linear)", body: "E[R_p] - R_f = 0.5(12%) + 0.5(8%) = 10%." },
+    { label: "Step 3: combined volatility", body: "σ²_p = (0.5)²(0.12)² + (0.5)²(0.10)² + 2(0.5)(0.5)(0.4)(0.12)(0.10) = 0.0036 + 0.0025 + 0.0024 = 0.0085. σ_p = √0.0085 ≈ 9.22%." },
+    { label: "Step 4: combined Sharpe", body: "10% / 9.22% ≈ 1.085." },
+    { label: "Compare", body: "Sleeve A alone: Sharpe 1.0. Combined: Sharpe 1.085. We improved by ~9% via the diversification benefit, even though sleeve B has lower standalone Sharpe. The 0.4 correlation was low enough to make the mix profitable; if correlation were 0.8+, adding sleeve B would have made the portfolio worse." },
+  ]}
+/>
+
+## Where this lives in our own work
+
+Our paper-trading-longcall project has two sleeves: a stock-replacement long-call options sleeve and a sa-infra equity-mirror sleeve. We're evaluating two additional candidates (swing-pullback and RSI(2) mean-reversion) on a separate Alpaca paper account. The acceptance criterion is exactly the gate above: each must have standalone Sharpe > 0.5 AND daily-PnL correlation with the longcall sleeve below 0.7. This is the curriculum's portfolio theory applied to our own trading.
+
+The companion KB at `knowledge/domains/strategy-sleeve-diversification-gate` documents the gate. The principle ties back to Markowitz directly: a sleeve buys you risk-adjusted return only to the degree it reduces variance per unit of expected return. Same math, different label.
+
+<LessonRecap points={[
+  "Strategy sleeves are like asset returns: μ, σ, ρ, Sharpe all apply. Diversification math from lesson 3.2 applies one level up.",
+  "Two-gate rule for adding a sleeve: standalone Sharpe > 0.5 AND daily-PnL correlation with each existing sleeve < 0.7.",
+  "Correlation 0.7 ceiling is the inflection where the combined-Sharpe math becomes meaningfully positive; above it, adding a sleeve is mostly noise + ops cost.",
+  "Standalone Sharpe floor prevents adding uncorrelated-but-mediocre sleeves that dilute the good ones without enough variance reduction.",
+  "Intentional hedges (designed for variance reduction) can tighten the ρ ceiling and relax the Sharpe floor; the structural form is the same."
+]} />
+
+<ExerciseRunner lessonId="03.8-sleeve-diversification" />

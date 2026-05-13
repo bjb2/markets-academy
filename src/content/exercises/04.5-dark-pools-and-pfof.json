@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Payment for order flow (PFOF) describes:",
+    "choices": [
+      "Customers paying brokers commissions.",
+      "Wholesalers paying brokers for the right to internalize and fill retail orders against their own inventory.",
+      "Exchanges paying market makers for posted quotes.",
+      "Hedge funds paying for proprietary data."
+    ],
+    "correctIndex": 1,
+    "explanation": "PFOF flows FROM wholesalers (Citadel Securities, Virtu, etc.) TO brokers (Robinhood, Schwab, etc.) in exchange for routing retail orders. Wholesalers internalize the orders, earning a spread that more than covers the PFOF payment. Maker rebates (exchanges paying MMs for resting orders) are a different but conceptually adjacent payment in the lit market."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Dark pools enable trades to happen without pre-trade visibility. Why might a large institutional buyer specifically prefer a dark pool to a lit exchange for a 500,000-share order?",
+    "choices": [
+      "Dark pools have lower commissions.",
+      "Dark pools hide the order's existence and size before execution, reducing information leakage and the permanent market impact that would result from a visible large order.",
+      "Dark pools always offer better prices.",
+      "Dark pools are required by regulation for size."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary value is information concealment. A 500K-share buy order on a lit book would signal demand, causing MMs and watchers to raise quotes BEFORE the order completes (permanent impact). A dark pool keeps the order invisible; only after a trade prints does anyone know it happened. Midpoint crossing (saving the half-spread) is a secondary benefit. Dark pools don't 'always' offer better prices, and they aren't required by regulation."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "PFOF is BANNED for retail equity in which jurisdictions?",
+    "choices": [
+      "United States and EU.",
+      "United Kingdom, Canada, and Australia.",
+      "Japan and South Korea.",
+      "None; it is legal everywhere."
+    ],
+    "correctIndex": 1,
+    "explanation": "UK, Canada, and Australia ban PFOF for retail equity orders. The US permits it (regulated under SEC Rule 605/606 disclosure). The EU is mid-debate with some member-state restrictions. The differing regimes provide a natural experiment; UK retail spreads on liquid names are arguably wider than US retail's PFOF-adjusted effective spreads, but lit-market quality is harder to compare directly."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The 'two-tier market' critique of PFOF argues that:",
+    "choices": [
+      "Retail traders pay higher commissions than institutions.",
+      "Retail traders are denied access to dark pools.",
+      "Siphoning the most uninformed retail flow to wholesalers leaves lit markets with proportionally more informed flow, causing lit-market spreads to widen system-wide.",
+      "Wholesalers manipulate prices."
+    ],
+    "correctIndex": 2,
+    "explanation": "This is the structural critique: market making is a mixed-flow business; the spread is calibrated to ALL flow including the cushioning effect of uninformed retail. If you remove uninformed retail from the lit pool (via internalization), the remaining lit pool is harder to make markets in, so spreads widen for everyone trading there. Whether this happens MEASURABLY is empirically debated; some studies find modest spread widening, others find no significant effect."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A retail trader's order in AAPL gets filled at $189.997 via a wholesaler. The NBBO at the time of the order was $189.99 / $190.00 (midpoint $189.995). Decompose this in 2-3 sentences: who got how much value out of this trade vs the alternative of trading at NBBO?",
+    "rubric": [
+      "Retail saved 0.3¢/share vs NBBO ask of $190.00 (the price they would have paid trading at NBBO on a lit venue).",
+      "Wholesaler captured the remaining ~0.7¢/share of the half-spread (NBBO mid was $189.995; wholesaler filled at $189.997, so wholesaler captured 0.2¢ over midpoint).",
+      "Broker collected PFOF separately (a fraction of a cent per share, not visible in the fill price but real on the wholesaler's invoice).",
+      "Bonus credit: notes that the alternative of midpoint dark pool execution would have saved retail MORE (the full half-cent vs the 0.3¢ achieved here); the wholesaler arrangement is better than NBBO but worse than midpoint."
+    ]
+  }
+]

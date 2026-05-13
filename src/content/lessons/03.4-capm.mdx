@@ -1,0 +1,84 @@
+<RetrievalPrompt
+  prompt="From lesson 3.3, every rational investor holds the same tangency portfolio. If the assumption holds for everyone, what must the tangency portfolio be made of, in aggregate? And what does this imply about the EXPECTED RETURN of a single stock vs the market?"
+  reveal="If everyone holds the same risky portfolio, the aggregate of holdings IS the market by definition. So the tangency portfolio = the market portfolio. From there, a tight derivation shows that a stock's required return depends only on how much it adds to the market's risk, measured by beta. Stocks with high beta must offer higher expected returns; stocks with low beta require less. This is the Capital Asset Pricing Model: E[R_i] = R_f + β_i × (E[R_m] − R_f)."
+/>
+
+## The CAPM equation
+
+The Capital Asset Pricing Model, derived independently by Sharpe (1964), Lintner (1965), and Mossin (1966) from Markowitz's foundation, states:
+
+`E[R_i] = R_f + β_i · (E[R_m] − R_f)`
+
+Where:
+- R_f: risk-free rate (typically 3-month T-bill)
+- E[R_m]: expected market return (typically the broad equity index)
+- β_i = Cov(R_i, R_m) / Var(R_m): the stock's sensitivity to the market
+- (E[R_m] − R_f): the equity risk premium
+
+In words: a stock's required return is the risk-free rate PLUS a premium proportional to its market-beta. A stock with β = 1 must earn the market return. A stock with β = 2 must earn TWICE the market premium above R_f. A stock with β = 0 (truly uncorrelated with the market) must only earn R_f.
+
+This is a startling claim. It says **only systematic (market) risk is priced**. Idiosyncratic risk specific to one company is diversifiable, so investors won't pay for it. If you bear it, you bear it for free.
+
+## What beta actually measures
+
+β_i is the slope of a regression of stock i's returns on market returns. Run the line, get the slope, call it beta. Computationally trivial. Conceptually:
+
+- β > 1: stock amplifies market moves. Tech, leveraged businesses, small caps.
+- β ≈ 1: stock moves with the market. Diversified industrials.
+- 0 < β < 1: stock dampens market moves. Utilities, staples, some defensive sectors.
+- β = 0: stock is uncorrelated with market. Rare. Some merger-arb strategies, T-bills.
+- β < 0: stock moves opposite the market. Gold miners in some regimes; some long-vol strategies.
+
+A common mistake: confusing β (covariance, scale-aware) with ρ (correlation, scale-free). A stock with ρ = 1 but vol = 2× market has β = 2. ρ tells you about co-movement direction; β tells you about co-movement magnitude.
+
+<WorkedExample
+  title="Required return on a stock"
+  problem="Risk-free rate is 4%. Expected market return is 10%. Apple has β = 1.3. What is Apple's required (CAPM-implied) return?"
+  steps={[
+    { label: "Step 1: equity risk premium", body: "ERP = E[R_m] − R_f = 10% − 4% = 6%." },
+    { label: "Step 2: CAPM equation", body: "E[R_Apple] = R_f + β × ERP = 4% + 1.3 × 6% = 4% + 7.8% = 11.8%." },
+    { label: "Step 3: interpret", body: "If you're discounting Apple's cash flows at less than 11.8%, you are paying for risk you could diversify away by holding the market index, so you're overpaying. If Apple's actual expected return (from your valuation work) exceeds 11.8%, it is mispriced cheap." },
+    { label: "Caveat", body: "β is estimated, often with wide error bars. Apple's reported β depends on the window (1y rolling vs 5y monthly), the index used (S&P 500 vs Russell 3000), and the frequency (daily vs monthly). Variation across vendors can be 0.2-0.3. Treat the answer as an interval, not a point." },
+  ]}
+/>
+
+## The Security Market Line
+
+A useful picture: plot β on the x-axis, expected return on the y-axis. CAPM says every stock should plot on a single line:
+
+- y-intercept: R_f
+- slope: equity risk premium (E[R_m] − R_f)
+- the market portfolio plots at (β = 1, E[R_m])
+
+This line is the **Security Market Line (SML)**. Stocks above the SML are "cheap" (offering more return than their β requires); stocks below are "expensive." Active management is, in part, the search for SML mispricings.
+
+The SML differs from the Capital Allocation Line (CAL) you saw in lesson 3.3: CAL is in (σ, μ) space and is about portfolios; SML is in (β, μ) space and is about individual assets.
+
+## Why CAPM matters even if it's wrong
+
+CAPM has been empirically attacked since the early 1970s. The two big failures:
+
+1. **The flat slope.** Empirical SML is too flat: high-β stocks earn less than CAPM predicts, low-β stocks earn more. The "low-vol anomaly" is one of the most robust findings in factor research.
+2. **β alone is not enough.** Fama and French (1992, next lesson) showed that size and value characteristics explain return variation that β doesn't capture. Multi-factor models replaced single-factor CAPM in academic and quantitative practice.
+
+So CAPM is wrong in its predictive precision. But it remains:
+
+- The **discount-rate framework** used in virtually all corporate-finance valuation (every DCF you'll see has CAPM behind its cost-of-equity number).
+- The **conceptual benchmark** for everything that came after. Factor models extend CAPM; behavioral finance critiques CAPM; risk parity inverts CAPM's volatility intuitions. All of them assume you know CAPM.
+- The **first vocabulary** for systematic vs idiosyncratic risk, β, and risk-adjusted return.
+
+You'll spend years in markets without using CAPM to price anything precisely. You won't go a week without using the words it gave you.
+
+## A subtle but important point
+
+CAPM's central claim is not "high β predicts high return in your data." It is "high β REQUIRES high expected return for the market to be in equilibrium." The two are different. The equilibrium reading is conceptual; the predictive reading is empirical. The empirical reading has failed. The equilibrium reading is still useful as a baseline assumption from which deviations can be measured and traded against. This is the same move <SourceLink id="markowitz-1952" /> makes: the framework is normative (how the world should look) rather than descriptive (how it does look).
+
+<LessonRecap points={[
+  "CAPM: E[R_i] = R_f + β_i × (E[R_m] − R_f). Only systematic risk (β) is compensated; idiosyncratic risk is diversifiable and uncompensated.",
+  "β = Cov(R_i, R_m) / Var(R_m). It is the slope of a regression of stock returns on market returns.",
+  "The Security Market Line plots required return vs β; stocks above the line are cheap, below are expensive.",
+  "Empirically the SML is too flat (low-β anomaly) and β alone is insufficient (size/value factors matter). CAPM is wrong as a precise predictor.",
+  "CAPM survives because it gave us the vocabulary: systematic vs idiosyncratic risk, β, equity risk premium, cost of equity. Every DCF in finance still uses it."
+]} />
+
+<ExerciseRunner lessonId="03.4-capm" />

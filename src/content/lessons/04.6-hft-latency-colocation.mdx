@@ -1,0 +1,114 @@
+<RetrievalPrompt
+  prompt="A market-making algo needs to update its quotes when underlying conditions change (news hits, an order arrives, an index futures contract ticks). If the algo is 10 milliseconds slower than its fastest competitor, what happens to its P/L? Why is this 10ms-level latency war qualitatively different from the broader 'algorithms vs humans' transition?"
+  reveal="The slower MM gets PICKED OFF: every time conditions move, faster MMs update their quotes first; slower MMs are left holding inventory at stale prices. Over millions of trades, this is fatal. The latency war is qualitatively different because it's a winner-take-most race for INFORMATION advantage measured in microseconds, where the marginal benefit of being 1 microsecond faster than the runner-up is the entire margin on a class of trades. This drives investment in colocation (servers physically in the exchange building), microwave/laser links between data centers, and FPGA-based execution. It also concentrates the market-making business into a handful of firms (Citadel, Virtu, Jump, Tower, Jane Street) with infrastructure budgets retail can't fathom."
+/>
+
+## What HFT actually is
+
+"High-frequency trading" is a loose label for strategies that:
+
+- Operate on millisecond to microsecond holding periods.
+- Generate revenue from spread capture, latency arbitrage, statistical arbitrage, or rebate harvesting.
+- Require specialized infrastructure (colocated servers, hardware-accelerated execution, direct exchange feeds).
+- Account for 50-70% of US equity volume by share count, though a much smaller share by dollar value of net positions.
+
+Confusingly, "HFT" gets applied to several distinct businesses:
+
+| Sub-strategy | Description | Holding period |
+|---|---|---|
+| **Electronic market making** | Quote two-sided; capture spread; manage inventory. | Seconds-minutes. |
+| **Latency arbitrage** | Trade ahead of slower participants when the same information becomes available across venues. | Microseconds. |
+| **Statistical arbitrage** | Trade correlated baskets when prices diverge from short-term equilibrium. | Minutes-hours. |
+| **Rebate arbitrage** | Capture exchange maker rebates by adding liquidity; net P/L is the rebate minus mark-to-market noise. | Seconds-minutes. |
+
+Each has different latency requirements. Stat arb cares about microseconds for execution but milliseconds is fine for signal generation. Latency arb needs every nanosecond. Market making cares about being faster than the next MM in line.
+
+## Why latency is load-bearing for some HFT
+
+Consider a simple example: ES (E-mini S&P 500 futures) trade in Chicago. SPY ETF trades in New York. ES leads SPY by a tiny fraction of a second in price-discovery sequence (ES is more liquid for index speculators).
+
+A latency-arb HFT runs the strategy:
+1. Watch ES tick up in Chicago.
+2. Predict that SPY will tick up in New York in the next few milliseconds.
+3. Buy SPY in New York BEFORE the ETF arbitrage closes the gap.
+
+The trade is risk-free in theory: you've already observed the leading signal. But it only works if you can act faster than ALL OTHER traders running the same playbook. The race is to be first.
+
+The Chicago-to-NY distance is ~720 miles. Light through fiber is roughly two-thirds the speed in vacuum, so ~9 milliseconds round-trip. Microwave links shave this to ~4-5 ms (straight-line propagation through air). Some firms have built dedicated microwave towers along the route just for this signal.
+
+The result: a $300M+ infrastructure investment for a few milliseconds of advantage. Worth it because at HFT volumes, those milliseconds capture millions per year.
+
+## Colocation
+
+The cleanest latency win: put your server PHYSICALLY in the exchange's data center. Light from your server to the matching engine travels meters, not miles. Latency drops from milliseconds to microseconds.
+
+Exchanges sell colocation as a commercial product. NYSE's Mahwah, NJ data center offers cage space at premium prices; NASDAQ has Carteret. Equal-distance cabling (all colocated servers get the same cable length to the matching engine, so no co-located firm has an advantage over another) became standard after complaints about unequal-distance racks.
+
+A non-colocated participant trading from, say, a Manhattan office: ~1 ms to the matching engine. A colocated participant: under 50 microseconds. The 20x difference is decisive for latency-sensitive strategies.
+
+## The actual edge isn't speed, it's INFRASTRUCTURE INVESTMENT
+
+A key misconception: HFT firms are not making money "because they have faster computers." They are making money because they invested billions in:
+
+- Custom FPGA execution chips (microsecond decision-to-order pipelines).
+- Direct exchange feeds (bypassing the SIP/NBBO consolidated tape that retail uses).
+- Microwave links between data centers.
+- Cross-asset correlation models trained on order-flow microstructure.
+- Risk-management systems that handle thousands of position updates per second.
+
+That infrastructure is the moat. Competitors with similar capital and engineering can match it (Tower, Jump, Citadel, Virtu, Jane Street, Susquehanna are roughly peers in this game). Competitors WITHOUT that infrastructure cannot.
+
+This is why HFT did NOT become a fragmented, retail-accessible business: the capital and engineering threshold is enormous. The 10-15 firms operating at the frontier remain dominant.
+
+<WorkedExample
+  title="What 1 millisecond is worth"
+  problem="An HFT firm runs latency arb between ES futures and SPY. They observe ES tick on average 8 ms before SPY adjusts. They estimate: if they're 1 ms faster than competitors, they capture an extra 50,000 trades/day at $0.005 average profit per share, on 100 sh average size. What's the daily revenue from that 1 ms?"
+  steps={[
+    { label: "Step 1: trades per day attributable to the 1ms edge", body: "50,000 trades that wouldn't have happened without the speed advantage." },
+    { label: "Step 2: profit per trade", body: "$0.005/share × 100 shares = $0.50 per trade." },
+    { label: "Step 3: daily revenue", body: "50,000 × $0.50 = $25,000/day." },
+    { label: "Step 4: annual", body: "~250 trading days × $25,000 = $6.25M/year of revenue specifically attributable to that 1 ms." },
+    { label: "Step 5: justifies how much infrastructure spend", body: "If the alternative is a $300M microwave link with 10-year useful life, that's $30M/year amortized vs $6.25M revenue. NOT obviously worth it for a SINGLE 1ms gain. But the microwave link gives you the FULL several-ms advantage, not 1ms; you also serve other strategies (FX, options, indices); and the dominance prevents competitors from getting the same edge. Total revenue from the infrastructure across all strategies might be $50M-100M/year, well above amortization." },
+    { label: "Step 6: the political economy", body: "Total HFT industry revenue is estimated $5-10B/year in the US. That's the consolidated transfer from slower participants (institutions, retail without PFOF benefits) and other HFTs to the fastest tier. The infrastructure war keeps the top firms entrenched; the question of whether this transfer is justified by the liquidity provision they also do is the central HFT controversy." },
+  ]}
+/>
+
+## What HFT provides and what it extracts
+
+The HFT controversy in one sentence: HFTs provide liquidity (tighter spreads, deeper books, faster price discovery) AND extract latency-arb profits from slower participants. The net effect is contested.
+
+Arguments that HFT is net beneficial:
+- Spreads in US equities are vastly tighter now than in 2000.
+- Liquidity is generally deeper (more shares at top of book) outside crisis windows.
+- Price discovery is faster (information impounds into prices in milliseconds, not minutes).
+
+Arguments that HFT extracts more than it adds:
+- Latency arb is pure transfer from slower to faster; no price discovery is happening, just timing.
+- In crisis windows, HFTs withdraw liquidity (Flash Crash, March 2020) precisely when it's most needed.
+- The market structure rewards investment in speed-as-infrastructure rather than research-as-information; this has opportunity cost.
+
+Michael Lewis's <em>Flash Boys</em> popularized one side of this debate. The IEX exchange (later, alongside Members Exchange MEMX) was founded specifically to "slow down" HFT advantages with deliberate latency floors. The empirical effect of these slow-market venues on overall execution quality is mixed.
+
+## What it means for everyone else
+
+For a retail trader, HFT is largely invisible:
+- Your fills happen in microseconds, far faster than your reaction time.
+- Spreads in liquid names are 1¢, tighter than at any point in history.
+- PFOF / internalization (lesson 4.5) routes you around the most aggressive HFT extraction.
+
+For institutional traders, HFT shapes execution algo design:
+- VWAP/POV slicing exists partly to manage HFT detection.
+- Dark pool routing protects against lit-market HFT.
+- Some firms use "anti-HFT" venues (IEX) for sensitive orders.
+
+For market-quality discussions, HFT is the single most-debated structural feature of modern equities. Knowing what it is (and isn't) matters for reading both academic finance literature and political proposals.
+
+<LessonRecap points={[
+  "HFT covers multiple strategies (electronic MM, latency arb, stat arb, rebate arb) operating on millisecond-to-microsecond holding periods, totaling 50-70% of US equity volume.",
+  "Latency arbitrage extracts value by being faster than other traders observing the same information; microwave links between Chicago and NY were built for this specific purpose.",
+  "Colocation puts servers physically in exchange data centers, dropping latency from ms to μs; 20x advantage over non-colocated participants.",
+  "HFT's moat is infrastructure investment (FPGAs, direct feeds, cross-venue links), not just speed; 10-15 firms dominate because the capital threshold is enormous.",
+  "HFT debate: provides liquidity and faster price discovery; extracts latency-arb profits; withdraws liquidity in crises. Net effect contested."
+]} />
+
+<ExerciseRunner lessonId="04.6-hft-latency-colocation" />

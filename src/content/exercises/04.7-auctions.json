@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "What share of a heavily-indexed large-cap stock's daily volume can typically print in the CLOSING AUCTION window (3:55-4:00 PM)?",
+    "choices": [
+      "About 1-2%.",
+      "About 5%.",
+      "10-30%, sometimes higher for the most heavily indexed names.",
+      "Closing auctions are not used in US equity markets."
+    ],
+    "correctIndex": 2,
+    "explanation": "Index funds and ETFs strike their NAV at the 4:00 PM official close, and they want to execute AT that close to track the benchmark. This concentrates enormous volume into the auction. SPY ETF rebalancing, S&P 500 inclusion/exclusion events, and pension-fund cash-equitization can push 30%+ of an entire day's volume into the closing five minutes."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Imbalance feeds (published before the closing auction) typically REDUCE dislocation rather than amplify it. The mechanism is:",
+    "choices": [
+      "Traders ignore them.",
+      "They attract offsetting liquidity (counter-side LOC orders) that brings supply and demand closer to balance, reducing the auction's clearing price deviation from the prior-continuous price.",
+      "Exchanges manipulate them.",
+      "They are randomized."
+    ],
+    "correctIndex": 1,
+    "explanation": "Imbalance dissemination is a deliberate design: by signaling 'we have a large buy imbalance', the exchange invites traders to submit offsetting sells (with limit prices). Those offsetting sells reduce the imbalance and the resulting cross price moves closer to the prior-continuous-book level. Without imbalance feeds, the auction would be a black box, and dislocation would be larger. Empirically this works well for liquid names."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "An 'IPO pop' is the gap between:",
+    "choices": [
+      "The pre-IPO valuation and the post-IPO valuation.",
+      "The IPO PRICE (negotiated by underwriters) and the FIRST SECONDARY PRICE (set by the opening auction on the listing day).",
+      "The closing price on day 1 and day 2.",
+      "Insider sale price and public sale price."
+    ],
+    "correctIndex": 1,
+    "explanation": "IPO price is what allocated institutional investors paid the night before. First secondary price is what the rest of the market first paid via the opening-day auction. The gap (historical average 15-20%) represents either underpricing (the underwriters left money on the table) or 'first-day enthusiasm' (the secondary market overshoots equilibrium). The pop has been a recurring source of conflict between issuers (who want a high IPO price) and underwriters (who like to leave a pop for allocated clients)."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "After a volatility halt (Limit Up-Limit Down, 5-minute pause), the stock REOPENS via:",
+    "choices": [
+      "Continuous order-book matching immediately.",
+      "An auction that collects orders during the halt window and clears at the aggregate-best price.",
+      "Market order only.",
+      "Manual decision by exchange officials."
+    ],
+    "correctIndex": 1,
+    "explanation": "Reopening via auction is the post-Flash-Crash design. The auction's price-discovery advantage matters most when equilibrium is uncertain (after a halt). Reopening directly into continuous trading risks immediate re-dislocation as the first orders impact thin books. The auction mechanism aggregates and clears more cleanly. LULD halts are 5 minutes; reopening auctions typically clear within 1 minute of resumption."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Compare and contrast the continuous CLOB (lesson 4.1) and the auction mechanism (this lesson). When is each preferable? Use 'price discovery' and 'size accommodation' explicitly.",
+    "rubric": [
+      "Continuous CLOB: optimized for fast price discovery (every order updates the book and the displayed mid); poor at absorbing large size (each market order walks the book).",
+      "Auction: optimized for absorbing concentrated size (single clearing price for all eligible orders, no repeated book-walking); slower price discovery (clears at a single moment, not continuously).",
+      "Conclusion: continuous CLOB is dominant intraday because retail and HFT flow is continuous and small per-order; auction is dominant at open/close/halts because flow is concentrated and large per-event. Modern markets use BOTH, switching mechanisms at scheduled bell times and after halts."
+    ]
+  }
+]

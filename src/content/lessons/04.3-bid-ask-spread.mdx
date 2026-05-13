@@ -1,0 +1,90 @@
+<RetrievalPrompt
+  prompt="The bid-ask spread on SPY is typically about 1¢ on a $450 share. The spread on a small, illiquid micro-cap can be $0.05 on a $5 share. Express each as a percentage of price. Now: which trade is more expensive, and what specifically about a name determines how big its spread will be?"
+  reveal="SPY: 1¢/450 ≈ 0.2 basis points. Micro-cap: $0.05/$5 = 100 basis points = 1%. The micro-cap is 500x more expensive to trade per round trip. Spread width is determined by (1) volume / order arrival rate, high volume means MMs turn inventory faster, so each individual quote needs to recover less inventory cost; (2) volatility, higher vol means more adverse-price-move risk while holding inventory; (3) tick size and regulatory minimums; (4) competition among MMs."
+/>
+
+## What "spread" actually costs you
+
+The quoted spread is best-ask minus best-bid: a property of the book at a moment in time. The half-spread is what a round-trip costs in expectation if you buy at the ask and sell at the bid: (ask − bid) / 2 per share.
+
+A 1¢ spread on a $100 stock looks tiny. As a percentage it's about 1 basis point. Round-trip cost (buy-then-sell) is twice the half-spread = the full spread = 2 bp. Over 100 round trips per year that's 200 bp = 2% gone to spread, not counting commissions or slippage. For a retail buy-and-hold investor this is invisible. For a daytrader it can dominate.
+
+Different securities, different spreads:
+
+| Security | Typical spread | As bp of price |
+|---|---|---|
+| SPY (broad ETF) | $0.01 | ~0.2 bp |
+| AAPL (mega-cap) | $0.01 | ~0.05 bp |
+| Mid-cap stock | $0.02-0.05 | 1-5 bp |
+| Small-cap (illiquid) | $0.05-0.25 | 25-150 bp |
+| Pink sheet | $0.01-1.00+ | 100-1000+ bp |
+| ATM SPY 30-day option | $0.05-0.10 | 30-100 bp of premium |
+| Far-OTM option | $0.50-2.00 | 1000+ bp of premium |
+
+The pattern is clear. Spread (as a fraction of price) is a steep function of liquidity. The same 100-share trade in SPY vs in a pink-sheet stock could cost you 1¢ vs $100 in spread alone.
+
+## What determines spread width
+
+Four interacting factors:
+
+### 1. Volume / order arrival rate
+
+The Glosten-Milgrom framework says spread covers expected adverse-selection cost per trade. If 1,000 trades cross the book per second (SPY), the expected adverse selection per trade is small because most flow is uninformed retail and inventory turns over in seconds. If 1 trade per hour (illiquid microcap), each trade is more likely to be informed and inventory might be held for hours.
+
+Empirically: spread/price has a strong inverse relationship with average daily volume. Doubling volume cuts proportional spread by roughly 30-50%, depending on the regime.
+
+### 2. Volatility
+
+Higher volatility increases the cost of holding inventory unhedged. A 2% intraday move on AAPL ranks as a normal day; a 2% move on a $5 stock is the kind of move that wipes out a market maker's daily revenue. So MMs in volatile names widen quotes to compensate.
+
+When vol is high (VIX > 30), spreads on every name widen. The "liquidity premium" is regime-dependent: things that are cheap to trade in normal markets become expensive in panic markets, precisely when you might need to trade.
+
+### 3. Tick size
+
+US equities trade in $0.01 minimum ticks for prices above $1 (SEC Rule 612). This is a HARD FLOOR on the spread; even if competition would push it tighter, regulation prevents it for most names.
+
+Sub-penny pricing exists in dark pools and for some retail-routed orders, which is why retail trades in liquid names often print at $0.0001 prices ("price improvement"). The lit market caps at penny ticks.
+
+For options, tick sizes vary: $0.01 for highly liquid contracts, $0.05 elsewhere. For futures, tick size is contract-specific (E-mini S&P: 0.25 index points = $12.50/contract).
+
+### 4. Competition among MMs
+
+A name with 10 competing MMs has tighter spreads than a name with 1. Designated MM systems (NYSE specialists) historically combined monopolistic obligations with monopolistic spread protection; the modern fragmented landscape (50+ venues, dozens of electronic MMs) compresses spreads in liquid names but leaves illiquid names dependent on whoever shows up.
+
+<WorkedExample
+  title="Annual cost of spread for a holding period"
+  problem="A trader makes 200 round-trip trades per year in stocks averaging $50/share with a 3¢ spread. Each trade is 500 shares. Compute the annual spread cost in $ and as a % of, say, $200K of typical deployed capital."
+  steps={[
+    { label: "Step 1: cost per round-trip", body: "Spread = 3¢ = $0.03/share. Round trip cost = full spread (pay half on entry, half on exit) = $0.03 × 500 sh = $15 per round trip." },
+    { label: "Step 2: annual total", body: "200 round trips × $15 = $3,000 per year, ignoring commissions and slippage." },
+    { label: "Step 3: as % of capital", body: "$3,000 / $200,000 deployed capital = 1.5% / year." },
+    { label: "Step 4: interpretation", body: "A strategy that beats buy-and-hold by 2% per year before frictions only beats it by 0.5% after frictions. If commissions and slippage add another 0.5-1%, the strategy might actually underperform buy-and-hold." },
+    { label: "Step 5: scaling", body: "Doubling trade frequency to 400 round trips doubles cost to 3%/year. The 'cost of trading' is a meaningful percentage of capital for active strategies. This is why low-turnover strategies (Buffett-style holding for years) compound better even at lower gross returns: friction is the silent partner." },
+  ]}
+/>
+
+## Tightening the spread artificially
+
+Two real-world mechanisms by which retail can trade INSIDE the lit spread:
+
+1. **Internalization / payment for order flow**: your broker routes your retail market order to a wholesaler (Citadel, Virtu, etc.) who fills it at slightly better than the National Best Bid and Offer (NBBO). The "price improvement" is typically 0.1-0.5¢ per share. This is genuinely better execution. The catch: the wholesaler is also paying your broker for the right to handle your flow (PFOF, lesson 4.5). The economic surplus is divided three ways: wholesaler keeps some, broker keeps some, retail gets some.
+
+2. **Dark pools**: some institutions match against each other inside the spread at the midpoint. Less visible than lit, but real fills happen at better-than-NBBO prices. Most retail doesn't access dark pools directly; institutions and HFTs do.
+
+The intuition: the visible NBBO spread is a CEILING on what you might pay, not a fixed cost. Retail in liquid names often gets meaningfully better than NBBO. Retail in illiquid names doesn't, and pays full spread or worse.
+
+## The half-spread vs the full spread
+
+Common confusion: when calculating one-way market-order cost, use the HALF-SPREAD relative to mid. When calculating round-trip cost (buy then sell), use the FULL spread. Many academic papers report cost as "effective half-spread" to make round-trip easy: 2 × half-spread = round trip.
+
+The "effective half-spread" can be smaller than the quoted half-spread because of price improvement (above). It can also be larger because of market impact (next lesson) when order size exceeds top-of-book displayed size.
+
+<LessonRecap points={[
+  "Spread (in basis points) varies hugely across securities: 0.2 bp on SPY, 100+ bp on pink sheets. Liquidity is the dominant driver.",
+  "Four spread determinants: volume / order arrival rate, volatility, regulatory tick size, MM competition.",
+  "US equities have a $0.01 minimum tick above $1, which is a hard floor on lit-market spread for most names.",
+  "Annual spread cost is meaningful for active strategies (1-3% per year is common); this is why low-turnover strategies compound more cleanly.",
+  "Retail in liquid names often trades INSIDE the NBBO via internalization (PFOF) or implicit price improvement. The quoted spread is a ceiling, not a fixed cost."
+]} />
+
+<ExerciseRunner lessonId="04.3-bid-ask-spread" />

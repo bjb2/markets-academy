@@ -1,0 +1,55 @@
+[
+  {
+    "id": "q1",
+    "kind": "read-primary",
+    "prompt": "Read Markowitz 1952, sections I–III (the first 8 pages). The math gets dense; focus on the geometric argument.",
+    "url": "https://www.math.hkust.edu.hk/~maykwok/courses/ma362/07F/markowitz_JF.pdf",
+    "title": "Markowitz 1952 - Portfolio Selection",
+    "reflectionPrompt": "In your own words, what is the 'E-V rule' Markowitz proposes, and how does it differ from picking stocks by expected return alone?"
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Two-fund separation says rational mean-variance investors all hold the same risky-asset portfolio. What ONE thing distinguishes a conservative from an aggressive investor in this framework?",
+    "choices": [
+      "Different stocks in their risky sleeve.",
+      "The proportion of total wealth held in the risk-free asset vs the tangency portfolio.",
+      "Different expected returns assumptions.",
+      "Different time horizons."
+    ],
+    "correctIndex": 1,
+    "explanation": "Conservative = high cash share. Aggressive = leveraged tangency (negative cash share). The composition of the risky sleeve is identical. This is what 'separation' means: the risky-allocation decision is separable from the risk-level decision."
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "The risk-free rate is 4%. The tangency portfolio has E[R] = 10%, σ = 15%. You want a total portfolio with σ = 9%. What fraction of wealth do you put in the tangency portfolio (in %)?",
+    "answer": 60,
+    "tolerance": 1,
+    "unit": "%",
+    "explanation": "σ_total = (1 − α) × σ_tangency, where α is cash share and (1 − α) is tangency share. 9 = w × 15, so w = 0.60 = 60% in tangency, 40% in cash. The portfolio's E[R] would then be 0.6 × 10% + 0.4 × 4% = 7.6%."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The Michaud critique of mean-variance optimization says that small errors in expected-return inputs produce large changes in optimal weights. What is the MOST COMMON practical response to this in real portfolio construction?",
+    "choices": [
+      "Use Bayesian shrinkage on μ estimates toward a prior (e.g., Black-Litterman) before optimizing.",
+      "Abandon optimization entirely and use equal weights.",
+      "Use longer historical windows.",
+      "Use higher confidence intervals."
+    ],
+    "correctIndex": 0,
+    "explanation": "Black-Litterman (1992) is the standard institutional fix: start with market-implied returns (the CAPM equilibrium, since the market IS the tangency portfolio under those assumptions), then 'tilt' toward your specific views with controlled confidence. This shrinks extreme weights toward the market and produces stable allocations. Equal-weighting is a different (also defensible) response; longer windows make μ estimates more biased rather than more accurate."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "MPT assumes 'investors care only about mean and variance.' Name two empirically observed return-distribution features that this misses, and one investor preference it misses.",
+    "rubric": [
+      "Distribution features: fat tails (kurtosis), negative skewness, volatility clustering, regime shifts (any two acceptable).",
+      "Preference: loss aversion, reference dependence, prospect-theory utility, drawdown aversion, sequence-of-returns sensitivity (any one acceptable).",
+      "Bonus credit: notes that the failures compound, fat tails plus loss aversion together are what makes 'MVO-optimal' portfolios fragile in practice."
+    ]
+  }
+]

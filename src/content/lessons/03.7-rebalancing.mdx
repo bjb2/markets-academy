@@ -1,0 +1,75 @@
+<RetrievalPrompt
+  prompt="You target 60% stocks / 40% bonds. After a one-year bull market, your portfolio is now 70/30 because stocks ran. To return to target, you sell stocks (which just went up) and buy bonds (which just lagged). Is this likely to HURT or HELP your long-run return? On what does the answer depend?"
+  reveal="In a mean-reverting world, rebalancing is a small structural alpha: you mechanically sell what's high and buy what's low. In a strongly trending world, rebalancing HURTS because you keep cutting your winners. Empirically, equity markets are mean-reverting at horizons longer than a year, so rebalancing is value-additive on net , but the benefit is small (single-digit basis points per year), and transaction costs and taxes can eat all of it. The harder argument for rebalancing is RISK CONTROL: it keeps your portfolio's volatility profile close to what you signed up for."
+/>
+
+## What rebalancing actually does
+
+Two distinct things, often conflated:
+
+1. **Risk control**: after a stock rally, equity share rises and so does your total portfolio risk. Rebalancing trims back to your target risk profile.
+2. **Mechanical contrarianism**: you sell what's appreciated relative to your other holdings, buy what's lagged. If returns mean-revert, this is a small alpha. If returns trend, it's a small drag.
+
+The risk-control argument is the load-bearing one. The mechanical-contrarian argument is real but small in expectation.
+
+## Three rebalancing rules
+
+| Rule | Description | Tradeoffs |
+|---|---|---|
+| **Calendar** | Rebalance on a schedule (e.g., quarterly, annually). | Simple. Imposes trades even when drift is small. |
+| **Threshold (bands)** | Rebalance when a position drifts outside ±X% of target (e.g., ±5% absolute). | Reduces unnecessary trades; aligns trades with material drift. Requires monitoring. |
+| **Hybrid** | Check on calendar, trade only if outside bands. | Common in practice. Combines low operational overhead with low trading frequency. |
+
+Empirical work (Vanguard, Buetow et al.) suggests:
+- Calendar rebalancing more often than annually doesn't help, may slightly hurt due to higher costs.
+- Threshold bands wider than ±5% give up too much risk control; narrower than ±5% trade too often.
+- Annual + 5% bands is the most-cited reasonable default for retail.
+
+## What rebalancing costs
+
+The frictions are real and they bite differently across account types.
+
+- **Trading costs**: for ETFs and broad funds, near zero post-2019 (commission-free at most retail brokers). Bid-ask spread still applies but is tiny for liquid index ETFs.
+- **Taxes**: rebalancing in a TAXABLE account triggers capital gains. A 20% LTCG rate applied to even modest realized gains can erase the rebalancing premium for the year.
+- **Tax-deferred (401k, IRA)**: no friction. Rebalance freely.
+
+The tax-asymmetry is why "rebalance by directing new contributions" is the dominant retail recipe in taxable accounts: instead of selling stocks to buy bonds, just direct NEW SAVINGS into the underweighted bucket until ratios drift back. No realized gains, no tax. Works as long as new contributions are large relative to portfolio size; for older investors with small contribution-to-portfolio ratios, this gets impractical.
+
+<WorkedExample
+  title="One-year bull, rebalance vs let-it-ride"
+  problem="You start with $100K, 60% stocks / 40% bonds. Year 1: stocks return +20%, bonds return +2%. You rebalance back to 60/40 at year-end. Year 2: stocks return −15%, bonds return +5%. Compare to a no-rebalance scenario."
+  steps={[
+    { label: "Step 1: end of year 1, before rebalance", body: "Stocks: $60K × 1.20 = $72K. Bonds: $40K × 1.02 = $40.8K. Total: $112.8K. New weights: 63.8% / 36.2%." },
+    { label: "Step 2: rebalance back to 60/40", body: "Target: $67.68K stocks / $45.12K bonds. Sell $4.32K stocks, buy $4.32K bonds." },
+    { label: "Step 3: year 2 returns", body: "Stocks: $67.68K × 0.85 = $57.53K. Bonds: $45.12K × 1.05 = $47.38K. Total: $104.91K." },
+    { label: "Step 4: compare to no-rebalance", body: "No rebalance: stocks $72K × 0.85 = $61.2K. Bonds $40.8K × 1.05 = $42.84K. Total: $104.04K." },
+    { label: "Result", body: "Rebalanced portfolio is $0.87K ahead (+0.84%) over two years. Mean-reversion captured by trimming stocks at the top and buying more after the drop. In a TRENDING market (year 2 also +20%), rebalanced portfolio would lag the no-rebalance one , but with HIGHER volatility too, so the risk-adjusted picture is murkier." },
+    { label: "Reality check", body: "0.84% is a tiny edge over two years. Add 10 bp annual transaction cost and 20% LTCG tax on the $4.32K of stock sales, and the entire edge disappears. The case for rebalancing in taxable accounts is mostly RISK CONTROL, not return enhancement." },
+  ]}
+/>
+
+## Tax-loss harvesting (a relative)
+
+Closely related: when a position is at a LOSS, sell it, immediately buy a similar-but-not-identical replacement, and bank the realized loss for use against future gains. This works because tax loss is an asset (deferred until you sell again, useful against gains elsewhere). The wash-sale rule (US: 30-day window, "substantially identical" security) limits the maneuvering but doesn't prevent it; e.g., sell VTI, buy ITOT or SCHB.
+
+TLH is more reliably value-adding than pure rebalancing for taxable accounts. Estimates range 10-30 bp per year of after-tax alpha for a typical retail portfolio. Some robo-advisors (Wealthfront, Betterment) automate this; the dollar value is small but persistent. <SourceLink id="bogleheads-cs-investing" /> documents the basic mechanics.
+
+## What rebalancing CAN'T do
+
+Several things people mistakenly attribute to rebalancing:
+
+- Generate large returns. The mechanical-contrarian premium is in single-digit basis points, not percentage points.
+- Time the market. Rebalancing is mechanical, not predictive. It buys/sells based on drift, not on view.
+- Replace a thoughtful allocation. Rebalancing a 100% small-cap-tech portfolio still leaves you with a 100% small-cap-tech portfolio. The first-order decision is allocation; rebalancing maintains it.
+
+The first-order question is always: "did I have a good allocation?" The second-order question is: "did I maintain it cleanly?" Rebalancing answers the second question.
+
+<LessonRecap points={[
+  "Rebalancing does two things: (1) controls portfolio risk back to target; (2) mechanically sells highs and buys lows. The first is the load-bearing benefit.",
+  "Calendar + threshold-band hybrid (annual + ±5%) is the most-cited reasonable default; more frequent calendar rebalancing doesn't help and may hurt due to costs.",
+  "Costs differ by account: tax-deferred is friction-free; taxable accounts pay capital-gains tax that can erase the rebalancing premium.",
+  "In taxable accounts, 'rebalance by directing new contributions' is the dominant retail recipe; it avoids realized gains.",
+  "The mechanical-contrarian return premium is small (single basis points). The risk-control benefit is the real justification."
+]} />
+
+<ExerciseRunner lessonId="03.7-rebalancing" />

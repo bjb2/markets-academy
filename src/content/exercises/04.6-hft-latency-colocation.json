@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Colocation provides a latency advantage of approximately what magnitude over a non-colocated retail participant?",
+    "choices": [
+      "2x.",
+      "10-20x (dropping from ~1 ms to <50 μs).",
+      "1000x.",
+      "It's not measurably different."
+    ],
+    "correctIndex": 1,
+    "explanation": "A colocated server in NYSE Mahwah is within meters of the matching engine; round-trip latency is tens of microseconds. A server in Manhattan or any retail-style location is roughly 1 millisecond away. The 10-20x advantage is decisive for strategies that race other participants for the same information."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The Chicago-to-New York microwave links built by HFT firms exist primarily because:",
+    "choices": [
+      "They are cheaper than fiber.",
+      "Microwave through air is faster than light through fiber by several milliseconds over the 720-mile route, and a few-ms edge in latency arbitrage between ES (Chicago) and SPY (NY) is worth hundreds of millions per year.",
+      "Fiber networks are unreliable.",
+      "Regulation requires multiple paths."
+    ],
+    "correctIndex": 1,
+    "explanation": "Light travels at c in vacuum, but only ~2/3 c in fiber (because of refraction). Microwave through air travels at nearly c. Over 720 miles, the difference is 4-5 ms each way, decisive for ES-SPY latency arbitrage. The economics: a $300M+ microwave link can be paid back from latency arb on ES/SPY alone within a few years if you're at the front of the speed queue."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "During the 2010 Flash Crash and again in March 2020, HFTs were observed to do which of the following?",
+    "choices": [
+      "Aggressively provide liquidity in the falling market.",
+      "Withdraw from the market or widen quotes drastically when risk-management thresholds tripped, accelerating the price decline.",
+      "Halt trading by regulatory rule.",
+      "Hedge with options."
+    ],
+    "correctIndex": 1,
+    "explanation": "HFT market-making algorithms have explicit risk limits. When metrics like inventory deviation, P/L volatility, or order-flow toxicity exceed thresholds, the algos withdraw quotes or widen them drastically. This is rational individually; collectively, it produces liquidity vacuums precisely when liquidity is most needed. The 'HFT provides liquidity in normal conditions, withdraws it in stress' pattern is well-documented and is the strongest case against the net-benefit argument for HFT."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "IEX exchange was founded with a deliberate 350-microsecond 'speed bump' on incoming orders. The purpose is best described as:",
+    "choices": [
+      "Reduce server load.",
+      "Neutralize latency advantages of co-located HFTs vs longer-haul institutional flow, so quotes at IEX cannot be 'picked off' by faster participants reacting to information they see slightly earlier elsewhere.",
+      "Comply with regulatory minimum response time.",
+      "Reduce trading volume."
+    ],
+    "correctIndex": 1,
+    "explanation": "The 350μs speed bump (achieved physically by coiling fiber-optic cable, the 'magic shoebox') means that even a co-located HFT cannot react to ES futures movement faster than IEX shows the resulting SPY quote update. This neutralizes the most aggressive latency arbitrage and makes IEX attractive for institutional flow trying to avoid being 'picked off.' Empirically, IEX captures a small but persistent share of US equity volume from institutional users."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "HFT spending on infrastructure (microwave links, FPGAs, colocation) approaches $1B/year industry-wide. From a SOCIAL-WELFARE standpoint (not individual-firm-P/L standpoint), is this spend productive? Discuss both sides in 2-3 sentences each.",
+    "rubric": [
+      "Productive case: spreads are tighter, books are deeper outside crisis windows, price discovery is faster. Faster information impounding into prices is a public good for capital allocation efficiency.",
+      "Unproductive case: latency arbitrage is pure rent extraction with no information generation; the infrastructure spend is positional (each firm spends to beat the next). The total resources could have been deployed on fundamental research, real economy investment, or other socially productive purposes.",
+      "Bonus credit: notes that the question is empirical and contested; honest answer acknowledges both effects are real and the net is not cleanly determined."
+    ]
+  }
+]

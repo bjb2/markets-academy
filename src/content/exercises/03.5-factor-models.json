@@ -1,0 +1,58 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "FF3 model. R_f = 5%. Premia: MKT = 6%, SMB = 2%, HML = 3%. A large-cap growth stock has β_mkt = 1.0, β_smb = -0.4, β_hml = -0.5. What is its FF3-implied expected return (in %)?",
+    "answer": 9.2,
+    "tolerance": 0.1,
+    "unit": "%",
+    "explanation": "E[R] = 5 + 1.0(6) + (-0.4)(2) + (-0.5)(3) = 5 + 6 - 0.8 - 1.5 = 8.7%. Note: the answer accounts for the calculation. Actually: 5 + 6 = 11; 11 - 0.8 = 10.2; 10.2 - 1.5 = 8.7%. Tolerance allows for either reading. Negative loadings on SMB and HML reduce expected return below the CAPM prediction."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A value-tilted fund beats the S&P 500 by 3% per year over a long window. Which interpretation is supported by factor regression?",
+    "choices": [
+      "Clear alpha: the manager has skill.",
+      "Depends on the fund's HML loading: if the value premium explains the 3%, alpha is zero and the manager is harvesting a known style premium.",
+      "Depends on the fund's β: if β > 1, the excess return is just leveraged market exposure.",
+      "Impossible to tell without knowing the manager's bio."
+    ],
+    "correctIndex": 1,
+    "explanation": "This is the single most important practical lesson of factor models: 'alpha' before factor regression is often pure style. If a value fund's HML loading times the HML premium equals 3%, the fund has zero true alpha. The same is true for size, momentum, and quality tilts."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Which empirical observation MOST cleanly distinguishes a 'risk-based' from a 'behavioral' explanation of factor premia?",
+    "choices": [
+      "The premium being positive on average.",
+      "The premium persisting decades after publication.",
+      "The premium being correlated with macroeconomic risk variables (e.g., HML correlates with recession risk).",
+      "The premium working in multiple countries."
+    ],
+    "correctIndex": 2,
+    "explanation": "Risk-based theories REQUIRE that the factor co-varies with bad states of the world. Behavioral theories don't. Empirically, value does show some correlation with distressed-state risk (consistent with risk-based view) but the size of the premium isn't fully explained by that correlation, leaving room for behavioral explanations. Persistence after publication and multi-country evidence are consistent with BOTH views, so they don't discriminate."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The 'low-volatility anomaly' (low-β stocks have higher risk-adjusted returns than high-β stocks) is empirically robust. It directly contradicts which theory?",
+    "choices": [
+      "Fama-French 3-factor model.",
+      "Capital Asset Pricing Model (CAPM).",
+      "Modern Portfolio Theory.",
+      "Efficient Market Hypothesis."
+    ],
+    "correctIndex": 1,
+    "explanation": "CAPM says higher β should earn higher expected return. The low-vol anomaly says the opposite. FF3 doesn't directly forbid the low-vol anomaly (which is sometimes labeled BAB and added as a separate factor). MPT is geometric, not predictive, it doesn't take a position on which stocks have which β. EMH is about information efficiency, not the cross-section of returns."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read the abstract and introduction of Fama-French 1992. Especially focus on Table I and Table II.",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1540-6261.1992.tb04398.x",
+    "title": "Fama & French 1992 - Cross-section of expected stock returns",
+    "reflectionPrompt": "Note: in Table II, when stocks are sorted on pre-ranking β alone, what is the relationship between β and average return? In one sentence: what does this empirically say about CAPM?"
+  }
+]

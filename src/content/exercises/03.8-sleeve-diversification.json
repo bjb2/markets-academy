@@ -1,0 +1,59 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Sleeve A and sleeve B both have Sharpe 1.0 and equal vol. Their daily-PnL correlation is 0.9. What is the approximate Sharpe ratio of an equal-weighted combination?",
+    "choices": [
+      "1.41 (the √2 maximum).",
+      "About 1.03 (barely any improvement).",
+      "1.0 (unchanged).",
+      "Above 1.5 (large improvement)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Combined Sharpe = Sharpe × √(2/(1+ρ)) = 1.0 × √(2/1.9) ≈ 1.026. At ρ = 0.9, you've gained almost nothing for the operational cost of running two sleeves instead of one. The 0.7 ceiling exists precisely to filter out cases like this."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "You backtest a candidate sleeve. Standalone Sharpe = 0.45. Daily-PnL correlation with existing sleeve = 0.1 (very low). Should you add it?",
+    "choices": [
+      "Yes,the low correlation is what matters.",
+      "No, standalone Sharpe is below the 0.5 floor; the mediocre alpha dilutes the good sleeve more than the low correlation diversifies it.",
+      "Yes,combined Sharpe will be higher than either standalone.",
+      "Need more data."
+    ],
+    "correctIndex": 1,
+    "explanation": "The two-gate rule REQUIRES both: standalone viability AND low correlation. A Sharpe-0.45 sleeve uncorrelated with a Sharpe-1.0 sleeve, equal-weighted, produces combined Sharpe ≈ 1.06, basically the same as the good sleeve alone. The marginal benefit is too small to justify the operational tax of running, monitoring, and trusting an additional sleeve. The standalone floor prevents this failure mode."
+  },
+  {
+    "id": "q3",
+    "kind": "calc-input",
+    "prompt": "Two sleeves, each Sharpe 1.0, identical vol, equal weights. Their daily-PnL correlation is 0.0. What is the combined Sharpe ratio? Round to two decimals.",
+    "answer": 1.41,
+    "tolerance": 0.02,
+    "explanation": "Sharpe × √(2/(1+0)) = 1.0 × √2 ≈ 1.414. The classic √2 diversification benefit when adding an independent equal-strength bet. This is the upper limit for ρ ≥ 0; only negative correlations break above it."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Two momentum strategies operating on overlapping universes will typically have:",
+    "choices": [
+      "Low daily-PnL correlation, so they diversify well.",
+      "High daily-PnL correlation (often 0.8+), because they load on the same factor exposure; running both is mostly running one at higher leverage.",
+      "Negative correlation, because one will lead the other.",
+      "Variable correlation depending on the look-back window."
+    ],
+    "correctIndex": 1,
+    "explanation": "Same-factor strategies on overlapping universes have high correlation regardless of indicator differences. The factor exposure dominates the indicator construction. This is the most common practical failure mode the correlation gate catches: cosmetic strategy diversity hiding factor concentration."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "An intentional hedge sleeve (e.g., a mean-reversion sleeve added specifically to dampen a momentum sleeve's drawdowns) is evaluated against tighter correlation and looser Sharpe criteria than a primary return sleeve. Explain why this asymmetric standard is structurally correct rather than ad-hoc.",
+    "rubric": [
+      "Identifies that a hedge's value is in variance REDUCTION, not expected return contribution.",
+      "Notes that variance reduction is purely a function of correlation and vol; expected return is a separate criterion that matters only for primary-return sleeves.",
+      "Concludes that the same MPT math justifies the asymmetric standard: for a hedge sleeve, you're optimizing different terms of the portfolio variance equation."
+    ]
+  }
+]

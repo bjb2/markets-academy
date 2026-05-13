@@ -1,0 +1,69 @@
+<RetrievalPrompt
+  prompt="From Layer 0, you know what an average is. Now consider an asset whose annual return is sometimes +30%, sometimes -20%, sometimes +5%. What single number summarizes its 'central return' and what single number summarizes how scattered its returns are? And if you had a SECOND asset, how would you describe whether it moves together with the first?"
+  reveal="The central return is the expected return (the probability-weighted mean). The scatter is the variance, or its square root, the volatility (standard deviation). The co-movement is the covariance, or its scale-free cousin, the correlation. These three numbers (μ, σ, ρ) are the entire input vocabulary of portfolio theory."
+/>
+
+## A concrete instance: SPY since the GFC
+
+SPY's total return in calendar 2017 was about +21.7%. In 2018 it was about -4.6%. In 2019 it was about +31.2%. In 2020 it was about +18.3%. In 2022 it was about -18.2%. The mean of those five numbers is about +9.7%. The standard deviation is about 19.4%. That second number is what people mean when they say "stocks have 15-20% annual vol." It is not the same as risk in the sense of "I might lose everything," it is just the typical year-to-year dispersion around the mean.
+
+## The three numbers
+
+For a single asset:
+
+- **Expected return** `μ = E[R]`. The probability-weighted mean of returns. In practice, computed as the historical sample mean, with the silent assumption that the future looks like the sample.
+- **Variance** `σ² = E[(R − μ)²]`. The mean squared deviation from the mean. Units are "return squared," which is awkward, so we usually quote:
+- **Volatility** `σ = √(σ²)`. The standard deviation, in the same units as returns themselves.
+
+For two assets A and B:
+
+- **Covariance** `Cov(A,B) = E[(R_A − μ_A)(R_B − μ_B)]`. Positive if A and B tend to move together, negative if they move opposite, zero if independent.
+- **Correlation** `ρ = Cov(A,B) / (σ_A · σ_B)`. The covariance rescaled to lie in [−1, +1]. Scale-free, so directly comparable across asset pairs.
+
+That is the entire toolkit. Layers 3 through 8 of this curriculum build on these five quantities; nothing else gets added.
+
+## Why correlation matters even more than vol
+
+A portfolio's volatility is NOT the average of its components' volatilities. It is governed by their correlations. Take two assets each with σ = 20%. A 50/50 portfolio of them has:
+
+- σ ≈ 20% if ρ = +1 (perfectly correlated, no benefit from holding both)
+- σ ≈ 14.1% if ρ = 0 (independent, vol falls by factor of √2)
+- σ ≈ 0% if ρ = −1 (perfect hedge, you have synthesized cash)
+
+That is the math behind diversification. We will work the case in the next lesson; for now, just see that correlation is doing the load-bearing work.
+
+<WorkedExample
+  title="Portfolio variance for two assets"
+  problem="Asset A: μ = 8%, σ = 15%. Asset B: μ = 12%, σ = 25%. Correlation ρ = 0.4. You hold 60% in A and 40% in B. Compute the portfolio's expected return and volatility."
+  steps={[
+    { label: "Step 1: portfolio expected return is linear", body: "E[R_p] = 0.6·8% + 0.4·12% = 4.8% + 4.8% = 9.6%. Expected returns are weighted averages, full stop." },
+    { label: "Step 2: portfolio variance is NOT linear", body: "σ²_p = w_A²·σ_A² + w_B²·σ_B² + 2·w_A·w_B·ρ·σ_A·σ_B. The third term is the interaction; it carries the correlation." },
+    { label: "Step 3: plug in", body: "σ²_p = (0.6)²(0.15)² + (0.4)²(0.25)² + 2(0.6)(0.4)(0.4)(0.15)(0.25) = 0.36·0.0225 + 0.16·0.0625 + 0.0072 = 0.0081 + 0.01 + 0.0072 = 0.0253." },
+    { label: "Step 4: volatility = sqrt(variance)", body: "σ_p = √0.0253 ≈ 15.9%. Weighted-average vol would be 0.6·15 + 0.4·25 = 19%. The portfolio's actual vol is LOWER because ρ < 1." },
+    { label: "Sanity check", body: "Same calc with ρ = 1: σ_p = 19% exactly (matches weighted average). With ρ = −1: σ_p ≈ 1%. The interaction term is what makes diversification work." },
+  ]}
+/>
+
+## A subtlety: arithmetic vs geometric mean
+
+When you read "SPY's average return is 10%," check whether that is arithmetic (sum / N) or geometric (the constant rate that would compound to the same end value). Geometric is always lower than arithmetic when there is any volatility, by approximately σ²/2. This is sometimes called the "volatility drag" and it is the reason a portfolio with the same arithmetic mean but lower vol grows faster in the long run.
+
+Example: arithmetic mean 10%, vol 20% → geometric ≈ 10% − (0.20)²/2 = 10% − 2% = 8%. Over 30 years, the difference between compounding at 8% vs 10% is roughly a factor of 1.75. Volatility itself is a cost, not just a discomfort.
+
+## Where the inputs actually come from
+
+You will see textbooks treat μ, σ, ρ as given. In practice all three are estimated from historical data and all three are unstable.
+
+- σ is the most stable: vol of vol is comparatively low, and short-term vol clusters predictably (Layer 5 covers this).
+- ρ is unstable but often mean-reverting: stock-bond correlation has flipped sign multiple times since 1970.
+- μ is the least stable: equity expected returns may not be estimable to within 3% even with a century of data. This is why everything you build on top of "expected returns" is fragile (Bernstein and Marks both labor on this point).
+
+<LessonRecap points={[
+  "Three quantities (μ, σ, ρ) describe a single asset's return profile and any pair's joint behavior.",
+  "Portfolio expected return is the WEIGHTED AVERAGE of component expected returns. Portfolio variance is NOT.",
+  "Portfolio variance gets an interaction term proportional to correlation; that term is the engine of diversification.",
+  "Geometric return is lower than arithmetic by approximately σ²/2. Volatility is a cost.",
+  "Of the three inputs, μ is the least reliably estimated; almost every claim built on it is fragile.",
+]} />
+
+<ExerciseRunner lessonId="03.1-expected-return-variance-correlation" />

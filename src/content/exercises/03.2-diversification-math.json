@@ -1,0 +1,57 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "You hold 100 stocks, equally weighted, each with σ = 30%. Their average pairwise correlation is 0.5. As N grows large, what value does portfolio σ approach (in %)? Round to nearest whole.",
+    "answer": 21,
+    "tolerance": 1,
+    "unit": "%",
+    "explanation": "Floor is √(avg ρ) × σ = √0.5 × 30% ≈ 0.707 × 30% ≈ 21.2%. Adding more 100-stock baskets from the same correlation cluster cannot push you below that."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A diversification benefit equivalent to going from 1 stock to 30 stocks captures roughly what fraction of the available within-equity diversification?",
+    "choices": [
+      "Less than 25%.",
+      "About 50%.",
+      "About 90%.",
+      "100% (no further benefit possible)."
+    ],
+    "correctIndex": 2,
+    "explanation": "Empirical work (Statman 1987 and others) shows roughly 90% of available within-equity diversification is captured by ~30 stocks. The marginal benefit from 30 → 500 is small. This is one reason small-account stockpickers can be reasonably diversified."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "March 2020: equities, IG corporate bonds, HY bonds, REITs, EM debt, gold (briefly), and even some Treasuries all sold off together. What is the cleanest mathematical description of what happened to pairwise correlations?",
+    "choices": [
+      "They stayed at long-run averages; the move was just larger in magnitude.",
+      "They rose sharply toward 1 across nearly all risk assets, a phenomenon called tail dependence.",
+      "They went to zero (everything was idiosyncratic).",
+      "They went negative (a flight to safety pattern)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Correlations spike toward 1 in panic episodes because forced deleveraging makes unrelated positions sell at once. This is tail dependence: the joint distribution has fatter tails than a Gaussian implies, and the tail co-moves. The implication is that 'diversification' measured in calm-market correlations overstates the protection you actually get when it would matter."
+  },
+  {
+    "id": "q4",
+    "kind": "calc-input",
+    "prompt": "Asset A and Asset B each have σ = 20%. Correlation ρ = −0.5. What is the volatility of a 50/50 portfolio (in %)? Round to one decimal.",
+    "answer": 10.0,
+    "tolerance": 0.3,
+    "unit": "%",
+    "explanation": "σ²_p = (0.5)²(0.20)² + (0.5)²(0.20)² + 2(0.5)(0.5)(−0.5)(0.20)(0.20) = 0.01 + 0.01 − 0.01 = 0.01. σ_p = √0.01 = 10.0%. Half the vol of either asset alone."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Bernstein's three-fund portfolio is total US stock + total international stock + total US bond. Using the correlation-floor argument above, explain why this is closer to optimally diversified than a portfolio of 500 individual US large-cap stocks.",
+    "rubric": [
+      "Identifies that 500 US large-caps live in a single correlation cluster.",
+      "Notes that within-cluster diversification asymptotes to √(avg ρ) × σ as a floor.",
+      "Notes that bonds and international equity sit in DIFFERENT clusters with lower correlation to US large-caps.",
+      "Concludes that cross-cluster diversification produces meaningfully lower σ than within-cluster diversification, even at much smaller security counts."
+    ]
+  }
+]

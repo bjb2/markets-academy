@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Vanguard's research on rebalancing frequency suggests that rebalancing MORE often than annually:",
+    "choices": [
+      "Improves returns proportionally to frequency.",
+      "Has roughly zero return benefit and may modestly hurt due to costs.",
+      "Reduces risk significantly.",
+      "Is required for tax-deferred accounts."
+    ],
+    "correctIndex": 1,
+    "explanation": "Monthly rebalancing produces nearly identical risk-adjusted outcomes to annual rebalancing in long-horizon studies, but incurs more trading costs. The marginal benefit of quarterly vs annual rebalancing is statistically indistinguishable from zero. Annual + 5% threshold bands is the consensus default."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "An investor in a TAXABLE account is at 67% / 33% versus a 60/40 target after a stock rally. Which approach is generally most tax-efficient?",
+    "choices": [
+      "Sell stocks immediately to rebalance back to 60/40.",
+      "Direct upcoming contributions entirely to bonds until ratios drift back; sell only if drift exceeds threshold.",
+      "Sell stocks but wait for long-term capital gains rates (>1 year holding).",
+      "Switch to a tax-managed mutual fund."
+    ],
+    "correctIndex": 1,
+    "explanation": "Rebalancing via NEW CONTRIBUTIONS avoids realized gains entirely. The portfolio drifts back to target by adding bonds, not subtracting stocks. This is the dominant retail recipe in taxable accounts. It works as long as contributions are large enough relative to portfolio size; for retirees with no contribution flow, you have to sell, and waiting for LTCG rate helps."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "In what regime is rebalancing most likely to HURT returns (relative to letting positions drift)?",
+    "choices": [
+      "Mean-reverting markets.",
+      "Strongly trending markets where the winners keep winning over multiple years.",
+      "Crisis markets.",
+      "Sideways markets."
+    ],
+    "correctIndex": 1,
+    "explanation": "Rebalancing systematically cuts winners and adds to laggards. In a mean-reverting market, that captures small alpha. In a strongly trending market (1990s tech bubble, post-2009 large-cap growth), it cuts winners early and adds to lagging laggards, persistently underperforming a buy-and-hold or trend-following alternative. The returns premium for rebalancing is regime-dependent."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Tax-loss harvesting (TLH) generates alpha for taxable accounts by:",
+    "choices": [
+      "Predicting which stocks will rebound.",
+      "Realizing losses to offset gains elsewhere, while staying invested via a similar-but-not-identical replacement.",
+      "Trading more frequently.",
+      "Switching from index funds to actively managed funds."
+    ],
+    "correctIndex": 1,
+    "explanation": "TLH is structural, not predictive. You sell a position at a loss to bank the tax deduction (asset against future or current gains), and buy a similar-but-not-identical replacement to maintain market exposure (e.g., sell VTI, buy ITOT). The wash-sale rule (30-day, 'substantially identical') governs the replacement choice. Empirical estimates of TLH alpha: 10-30 bp/year for retail-sized portfolios."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Rebalancing is sometimes described as 'mechanical contrarianism.' Explain in 2-3 sentences why this description is both accurate and misleading.",
+    "rubric": [
+      "Accurate: rebalancing mechanically sells what has appreciated and buys what has lagged, which is the structural shape of a contrarian trade.",
+      "Misleading: rebalancing has no view, no information edge, and no asymmetric upside; the contrarian return premium is small (basis points), unlike active contrarian strategies (value, mean reversion) which target larger but riskier premia.",
+      "Bonus credit: notes that rebalancing IS regime-dependent (positive in mean-reverting markets, negative in trending), so even the small premium is not guaranteed."
+    ]
+  }
+]

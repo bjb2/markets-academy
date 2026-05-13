@@ -1,0 +1,94 @@
+<RetrievalPrompt
+  prompt="Robinhood and Webull advertise 'commission-free trading.' Schwab and Fidelity match. But running a brokerage costs money: servers, regulators, customer service, margin desks. Where is the revenue actually coming from? If the answer is 'payment for order flow,' what exactly is being sold, who is buying, and what do they do with it?"
+  reveal="Brokers route retail market orders to wholesalers (Citadel Securities, Virtu, Susquehanna, Jane Street) instead of to public exchanges. The wholesalers PAY the brokers for the privilege ('payment for order flow,' PFOF), typically 10-40¢ per 100 shares. The wholesaler then fills the retail order from its own inventory at slightly better than the National Best Bid and Offer (NBBO). The economic surplus is split three ways: the wholesaler keeps the largest share, the broker keeps a meaningful share, and the retail trader gets a tiny price improvement. 'Free' trading is paid for by the spread, just less visibly than commission."
+/>
+
+## The structure of US equity execution
+
+Retail trades in the US don't typically reach the same public order books that institutional and HFT trades do. The flow is:
+
+1. **You** place a market order through your broker.
+2. **Broker** routes the order to a WHOLESALER (a small group of high-volume electronic MMs).
+3. **Wholesaler** internalizes the trade: fills your order from its own book at slightly better than NBBO.
+4. **Wholesaler** pays the broker a fraction of a cent per share for the order.
+5. **Broker** keeps the PFOF as revenue, sometimes also receives a small kickback or rebate.
+
+Citadel Securities handles a majority of US retail equity flow. Virtu handles much of the rest. Combined, they touch roughly 40-50% of all US equity volume across retail and institutional channels combined.
+
+PFOF is legal in the US and most of Europe. It is BANNED in the UK, Canada, and Australia for retail equity. The EU is mid-debate on a partial ban. Critics argue it produces conflicts of interest (broker incentivized to route to highest-PFOF venue, not best-execution venue). Defenders argue retail gets demonstrably better than NBBO prices, so the system serves retail.
+
+The empirical record is mixed: SEC studies show measurable price improvement to retail (small but real), but also show that wholesaling has reduced lit-market liquidity (because the most uninformed flow is siphoned off). The system-wide effect on NBBO quality is debated.
+
+## What "dark pools" are
+
+Dark pools are alternative trading venues where orders DON'T display publicly. The lit market shows NBBO + depth; dark pools show nothing until trades print. Buyers and sellers meet at a midpoint or some other reference price, without their orders being visible beforehand.
+
+There are 40+ registered Alternative Trading Systems (ATSs) in the US. Most volume runs through a handful: UBS ATS, IEX (which is half-dark, half-lit), Goldman Sachs Sigma X, Credit Suisse Crossfinder (now closed), Morgan Stanley Pool.
+
+Why dark pools exist:
+- **Information leakage protection**: a large institutional order would move the lit market if displayed. Dark pools let large orders find counterparties without signaling.
+- **Spread savings**: many dark pools cross at the midpoint, so both sides save the half-spread vs lit-market trading.
+- **Block trading**: some dark venues specialize in single trades of 10,000+ shares ("blocks"), often negotiated via algos.
+
+Dark pool downsides:
+- **No price improvement guarantee**: midpoint crossing is common but not universal; some venues fill at NBBO or worse.
+- **Information asymmetry inside the pool**: some dark pools historically had "indication of interest" (IOI) leaks to specific subscribers, effectively turning the venue translucent for insiders.
+- **Adverse selection in the pool**: dark pools can have higher concentrations of informed traders, since they're the ones who specifically want to hide.
+
+The "dark vs lit" split is roughly 35-40% of US equity volume in off-exchange venues (dark pools + internalization + ECNs), 60-65% lit (NYSE, NASDAQ, BATS, IEX-lit). The exact ratio varies by name and regime.
+
+## How PFOF interacts with the spread
+
+The economic loop:
+
+1. Lit market makers (Designated MMs, Citadel as a lit MM) post the NBBO. Spread, say, 1¢.
+2. Citadel Securities (the wholesaler arm) PAYS Robinhood for retail flow.
+3. Citadel fills retail orders at, say, 0.3¢ better than NBBO ("price improvement").
+4. Citadel earns the remaining spread on retail flow PLUS gets to use that flow as a signal for inventory positioning on lit venues.
+5. Robinhood earns the PFOF revenue.
+6. Retail gets price improvement that they wouldn't have on lit markets.
+
+Who loses? Possibly nobody, possibly the lit-market participants. The argument is: retail flow is mostly uninformed; siphoning it off leaves lit markets with proportionally MORE informed flow; lit-market MMs then widen quotes to compensate; everyone trading on lit markets pays slightly wider spreads as a result.
+
+This is the "two-tier market" critique. Whether the net effect on system-wide execution quality is positive or negative is empirically unclear; some studies show modest harm to lit-market quality, others show no significant effect.
+
+<WorkedExample
+  title="Where does the PFOF dollar come from?"
+  problem="A retail trader market-buys 100 shares of XYZ. NBBO is 50.00 / 50.02 (2¢ spread, mid = 50.01). Wholesaler fills at 50.019, paying broker 0.15¢/share PFOF. Decompose the economics."
+  steps={[
+    { label: "Step 1: retail pays", body: "100 × 50.019 = $5,001.90. That is 0.1¢ better than the NBBO ask (50.02). Retail saved 0.1¢/share × 100 = $0.10 vs lit execution at NBBO." },
+    { label: "Step 2: wholesaler's gross spread captured", body: "Wholesaler bought from retail at 50.019, but if hedged in lit market at midpoint 50.01, captured 0.9¢. (More realistic: wholesaler holds inventory briefly, hedges across multiple retail trades, captures the spread minus inventory holding cost.)" },
+    { label: "Step 3: wholesaler's PFOF cost", body: "Wholesaler pays broker 0.15¢/share × 100 = $0.15 PFOF." },
+    { label: "Step 4: net wholesaler economics", body: "Spread captured: ~0.9¢/share. PFOF paid: 0.15¢/share. Price improvement to retail: 0.1¢/share. Wholesaler's gross profit: 0.9 - 0.15 - 0.1 = 0.65¢/share, before adverse selection and inventory costs." },
+    { label: "Step 5: broker economics", body: "Broker receives $0.15 of PFOF revenue on this trade. Multiplied across millions of retail trades/day, this funds 'free' commissions. Broker also typically earns interest on uninvested cash, securities lending, and margin lending; PFOF is one revenue line of several." },
+    { label: "Step 6: retail experience", body: "Retail saved $0.10 vs NBBO. Did NOT save the full $1 (half-spread) that they'd save trading at midpoint in a dark pool. Most retail accounts can't access midpoint dark pool execution; the wholesaler captures the difference." },
+  ]}
+/>
+
+## The 2021 Robinhood-GameStop episode
+
+PFOF became politically visible in early 2021 when Robinhood briefly halted retail buying in GameStop and other meme stocks during the squeeze. The headline narrative ("Citadel ordered Robinhood to halt") was largely wrong; SEC and DOJ investigations didn't find that specific allegation supported.
+
+What WAS true: Robinhood faced massive clearinghouse collateral calls (DTCC demanded $3B+ overnight) because volatile retail flow concentrated in a few names, which forced Robinhood to restrict trading to reduce its margin obligation. Citadel was Robinhood's largest PFOF partner and trading counterparty on the wholesaling side, which created a perceived conflict even if no direct order to halt was given.
+
+The episode triggered renewed political attention on PFOF (Gary Gensler at SEC was openly skeptical) but no ban followed. SEC rules issued in 2024 modestly tightened best-execution disclosure but left the basic PFOF structure intact.
+
+## What this means for retail
+
+Practical takeaways:
+
+1. "Commission-free" is real but not free. You pay through the spread, just less visibly.
+2. In liquid names, retail typically gets better-than-NBBO execution via PFOF/internalization. Net is a few tenths of a cent per share of price improvement.
+3. In illiquid names or large orders, PFOF benefits don't apply or are smaller; you get full NBBO or worse, plus whatever impact your size creates.
+4. If you want explicit price improvement plus visible execution, brokers like Interactive Brokers and Fidelity offer routing transparency; IB's "RouteSrv" lets you direct orders to specific venues.
+5. For large enough sizes, the lit-market route becomes preferable to PFOF; the wholesale internalization model is optimized for small retail tickets, not block orders.
+
+<LessonRecap points={[
+  "PFOF: brokers route retail orders to wholesalers (Citadel, Virtu) who fill from inventory at slightly better than NBBO, paying brokers for the order flow.",
+  "Wholesaler keeps most of the spread; broker collects PFOF; retail gets small price improvement. 'Free' trading is funded by this loop.",
+  "Dark pools are off-exchange venues where orders don't display; they enable large-order anonymity and midpoint crossing, with 35-40% of US equity volume off-lit.",
+  "The 'two-tier market' critique: siphoning uninformed retail flow may widen lit-market spreads system-wide. Empirical evidence mixed.",
+  "PFOF banned in UK, Canada, Australia; legal in US and most of EU. Retail in liquid names benefits from price improvement; tradeoffs are debated."
+]} />
+
+<ExerciseRunner lessonId="04.5-dark-pools-and-pfof" />

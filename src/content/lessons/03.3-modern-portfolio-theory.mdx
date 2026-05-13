@@ -1,0 +1,79 @@
+<RetrievalPrompt
+  prompt="Given a universe of risky assets with known μ, σ, and ρ, AND the ability to mix them in any weights you like, AND a risk-free asset paying R_f: what portfolio should a rational investor hold? Note this is a constructive question (build the portfolio), not a descriptive one."
+  reveal="The efficient frontier is the set of portfolios with the highest expected return for each given level of risk. Among all efficient portfolios, exactly ONE has the maximum Sharpe ratio: the tangency portfolio. Markowitz's result is that every rational investor with mean-variance preferences holds the same risky-asset portfolio (the tangency portfolio) and adjusts their risk level by mixing it with the risk-free asset. This is the two-fund separation theorem."
+/>
+
+## The 1952 paper
+
+<SourceLink id="markowitz-1952" /> is 14 pages long. Harry Markowitz wrote it as a graduate student. It introduces three ideas that organize modern finance:
+
+1. Investors care about TWO moments of the return distribution: mean and variance. Not just expected return.
+2. For any target expected return, there is a minimum-variance way to achieve it; the set of such portfolios is the **efficient frontier**.
+3. If you can also hold cash at the risk-free rate, the optimal mix is a straight line from R_f tangent to the frontier; the touching point is the **tangency portfolio**, and everyone holds the same one.
+
+The paper is mostly geometry on the (σ, μ) plane. Read it now, or after this lesson; either order works.
+
+## The efficient frontier, formally
+
+<PortfolioFrontier />
+
+Reuse the widget from the prior lesson. The curve traces all portfolios mixing the two assets. The MVP (minimum-variance portfolio) marker sits at the leftmost point. The **efficient frontier** is the UPPER half of that curve, from MVP to the top-right endpoint. Everything below MVP is "dominated": for the same risk, you could have a higher return by moving up. Rational investors only live on the upper half.
+
+With more than two assets, the same geometry holds in higher dimensions: the efficient frontier is still a curve in (σ, μ) space, and dominated portfolios still exist. The math is solvable in closed form for unconstrained mean-variance optimization (the result is a quadratic program); MIT 15.401 derives it from first principles if you want the algebra.
+
+## Adding a risk-free asset: two-fund separation
+
+Now allow borrowing or lending at the risk-free rate R_f. A new portfolio is some fraction α in the risk-free asset and (1 − α) in a risky portfolio P. Its return and risk are:
+
+`E[R] = α · R_f + (1−α) · E[R_P]`, and `σ = (1−α) · σ_P`
+
+These are LINEAR in α. So as you sweep α from 0 to 1, you trace a straight line from (0, R_f) to (σ_P, E[R_P]) on the (σ, μ) plane.
+
+The best risky portfolio P to combine with cash is the one that gives the STEEPEST such line, because for any target risk, the steepest line dominates all flatter ones. Geometrically, the steepest line is the **tangent** to the efficient frontier through (0, R_f). The touching point is the **tangency portfolio**.
+
+**Two-fund separation theorem**: every rational mean-variance investor holds the same tangency portfolio of risky assets, and adjusts their total risk exposure by varying α. A conservative investor holds 80% cash + 20% tangency. An aggressive investor holds −50% cash (borrows at R_f) + 150% tangency. They differ only in α, not in the composition of the risky sleeve.
+
+The slope of the tangent line is the **Sharpe ratio** of the tangency portfolio: (E[R_P] − R_f) / σ_P. The tangency portfolio is the maximum-Sharpe portfolio in the universe.
+
+<WorkedExample
+  title="Picking between two efficient portfolios"
+  problem="Both portfolios are on the efficient frontier. R_f = 4%. Portfolio X: E[R] = 8%, σ = 10%. Portfolio Y: E[R] = 12%, σ = 20%. Which is the tangency portfolio?"
+  steps={[
+    { label: "Step 1: compute Sharpe ratios", body: "Sharpe(X) = (8 − 4) / 10 = 0.40. Sharpe(Y) = (12 − 4) / 20 = 0.40. Identical." },
+    { label: "Step 2: interpret", body: "Equal Sharpes mean both portfolios lie on the same tangent line from (0, 4%), the capital allocation line through R_f tangent to the frontier. In a continuous frontier, only one point is the exact tangency; if we had a third point with higher Sharpe, it would dominate." },
+    { label: "Step 3: practical implication", body: "If you want σ = 10%: hold 100% X. If you want σ = 20%: either hold 100% Y, OR hold 200% X funded by −100% at R_f. Both achieve the same E[R] = 12% at σ = 20% (sketch this on paper to verify). Equal Sharpes = equivalent positions modulo leverage." },
+    { label: "What's hidden in 'modulo leverage'", body: "If borrowing rate > lending rate (almost always true for retail), leveraged X is worse than unlevered Y. The clean Markowitz result assumes a single R_f for both directions. Reality has a kink." },
+  ]}
+/>
+
+## Where MPT breaks
+
+Markowitz's elegance comes from strong assumptions. Read the original paper and you can list them; here are the four that have caused real money to be lost:
+
+1. **Inputs are not known.** μ, σ, ρ are estimated from past data and unstable, especially μ. Mean-variance optimization is famously a "garbage-in, garbage-out" machine that produces extreme weights when fed noisy μ estimates. This is called the **Michaud critique**.
+2. **Quadratic utility (or Gaussian returns).** The math requires either that investors care only about mean and variance, OR that returns are Gaussian. Neither is true. Real returns have fat tails (Layer 5) and real preferences are loss-averse (prospect theory, Layer 5).
+3. **No transaction costs, no taxes, no constraints.** Everyone is a paper trader in Markowitz's world. Once you add a 30 bp round-trip cost and a 20% capital gains tax, "rebalance monthly to the optimal weights" stops being optimal.
+4. **Single-period.** The frontier is for ONE period. Multi-period investing (which is what you actually do) introduces path dependency, sequence-of-returns risk, and human capital that MPT doesn't accommodate.
+
+These critiques don't invalidate the framework; they limit its domain. The geometry of (σ, μ) is still the right way to think. The mistake is treating the optimizer's output as a precise answer rather than a directional guide.
+
+## Why MPT still matters
+
+For all its frailties, MPT is the conceptual foundation for:
+
+- Index investing (if everyone holds the tangency portfolio and the market is in equilibrium, the tangency portfolio IS the market: this is the CAPM bridge, next lesson).
+- Risk-parity strategies (use ρ to equalize risk contributions, not capital contributions).
+- Portfolio optimization software you'll encounter in any pension fund or endowment context.
+- The "Sharpe ratio" itself, which is just the slope of the capital allocation line.
+
+You can disagree with MPT (Bogle, Buffett, Marks all do in places) without being fluent in MPT, but you'll lose arguments. The math is non-optional.
+
+<LessonRecap points={[
+  "Efficient frontier = set of minimum-variance portfolios for each target expected return; rational investors only live on the upper half.",
+  "Adding a risk-free asset reduces the entire problem to picking the tangent line from R_f to the frontier; the touching point is the tangency portfolio.",
+  "Two-fund separation: everyone holds the same risky-asset mix (tangency) and adjusts total risk by varying cash share.",
+  "The tangency portfolio is the maximum-Sharpe-ratio portfolio in the universe; the Sharpe ratio is the slope of the capital allocation line.",
+  "MPT's failures (unstable inputs, fat tails, costs, single-period) limit its precision but not its conceptual centrality. Mean-variance geometry is non-optional vocabulary."
+]} />
+
+<ExerciseRunner lessonId="03.3-modern-portfolio-theory" />

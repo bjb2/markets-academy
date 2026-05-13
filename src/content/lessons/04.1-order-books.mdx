@@ -1,0 +1,99 @@
+<RetrievalPrompt
+  prompt="You click 'buy 100 shares of AAPL' on your broker's app. Between that click and the fill confirmation, something has to match your buy order with someone willing to sell at a price you'll accept. What is the data structure that brokers, exchanges, and market makers all use to organize this matching? And what does YOUR buy order do to that data structure?"
+  reveal="The data structure is the central limit order book (CLOB). It is a sorted list of resting bids (buyers waiting) on one side and resting asks (sellers waiting) on the other. Your market buy order eats the cheapest asks first, walking up the book until your quantity is filled. A limit order, by contrast, joins the book at your price and waits. Every trading venue, equity or futures or crypto, runs some version of this same structure underneath."
+/>
+
+## Click the buttons before reading
+
+<OrderBook />
+
+Click "Market Buy 200." Watch what happens: the cheapest ask level shrinks, your fill price equals the displayed ask. Click "Market Buy 1,000." Now the order walks the book, eating multiple price levels. Your VWAP fill is higher than the best ask, because you consumed more than the top level had. Click "Market Buy 3,000" and watch the book empty out, with significant slippage shown in the readout.
+
+The widget is doing exactly what a real exchange's matching engine does, just slower and without other traders adding new resting orders in real time.
+
+## What the order book contains
+
+A central limit order book (CLOB) is two sorted lists:
+
+- **Bids**: resting BUY orders, sorted highest price first. The top is the **best bid**.
+- **Asks** (or **offers**): resting SELL orders, sorted lowest price first. The top is the **best ask**.
+
+The difference between best bid and best ask is the **spread**. The midpoint is sometimes called the **mid**. The top of book (best bid + best ask) is what gets disseminated to retail price feeds.
+
+Each level has a price and a SIZE (number of shares or contracts available at that price). Real books have orders aggregated by price at the displayed level, with priority by time of arrival within each price (price-time priority).
+
+## Two order types
+
+| Order type | Behavior | Cost / risk |
+|---|---|---|
+| **Market** | Take liquidity immediately. Walks the opposite side of the book from inside out. | Pays the spread + market impact. Guaranteed fill, uncertain price. |
+| **Limit** | Adds liquidity at a specified price. Joins the book and waits. | Pays no spread (or earns it as maker rebate). Risks no fill if market moves away. |
+
+Many secondary types (stop, stop-limit, iceberg, peg) are combinations and variations. The two primitives above generate them all.
+
+A useful frame: market orders DEMAND immediacy and pay for it. Limit orders SUPPLY immediacy and get paid for it (sometimes literally, via maker rebates).
+
+## What happens when an order arrives
+
+The matching engine's logic is roughly:
+
+```
+On incoming order O:
+  if O is a market order:
+    while O has remaining quantity:
+      take the best opposite-side level
+      fill min(O.remaining, level.size) at level.price
+      if level.size > O.remaining: reduce level.size; done
+      else: remove level entirely
+  elif O is a limit order:
+    if O can cross (buy limit >= best ask, or sell limit <= best bid):
+      fill the crossable portion like a market order
+    if O has remaining quantity:
+      add it to the book at O.price, time-priority at that level
+```
+
+That is the entire core of every electronic exchange in equities, futures, options, and crypto. The variations are in WHO can put orders in (members, retail via brokers, market makers), in WHAT incentives are offered for resting orders (maker rebates, payment for order flow), and in WHERE orders are routed (lit exchanges, dark pools, internalizers; Layer 4.5 covers that).
+
+<WorkedExample
+  title="Walking a market buy"
+  problem="Book asks: 100.05 (300 sh), 100.10 (500 sh), 100.15 (800 sh). You market-buy 1,200 shares. Compute your VWAP fill price."
+  steps={[
+    { label: "Step 1: take from best ask (cheapest)", body: "100.05 × 300 = $30,015. Remaining quantity: 1,200 − 300 = 900." },
+    { label: "Step 2: take from next ask", body: "100.10 × 500 = $50,050. Remaining: 900 − 500 = 400." },
+    { label: "Step 3: take from next ask", body: "100.15 × 400 = $40,060. Remaining: 0. Done." },
+    { label: "Step 4: VWAP", body: "Total cost: $30,015 + $50,050 + $40,060 = $120,125. Shares: 1,200. VWAP = $120,125 / 1,200 = $100.104." },
+    { label: "Compare to top-of-book", body: "Best ask was 100.05. You paid 100.104 on average. The 5.4¢ difference per share is your market impact for that 1,200-share order, on top of paying the spread (mid was ~100.025 if the best bid was 99.95). Total cost vs mid: 7.9¢ per share, or about 8 bp." },
+  ]}
+/>
+
+## What you see vs what's there
+
+Retail price feeds typically show only the best bid and ask (top of book). Some brokers (Interactive Brokers, Tradestation) show the full depth ladder. Exchange members and direct-feed subscribers see the full book.
+
+What you DON'T see, even in full-depth feeds:
+
+- **Hidden / iceberg orders**: orders with a displayed size smaller than their total size. Common from institutions hiding the true magnitude of their flow.
+- **Dark pool resting orders**: parallel venues where orders are matched without public quotes (Layer 4.5).
+- **Off-exchange internalized fills**: retail orders are often filled at the broker's house against other retail or against the broker's own inventory, never touching a public book.
+
+So the visible book is a partial view of available liquidity. For retail-sized orders this is rarely material; for institutional-sized orders it dominates execution strategy.
+
+## Why the book exists
+
+Auctions are the oldest matching mechanism (open-outcry pit). Continuous limit-order books beat auctions for high-frequency trading because:
+
+1. Time priority creates a credible incentive to post liquidity early.
+2. Best price is always discoverable: read top of book.
+3. Asynchronous matching scales: thousands of trades per second, no central auctioneer.
+
+Modern equity exchanges run continuous CLOBs throughout the day, bookended by opening and closing AUCTIONS (lesson 4.7) that aggregate orders into a single clearing price at the bell. The hybrid combines each mechanism's strengths.
+
+<LessonRecap points={[
+  "The central limit order book (CLOB) is the universal data structure: sorted bids (high to low) and sorted asks (low to high), with the spread between them.",
+  "Two primitives: market orders (take liquidity, pay spread + impact, guaranteed fill); limit orders (add liquidity, may earn rebate, may not fill).",
+  "A market order walks the opposite side of the book from inside out, paying a VWAP worse than the best touched price for any size beyond the top level.",
+  "Retail price feeds usually show only top of book; full depth, hidden orders, dark pools, and internalized retail flow are invisible from a standard view.",
+  "Continuous CLOBs are the default mechanism intraday; opening and closing auctions handle the high-volume bell windows differently (lesson 4.7)."
+]} />
+
+<ExerciseRunner lessonId="04.1-order-books" />

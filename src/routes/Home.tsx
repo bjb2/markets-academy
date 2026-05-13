@@ -18,22 +18,17 @@ export default function Home() {
           const counts = Object.fromEntries(lessons.map((l) => [l.id, l.exerciseCount]));
           const mastery = layerMastery(lessons.map((l) => l.id), counts);
           const completedCount = lessons.filter((l) => isLessonComplete(l.id)).length;
-          const locked = layer.id > 0 && layerMasteryLocked(layer.id);
 
           return (
             <Link
               key={layer.id}
-              to={locked ? "#" : `/layer/${layer.id}`}
-              className={`block border border-rule rounded-lg p-5 transition-colors ${
-                locked ? "opacity-50 cursor-not-allowed" : "hover:border-ink/40 hover:bg-ink/[0.02]"
-              }`}
-              onClick={(e) => locked && e.preventDefault()}
+              to={`/layer/${layer.id}`}
+              className="block border border-rule rounded-lg p-5 transition-colors hover:border-ink/40 hover:bg-ink/[0.02]"
             >
               <div className="flex items-baseline justify-between mb-1">
                 <h2 className="font-semibold tracking-tight">
                   <span className="text-ink/40 mr-3 font-mono">{String(layer.id).padStart(2, "0")}</span>
                   {layer.title}
-                  {locked && <span className="ml-2 text-xs text-ink/40">🔒 prereq pending</span>}
                 </h2>
                 <span className="text-xs text-ink/60">{layer.estWeeks}</span>
               </div>
@@ -52,12 +47,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
-
-function layerMasteryLocked(layerId: number): boolean {
-  if (layerId === 0) return false;
-  const prev = lessonsForLayer(layerId - 1);
-  if (prev.length === 0) return false;
-  const counts = Object.fromEntries(prev.map((l) => [l.id, l.exerciseCount]));
-  return layerMastery(prev.map((l) => l.id), counts) < 0.8;
 }

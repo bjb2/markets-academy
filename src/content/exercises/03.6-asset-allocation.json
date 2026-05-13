@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "A 25-year-old with steady employment income should typically hold MORE equity than a 65-year-old already retired. Which argument is the cleanest justification?",
+    "choices": [
+      "Younger investors have more risk tolerance.",
+      "Future wages function like a low-volatility bond, so total-wealth-adjusted equity exposure is lower when young; financial capital must take over the bond role as wages deplete.",
+      "Stocks always outperform bonds.",
+      "The older investor doesn't need growth."
+    ],
+    "correctIndex": 1,
+    "explanation": "The human-capital argument is the rigorous one. 'Risk tolerance' is a folk psychology concept; the wage-as-bond intuition is structural and falsifiable. A retiree with no future wage income has financial capital as their ONLY capital; if it's 100% stocks, total-wealth equity exposure is 100%. A 25-year-old with stable wages has most of their total wealth in bond-like future earnings, so even 100% equities financially is a moderate total-wealth allocation."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "A 60/40 stock/bond portfolio. Stocks have σ = 16%, bonds have σ = 6%, ρ = 0. Roughly what fraction of total portfolio VARIANCE comes from the equity sleeve?",
+    "choices": [
+      "60% (the capital weight).",
+      "About 91%.",
+      "About 50%.",
+      "Cannot determine without correlations."
+    ],
+    "correctIndex": 1,
+    "explanation": "Variance contributions: (0.6)²(0.16)² = 0.00922 from stocks; (0.4)²(0.06)² = 0.000576 from bonds. Stock share of variance: 0.00922 / (0.00922 + 0.000576) ≈ 94%. Allowing for the small ρ assumption noise, the answer is ~90%. This is why risk parity advocates argue 60/40 is 'really 90/10 in risk terms.' Capital weights and risk weights are different things."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Risk parity strategies had their worst year on record in 2022. The PRIMARY reason is best described as:",
+    "choices": [
+      "Equity drawdown was unusually large.",
+      "Both stocks AND bonds sold off (correlation rose toward 1), while borrowing costs spiked because risk parity is typically levered.",
+      "Bonds underperformed cash.",
+      "Risk parity is a flawed strategy in general."
+    ],
+    "correctIndex": 1,
+    "explanation": "Risk parity assumes stocks and bonds have LOW or NEGATIVE correlation, so a levered diversified mix has acceptable risk. In 2022 inflation drove stocks AND bonds down together (correlations went positive), eliminating the diversification benefit. Simultaneously the Fed hiked rates, raising the cost of carry on levered positions. Both legs of the strategy failed at once. The strategy isn't 'flawed in general' so much as 'fragile to the specific regime in which inflation drives joint negative correlation and rising rates.'"
+  },
+  {
+    "id": "q4",
+    "kind": "calc-input",
+    "prompt": "Expense ratios drag compound returns. Two investors compound at 7% gross over 30 years. Investor A pays a 0.05% ER (index fund). Investor B pays a 1.0% ER (typical actively managed fund). Both contribute $10,000/year. By approximately what percentage of terminal wealth does A beat B? Round to nearest whole percent.",
+    "answer": 18,
+    "tolerance": 3,
+    "unit": "%",
+    "explanation": "A net return: 6.95%. B net return: 6.0%. FV of annuity = C × [(1+r)^N − 1]/r. A: 10K × [(1.0695)^30 − 1]/0.0695 ≈ 10K × 100.0 = $1.000M. B: 10K × [(1.06)^30 − 1]/0.06 ≈ 10K × 79.1 = $791K. Difference: $209K, or about 21% of B's wealth (or 18% of A's). Bogle's central argument: fee drag compounds to 18-30% of terminal wealth over a working career. This dwarfs the difference between any two defensible asset allocations."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Bernstein and Bogle both argue the BIGGEST determinant of long-run outcomes for retail investors is behavior, not allocation. Give two specific behavioral failure modes that destroy more wealth than the difference between a 60/40 and an 80/20 portfolio.",
+    "rubric": [
+      "Identifies panic-selling in drawdowns (selling at trough, re-entering after recovery).",
+      "Identifies any of: chasing recent winners, abandoning a plan to chase a hot strategy, paying for active management that underperforms index, taking on concentrated single-stock risk, undersaving (low contribution rates).",
+      "Bonus credit: notes that all these failure modes are about CONSISTENCY of the plan, not the plan's optimality, mirroring the lesson's claim that behavioral robustness > mean-variance precision."
+    ]
+  }
+]

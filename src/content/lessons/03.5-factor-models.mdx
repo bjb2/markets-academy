@@ -1,0 +1,86 @@
+<RetrievalPrompt
+  prompt="CAPM says a stock's expected return is determined by ONE factor: its β to the market. By 1992, decades of empirical work had identified TWO characteristics that produced returns CAPM couldn't explain. What were they, and what does it mean for a model to be 'incomplete' rather than 'wrong'?"
+  reveal="Fama and French (1992) showed that small-cap stocks and value (high book-to-market) stocks earned excess returns that β alone could not account for. They proposed a 3-factor model: market premium, size premium (SMB = Small Minus Big), value premium (HML = High book-to-market Minus Low). The model is 'incomplete' because CAPM correctly identifies systematic risk as priced; it just misses that there are multiple systematic risks, not one."
+/>
+
+## The Fama-French breakthrough
+
+<SourceLink id="fama-french-1992" /> is the most-cited paper in empirical finance after CAPM itself. The setup: take all NYSE/AMEX/NASDAQ stocks 1963-1990. Sort them into portfolios by characteristics (size, book-to-market, β, etc.). Measure realized returns. See which characteristics line up with which returns.
+
+The headline result: SIZE and BOOK-TO-MARKET dominate β as predictors of cross-sectional returns. β by itself is nearly useless once you control for size and value. This isn't subtle: when Fama and French sorted only on β, the relationship to returns was essentially flat.
+
+Their proposed model:
+
+`E[R_i] − R_f = β_mkt · MKT + β_smb · SMB + β_hml · HML`
+
+Where:
+- **MKT**: market return minus risk-free rate (the CAPM factor)
+- **SMB** (Small Minus Big): return on small-cap portfolio minus return on large-cap portfolio
+- **HML** (High Minus Low): return on high book-to-market (value) minus low book-to-market (growth)
+
+Each β is the regression sensitivity of the stock to that factor.
+
+## What "factor" actually means
+
+A factor is a long/short portfolio that captures a specific exposure. SMB is constructed by going long a basket of small-cap stocks and short a basket of large-cap stocks, in equal dollar amounts. This long/short construction zeros out market exposure on net, leaving (in theory) pure "size" exposure.
+
+The factor's HISTORICAL RETURN is the factor premium. SMB has historically returned a few percent per year; HML has returned a few percent per year; MKT has returned the equity risk premium. A stock's loading on each factor (its β values) determines its expected return as a linear combination.
+
+A small-cap value stock loads positively on all three factors and gets all three premia. A large-cap growth stock loads positively on MKT but negatively on SMB and HML, so it expects the market premium minus the size and value premia.
+
+## The factor zoo
+
+After Fama-French 1992, the floodgates opened. Academic and practitioner research has documented hundreds of candidate factors. The replicated, durable subset (per AQR, Asness, etc.) is roughly:
+
+- **Market (MKT)**: equity risk premium
+- **Size (SMB)**: small > large
+- **Value (HML)**: high B/M (or low P/E, low EV/EBITDA) > low B/M
+- **Momentum (UMD)**: stocks up over past 12 months (ex last month) > stocks down. NOT in Fama-French 1992; added by Carhart 1997.
+- **Quality (QMJ)**: high-profitability stable-growth > low. Fama-French 5-factor (2015) calls this RMW.
+- **Low Volatility (BAB)**: low-β > high-β, contradicting CAPM directly. "Betting Against Beta."
+- **Investment (CMA)**: companies investing conservatively > aggressively. Fama-French 5-factor.
+
+Each of these has decades of out-of-sample evidence in multiple geographies. Each also has worse Sharpe than its in-sample backtest would suggest (publication bias is real).
+
+Beyond these ~6-7 factors, the "factor zoo" gets dense. Harvey, Liu, Zhu (2016) catalog 300+ published factors and argue most are spurious. The Replication Crisis applies to finance too.
+
+<WorkedExample
+  title="Decomposing a stock's expected return with FF3"
+  problem="Risk-free rate 4%. Market premium 6%. SMB premium 3%. HML premium 4%. A small-cap value stock has loadings: β_mkt = 1.1, β_smb = 0.8, β_hml = 0.6. What is its FF3-implied expected return?"
+  steps={[
+    { label: "Step 1: pure CAPM piece", body: "R_f + β_mkt × MKT = 4% + 1.1 × 6% = 4% + 6.6% = 10.6%." },
+    { label: "Step 2: add size premium contribution", body: "+ β_smb × SMB = + 0.8 × 3% = +2.4%. Running total: 13.0%." },
+    { label: "Step 3: add value premium contribution", body: "+ β_hml × HML = + 0.6 × 4% = +2.4%. Total: 15.4%." },
+    { label: "Compare to CAPM-only", body: "CAPM would predict 10.6% for this stock. FF3 predicts 15.4%. The 4.8% gap is the joint contribution of size and value premia. If CAPM is right, this stock has a positive alpha of 4.8%. If FF3 is right, that 4.8% is properly explained as compensation for size and value risk, and the alpha is zero." },
+    { label: "Why this matters", body: "Practitioners who claim 'alpha' often have unmeasured factor loadings. A small-cap value manager who beats the S&P 500 by 4% per year isn't necessarily skilled , they may just be earning the size and value premia. Multi-factor regression is how you separate skill from style." },
+  ]}
+/>
+
+## Are factor premia "compensation for risk" or "behavioral mispricings"?
+
+This is the live academic debate.
+
+**Risk-based view (Fama, Cochrane)**: factor premia exist because the factors carry systematic risk that investors won't bear without compensation. Small caps do badly in recessions; value stocks are distressed in slow-growth regimes; etc. The premia are rational equilibrium pricing.
+
+**Behavioral view (Lakonishok, Shleifer, Vishny; later Asness)**: factor premia exist because investors systematically overpay for glamorous high-growth, large, low-vol stocks and underpay for the unglamorous opposite. Premia are persistent BEHAVIORAL biases, and they should attenuate (but rarely fully disappear) as more capital arbitrages them.
+
+The empirical record:
+- Premia have persisted decades after publication: bullish for risk-based view OR for limits-to-arbitrage version of behavioral view.
+- Some premia have weakened materially in recent decades (size has been thin since the 1980s; value had a brutal 2010-2020).
+- New premia ("low-vol", "quality") have been discovered AFTER the early literature, suggesting researchers keep finding mispricings.
+
+In practice, both views inform real portfolio construction. AQR-style "smart beta" tilts toward documented factors. Berkshire-style concentrated value is the same trade with judgment instead of regression.
+
+## What this means for the curriculum
+
+Layer 6 (Active Strategy Archetypes) will map specific named investors to specific factor tilts: Buffett is quality + value + size; AQR is multi-factor; Druckenmiller is macro + momentum. Layer 9 (Backtesting) will run factor regressions on our paper-trading strategy and reveal which factors it's actually loading on. Knowing factors makes you able to read both academic papers and practitioner pitches with the same dictionary.
+
+<LessonRecap points={[
+  "Fama-French 1992 showed size and book-to-market dominate β as cross-sectional return predictors; β alone is empirically near-flat.",
+  "A factor is a long/short portfolio capturing one exposure (e.g., SMB long small, short large). A stock's expected return is a linear combination of its loadings on each factor.",
+  "Durable factor set: market, size, value, momentum, quality, low-vol, investment. Beyond these, the 'factor zoo' is mostly noise.",
+  "Factor premia have two competing explanations (risk-based vs behavioral) that don't matter for the math but do matter for whether you expect premia to persist.",
+  "Most claimed 'alpha' is unmeasured factor loadings. Multi-factor regression separates skill from style."
+]} />
+
+<ExerciseRunner lessonId="03.5-factor-models" />
