@@ -12,7 +12,6 @@ export default function ReadPrimary({ ex, lessonId }: Props) {
   const [done, setDone] = useState(false);
 
   function submit() {
-    if (val.trim().length < 20) return;
     recordAttempt(lessonId, ex.id, true);
     setDone(true);
   }
@@ -35,12 +34,11 @@ export default function ReadPrimary({ ex, lessonId }: Props) {
         value={val}
         onChange={(e) => setVal(e.target.value)}
         disabled={done}
-        placeholder="One sentence is enough."
+        placeholder="Optional: jot a sentence so you have it later."
       />
       {!done && (
         <button
-          className="mt-3 px-4 py-2 bg-ink text-paper rounded text-sm disabled:opacity-30"
-          disabled={val.trim().length < 20}
+          className="mt-3 px-4 py-2 bg-ink text-paper rounded text-sm"
           onClick={submit}
         >
           Mark read
