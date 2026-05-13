@@ -1,0 +1,111 @@
+<RetrievalPrompt
+  prompt="In 1934, Benjamin Graham published 'Security Analysis,' the founding text of fundamental security analysis. He proposed buying stocks for less than their conservatively-estimated intrinsic value, with a buffer he called the 'margin of safety.' What economic argument supported this prescription, and what does it tell you about the kind of mispricings the strategy is designed to exploit?"
+  reveal="Graham argued that the stock market is short-term irrational (buffeted by emotion, narrative, technical flow) but long-term gravitates toward intrinsic value (the discounted cash flows the business will produce). A 'margin of safety' is the gap between intrinsic value and purchase price that protects against (a) errors in your own valuation, (b) bad outcomes for the business, (c) market irrationality that drives prices further from value before reverting. The strategy exploits behavioral mispricings (lessons 5.1-5.6) by being patient and rule-bound in a way most market participants aren't. It targets specific kinds of overreactions, not random misprices."
+/>
+
+## The Graham framework
+
+Graham (1894-1976) was a Columbia professor and practicing investor who survived the 1929 crash by being unusually conservative. His framework (refined across <em>Security Analysis</em> 1934 and <em>The Intelligent Investor</em> 1949) rests on four ideas:
+
+### 1. Mr. Market
+
+Imagine the stock market as a manic-depressive partner who shows up daily offering to buy your share of the business or sell you more, at wildly varying prices. Some days he's euphoric and offers prices above any reasonable intrinsic value. Other days he's despondent and offers prices well below. You're NEVER obligated to transact; you only do when his price is attractive.
+
+This is Graham's most-quoted contribution. It reframes the market from "the source of price truth" to "a partner whose moods you can ignore or exploit." The price quoted today is data, not signal. Only your own assessment of intrinsic value should drive your decision.
+
+### 2. Intrinsic value
+
+The "real" value of a business, derived from its asset value, earning power, and future prospects. Graham was deliberately conservative: he preferred BALANCE SHEET measures (book value, working capital) over EARNINGS POWER for safety reasons. His "net-net" stocks were companies trading below 2/3 of NET CURRENT ASSETS (current assets minus all liabilities), essentially priced below liquidation value.
+
+Modern practitioners use a broader toolkit (DCF, multiples, comparable transactions) but the principle holds: estimate intrinsic value via a method independent of the current price, and compare to current price.
+
+### 3. Margin of safety
+
+The gap between intrinsic value and purchase price. Graham's rule of thumb: buy at no more than 2/3 of intrinsic value. So if you calculate intrinsic value at $30, buy at $20 or less.
+
+The margin of safety protects against:
+- Errors in YOUR valuation (your numbers might be wrong).
+- Adverse outcomes for the business (margins compress, growth slows).
+- Market irrationality going further (the bargain gets cheaper before recovering).
+
+Quote: "The margin of safety is always dependent on the price paid. It will be large at one price, small at some higher price, nonexistent at some still higher price."
+
+### 4. Long-term gravitation
+
+Graham's empirical claim: prices and intrinsic values can DIVERGE for years, sometimes a decade, but eventually CONVERGE. The convergence is uncertain in timing but reliable in direction over long horizons. This is the OPPORTUNITY: buy below value, wait, let convergence happen.
+
+The patience required is enormous. Some Graham positions take 5-10 years to work; some never work and the company deteriorates further. Both outcomes are part of the strategy's distribution.
+
+## Graham's specific strategies
+
+Graham himself ran two distinct screens in his investment firm (Graham-Newman, 1926-1956):
+
+### "Net-net" stocks
+
+Companies trading below 2/3 of net current asset value (current assets minus ALL liabilities, including long-term). These are typically distressed or unloved companies where the market has priced in extreme pessimism. Graham's empirical record over 30 years showed net-nets averaging ~15% annualized returns. Modern markets have far fewer net-nets (much of the cheap-on-balance-sheet universe is dead or distressed for fundamental reasons), but the strategy still produces returns when situations arise.
+
+### Defensive enterprise investing
+
+Larger, more conservative criteria for a more passive portfolio:
+- Earnings stability over 10 years.
+- Dividend payments for 20 years.
+- P/E below 15 on average of last 3 years' earnings.
+- Price to book below 1.5.
+- Current assets at least 2x current liabilities.
+
+A modern screen with these criteria would produce 50-100 US large-cap names trading at "Graham-defensible" valuations during normal markets, and 5-15 during expensive markets. The strategy is more selective today than in 1949 because the data shifts with market regimes.
+
+<WorkedExample
+  title="Applying Graham's margin of safety today"
+  problem="A company trades at $40. Your DCF (range $50-$70 fair value, midpoint $60) and multiples analysis (peers trade 12-18x EV/EBITDA; current 9x) both suggest the stock is undervalued. Should you buy? At what price would Graham's margin of safety standard be satisfied?"
+  steps={[
+    { label: "Step 1: integrate the two valuation approaches", body: "DCF midpoint: $60. Multiples-based: 12x to 18x of EBITDA implies $54-$80 range, midpoint $67. Conservative blend: $55-$65 fair value range, midpoint $60." },
+    { label: "Step 2: apply the 2/3 standard", body: "Graham would buy at 2/3 of $60 = $40. Current price is $40 exactly. Right at the threshold." },
+    { label: "Step 3: stress-test the inputs", body: "What if DCF is wrong by 20%? Fair value range shrinks to $48-$70. 2/3 of midpoint becomes $32-$47. Current $40 is in the range but not deeply so." },
+    { label: "Step 4: consider Graham's safety questions", body: "(a) Earnings stable over 10 years? (b) Current assets > 2x current liabilities? (c) Dividend history? (d) Reasonable debt levels? If yes to most: stronger margin of safety. If no: less safety even at the same price." },
+    { label: "Step 5: act with discipline", body: "If safety criteria are met: buy at $40, size for the position to be 3-7% of portfolio (Graham preferred ~30 names = ~3% each). If price falls further to $35 or $30: ADD, the margin of safety just got better. Don't anchor on $40 as 'right price'; the price represents current Mr. Market mood, not value." },
+    { label: "Step 6: time-frame expectations", body: "Graham positions typically take 1-5 years to work. Some never work (the company deteriorates). The strategy's success rests on portfolio-level statistics, not individual position outcomes. Graham held ~100 net-nets at his peak, accepting that some would fail." },
+  ]}
+/>
+
+## What Graham missed (per modern practitioners)
+
+Graham was writing for a market that was less efficient, less analytical, and less competitive than today's. Several of his specific recipes have weakened or stopped working:
+
+### 1. Net-nets are rare
+
+Modern equity screening tools instantly identify any net-net. Activist investors, deal hunters, and value funds bid them out of the universe quickly. True net-nets persist only in micro-caps and in markets where activism is restricted.
+
+### 2. Pure quantitative screening is crowded
+
+Graham's checklist (P/E < 15, P/B < 1.5, etc.) was novel in 1934. Today it's automated; any retail screener can apply it. The systematic value premium that screen captured has compressed but not disappeared (lesson 6.8 covers factor investing).
+
+### 3. Asset-intensive industries are different
+
+Graham's balance-sheet conservatism assumes "book value approximates liquidation value." For railroads, manufacturers, retailers in 1934, this was reasonable. For software, services, branded consumer goods today, intangibles dominate value and book value is mostly noise.
+
+### 4. Buffett's revolution
+
+Buffett (Graham's student) shifted from "cheap-statistically" to "wonderful-business-at-fair-price." The next lesson covers this evolution. The Buffett synthesis acknowledges that some businesses produce so much value over time that a small margin of safety with a great business beats a large margin of safety with a mediocre one.
+
+## Why Graham still matters
+
+Despite weakening, Graham's framework matters because:
+
+1. **The framework is conceptually correct.** Estimate intrinsic value; pay less than intrinsic value; let time work; expect dispersion. This is the rational structure for any investment decision.
+
+2. **Mr. Market metaphor remains useful.** Recognizing that quoted prices reflect mood rather than value is a permanent epistemic stance, not a strategy.
+
+3. **The margin of safety principle generalizes.** Even in non-Graham strategies (growth, momentum, distressed credit), demanding a buffer between estimated value and price is structurally correct.
+
+4. **Graham's specific successors include Buffett, Klarman, Marks, Greenblatt, Pabrai.** Each evolved the framework. None abandoned its core. Reading their work is essentially reading Graham extensions across decades.
+
+<LessonRecap points={[
+  "Graham's framework: estimate intrinsic value via valuation methods independent of price; buy with a margin of safety; let long-term convergence work.",
+  "Mr. Market metaphor: market prices are the partner's moods, not signals about value. Only your independent assessment of intrinsic value drives decisions.",
+  "Margin of safety: buy at no more than 2/3 of intrinsic value. Protects against valuation error, business adversity, and further market irrationality.",
+  "Net-nets (below 2/3 of net current asset value) and defensive enterprise criteria (earnings stability, P/E < 15, P/B < 1.5) were Graham's specific recipes.",
+  "Modern practitioners (Buffett, Klarman, Marks) evolved Graham's framework but kept the conceptual core. The frameworks survive because the rational structure is correct, even when specific recipes weaken."
+]} />
+
+<ExerciseRunner lessonId="06.1-value-investing-graham" />

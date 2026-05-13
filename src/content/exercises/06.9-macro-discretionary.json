@@ -1,0 +1,67 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Soros's concept of REFLEXIVITY says:",
+    "choices": [
+      "Prices reflect fundamentals (efficient market view).",
+      "Prices and fundamentals influence each other in self-reinforcing loops; market participants' beliefs INFLUENCE the underlying fundamentals (currency speculation pressures the peg; bubble prices fund the businesses that justify them).",
+      "Markets are random.",
+      "Reflexivity is an academic concept without practical relevance."
+    ],
+    "correctIndex": 1,
+    "explanation": "Reflexivity is the structural critique of efficient market theory from a macro perspective. Prices don't passively reflect fundamentals; they ACTIVELY SHAPE them. The 1992 sterling trade: speculation pressuring the peg helped break it. The 1990s tech bubble: rising prices funded the expansion of tech businesses, which justified the high prices, in a feedback loop. Soros articulated this in 'The Alchemy of Finance' (1987); it's the theoretical foundation of macro discretionary investing."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Soros's 1992 sterling trade (Quantum Fund made approximately $1B) involved:",
+    "choices": [
+      "Long sterling on UK economic recovery.",
+      "Identifying that the UK couldn't maintain its peg to the European Exchange Rate Mechanism while also pursuing the loose monetary policy its economy required; the structural impossibility would force a devaluation; Soros shorted sterling, the peg broke under pressure (with speculation accelerating the break).",
+      "A tax arbitrage.",
+      "A currency carry trade with leverage."
+    ],
+    "correctIndex": 1,
+    "explanation": "Sterling 1992 is a classic example of all the macro elements: structural imbalance (UK couldn't square peg requirements with recession-driven monetary policy needs), policy constraint analysis (Bank of England would have to choose), catalyst (speculative pressure forced the choice), and reflexive feedback (the speculation helped cause the outcome). Soros and Druckenmiller made approximately $1B; the Bank of England spent $40B+ defending the peg before yielding."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Macro discretionary investing as a strategy class produced strong returns in the 1980s-2000s and DISAPPOINTING returns 2008-2020. The MOST LIKELY explanation is:",
+    "choices": [
+      "Skill declined.",
+      "Zero interest rates eliminated rate-differential trades; suppressed volatility eliminated crisis-style opportunities; rising correlations across asset classes eliminated dispersion strategies. Macro thrives in dynamic markets; the 2008-2020 environment of suppressed vol and uniform monetary policy was structurally hostile.",
+      "Regulators banned macro trading.",
+      "All macro funds went out of business."
+    ],
+    "correctIndex": 1,
+    "explanation": "The performance pattern follows the structural environment. Macro requires DYNAMIC markets: currency pegs to break, rate differentials to exploit, crisis volatility to ride. Post-GFC central bank coordination (zero rates everywhere, suppressed vol, similar policy responses) eliminated the dispersion. The 2022 rate-normalization and 2024 geopolitical fragmentation revived macro opportunities; many funds have outperformed since. The strategy class is cyclical, not broken."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A retail investor reading macro analysis (Lyn Alden, Cullen Roche) wants to express their view that EMERGING MARKETS are cheap and the DOLLAR is strong. The MOST sensible retail implementation is:",
+    "choices": [
+      "Take a 50% position in a single EM stock.",
+      "Take a modest tilt (10-20% of equity) toward broad EM ETFs (VWO, EEM) and short-dollar exposure (e.g., reducing USD-hedged international funds). Don't try to replicate Soros-style concentrated bets; the retail edge isn't there.",
+      "Short the dollar with options.",
+      "Don't act on macro views at retail."
+    ],
+    "correctIndex": 1,
+    "explanation": "Retail can emulate macro frameworks at small scale via broad ETF tilts. The expected return premium for being right is modest (most macro themes play out over years, not weeks), so positioning should be modest. Concentrated single-name macro bets or leveraged currency positions are structurally unsuited to retail (no institutional information, no specialist knowledge, no risk-management infrastructure). The discipline: develop views, express them moderately, accept the framework's slow payoff."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Identify a CURRENT macro theme (as of mid-2026) that you find compelling. Outline the structural thesis, the policy constraint, the catalyst you'd watch for, and what retail-accessible position would express the view if it materializes.",
+    "rubric": [
+      "Specific macro theme (examples: dollar weakness from US fiscal deterioration, Japan yield curve control unwinding, China demographic deflation, European energy security restructuring, AI productivity-shock to inflation).",
+      "Structural thesis: the underlying economic imbalance.",
+      "Policy constraint: what would force a particular response from central bank, fiscal authority, or market participant.",
+      "Catalyst to watch: specific event or threshold that would trigger movement.",
+      "Retail-accessible implementation: ETF or position type that could capture the move without institutional infrastructure.",
+      "Bonus credit: acknowledges the uncertainty and time-frame risk; macro themes can play out over months or years; concentration risk and patience requirements must be sized appropriately."
+    ]
+  }
+]

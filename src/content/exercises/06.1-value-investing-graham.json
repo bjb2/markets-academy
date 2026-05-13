@@ -1,0 +1,58 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Graham's 'Mr. Market' metaphor is designed to reframe the relationship between investor and market price. The key idea is:",
+    "choices": [
+      "Markets are efficient; prices reflect intrinsic value.",
+      "Quoted prices reflect emotional moods, not value. The investor is never obligated to transact; only when Mr. Market's price diverges from your independent assessment of intrinsic value should you act.",
+      "Markets are random walks.",
+      "The market is always wrong."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Mr. Market metaphor's key insight: price quotes are DATA points reflecting current mood, not authoritative signals of value. Your independent valuation is what determines whether you should buy, sell, or hold. The market offers transactions; you choose. The discipline of acting only on valuation-vs-price divergence (not on price-vs-recent-price) is the operational core of value investing."
+  },
+  {
+    "id": "q2",
+    "kind": "calc-input",
+    "prompt": "Your conservative intrinsic-value estimate for a stock is $90 per share. Applying Graham's 2/3 margin of safety rule, what is the maximum price you'd pay (in $)? Round to nearest whole.",
+    "answer": 60,
+    "tolerance": 2,
+    "unit": "$",
+    "explanation": "Graham's standard: buy at no more than 2/3 of intrinsic value. 2/3 × $90 = $60. The margin of safety ($90 - $60 = $30, or 33% of intrinsic value) protects against valuation error, business adversity, and further market irrationality. Some practitioners use tighter (50%) or looser (75%) thresholds; 2/3 is the canonical Graham number."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Graham's 'net-net' criterion required stocks to trade below:",
+    "choices": [
+      "The book value of equity.",
+      "2/3 of NET CURRENT ASSET VALUE (current assets minus all liabilities, including long-term debt).",
+      "Liquidation value plus a 10% margin.",
+      "Last year's EPS times 15."
+    ],
+    "correctIndex": 1,
+    "explanation": "Net-nets: market cap < 2/3 × (current assets - total liabilities). This effectively means the company is priced below what could be recovered by liquidating just the working capital, with ALL other assets (PP&E, intangibles, goodwill) thrown in for free. Graham's empirical record at Graham-Newman: net-nets averaged ~15% annualized returns 1926-1956. Modern markets rarely produce net-nets in liquid names; the criterion mostly identifies micro-cap distressed names today."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Buffett's evolution from Graham (covered in lesson 6.2) is best characterized as a shift from:",
+    "choices": [
+      "Stocks to bonds.",
+      "Cheap-statistically (Graham's quantitative balance-sheet screen) to wonderful-business-at-fair-price (qualitative assessment of long-term economic moats and reinvestment opportunities, accepting smaller margin-of-safety with higher business quality).",
+      "Long-term to short-term.",
+      "Diversified to concentrated."
+    ],
+    "correctIndex": 1,
+    "explanation": "Buffett's specific innovation, articulated in the 1972 See's Candies acquisition and developed in the letters: a wonderful business at a fair price is BETTER than a fair business at a wonderful price. The reason: a wonderful business compounds intrinsic value rapidly, so the 'price paid' becomes less important over time. A fair business compounds slowly; you need a deep discount on purchase to overcome the slow compounding. This is Buffett's structural extension of Graham, NOT a rejection. Both still use intrinsic value; both still demand margin of safety; Buffett shifted the SOURCES of intrinsic value from balance-sheet conservatism to long-term reinvestment economics."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Graham's classic Chapter 8 of 'The Intelligent Investor': 'The Investor and Market Fluctuations.' Free at archive.org or library.",
+    "url": "https://www.investorgrowth.com/wp-content/uploads/2018/12/the-intelligent-investor.pdf",
+    "title": "The Intelligent Investor - Chapter 8",
+    "reflectionPrompt": "In Chapter 8, Graham develops the Mr. Market metaphor explicitly. In one sentence: what is the trader's appropriate POSTURE toward Mr. Market's daily price offers, and why does Graham consider this posture difficult to maintain in practice?"
+  }
+]

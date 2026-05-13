@@ -1,0 +1,66 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Robert Carver's framework emphasizes 'forecast quality > strategy complexity.' This means:",
+    "choices": [
+      "Use complex models with many parameters.",
+      "A simple forecast (e.g., 64-day moving-average trend) applied across 30-100 instruments outperforms a complex rule on a single instrument; complexity is often OVERFIT and doesn't generalize.",
+      "Avoid backtesting.",
+      "Always use machine learning."
+    ],
+    "correctIndex": 1,
+    "explanation": "Carver's empirical observation: simple, robust forecasts (trend, carry, mean reversion) applied broadly outperform complex single-asset strategies that look great in backtest but don't survive out-of-sample. The reason: complexity allows fitting noise in historical data; simple rules force generalization. This is a recurring theme in systematic trading literature (Carver, Sasaki, Lopez de Prado): prefer robustness over apparent fit."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "VOLATILITY TARGETING in systematic trading means:",
+    "choices": [
+      "Trading volatility derivatives.",
+      "Sizing each position INVERSE to its volatility so each contributes roughly equal risk to the portfolio; this produces mathematical diversification and keeps portfolio vol roughly constant through market regimes.",
+      "Reducing trade frequency.",
+      "Using stop losses."
+    ],
+    "correctIndex": 1,
+    "explanation": "Vol targeting is one of the cornerstone disciplines. Without it, a high-vol commodity position dominates the portfolio's risk. With it, each instrument contributes equal risk regardless of its specific vol. Implementation: position size = (signal × target portfolio vol) / instrument vol. As an instrument's vol changes, position size adjusts to maintain equal risk contribution. This is the operational mechanism behind 'risk parity' style frameworks (also seen in lesson 3.6)."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Carver suggests RETAIL-ACCESSIBLE systematic strategies can achieve Sharpe ratios of approximately:",
+    "choices": [
+      "1.5-2.0 (institutional-class).",
+      "0.4-0.8 net of costs, achievable with multi-instrument multi-strategy implementations.",
+      "Negative (frictions exceed alpha).",
+      "Random."
+    ],
+    "correctIndex": 1,
+    "explanation": "Carver's honest estimate: retail systematic Sharpe of 0.4-0.8 after fees, slippage, and tax friction. Single-instrument single-strategy is typically much lower (0.1-0.3 net). Institutional firms (Renaissance, Citadel, Two Sigma) achieve 1.5+ due to scale, infrastructure, and proprietary research that retail cannot replicate. Don't expect Quant-fund returns; expect modest, diversified, structurally sound returns. The discipline pays off in long-run drawdown survival, not peak alpha."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "The biggest BEHAVIORAL advantage of systematic over discretionary trading is:",
+    "choices": [
+      "Higher returns.",
+      "Behavioral INSULATION: in drawdown, the trader can't override the rules with 'this is the bottom, I should buy'; the rules either fire or don't, and execution is mechanical. This removes the most common failure mode (abandoning strategy at the worst time).",
+      "Tax advantages.",
+      "Lower volatility."
+    ],
+    "correctIndex": 1,
+    "explanation": "Most discretionary strategies fail not because the framework was wrong but because the trader abandoned it during drawdown. Loss aversion (lesson 5.3) + lack of pre-committed rules = strategies modified at the moment of maximum stress, usually in the wrong direction. Systematic removes this failure mode mechanically: the rules execute regardless of how the trader feels. The cost is the inflexibility (rules can't update to truly novel circumstances), but for most strategies in most markets, the behavioral insulation is more valuable than the lost flexibility."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Compare and contrast systematic vs discretionary trading for someone like you. Which would you choose, and what would you give up in the choice?",
+    "rubric": [
+      "Considers constitutional fit (do you handle drawdowns by abandoning the strategy or by maintaining discipline?). Anyone who's abandoned strategies before will benefit from systematic insulation.",
+      "Considers time availability (systematic requires upfront work + light maintenance; discretionary requires constant attention to news, fundamentals, etc.).",
+      "Considers edge source (do you have a quantitative or qualitative edge?). Quantitative edges support systematic; qualitative judgment is harder to systematize.",
+      "Honest assessment of tradeoffs: systematic gives up flexibility but gains discipline; discretionary maintains flexibility but vulnerable to behavioral errors. Neither is universally superior.",
+      "Bonus credit: notes that hybrid approaches are common: systematic core (rules-based portfolio) plus opportunistic discretionary tactical adjustments at the margins."
+    ]
+  }
+]

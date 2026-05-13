@@ -1,0 +1,105 @@
+<RetrievalPrompt
+  prompt="A stock has fallen 15% over the past 5 days. A momentum trader sells (continued weakness expected). A mean-reversion trader buys (rebound expected). Both can be right, just at different time horizons. What determines whether a price move CONTINUES or REVERSES? And how do practitioners distinguish 'real trends' from 'overshoots that will mean-revert'?"
+  reveal="The answer is TIME HORIZON. Short-horizon (days to weeks): mean reversion dominates. Prices oscillate around recent levels; sharp moves often reverse. Medium-horizon (1-12 months): momentum dominates. Trends persist as information slowly impounds. Long-horizon (3-10 years): mean reversion returns. Valuations cycle around long-term averages. Practitioners distinguish via fundamental data (overshoot vs new information) and via statistical regularities (mean reversion is strongest near support/resistance levels)."
+/>
+
+## The horizon paradox
+
+A famous empirical observation: equity returns exhibit DIFFERENT statistical patterns at different horizons.
+
+| Horizon | Dominant pattern | Mechanism |
+|---|---|---|
+| 1-5 days | Mean reversion | Order-flow imbalance, liquidity, microstructure |
+| 1-3 weeks | Mixed | Mean-reverting in indices, somewhat trending in single names |
+| 1-12 months | Momentum | Behavioral underreaction, slow information diffusion |
+| 3-10 years | Mean reversion | Valuation cycles, business-cycle reversion |
+
+Each horizon has tradable patterns; the patterns are different. A strategy that works at one horizon may FAIL at another. Combining horizons (short-term mean reversion + medium-term momentum) is one way to capture multiple premia, though correlations between strategies need to be analyzed (lesson 3.8).
+
+## Short-horizon mean reversion
+
+Empirical evidence: stocks that have fallen sharply over 1-5 days TEND to bounce in the next 1-5 days. Stocks that have risen sharply tend to give back some.
+
+Examples of validated short-horizon mean reversion signals:
+
+- **RSI(2)**: 2-day Relative Strength Index. When RSI(2) drops below 5 (extremely oversold), buy; when above 95, sell. Larry Connors documented this in detail (multi-decade backtests on SPY). Sharpe in modern markets: 0.5-1.0 on systematic implementation.
+
+- **Bollinger Band reversion**: when price crosses below the lower Bollinger Band (2 standard deviations below a 20-day moving average), buy with an expectation of reversion within 5-10 days.
+
+- **VWAP reversion**: intraday strategy. After an asymmetric move pushes price more than X% away from VWAP, expect partial reversion within hours.
+
+The mechanism: short-term moves are often driven by ORDER-FLOW IMBALANCES (a large institutional sell, a margin-call cascade, a momentum-trader squeeze) rather than fundamental information. When the imbalance is exhausted, the price drifts back toward the pre-move equilibrium.
+
+Limit: small returns per trade (often 0.5-2%). High turnover. Requires execution discipline; transaction costs and slippage eat much of the gross profit.
+
+## Long-horizon mean reversion (valuation cycles)
+
+Over 3-10 year horizons, equity-market and individual-stock valuations cycle around long-term averages. Shiller's CAPE (lesson 2.4) demonstrates this pattern at the index level.
+
+Practical implication: when CAPE is well above its 50-year average (38 in 2021, ~35 in late 2024), forward 10-year real returns tend to be below average. When CAPE is well below its average (sub-15 historically: 2009 reached 13.3), forward 10-year real returns tend to be well above average.
+
+This isn't market timing in the day-trader sense. It's MULTI-YEAR positioning around durable valuation cycles. Combining this with the Marks cycle framework (lesson 6.4) gives an integrated valuation-and-positioning discipline.
+
+For our work, this matters at the broad-portfolio level (when CAPE is elevated, expect lower forward returns; size aggressive strategies accordingly) more than at the individual-trade level.
+
+## Pairs trading and statistical arbitrage
+
+A specialized class of mean-reversion strategies: identify pairs of stocks that historically move together, and trade the SPREAD when it deviates from its historical range.
+
+Example: Coca-Cola and Pepsi. They both face the same macro winds, same retail channels, similar customer bases. Their spread (KO price minus PEP price) has a stable range. When KO outperforms PEP by 5%+ in a month with no obvious reason, the spread is statistically wide. Trade: short KO, long PEP, expecting the spread to revert.
+
+Modern implementations are pair-by-pair, but the framework generalizes to "statistical arbitrage" across hundreds of stocks simultaneously. Long Term Capital Management was a famous (and famous-failed) implementation; modern hedge funds running stat arb (Citadel, Renaissance) achieve high Sharpe with strict risk management.
+
+Retail can implement simple pair trading manually, though the edge has compressed substantially. The "structural reason" pairs trade: cross-sectional behavioral patterns clearing within hours-to-days create the opportunity.
+
+<WorkedExample
+  title="Designing a simple mean-reversion strategy"
+  problem="Design a backtestable mean-reversion strategy on S&P 500 stocks. Specify entry signal, exit signal, position sizing, and the expected Sharpe ratio range."
+  steps={[
+    { label: "Step 1: entry signal", body: "Long entry: stock is in S&P 500, current price is 3+ standard deviations below 30-day moving average, AND past 30-day return is in the bottom decile of S&P 500 stocks. Short entry: symmetric criteria above the mean." },
+    { label: "Step 2: exit signal", body: "Long exit: price reverts to the moving average (target). Stop loss: price falls another 5% (limit downside). Time exit: 10 trading days regardless of price (avoid getting trapped in long-term declines)." },
+    { label: "Step 3: position sizing", body: "Equal-weight across all qualifying signals. Max 10 simultaneous positions. Per-position size = $10K on a $100K account. No single position above 10% of capital." },
+    { label: "Step 4: risk profile", body: "Win rate ~60-70%, average gain per win ~3%, average loss per stop ~5%. Expected return per trade: 60% × 3% - 40% × 5% = -0.2%? That doesn't work; the math suggests this specific configuration has negative expected return." },
+    { label: "Step 5: refine the strategy", body: "The original numbers are too conservative on win rate or too lenient on stop. Adjust: use 5-day MAvg with tighter signal (5+ std dev), achieve higher win rate (70-80%) with smaller gains (1-2%), tighter stops (3%). Re-run math: 75% × 1.5% - 25% × 3% = 0.375%, modest but positive expected value." },
+    { label: "Step 6: realistic expected Sharpe", body: "Mean-reversion systematic strategies on equity universes: Sharpe 0.5-1.0 in modern markets after costs. Higher Sharpe is achievable with more selective signals (fewer trades but higher quality) or with cross-pair structures (pair trading)." },
+    { label: "Step 7: implementation reality check", body: "Friction kills retail mean-reversion strategies. 1-2¢ slippage per share × 200 trades/year × $20 average price × 100 shares = $400+ in slippage. Add transaction costs (commissions, taxes if in taxable account), and the strategy needs to clear 1-2% per year of friction. Many marginal mean-reversion edges don't survive this." },
+  ]}
+/>
+
+## Where mean reversion fits with momentum
+
+Mean reversion and momentum are NOT competing theories; they operate at different horizons:
+
+- **Short-horizon mean reversion** (1-5 days): captures order-flow inefficiencies
+- **Medium-horizon momentum** (1-12 months): captures behavioral underreaction
+- **Long-horizon mean reversion** (3-10 years): captures valuation cycles
+
+A diversified active portfolio can run all three simultaneously. Daily-PnL correlations between them are typically moderate (0.2-0.5), so combining produces real diversification (per lesson 3.8).
+
+Our paper-trading-swing-sleeves backtest project is exactly this: adding pullback and RSI(2) sleeves (short-horizon mean reversion) to the existing longcall sleeve (medium-horizon momentum-following via breakout entries). The expectation is that the sleeves are correlated below 0.7 (passing the gate) and produce combined Sharpe better than either alone.
+
+## Cautions
+
+Three failure modes specific to mean-reversion strategies:
+
+### 1. Trend traps
+
+A "broken" stock (deteriorating fundamentals) keeps falling. Mean-reversion signals fire repeatedly; each entry stops out. The strategy bleeds. Defense: filter mean-reversion entries by fundamental quality (don't try to mean-revert on stocks below their 200-day moving average; the longer trend is down for a reason).
+
+### 2. Drawdown clustering
+
+Mean-reversion strategies tend to have CLUSTER LOSSES: when the market is in a trending regime (2010-2014, 2020-2021), mean-reversion strategies underperform. The losses come together. Diversification across strategy types is the structural defense.
+
+### 3. Friction asymmetry
+
+Short-horizon mean-reversion strategies are particularly sensitive to transaction costs. A 1-2% expected gain per trade can be entirely eaten by 30-50 bp of frictions if trade frequency is high. Implementation discipline (limit orders, careful sizing) matters more than for longer-horizon strategies.
+
+<LessonRecap points={[
+  "Three time horizons produce different patterns: short (1-5 days) = mean reversion; medium (1-12 months) = momentum; long (3-10 years) = mean reversion via valuation cycles.",
+  "Short-horizon mean reversion: RSI(2), Bollinger reversion, VWAP reversion. Mechanism: order-flow imbalances rather than fundamental info. Sharpe 0.5-1.0 net of costs.",
+  "Long-horizon mean reversion: CAPE-based forecasting of forward returns; combines with Marks cycle framework (lesson 6.4) for multi-year positioning.",
+  "Pairs trading and statistical arbitrage extend mean-reversion to relative pricing of correlated assets. Modern hedge fund implementations achieve high Sharpe with strict risk management.",
+  "Failure modes: trend traps (broken stocks keep falling), drawdown clustering (mean reversion underperforms in trending regimes), friction asymmetry (transaction costs eat marginal edges)."
+]} />
+
+<ExerciseRunner lessonId="06.6-mean-reversion" />

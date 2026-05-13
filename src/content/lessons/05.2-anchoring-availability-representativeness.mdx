@@ -1,0 +1,106 @@
+<RetrievalPrompt
+  prompt="A stock is at $100, was at $80 a month ago, and was at $120 three months ago. A friend describes it as: (a) 'up 25% from the bottom, time to take profits' OR (b) 'down 17% from the high, attractive entry.' Both refer to the same $100 price. What single bias explains why each framing yields a different action? And what's the structural defense?"
+  reveal="Anchoring: the framing chooses an anchor ($80 or $120) and the trader adjusts insufficiently from that anchor. Two anchors, two conclusions, same price. The structural defense is to anchor on FUNDAMENTAL VALUE (a DCF or multi-multiple estimate) rather than on prior price levels. Anchoring is one of the three founding heuristics from lesson 5.1 and the easiest to spot in your own behavior, because every quoted price comparison is an anchoring opportunity."
+/>
+
+## Anchoring
+
+The clean experimental demonstration (Tversky & Kahneman 1974):
+
+> Participants spun a wheel of fortune that displayed either 10 or 65 (rigged; the wheel only stopped at those two values). Then they were asked: "Is the percentage of African countries in the UN higher or lower than [10 or 65]? What's your best estimate?"
+>
+> Median estimate for the 10-anchor group: 25%.
+> Median estimate for the 65-anchor group: 45%.
+
+The arbitrary spin of a wheel moved final estimates by 20 percentage points. Subjects were explicitly told the anchor was random and irrelevant. They knew it was random. They still anchored.
+
+In market contexts, the anchors are usually NOT explicitly random. They're recent prices, IPO prices, your purchase price, 52-week highs, round numbers. Each acts as an anchor for "what this stock is worth," even when it isn't.
+
+Specific manifestations:
+
+- **The 52-week high anchor**: stocks near their 52-week high tend to underperform in the next month, partly because traders treat the prior high as a "ceiling" and sell into it. Stocks far from highs underperform because traders anchor "lost money" mentally.
+- **Round-number anchors**: SPY trades through $400 with elevated volume; the round number is a psychological anchor that creates support/resistance.
+- **Your purchase price**: the "I'll sell when it gets back to my cost" reflex is anchoring's most expensive form. Your cost basis is irrelevant to whether the stock is currently undervalued; your decision should depend only on current value vs current price.
+
+Defense: explicitly anchor on FUNDAMENTAL value. A DCF (Layer 2.3) or multi-multiples estimate gives a price range that's independent of recent quotes. Compare the current price to that range, not to recent prices.
+
+## Availability
+
+The ease-of-recall heuristic: events that are easier to recall feel more frequent. Combined with media salience, this produces predictable overreactions to vivid events.
+
+Empirical demonstrations:
+
+- After a plane crash, people overestimate the probability of further crashes for weeks. Insurance sales for flight-cancellation insurance spike.
+- After a corporate accounting fraud is revealed, retail flow OUT of the stock peaks days later, well after the institutional reaction; retail availability of the fraud headline drives delayed selling.
+- After a hot IPO doubles on Day 1, retail interest in IPOs more broadly rises for months; the salient success makes "IPOs" feel like an asset class that wins.
+
+A useful mental check: "How easily can I recall examples of [X]? Is that ease a true reflection of [X]'s frequency, or is it being driven by media salience, recency, vividness, or selective survivorship?"
+
+For markets specifically:
+- The names that come to mind quickly are the recent winners and the recent dramatic losers. The boring middle is missing.
+- The strategies that sound like they "work" are the ones featured in books and interviews. The ones that quietly failed don't have books. Survivorship bias is availability + selection.
+
+<WorkedExample
+  title="Anchoring vs fundamental value, a worked case"
+  problem="Stock X was $100 a month ago. Today it's $70. Your DCF estimate of fair value is $120, computed with reasonable assumptions. A friend asks: 'Should I buy?' Walk through the bias-aware decision."
+  steps={[
+    { label: "Step 1: spot the anchor", body: "Your friend's question implicitly anchors on the $100 prior price. The thought is: 'It WAS $100, now $70, so it's cheap.' Replace this with: 'Fair value is $120 per my DCF. Current price $70 is 42% below fair value. Therefore cheap relative to value, not relative to prior price.'" },
+    { label: "Step 2: stress-test the DCF", body: "Is the DCF still valid? If the 30% drop reflects new information about cash flows (earnings warning, accounting issue, lost contract), the DCF needs updating. If the drop was a market-wide deleveraging event with no idiosyncratic news, the DCF is intact." },
+    { label: "Step 3: avoid the symmetric anchoring trap", body: "A new anchor risk: you may now anchor on your $120 DCF as if it were a known target. It isn't; it's an estimate with sensitivity. Use a range (say $100-140) and a margin of safety (buy below $90, hold to $130) rather than treating $120 as an absolute target." },
+    { label: "Step 4: act", body: "If price is materially below your fair-value range and the DCF is still valid, buy. Size the position to acknowledge DCF uncertainty (more uncertainty → smaller position). Don't anchor the exit on prior $100 highs; exit when current price approaches the high end of your fundamental range." },
+    { label: "Step 5: track the discipline", body: "Once positions exist, anchoring shifts to your cost basis ($70 in this example). Watch for the 'I'll sell when I'm back to even' reflex if the stock goes to $55. That reflex is anchoring, not analysis." },
+  ]}
+/>
+
+## Representativeness
+
+Representativeness: judging probability by similarity to a stereotype, ignoring base rates.
+
+The classical demonstration (Kahneman-Tversky 1972):
+
+> "Bob is shy, withdrawn, helpful, but with little interest in people, or in the world of reality. A meek and tidy soul, he has a need for order and structure, and a passion for detail."
+>
+> What is Bob's profession? Subjects ranked librarian as more probable than farmer, even though there are 20x more US farmers than librarians.
+
+Base rates exist; representativeness ignores them.
+
+In markets:
+
+- **Glamour stocks**: companies that "look like" past growth winners (FANG, NVDA pre-2024) get bid up because they fit the template. Most "next Apple" candidates aren't.
+- **Story stocks**: a compelling narrative (cancer cure, EV transition, AI dominance) overrides base-rate skepticism. The narrative makes the bet feel more probable than base rates support.
+- **Cheap stocks**: companies that "look like" past value traps (declining retailer, distressed energy producer) get sold below fundamental value because they fit the loser template. Some are real value; most are correctly priced.
+
+The Fama-French value premium (Layer 3.5) is in part the market correcting representativeness biases. Cheap stocks that LOOK bad but are actually fine outperform glamour stocks that LOOK great but are actually overvalued. The mechanism: representativeness pushes prices to extremes, mean reversion (slowly, painfully) does the correction.
+
+## Three additional biases worth naming
+
+The 1974 paper started a cottage industry. A few more biases that are most relevant for trading:
+
+- **Confirmation bias**: actively seek information that confirms your existing view; dismiss disconfirming evidence. Crippling for trading because it leads to position-sizing on false confidence and reluctance to exit losers.
+- **Hindsight bias**: after an event happens, believe you "saw it coming" with more clarity than you actually had. Distorts post-mortems; makes trade-journal entries unreliable.
+- **Endowment effect**: things you own feel more valuable than the same things you don't own. Makes you reluctant to sell positions you should sell.
+
+Each becomes a tradable pattern when other traders are exhibiting it predictably. Most are also operating in YOU. The asymmetry of dealing with your own biases vs counterpartys' biases is the central tension of behavioral trading.
+
+## The defense isn't being unbiased
+
+A common misreading: "Now that I know about these biases, I'll be careful and avoid them." Empirically, this rarely works. The biases survive awareness.
+
+The defense is STRUCTURAL: external commitments, rules, checklists, and pre-commitments that prevent System 1 from acting unchecked. Examples:
+
+- Pre-trade checklist forcing System 2 evaluation before each new position.
+- Position-sizing rules that don't depend on conviction (because conviction is biased).
+- Stop-loss rules that exit independent of "I think it'll come back."
+- A trade journal with explicit pre-trade hypotheses, evaluated after the fact.
+
+The bias doesn't go away. The COSTS of the bias go down because System 2 has a chance to interrupt before action.
+
+<LessonRecap points={[
+  "Anchoring: arbitrary numerical anchors influence estimates even when subjects know they're random. Stock prices anchor on prior levels, 52-week highs/lows, cost basis, round numbers. Defense: anchor on fundamental value, not on recent quotes.",
+  "Availability: ease of recall is used as proxy for actual frequency. Vivid events (crashes, frauds, hot IPOs) feel more frequent than base rates support. Survivorship bias is availability + selection.",
+  "Representativeness: judging probability by similarity to stereotypes, ignoring base rates. Glamour and value stocks are both manifestations; the value premium is partly the market correcting this.",
+  "Three more biases for trading: confirmation, hindsight, endowment. Each leads to predictable systematic mistakes.",
+  "Defense is structural (checklists, rules, pre-commitments), not internal (awareness). Biases survive awareness; their COSTS can be reduced by external scaffolding."
+]} />
+
+<ExerciseRunner lessonId="05.2-anchoring-availability-representativeness" />

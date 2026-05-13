@@ -1,0 +1,93 @@
+<RetrievalPrompt
+  prompt="EMH (which Layer 10 covers fully) claims market prices reflect all available information rationally. Decades of psychological research starting in the 1970s identified specific, replicable ways that humans deviate from rational expected-utility maximization. What was the framework, who developed it, and what was the single most important methodological claim it made?"
+  reveal="The 'heuristics and biases' program, developed by Kahneman and Tversky beginning in 1973-1974. Methodological claim: human judgment under uncertainty isn't 'irrational' (random error around a rational mean). It is SYSTEMATICALLY biased in predictable directions, by predictable mental shortcuts. The biases are NOT computational errors that can be educated away; they survive expertise, incentives, and explicit warnings. This was the empirical foundation that made behavioral finance a legitimate research program rather than a folk-psychology side-channel."
+/>
+
+## The 1974 paper
+
+<SourceLink id="kahneman-tversky-1974" /> ("Judgment Under Uncertainty: Heuristics and Biases") is the foundational paper. The central claim: when humans estimate probabilities or make judgments under uncertainty, they use MENTAL SHORTCUTS (heuristics) that produce predictable, systematic biases.
+
+The three heuristics they identified:
+
+1. **Representativeness**: judging probability by similarity to a stereotype, ignoring base rates.
+2. **Availability**: judging frequency by ease of recall, not by actual frequency.
+3. **Anchoring & adjustment**: starting from an anchor (often arbitrary) and adjusting insufficiently.
+
+These weren't proposed as exhaustive; later research added dozens more (lesson 5.2 explores them). The methodological claim was the breakthrough: biases are systematic, not random; they follow rules; they can be experimentally manipulated.
+
+## A representative example
+
+Tversky and Kahneman's famous "Linda problem":
+
+> "Linda is 31, single, outspoken, very bright. Studied philosophy. Concerned with discrimination and social justice. Participated in antinuclear demonstrations.
+>
+> Which is more probable?
+> (a) Linda is a bank teller.
+> (b) Linda is a bank teller AND active in the feminist movement."
+
+About 85% of participants choose (b). But by the conjunction rule of probability, P(A AND B) ≤ P(A). The probability of (b) cannot exceed the probability of (a). Choosing (b) is provably wrong.
+
+What's happening: subjects judge "which is more PROBABLE" by similarity to the description (representativeness). Linda sounds like a feminist; therefore "feminist bank teller" sounds more representative than just "bank teller." The conjunction rule of probability is overridden by the heuristic.
+
+Critically: this isn't an error that goes away when you tell people about it. Replications across decades, with statisticians, with explicit warnings, show the effect persists. Heuristic processes are FAST AND INTUITIVE; the rule-following correction (System 2) is slower and effortful.
+
+## Why this matters for markets
+
+Markets are a giant judgment-under-uncertainty machine. Every price reflects somebody's bet about uncertain future cash flows. If those bets are systematically biased, prices will be systematically biased.
+
+Specific market manifestations covered in later lessons:
+
+- **Representativeness**: growth stocks that "feel like" successful companies trade at extreme premia; cheap stocks that "feel like" losers trade at extreme discounts. The value premium (Layer 3.5) is in part the market correcting these category errors.
+- **Availability**: investors over-weight recently salient events. Plane crash leads to selling airline stocks; earthquake leads to selling insurance. Market reactions to vivid news consistently overshoot.
+- **Anchoring**: stock prices anchor to recent levels. "Cheap" relative to last year, "expensive" relative to last year, even when fundamentals have changed materially.
+
+Each bias becomes a tradable pattern if (a) you can identify it reliably and (b) other market participants haven't already corrected it. Both conditions are nontrivial.
+
+## System 1 vs System 2 (Thinking, Fast and Slow)
+
+Kahneman's 2011 popular book formalized the dual-process framework:
+
+| System | Mode | Speed | Effort | Examples |
+|---|---|---|---|---|
+| **System 1** | Intuitive, automatic | Fast | Low | Driving on a familiar route, recognizing a face, completing "two plus two..." |
+| **System 2** | Deliberate, analytical | Slow | High | Mental arithmetic with multi-digit numbers, evaluating an argument, learning a new skill |
+
+The heuristics-and-biases program demonstrated that System 1 dominates most decisions, INCLUDING those we think we're making with System 2. We rationalize System 1 conclusions post-hoc with System 2 reasoning. The bias remains.
+
+For investing, this means: even careful, deliberate-feeling investment decisions often have System 1 anchors that the rational story papered over. Recognizing your own System 1 patterns (lesson 5.4 on calibration) is the practical entry point.
+
+<WorkedExample
+  title="Spot the bias in a real trading scenario"
+  problem="A trader notices that a stock has fallen 30% in two months while the broader market is flat. They reason: 'It's been an extraordinary down move, and statistical principles say it should mean-revert. I'll buy.' What heuristic biases might be operating beneath the surface of this seemingly reasoned decision?"
+  steps={[
+    { label: "Bias 1: representativeness", body: "The trader is matching the situation to a 'extreme move → mean reversion' template. Real mean reversion is regime-dependent; sometimes prices keep falling for fundamental reasons (collapsed earnings, eroded moat, accounting fraud). The 'looks like a mean reversion setup' impression is representativeness, not analysis." },
+    { label: "Bias 2: anchoring", body: "The trader is comparing the current price to the price two months ago, anchoring on the prior level as the 'correct' value. If the company's situation has materially changed, the prior level is irrelevant; the new equilibrium might be lower still." },
+    { label: "Bias 3: availability", body: "The trader's mind generates memories of past 30% drops that mean-reverted. Drops that ended in further losses are LESS available (the names are now obscure, having been delisted or absorbed). The trader's sample is biased toward the survivors." },
+    { label: "Bias 4: post-hoc rationalization", body: "The 'I'll buy because it should mean-revert' might be a System 2 rationalization of a System 1 impulse (I see a falling stock, I feel I should buy the dip). The rational-sounding language papers over a bias-driven core." },
+    { label: "What a disciplined response looks like", body: "Before acting, ask: (a) what is the FUNDAMENTAL reason for the 30% drop? (b) is the company's intrinsic value also 30% lower, or has the market overreacted? (c) what does base-rate data say about the next-period return after a 30% drop in this industry context? Each question forces System 2 engagement before the System 1 'buy the dip' urge wins." },
+  ]}
+/>
+
+## What's NOT in the biases catalog
+
+Three things behavioral finance is NOT:
+
+1. **Pop-psychology applied to markets.** Each of the documented biases is from controlled experiments with replication, not from observation that "people sometimes panic."
+2. **A general claim that markets are inefficient.** The standard read is that biases exist AND markets impound them (eventually); the question is whether they CLEAR before opportunities are tradable.
+3. **An excuse for any narrative.** "It went up because of greed" and "it went down because of fear" are not behavioral explanations; they are tautologies. A behavioral explanation requires identifying a specific bias mechanism and (ideally) predicting its persistence.
+
+## Where this leads
+
+The next five lessons unpack specific biases (5.2-5.6). Layer 6 then ties biases to specific TRADING STRATEGIES (value as a behavioral overreaction trade; momentum as an underreaction trade; mean reversion as anchoring exploitation). Layer 10 closes the loop with the EMH-vs-behavioral debate and the Grossman-Stiglitz reconciliation.
+
+Reading <SourceLink id="kahneman-tversky-1974" /> is the foundational primary source. Kahneman's <em>Thinking, Fast and Slow</em> (library or audio) is the accessible book-length treatment with examples.
+
+<LessonRecap points={[
+  "Kahneman-Tversky 1974: judgment under uncertainty uses mental shortcuts (heuristics) that produce SYSTEMATIC, predictable biases, not random errors.",
+  "Three foundational heuristics: representativeness, availability, anchoring & adjustment. Later research added many more.",
+  "The Linda problem demonstrates conjunction-rule violation by representativeness; the bias persists even with statisticians and explicit warnings.",
+  "Dual-process framework: System 1 (fast/intuitive/automatic) dominates most decisions; System 2 (slow/deliberate) rationalizes post-hoc. Both contribute to market behavior.",
+  "Behavioral biases become tradable patterns only when (a) reliably identified and (b) not yet corrected by other participants. Neither condition is automatic."
+]} />
+
+<ExerciseRunner lessonId="05.1-heuristics-and-biases" />

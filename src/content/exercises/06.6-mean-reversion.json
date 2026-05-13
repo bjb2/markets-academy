@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Equity returns exhibit DIFFERENT statistical patterns at different horizons. Which is the empirically-supported summary?",
+    "choices": [
+      "Always mean-reverting.",
+      "Always trending (momentum).",
+      "Short-horizon (1-5 days) = mean reversion. Medium-horizon (1-12 months) = momentum. Long-horizon (3-10 years) = mean reversion. The patterns oscillate by time scale.",
+      "Random at all horizons."
+    ],
+    "correctIndex": 2,
+    "explanation": "This is the well-documented 'horizon paradox.' Short-horizon mean reversion is dominated by order-flow effects (liquidity, microstructure). Medium-horizon momentum is dominated by behavioral underreaction to information. Long-horizon mean reversion reflects valuation cycles. Strategies that work at one horizon often fail at another. Combining horizons strategically is one of the cleanest paths to diversification within an active portfolio."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "RSI(2) is a popular short-horizon mean-reversion signal. The 2-period Relative Strength Index drops below 5 (extremely oversold) for a stock that's still above its 200-day moving average. Buy with target of reversion to the moving average. The mechanism is:",
+    "choices": [
+      "Fundamental valuation reversion.",
+      "Order-flow imbalance: extreme short-horizon weakness is often driven by liquidity events (margin calls, large institutional sell, momentum unwind) rather than fundamental information. When the order flow exhausts, price drifts back toward equilibrium.",
+      "Random walk reversal.",
+      "Tax-related selling."
+    ],
+    "correctIndex": 1,
+    "explanation": "Short-horizon mean reversion exploits ORDER-FLOW IMBALANCES, not fundamental information. A stock falling 5% in a day on an institutional unwind isn't typically responding to news; the news is the SELLER'S need to liquidate. When the seller is finished, price drifts back. This is why mean-reversion signals work better when filtered for fundamental quality (no broken thesis) and for absence of major news catalysts."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Why does the Shiller CAPE (cyclically-adjusted P/E) help predict 10-year forward returns better than trailing P/E?",
+    "choices": [
+      "CAPE is easier to calculate.",
+      "Long-horizon mean reversion of valuations: equity multiples cycle around long-term averages. When CAPE is well above average, mean reversion implies lower forward returns; when well below, higher forward returns. The 10-year window smooths cyclical noise; trailing P/E spikes in recessions and looks 'cheap' just at the wrong time.",
+      "CAPE adjusts for risk.",
+      "CAPE is mandatory."
+    ],
+    "correctIndex": 1,
+    "explanation": "Empirically, current CAPE explains 30-40% of variance in subsequent 10-year real returns. This is real predictive power, far better than trailing P/E (which is noise) or forward P/E (which is biased optimistic). The mechanism is valuation cycle reversion at 5-15 year horizons; CAPE captures the cycle, trailing P/E doesn't. Cautionary note: CAPE has been ELEVATED since the mid-2010s without a clean mean reversion, prompting debates about whether the equilibrium CAPE level has structurally shifted higher."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A 'pair trade' between Coca-Cola (KO) and Pepsi (PEP) involves:",
+    "choices": [
+      "Buying both.",
+      "Trading the SPREAD between them: short the relatively-outperforming one, long the relatively-underperforming one, expecting the spread to mean-revert to its historical range; profit comes from spread convergence regardless of absolute direction.",
+      "Selling both.",
+      "Hedging with options."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pairs trades isolate the RELATIVE performance from the absolute. KO and PEP face the same macro winds; their spread is more stable than their individual returns. When the spread widens unusually (KO outperforms PEP by 5% with no obvious reason), the historical mean-reversion of the spread suggests trading: short KO, long PEP, target spread reversion. The trade is market-neutral; you profit on the relative move, not on either stock's absolute direction."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Mean-reversion strategies often suffer 'trend trap' losses: a broken stock keeps falling, and mean-reversion signals fire repeatedly, each entry stopping out. Design a FILTER that would meaningfully reduce trend-trap losses while maintaining the strategy's normal-period performance.",
+    "rubric": [
+      "Specific filter (e.g., 'only mean-revert on stocks above 200-day moving average', 'only mean-revert when stock's fundamental quality screen passes', 'only mean-revert when sector momentum is positive').",
+      "Reasoning: distinguishes a 'short-term flush' (mean-revertable) from a 'broken thesis' (not). The filter operationalizes this.",
+      "Tradeoffs acknowledged: filtered strategies will MISS some genuine mean-reversion opportunities; the trade is fewer trades with higher quality vs more trades with more variance.",
+      "Bonus credit: notes that the filter should be backtestable; a filter that works in 5-year sample-in might not work out-of-sample, requiring validation before deployment."
+    ]
+  }
+]

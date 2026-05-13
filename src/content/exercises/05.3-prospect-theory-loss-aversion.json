@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The 'loss aversion coefficient' from prospect theory says losses hurt approximately HOW MUCH more than equivalent gains feel good?",
+    "choices": [
+      "1x (the same).",
+      "About 2x (a $100 loss hurts roughly twice as much as a $100 gain feels good).",
+      "About 5x.",
+      "About 10x."
+    ],
+    "correctIndex": 1,
+    "explanation": "Empirical studies consistently estimate the ratio at 1.8 to 2.5, conventionally rounded to '2x.' This is why most people refuse a 50/50 bet of +$110 vs -$100 even though it has positive expected value: the $100 loss carries about 2x the psychological weight of the $110 gain."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The 'disposition effect' (Odean 1998) refers to:",
+    "choices": [
+      "Tax-loss harvesting.",
+      "Retail investors disproportionately SELLING winners and HOLDING losers, INVERSE to optimal tax behavior, driven by prospect theory's reference-dependent value function.",
+      "Day-trader overconfidence.",
+      "Stop-loss orders."
+    ],
+    "correctIndex": 1,
+    "explanation": "Winners are in the concave region of the value function: selling locks in a gain that feels safer than continued risk. Losers are in the convex region: holding offers a chance at break-even that feels valuable. The result is reversed from optimal tax behavior (you should sell losers for the tax loss, hold winners for the deferred gain). Odean's data shows the pattern in millions of retail brokerage records."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "A trader is down 50% on a position whose thesis has been violated (the company missed earnings badly and management gave weak guidance). They tell themselves: 'I'll wait until it bounces back to my cost to sell.' This decision is best characterized as:",
+    "choices": [
+      "Rational long-term thinking.",
+      "Anchoring on cost basis PLUS prospect theory's risk-seeking in the loss region (the convex value function makes additional loss feel manageable while break-even feels psychologically valuable).",
+      "Patience.",
+      "Diversification."
+    ],
+    "correctIndex": 1,
+    "explanation": "Two biases combine. Anchoring: cost basis is irrelevant to forward expected return, but it functions as a psychological exit target. Prospect theory: in the convex loss region, holding feels worth the additional risk because (a) additional loss feels less painful per dollar than the first dollar of loss did, and (b) break-even has outsized psychological value vs the actual expected utility of break-even. The combination is one of the most expensive retail trading patterns."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Probability weighting in prospect theory predicts that retail investors will systematically:",
+    "choices": [
+      "Underpay for lottery-like assets (low probability, high payoff).",
+      "OVERPAY for lottery-like assets (low probability, high payoff) AND for tail-risk insurance (low probability, high cost) because small probabilities are psychologically overweighted.",
+      "Be indifferent to probability weighting.",
+      "Always demand fair odds."
+    ],
+    "correctIndex": 1,
+    "explanation": "The probability-weighting function overweights small probabilities. Both tails of the outcome distribution feel more probable than they are. Result: pay premium prices for far-OTM options (lottery-like upside), pay premium prices for far-OTM put protection (lottery-like downside protection). Empirically, both predictions hold. Lottery-like small-caps systematically underperform; far-OTM equity options have implied vol meaningfully above realized vol on the upside skew."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "You have two trading positions: one up 30%, one down 30%. You need to liquidate one to meet a margin requirement. Per the disposition effect, which would you intuitively sell? Per Buffett/Bogle-style discipline, which SHOULD you sell? What information would you need to make the rational choice that the bias would lead you to skip?",
+    "rubric": [
+      "Disposition effect → sell the winner (lock in the gain, hold the loser hoping for recovery).",
+      "Rational choice depends on FORWARD expected return, not cost basis: which position has the worse outlook given current fundamentals? That's the one to exit.",
+      "Information needed: re-evaluate each position's thesis at CURRENT prices. Cost basis is irrelevant to whether the stock is currently over- or under-valued. The decision should be entirely forward-looking.",
+      "Bonus credit: notes that in TAXABLE accounts, the down 30% position would also generate a tax loss benefit, providing an additional reason against the disposition-effect default."
+    ]
+  }
+]

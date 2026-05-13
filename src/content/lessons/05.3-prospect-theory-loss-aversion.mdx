@@ -1,0 +1,100 @@
+<RetrievalPrompt
+  prompt="Expected utility theory says you should evaluate any gamble by computing the expected utility of its outcomes and accepting if positive. By that standard, a 50/50 bet to win $110 or lose $100 has positive expected value and should be accepted. Empirically, most people refuse it. Why? And what does this REVEAL about how humans actually evaluate risk?"
+  reveal="People are LOSS AVERSE: a loss of $100 hurts roughly 2x more than a gain of $100 helps. The asymmetry is the core empirical finding behind prospect theory (Kahneman-Tversky 1979). It says expected utility theory is wrong as a DESCRIPTION of human choice (even though it may be right as a NORMATIVE prescription). The framework reshapes how to think about trading discipline, position sizing, drawdown tolerance, and risk-taking in markets."
+/>
+
+## The 1979 paper
+
+<em>Prospect Theory: An Analysis of Decision Under Risk</em> (Kahneman-Tversky 1979) is the second foundational paper of behavioral finance, complementing the 1974 heuristics paper. Its central claims:
+
+1. **Reference dependence**: choices are evaluated as GAINS or LOSSES relative to a reference point (current wealth, the original price you paid, the status quo), not as final wealth states.
+2. **Loss aversion**: losses hurt roughly 2x more than equivalent gains feel good.
+3. **Diminishing sensitivity**: gains beyond a certain magnitude feel only slightly larger than smaller gains; losses beyond a certain magnitude similarly compress. The "value function" is concave for gains and convex for losses.
+4. **Probability weighting**: people OVERWEIGHT small probabilities (lotteries, tail risks) and UNDERWEIGHT moderate probabilities (the meat of normal outcomes).
+
+Together these produce a value function that looks roughly S-shaped: steeper for losses than gains, with diminishing marginal sensitivity.
+
+## The shape of the value function
+
+Imagine the x-axis is "outcome relative to reference point" (positive = gain, negative = loss). The y-axis is "psychological value." The curve:
+
+- Crosses zero at the reference point.
+- Has a STEEPER slope on the left (losses) than on the right (gains). The ratio of slopes near zero, the "loss aversion coefficient," is ~2 to 2.5 in most studies.
+- Is concave on the right: $200 gain feels less than 2x the value of a $100 gain.
+- Is convex on the left: $200 loss feels less than 2x the pain of a $100 loss.
+
+Implications:
+- People will accept SMALL fair-or-favorable bets (the concavity isn't yet binding).
+- People REJECT moderate-stakes bets even at slightly positive expected value (the loss-aversion gradient near zero dominates).
+- People become RISK-SEEKING in deep losses (the convexity makes additional losses feel smaller, so they roll the dice).
+
+That last implication has direct trading consequences (next section).
+
+## Trading consequences
+
+Three robust patterns predicted by prospect theory and confirmed empirically in retail trading data:
+
+### 1. The disposition effect
+
+Retail investors disproportionately SELL their winners and HOLD their losers. The reason: a winner is in the concave region (selling locks in a guaranteed gain that feels better than the additional gamble), while a loser is in the convex region (holding offers a chance to get back to break-even, which feels worth the additional gamble).
+
+The economic consequence is bad: tax efficiency is INVERSE to the disposition effect (you should sell losers to harvest tax losses, sell winners only when allocation requires). Realized returns underperform paper returns precisely because of this pattern.
+
+Odean (1998) documented the disposition effect in retail brokerage records: stocks held had paper losses 15-20% greater than realized losses; winners were realized at 60-70% the rate of equivalent losers. The pattern is robust across decades and across countries.
+
+### 2. Hold losers too long, sell winners too early
+
+Same mechanism, broader framing. A position at +50% feels "I should lock in this gain." A position at -50% feels "I should give it a chance to come back." Both reflexes are prospect-theory-driven. Both are wrong in expectation: paper winners with positive earnings momentum tend to keep gaining; paper losers with deteriorating fundamentals tend to keep falling.
+
+### 3. Overweighting tail events
+
+Prospect theory's probability-weighting predicts overpaying for lottery-like outcomes (low probability, high payoff: penny stocks, far-OTM options, biotech binaries) AND for tail-risk insurance (low probability, high cost: put options, deep OTM hedges).
+
+Both patterns show up empirically. The "lottery-like" stocks (small caps with high vol, recent IPOs, penny stocks) systematically underperform on a risk-adjusted basis. The retail bid for far-OTM call options (especially in meme-stock episodes) is the same effect: people overpay for the small chance of a big win.
+
+<WorkedExample
+  title="Prospect theory in a trade decision"
+  problem="You hold two positions. A: bought at $50, currently $35 (-30%). B: bought at $50, currently $65 (+30%). You need to raise cash to fund another opportunity. Which do you sell, intuitively? Which SHOULD you sell? Why does prospect theory predict the wrong answer?"
+  steps={[
+    { label: "Step 1: intuitive response", body: "Most people sell B (the winner). The thinking: 'I have my profit, lock it in; A might come back.'" },
+    { label: "Step 2: what prospect theory says about this", body: "B is in the concave region: locking in the gain feels safer than letting it ride. A is in the convex region: holding feels worth the gamble because additional loss feels less painful and the chance of break-even is psychologically valuable." },
+    { label: "Step 3: what's wrong with the intuition", body: "The decision should depend on which position has WORSE forward expected return, not on cost-basis position. Your purchase price at $50 is irrelevant. The question is: A at $35, going forward; B at $65, going forward. Which is more attractive at current prices given current fundamentals?" },
+    { label: "Step 4: tax angle", body: "For taxable accounts, selling A is potentially better: it harvests a realized loss that offsets other gains, deferring tax. Selling B realizes a gain you'd have to pay tax on now. This is the tax-loss harvesting (lesson 3.7) argument. The disposition effect is the OPPOSITE of optimal tax behavior." },
+    { label: "Step 5: position-sizing angle", body: "If A and B were sized for entry conditions that no longer apply (A's thesis broken, B's thesis intact), A should be sold regardless of P/L. The cost basis shouldn't enter the decision at all. Prospect theory makes cost basis FEEL load-bearing, but the math doesn't care." },
+    { label: "Step 6: structural defense", body: "Pre-decide exit conditions in writing at entry: 'Exit A if thesis violated by X event, regardless of P/L.' Then when X happens, you sell, even though prospect theory will whisper 'wait for break-even.' The written rule overrides the bias." },
+  ]}
+/>
+
+## Reference-dependence subtleties
+
+What is "the reference point"? Empirically it's flexible:
+
+- Most often: the status quo (current portfolio value).
+- Sometimes: the original purchase price (anchoring + prospect theory combined).
+- Sometimes: a benchmark (the S&P 500, your peer group's returns).
+- Sometimes: a number you "expected" (e.g., 7% per year because that's the historical average).
+
+The reference point matters because it determines what counts as a "loss" vs a "gain." A portfolio +5% YTD that ANCHORED on +10% expectations feels like a LOSS. The same portfolio that anchored on -5% expectations feels like a GAIN. Same final value, opposite psychological evaluation.
+
+A useful exercise: regularly REFRAME your reference points. "I'm down 5% from my high" can become "I'm up 30% from where I bought 18 months ago" or "I'm in line with the index." The same position has multiple defensible reference points; choosing the right one for the decision is a discipline.
+
+## Where prospect theory fits
+
+Prospect theory doesn't replace expected utility; it describes how people actually decide, in contexts where expected utility would predict otherwise. The two complement each other:
+
+- Expected utility: NORMATIVE (how should you decide).
+- Prospect theory: DESCRIPTIVE (how do you actually decide).
+
+For investing, both matter. You should USE expected utility as the decision framework (compute expected returns, position size by Kelly fraction or similar). You should ANTICIPATE prospect-theory deviations in yourself (the disposition effect, loss aversion in drawdowns, lottery preferences) and build structural defenses.
+
+The trading psychology literature (Tharp, Steenbarger, Carver) is largely about converting prospect-theory tendencies into structural rules that the trader can follow even when the bias wants to override them.
+
+<LessonRecap points={[
+  "Prospect theory (Kahneman-Tversky 1979): three claims. Reference-dependence: choices evaluated as gains/losses relative to a reference point. Loss aversion: losses hurt ~2x more than equivalent gains feel good. Probability weighting: small probabilities overweighted, moderate underweighted.",
+  "Value function is S-shaped: concave for gains, convex for losses, steeper on the loss side. Risk-averse in gains, risk-seeking in deep losses.",
+  "Disposition effect: retail sells winners and holds losers, INVERSE to optimal tax behavior. Loss aversion + convex value function in the loss region drives the pattern.",
+  "Lottery-like assets (penny stocks, far-OTM options) systematically underperform; probability-weighting drives overpayment for unlikely big wins.",
+  "Reference point is flexible (cost basis, status quo, peer benchmark, expected return). Reframing reference points is a discipline; pre-written exit rules are the structural defense against prospect-driven decisions."
+]} />
+
+<ExerciseRunner lessonId="05.3-prospect-theory-loss-aversion" />

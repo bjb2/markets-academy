@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Cross-sectional momentum (Jegadeesh-Titman 1993) means:",
+    "choices": [
+      "Buy the asset whose price has gone up the most this month.",
+      "Rank all assets in a universe by their PAST 6-12 month return; buy the top decile, sell or avoid the bottom decile; rebalance periodically.",
+      "Buy assets that pay dividends.",
+      "Follow expert recommendations."
+    ],
+    "correctIndex": 1,
+    "explanation": "Cross-sectional momentum is RELATIVE: it identifies which assets have outperformed RELATIVE TO OTHERS in the universe, not which have positive absolute returns. The signal is the rank, not the absolute return. Time-series momentum (trend following) is different: it asks whether each asset's OWN return is positive (long) or negative (short). Both are momentum strategies; both work; they have different implementation and return profiles."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The leading BEHAVIORAL explanation for why momentum works is:",
+    "choices": [
+      "Random walks.",
+      "Investor UNDERREACTION to new information: anchoring (lesson 5.2) and slow narrative diffusion cause prices to drift in the direction of news over weeks/months, rather than jumping immediately to the new equilibrium. Momentum captures this drift; mean reversion captures the eventual overshooting.",
+      "Computer algorithms cause it.",
+      "Regulatory effects."
+    ],
+    "correctIndex": 1,
+    "explanation": "The dominant explanation in academic literature: prices DON'T fully impound new information immediately. Anchoring on prior levels, slow analyst-update cycles, retail-investor-behavior delays all contribute. The 'drift' from initial reaction to full equilibrium gives momentum its profit window. Layer 5 covered the bias mechanisms; momentum is the strategy that monetizes them."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Momentum portfolios have a characteristic NEGATIVE SKEW in returns. What does this mean practically?",
+    "choices": [
+      "Returns are usually negative.",
+      "Most periods deliver modest positive returns; occasional 'momentum crashes' produce sharp 20-50% drawdowns. The distribution of returns has a long left tail; Sharpe ratio is favorable but max drawdown is ugly.",
+      "Returns are guaranteed positive.",
+      "Returns are uncorrelated."
+    ],
+    "correctIndex": 1,
+    "explanation": "1932, 2009, and other crash recoveries saw 'losers' (small caps, distressed financials) outperform 'winners' (defensives) by 50%+ in 3-6 months, producing catastrophic drawdowns in momentum portfolios sized for normal vol. The asymmetric risk profile is structural: momentum profits from sustained trends, suffers when trends reverse sharply. Investors must accept this profile or hedge it with diversification across other factor exposures."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Trend-following on futures markets (managed futures, systematic CTA funds) is uniquely valuable as a portfolio diversifier because:",
+    "choices": [
+      "Higher Sharpe ratio than equities.",
+      "Crisis-period UPSIDE: during equity drawdowns (2008, 2020), trend funds typically gain 20-40% by riding the equity down-trend short AND the bond up-trend long. This positive convexity to equity declines makes them valuable to portfolios that need defensive properties.",
+      "Lower fees.",
+      "Lower volatility."
+    ],
+    "correctIndex": 1,
+    "explanation": "The crisis-alpha property is the structural appeal of trend following. In sustained equity drawdowns, trends extend in predictable ways: equity short, bonds long, gold long, possibly commodities short or long depending on the regime. Trend funds capture multiple legs simultaneously. The trade-off: trend funds underperform in WHIPSAW markets where direction changes rapidly. 2022 was such a year and was mixed for trend funds. Long-run Sharpe ~0.5-0.9 with crisis-period upside is the offer."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "For a retail investor with $100K to allocate, design a simple way to ADD momentum exposure to a 60/40 stock-bond baseline. Specify the instrument(s), the proportion, and the expected impact on portfolio returns and risk.",
+    "rubric": [
+      "Specific instrument(s): MTUM ETF, VFMO ETF, or similar cross-sectional equity momentum vehicle; alternatively, a managed-futures ETF (DBMF, KMLM) for trend-following exposure.",
+      "Specific proportion: typically 10-20% allocation to the momentum sleeve; comes from reducing 60% stock to ~50% (or 40% bonds to ~30%) to fund.",
+      "Expected impact: modest excess return (~50-100 bp over baseline), at the cost of higher portfolio turnover, occasional momentum-crash drawdowns of 5-10% of total portfolio (smaller than standalone), modest reduction in equity beta if managed-futures route is chosen.",
+      "Bonus credit: notes that the choice between equity-momentum and managed-futures-trend depends on the diversification goal: equity-momentum keeps equity beta; managed-futures-trend provides crisis-period asymmetric protection."
+    ]
+  }
+]

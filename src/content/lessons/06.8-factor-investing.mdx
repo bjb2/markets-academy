@@ -1,0 +1,116 @@
+<RetrievalPrompt
+  prompt="Lesson 3.5 introduced factor models (Fama-French SMB, HML, plus momentum and quality added later). Lesson 6.5-6.7 covered specific strategies (momentum, mean reversion, carry). Now consider: an investor wants to harvest the documented factor premia systematically across multiple factors at once, rather than picking individual stocks. What's the practical implementation, what's the empirical evidence, and what's the central critique?"
+  reveal="Factor investing (sometimes called 'smart beta') is the systematic harvest of multiple validated factor premia via factor-tilted ETFs or portfolios. Empirical evidence: a multi-factor portfolio (combining value, momentum, quality, low-vol) has historically delivered 1-3% per year of risk-adjusted excess return over cap-weighted benchmarks. Central critique: many factor premia have COMPRESSED since publication (academic finding → ETF launch → compression), and out-of-sample performance is materially worse than in-sample. The honest answer: factor investing offers modest, real diversification benefit, NOT a magic alpha source."
+/>
+
+## What factor investing is
+
+Multi-factor investing systematically tilts a portfolio toward documented factor exposures. Two implementations:
+
+### 1. Multi-factor ETFs
+
+A single ETF holding a basket constructed to overweight names with positive scores on multiple factors. Examples:
+- VFMF (Vanguard US Multi-Factor): value + momentum + quality
+- LRGF (BlackRock US Equity Multi-Factor): similar combination
+- QUAL (iShares MSCI USA Quality Factor): single-factor focus on quality
+- VLUE, MTUM, USMV, SIZE: single-factor ETFs for value, momentum, low-vol, small-cap
+
+Multi-factor ETFs typically have expense ratios 0.15-0.30%. They mechanically rebalance toward factor exposures quarterly or annually.
+
+### 2. Long-short factor portfolios
+
+Hedge fund and institutional vehicles that go long the top-decile factor names and short the bottom-decile. Generates the "pure factor premium" without market beta. Example: AQR Style Premia Alternative Fund.
+
+Long-short is more expensive (1-1.5% expense ratios; some have 20% performance fees), but provides true factor exposure independent of market direction. Long-only multi-factor ETFs have both factor and market beta; long-short have only factor.
+
+## Empirical evidence (and the compression problem)
+
+Pre-publication (1993-2010): documented factor premia of 4-8% annualized for individual factors (value, size, momentum, quality, low-vol).
+
+Post-publication (2010-2024): compressed to 1-4% annualized for the same factors. The compression mechanism is well-understood:
+
+1. **Academic paper documents premium**.
+2. **Practitioners launch products to harvest it** (ETFs, factor funds).
+3. **Inflows compress the premium** as the underlying mispricing gets traded out.
+4. **Steady state**: smaller premium that survives because someone has to bear the residual risk.
+
+This pattern has been observed for:
+- Size premium (worked 1965-1980, mostly disappeared post-publication)
+- Value premium (worked through 2007, weakened 2010-2020, partial revival 2021+)
+- Quality premium (more stable; high-ROIC has continued to work)
+- Low-vol premium (one of the most durable; still working in modern data)
+- Momentum premium (working but with notable crashes)
+
+The compression isn't elimination. Most documented factors still deliver positive risk-adjusted returns; just lower than pre-publication backtests suggested.
+
+## How to combine factors
+
+The empirical AMP (2013) result: factors have moderate correlations with each other (typically 0.0-0.4 in long-run data) but are NEGATIVELY correlated in some regimes. A naive equal-weight combination of value + momentum + quality + low-vol historically:
+
+- Reduces standalone volatility by 20-30% vs single-factor.
+- Increases risk-adjusted return (Sharpe) by 15-25% vs single-factor.
+- Reduces max drawdown materially (single-factor drawdowns of 30-40% reduce to 15-25%).
+
+The lesson from lesson 3.8 generalizes: combining low-correlation factor exposures improves the Sharpe of the portfolio. Smart beta = applied lesson 3.8.
+
+<WorkedExample
+  title="Building a multi-factor portfolio with ETFs"
+  problem="A retail investor with $100K wants to harvest multiple factor premia systematically while maintaining broad equity exposure. Design a portfolio using 4-5 factor ETFs. Specify allocations and expected characteristics."
+  steps={[
+    { label: "Step 1: choose factor exposures", body: "Pick value (VLUE), momentum (MTUM), quality (QUAL), low-vol (USMV). Add a small-cap component (VBR or SIZE) for size factor. Five factor positions." },
+    { label: "Step 2: allocations", body: "20% each across the 5 factor ETFs. Result: $20K in each. Annual expense ratio average ~0.20%. Tracking error vs S&P 500: meaningful (the portfolio will diverge from the benchmark)." },
+    { label: "Step 3: expected characteristics", body: "Long-run excess return vs S&P 500: ~0.5-1.5% annualized (within ranges of recent factor performance). Expense drag: ~0.20% per year. Net: ~0.3-1.3% above S&P 500 historical." },
+    { label: "Step 4: regime sensitivity", body: "Will lag S&P 500 in growth-led bull markets (value drags). Will outperform in value-led regimes. Will underperform in low-vol-led crisis recoveries. The factor mix smooths regimes but doesn't eliminate them." },
+    { label: "Step 5: drawdown profile", body: "Max drawdown comparable to or modestly less than S&P 500 (the multi-factor diversification helps but factor crashes can still hit). Expect 2-3 year periods of underperformance vs benchmark." },
+    { label: "Step 6: tax considerations", body: "Factor ETFs have moderate turnover (typically 20-40% annually) producing modest capital gains distributions. In taxable accounts: track after-tax returns; some factor strategies are not optimal in taxable due to high turnover. In retirement accounts: no tax friction; pure factor exposure." },
+    { label: "Step 7: simpler alternative", body: "VFMF (Vanguard US Multi-Factor) packages this into a single ETF. Single position, automated rebalancing, somewhat lower turnover. Tradeoff: less transparency about specific factor weights." },
+  ]}
+/>
+
+## The factor investing critique
+
+Three honest concerns:
+
+### 1. Publication bias and out-of-sample failure
+
+Many published factors have failed out-of-sample. Harvey, Liu, Zhu (2016) catalog 300+ published factors and estimate that 50-80% are spurious. The robust subset (market, value, momentum, quality, low-vol, size, profitability, investment) is much smaller. Be skeptical of "newly discovered" factors with thin out-of-sample evidence.
+
+### 2. Compression and capacity
+
+The most-traded factor strategies have seen their premia compress. AQR's institutional factor funds (which were star performers in early 2010s) have produced disappointing returns 2018-2023 as the underlying premia compressed. The "smart beta" allocation industry crossed $1.5T by 2024, large enough to compress the premia they harvest.
+
+### 3. Factor exposures are unstable
+
+The empirical loadings on factors change over time. A "value" portfolio in 2024 contains different stocks than a "value" portfolio in 2014; the factor definition itself has evolved (book-to-market alone vs multi-metric value). Investors may not always know what they're buying through a factor ETF; the labels are convenient but the underlying exposures shift.
+
+## How factor investing fits in our framework
+
+For our paper-trading-longcall project, factor investing is a comparison case but not directly used. The longcall strategy is more of a CONCENTRATED active strategy on specific names rather than a broad systematic factor harvest.
+
+For our broader portfolio construction (and the curriculum's pedagogical goal), factor investing is the systematic implementation of behavioral premia. It's the structured, low-effort alternative to picking individual stocks. The cost is being correlated with broad markets in crises; the benefit is diversified factor exposure without active management.
+
+A reasonable retail position: hold 60-80% of equity allocation in broad index funds (SPY, VTI), plus 20-40% in multi-factor ETFs to capture documented premia. The factor tilt adds expected return without significantly increasing risk. Adding individual stock-picking (active strategies, including our paper-trading-longcall) on top of this base is a further marginal-utility decision.
+
+## The honest verdict
+
+Factor investing offers:
+- Real (though compressed) risk-adjusted return premium over cap-weighted benchmarks.
+- Systematic, low-cost implementation.
+- Diversification across multiple validated premia.
+
+It does NOT offer:
+- Beat-the-market magic.
+- Protection from systematic equity drawdowns.
+- Easy outperformance that justifies extreme tilts.
+
+For most retail investors who want active exposure without active management complexity, multi-factor ETFs at 20-40% of equity allocation is a sound default. For sophisticated investors with edge in stock-picking or in specific strategies, factor investing is one of several inputs to portfolio construction, not the dominant driver.
+
+<LessonRecap points={[
+  "Factor investing: systematic harvest of documented factor premia (value, momentum, quality, low-vol, size) via factor-tilted ETFs or long-short funds.",
+  "Empirical evidence: pre-publication factor premia of 4-8%; post-publication compression to 1-4%. Most factors still positive but smaller than backtests suggested.",
+  "Multi-factor combination reduces vol 20-30%, improves Sharpe 15-25% vs single-factor, by combining low-correlation factor exposures (applied lesson 3.8).",
+  "Critique: 50-80% of published factors fail out-of-sample (Harvey-Liu-Zhu 2016); factor exposures are unstable; compression continues with inflows.",
+  "Sensible retail use: 60-80% broad index + 20-40% multi-factor ETFs. Captures premia without overstating the strategy's alpha potential."
+]} />
+
+<ExerciseRunner lessonId="06.8-factor-investing" />

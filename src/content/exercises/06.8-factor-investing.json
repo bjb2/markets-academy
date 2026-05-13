@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Factor premia have COMPRESSED since their academic publication. The compression mechanism is:",
+    "choices": [
+      "Investors became smarter.",
+      "Academic paper → ETF launch → inflows trade out the mispricing → smaller premium remains in steady state because someone must bear the residual risk.",
+      "Regulatory changes.",
+      "Random fluctuation."
+    ],
+    "correctIndex": 1,
+    "explanation": "The compression is the structural response to discovery: as soon as a premium is documented and accessible (via ETF), inflows narrow the mispricing. The premium doesn't disappear (someone bears the risk) but compresses to a smaller equilibrium. This pattern has played out for size (1965-1980 → mostly gone post-publication), value (worked through 2007 → weakened 2010-2020), and others. Factor investing today offers 1-3% annual excess return rather than the 4-8% pre-publication backtests suggested."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Harvey, Liu, Zhu (2016) catalog ~300+ published factor anomalies. Approximately what fraction do they estimate are SPURIOUS (won't replicate out-of-sample)?",
+    "choices": [
+      "10-20%.",
+      "30-40%.",
+      "50-80%.",
+      "Essentially all."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Harvey-Liu-Zhu meta-study applies more rigorous statistical thresholds (controlling for multiple testing, data mining, publication bias) and concludes most published factors are noise. The robust subset (market, value, momentum, quality, low-vol, size, profitability, investment) is roughly 8-10 factors, not 300. Investors should be highly skeptical of 'newly discovered' factors with thin out-of-sample evidence; the meta-evidence suggests most are spurious."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Combining multiple validated factors (value, momentum, quality, low-vol) in an equal-weight portfolio typically:",
+    "choices": [
+      "Reduces standalone factor vol by 20-30% and improves Sharpe ratio by 15-25% vs single-factor exposure.",
+      "Eliminates all volatility.",
+      "Reduces returns.",
+      "Has no diversification benefit."
+    ],
+    "correctIndex": 0,
+    "explanation": "Factors have moderate correlations (~0.0-0.4 long-run). Combining low-correlation premia produces real diversification: lower portfolio vol, better Sharpe. The math is the same as lesson 3.8 (sleeve diversification gate) applied to factor exposures. Multi-factor ETFs (VFMF, LRGF) implement this combination at low expense ratios."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "AQR's institutional factor funds were star performers in the early 2010s and have produced disappointing returns 2018-2023. The MOST LIKELY explanation is:",
+    "choices": [
+      "Investment skill declined.",
+      "Compression: factor strategies that worked in less-followed markets attracted significant capital (AQR alone manages billions in factor strategies), compressing the premia they harvest. Disappointing returns are partly the natural consequence of strategy crowding.",
+      "Regulatory changes.",
+      "Fund management problems."
+    ],
+    "correctIndex": 1,
+    "explanation": "Capacity constraints in factor strategies are well-documented. The 'smart beta' allocation crossed $1.5T+ by 2024. Industry-wide compression is the structural pressure on factor returns, not specific to any one fund. AQR has discussed this openly; many factor funds have moved toward more concentrated active or alternative strategies as compensation. The discipline: don't expect factor returns to repeat 2010-era backtests."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "A retail investor with $100K considering adding multi-factor ETF exposure to their 80/20 stock-bond portfolio. What allocation would you recommend, what's the expected impact on returns and risk, and what's the worst-case scenario you'd want them to understand BEFORE making the decision?",
+    "rubric": [
+      "Specific allocation: typically 15-30% of equity sleeve (so 16-24% of total portfolio) in multi-factor ETFs; remainder in broad index funds. Don't replace the broad market exposure; ADD factor exposure.",
+      "Expected return impact: ~50-150 bp of excess return vs broad market over multi-year windows. Modest, but compounding.",
+      "Risk impact: similar or slightly lower vol; same broad equity beta; meaningful tracking error vs S&P 500 (the portfolio will look different from the benchmark).",
+      "Worst-case scenario: 2-3 year periods of underperformance vs benchmark (common in factor strategies); investor must commit to multi-year horizon. Factor crashes are real (2009 was bad for momentum; 2018-2020 was bad for value). Without a multi-year horizon, factor exposure is wasted because investors panic-sell during the underperformance windows."
+    ]
+  }
+]

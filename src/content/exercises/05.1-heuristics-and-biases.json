@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The methodological claim of Kahneman-Tversky's 1974 paper was that human judgment biases are:",
+    "choices": [
+      "Random errors around rational expected-utility maximization.",
+      "Systematic, predictable, and produced by specific mental shortcuts (heuristics); they don't disappear with expertise, incentives, or explicit warnings.",
+      "Specific to laboratory settings and irrelevant in real-world high-stakes decisions.",
+      "Easily corrected once identified."
+    ],
+    "correctIndex": 1,
+    "explanation": "The key insight: biases are SYSTEMATIC, not stochastic. They follow rules. They survive expertise (statisticians get the Linda problem wrong). They survive incentives (high-stakes versions replicate). They survive warnings (telling people about anchoring doesn't remove anchoring). This methodological claim was what made behavioral finance a research program rather than folk psychology."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The Linda problem (Linda is a feminist bank teller vs Linda is a bank teller) demonstrates which heuristic violating which rule of probability?",
+    "choices": [
+      "Availability violating Bayes' rule.",
+      "Representativeness violating the conjunction rule (P(A AND B) cannot exceed P(A)).",
+      "Anchoring violating the law of total probability.",
+      "Loss aversion violating expected utility."
+    ],
+    "correctIndex": 1,
+    "explanation": "Subjects judge probabilities by SIMILARITY to a stereotype (representativeness). 'Feminist bank teller' fits Linda's description better than 'bank teller' alone, so 85% rate it more probable, violating the conjunction rule. The bias is robust across statisticians, MBA students, and probability classes."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "An investor reads news of a plane crash and decides to sell airline stocks. The most likely bias is:",
+    "choices": [
+      "Anchoring.",
+      "Availability: the vivid recent event makes the probability of further crashes feel HIGHER than base-rate data justifies, prompting an action larger than the actual change in risk warrants.",
+      "Loss aversion.",
+      "Conjunction fallacy."
+    ],
+    "correctIndex": 1,
+    "explanation": "Availability heuristic: ease of recall is used as a proxy for actual frequency. A vivid crash dominates the recall pool for hours/days, making airline-crash probability feel elevated. The actual base rate is essentially unchanged; the perceived risk has spiked due to the salient example. This is a documented driver of post-disaster overreactions in markets."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Kahneman's dual-process framework (System 1 / System 2) claims that most investment decisions are:",
+    "choices": [
+      "Pure System 2 deliberate reasoning.",
+      "Pure System 1 instinctive reaction.",
+      "Started by System 1 (fast intuitive impressions), then rationalized by System 2; the rational-feeling story papers over a bias-driven core.",
+      "Random."
+    ],
+    "correctIndex": 2,
+    "explanation": "The empirical claim is that System 1 reaches a conclusion first, and System 2 confabulates the explanation. The decision FEELS rational because we hear the System 2 narrative; the actual driver was System 1. This is why 'rational' professional investors can hold opposing views on the same evidence and each feel certain they're being rational. For practical purposes: assume bias is operating even when the reasoning feels careful."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Tversky & Kahneman 1974, Sections I-IV (the original presentation of the three core heuristics). Free PDF.",
+    "url": "https://www2.psych.ubc.ca/~schaller/Psyc590Readings/TverskyKahneman1974.pdf",
+    "title": "Tversky & Kahneman 1974 - Judgment Under Uncertainty",
+    "reflectionPrompt": "Pick one of the three heuristics (representativeness, availability, anchoring). Describe (in 2-3 sentences) a specific trade or investment decision you've made or seen made where this heuristic was likely operating."
+  }
+]

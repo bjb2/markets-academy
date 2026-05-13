@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The 'greater fool' theory says that buying an overvalued asset can be RATIONAL for an individual if:",
+    "choices": [
+      "The asset's fundamental value will eventually reach the purchase price.",
+      "Other market participants will continue to bid the price higher, providing an exit at a profit, regardless of fundamental value.",
+      "The asset pays dividends.",
+      "The investor is wealthy."
+    ],
+    "correctIndex": 1,
+    "explanation": "Greater fool: individual rationality doesn't require believing the asset's fundamental value matches the purchase price; it only requires confidence that another buyer will pay more. This is the structural mechanism that lets bubbles inflate even when participants admit (or partly admit) that the asset is overvalued. The aggregation problem: every individual thinks they'll exit before the music stops; collectively they cannot."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Shleifer-Vishny's 'limits to arbitrage' argument explains why rational arbitrageurs cannot reliably profit from identified bubbles. The key mechanism:",
+    "choices": [
+      "Arbitrageurs don't know about the bubbles.",
+      "Bubbles can persist longer than the arbitrageur's capital can withstand drawdowns; clients pull capital at the worst time, forcing the arbitrageur to close at maximum loss before the bubble pops.",
+      "Regulators prohibit short-selling.",
+      "Arbitrageurs are irrational themselves."
+    ],
+    "correctIndex": 1,
+    "explanation": "The principal-agent problem of professional fund management is the heart of limits to arbitrage. A hedge fund correctly identifies a bubble in year 1, shorts at $50, sees price rise to $100 in year 2. Clients pull capital after the year-2 drawdown. The fund must cover at the peak. When the bubble pops in year 3, the fund has already closed; the alpha goes to someone else. The asymmetric career risk drives this; rational arbitrageurs are constrained by their funding base."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "After the 2000 dot-com bust, NASDAQ took 15 years to reclaim its peak. The 'overshoot on the downside' phenomenon refers to:",
+    "choices": [
+      "Prices undershoot fair value after bubbles pop, because participants who got burned are slow to return; the recovery to equilibrium is slower than fundamentals would predict.",
+      "Volatility decline.",
+      "Index reconstitution.",
+      "Margin calls."
+    ],
+    "correctIndex": 0,
+    "explanation": "Bubbles overshoot in BOTH directions: prices overshoot up into the peak, and overshoot down into the trough. After the trough, return to fair value is gradual because (a) burned participants exit the asset class for years, (b) institutional allocators reduce mandate to the class, (c) generational memory carries scars. The 15-year NASDAQ recovery is consistent with this pattern; faster recoveries happen when the bubble doesn't fundamentally impair the underlying economy."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Robert Shiller's bubble markers include several that were CLEARLY present in the 2021 meme-stock episode (GME, AMC, etc.). Which was MOST distinctive about that specific episode compared to historical bubbles like 1999?",
+    "choices": [
+      "Public attention.",
+      "Rapid price increase.",
+      "The role of SOCIAL MEDIA (Reddit's WallStreetBets) as the coordination mechanism, replacing traditional brokerage research and newsletter networks; this enabled millions of small participants to act in unison on a scale that wasn't possible pre-internet.",
+      "Margin lending."
+    ],
+    "correctIndex": 2,
+    "explanation": "Every prior bubble had some coordination mechanism (Tulip Mania had Amsterdam tavern networks; 1929 had broker networks; 1999 had broker call letters and CNBC). 2021 was distinctive because Reddit allowed near-instantaneous coordination of millions of unaffiliated retail investors. The 'short squeeze' mechanic was openly discussed and executed in public, not as a hedge-fund tactic. This is a structurally new variant of the same Shiller dynamics."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Identify a CURRENT or RECENT (last 2-3 years) market situation that flashes 3+ of Shiller's bubble markers. List the markers you observe and briefly explain why. Then state what the lesson 5.5 framework would advise REGARDING (not predicting) the future of that situation.",
+    "rubric": [
+      "Specific situation identified (e.g., AI stocks 2023-2025, certain crypto subsectors, specific IPOs).",
+      "3+ Shiller markers identified with brief justification each.",
+      "Framework recommendation: acknowledge that markers don't predict timing; LIMITS TO ARBITRAGE mean a rational short is dangerous; the discipline is real-time AWARENESS without forced timing.",
+      "Bonus credit: notes that the framework is asymmetric: recognizing a bubble protects against late buying but doesn't generate alpha unless leverage and patience permit short positions through the persistence period."
+    ]
+  }
+]

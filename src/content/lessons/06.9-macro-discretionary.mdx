@@ -1,0 +1,116 @@
+<RetrievalPrompt
+  prompt="George Soros's 1992 'breaking the Bank of England' trade made $1B+ in a few weeks by shorting sterling. He didn't have a unique factor model or quantitative algorithm. He had a THEORY about the structural unsustainability of the pound's peg to the European Exchange Rate Mechanism, combined with the courage to bet billions on it. What's the underlying framework that produces these kinds of trades, and how is it different from value or momentum?"
+  reveal="Macro discretionary investing identifies STRUCTURAL ECONOMIC IMBALANCES that policy is failing to correct. The investor bets that the imbalance will resolve, typically through a sharp adjustment. Soros's framework includes REFLEXIVITY: market participants' beliefs INFLUENCE the underlying fundamentals (currency speculation makes a peg unsustainable; rising prices attract more buyers). Macro discretionary requires (a) identifying the imbalance, (b) understanding the policy constraints, (c) timing the catalyst, (d) sizing for asymmetric payoffs. It's fundamentally different from factor investing because it's PATH-DEPENDENT, not systematic."
+/>
+
+## What macro discretionary investing is
+
+Macro discretionary investors take large directional bets on currencies, interest rates, equity indexes, and commodities based on their analysis of:
+
+1. **Economic fundamentals**: growth, inflation, employment, productivity, demographics.
+2. **Policy responses**: central bank, fiscal, regulatory, political.
+3. **Structural imbalances**: currency pegs that can't hold, fiscal trajectories that can't sustain, leverage levels that can't service.
+4. **Market positioning**: where consensus is wrong; where consensus is right but extreme.
+
+The strategy is DIRECTIONAL (large bets on whether something will rise or fall), CATALYTIC (waiting for a specific event to trigger the move), and CONCENTRATED (a few trades dominate the year's P/L).
+
+The famous practitioners: Soros (Quantum Fund), Druckenmiller (Duquesne), Tudor Jones (Tudor Investment), Bridgewater (Pure Alpha), Brevan Howard, Caxton.
+
+## Soros and reflexivity
+
+Soros developed his framework in <em>The Alchemy of Finance</em> (1987) and elaborated through subsequent writings. The central thesis: REFLEXIVITY.
+
+In efficient market theory, prices reflect underlying fundamentals; fundamentals are independent of prices. Reflexivity says the OPPOSITE: prices affect fundamentals, fundamentals affect prices, and both feed back on each other in self-reinforcing loops.
+
+Examples:
+- **Currency speculation**: speculators shorting a currency pressure the peg, force interventions that deplete reserves, eventually break the peg. The speculation HELPS CAUSE the outcome it bets on.
+- **Real estate booms**: rising prices attract more buyers, which raises prices, which justifies higher prices to lenders, who lend more, fueling more demand. Until something breaks.
+- **Tech bubbles**: rising stock prices fund acquisitions of competitors, accelerate hiring, create the appearance of success. The price helps create the underlying business momentum, which justifies the higher price.
+
+Reflexive feedback loops produce both BOOMS (self-reinforcing prices that exceed fair value) and BUSTS (self-reinforcing collapses that overshoot fair value). The opportunity for the macro investor is to identify reflexive loops early and trade their development.
+
+## The 1992 sterling trade
+
+The Soros canonical example:
+
+- The British pound had been pegged to the European Exchange Rate Mechanism (ERM) since 1990.
+- UK fundamentals (slow growth, high unemployment, recession) suggested the peg was incompatible with maintaining the required interest rate.
+- The Bank of England would have to either devalue OR raise rates to defend the peg. Devaluation breaks the peg; raising rates worsens the recession.
+- Soros (and others) bet the peg would break: they shorted sterling against the deutsche mark.
+- The Bank of England fought: spent $40B+ in reserves, raised rates from 10% to 12% to 15% in a single day (September 16, 1992).
+- The peg broke that evening. Sterling devalued ~10% in days.
+- Quantum Fund made approximately $1B on the trade.
+
+The trade was about IDENTIFYING the structural impossibility (the peg conflicted with required UK monetary policy), TIMING the catalyst (waiting for the peg to crack), and SIZING the position to capture the asymmetric outcome.
+
+Reflexivity: Soros's selling and others' selling ACCELERATED the peg's collapse. The speculation helped cause the outcome it bet on. The trade isn't pure arbitrage; it's a bet that the fundamental imbalance, combined with reflexive flows, would resolve.
+
+## Famous macro trades
+
+Beyond Soros's 1992 sterling:
+
+- **Druckenmiller and DEM 1992**: same trade as Soros; Druckenmiller managed the position at Quantum.
+- **Soros and yen 1985-1986**: bet on yen appreciation post-Plaza Accord.
+- **Tudor Jones and 1987 crash**: predicted the October 1987 crash; Tudor's fund returned 200% in 1987.
+- **Druckenmiller and tech bubble 1999**: ridden the rally, then sold near the top.
+- **Bridgewater and 2008**: positioned for deleveraging cycle; Pure Alpha returned 9.4% in 2008 when most funds lost.
+- **Druckenmiller and COVID 2020**: shorted equities at peak, covered at lows, made multi-billions.
+
+The pattern: each successful macro discretionary trade rests on a specific theoretical framework (often non-consensus), patient waiting for the catalyst, and large position size when the moment arrives.
+
+<WorkedExample
+  title="Anatomy of a macro discretionary trade"
+  problem="Walk through how a macro investor might approach a hypothetical trade: 'I believe the Chinese yuan will be forced to devalue 5%+ over the next 6 months.' What's the structural analysis, the catalyst, the implementation, and the sizing?"
+  steps={[
+    { label: "Step 1: structural analysis", body: "Why might China devalue? Possible reasons: weakening exports, capital outflows, deflation pressures, real estate sector stress, geopolitical tensions affecting trade. The investor builds the case for which combination is most likely to force PBOC's hand." },
+    { label: "Step 2: policy constraint analysis", body: "PBOC has used FX reserves to support the yuan. At what reserve level (or what other indicator) would they shift policy? Historical patterns: reserves below ~$2.5T (down from $4T+), continued capital flight despite tightening controls, real estate sector defaults exceeding $X." },
+    { label: "Step 3: catalyst identification", body: "What specific event would trigger the devaluation? Possibilities: scheduled PBOC meeting, US-China trade escalation, major real estate developer default, IMF policy update. Macro investors typically have a watch list of potential catalysts." },
+    { label: "Step 4: implementation", body: "Short yuan via forwards (CNY-NDF for offshore exposure). Long volatility (options on CNY pairs). Possibly long USD as the counterpart. Maintain liquidity to add or trim as the thesis develops." },
+    { label: "Step 5: sizing", body: "Macro funds typically size individual trades at 5-15% of fund AUM. The expected payoff is highly asymmetric: if right, 20-30% gain on the position; if wrong, 5-10% loss. Sized as a fraction of capital, not as a fraction of portfolio (which would be too conservative)." },
+    { label: "Step 6: time decay management", body: "If catalyst doesn't materialize in 6 months, what's the cost of carry? Short yuan positions carry a yield differential (Chinese rates higher than USD); options have time decay. The investor has to either roll positions (paying ongoing cost) or exit. Macro trades have implicit time decay even when the thesis is intact." },
+    { label: "Step 7: where this differs from a value or momentum trade", body: "A value trade doesn't have a specific catalyst; it relies on multi-year mean reversion. A momentum trade follows price; the catalyst is the price move itself. A macro trade requires explicit catalyst-and-timing analysis, which is much harder and more failure-prone, but produces larger payoffs when right." },
+  ]}
+/>
+
+## The performance reality
+
+Macro discretionary as a strategy class has been mixed:
+
+- **1980s-2000s**: legendary performance from a few funds (Soros, Tudor, Druckenmiller, Bridgewater). Multi-decade Sharpe ratios of 1.5+.
+- **2008-2020**: significant underperformance from the sector. Many macro funds gave up over a decade of returns. Causes: zero interest rates (no rate-differential trades), highly suppressed volatility (no crisis-style opportunities), correlations rising across asset classes.
+- **2022-present**: revival with rate normalization, geopolitical fragmentation, and inflation regime shifts. Macro funds have been among the best-performing strategies 2022-2024.
+
+The strategy class is fundamentally CYCLICAL. Macro thrives when markets are dynamic, dispersed, and volatile. It struggles when markets are quiescent (post-2008, much of the 2010s).
+
+## Why retail can't replicate
+
+Macro discretionary depends on:
+
+1. **Information access**: institutional data feeds, primary research, network of policy-makers and economists.
+2. **Capacity**: ability to deploy hundreds of millions or billions in a single trade.
+3. **Position size discipline**: institutional risk management to size trades appropriately while withstanding adverse periods.
+4. **Specialist knowledge**: years of accumulated expertise in specific markets (currency pegs, central bank reactions, sovereign debt dynamics).
+
+Retail investors can EMULATE the framework (read macro analysis, develop views, take directional positions in ETFs), but the EDGE that produced legendary returns isn't accessible without the institutional infrastructure.
+
+A reasonable retail approach: read macro frameworks (Lyn Alden, Cullen Roche), develop your own views on broad themes (inflation, dollar, growth), occasionally express them via broad ETF tilts (e.g., increase emerging-market exposure when EM looks cheap and dollar is strong). Don't expect Soros-style returns from retail-scale implementations.
+
+## Where macro thinking helps everyone
+
+Even without trading macro directly, the FRAMEWORK is useful for everyone:
+
+- **Position sizing for risk**: macro investors size for asymmetric payoffs. Apply this to your equity positions: are you sizing for the upside, ignoring the downside? Macro discipline says size for the downside.
+- **Cycle awareness**: macro investors are obsessed with cycle position (similar to Marks). Apply to portfolio decisions: am I aggressive at the right moment? Defensive at the right moment?
+- **Reflexivity awareness**: recognize feedback loops in your own thinking. If a position has worked, is the price success feeding back into your confidence? Reflexivity in your own thinking is a documented bias.
+
+The framework's value extends beyond the specific strategy. Reading <SourceLink id="marks-memos-best-of" /> and Druckenmiller-Soros essays gives you cycle-aware tools regardless of whether you trade macro directly.
+
+<LessonRecap points={[
+  "Macro discretionary: directional bets on currencies, rates, equities, commodities based on structural economic imbalances and policy responses.",
+  "Reflexivity (Soros): prices and fundamentals affect each other in self-reinforcing loops; bubble/bust cycles emerge from these loops. Speculation can HELP CAUSE the outcomes it bets on.",
+  "Famous trades (1992 sterling, 1985 yen, 2008 deleveraging) follow a pattern: structural thesis + policy constraint + catalyst + asymmetric sizing.",
+  "Performance is cyclical: legendary 1980s-2000s, mediocre 2008-2020 (suppressed vol), revival 2022+. Macro thrives in dynamic markets, struggles in quiescent ones.",
+  "Retail can EMULATE the framework but lacks the information, capacity, and specialist knowledge for institutional-scale returns. Use the framework for cycle awareness and sizing discipline regardless."
+]} />
+
+<ExerciseRunner lessonId="06.9-macro-discretionary" />

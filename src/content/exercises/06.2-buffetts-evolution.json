@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "The See's Candies acquisition in 1972 marked Buffett's evolution from strict Graham to a new framework. The key insight was:",
+    "choices": [
+      "Branded businesses are always cheaper than commodity businesses.",
+      "A business with durable competitive advantages (a moat) can compound intrinsic value at high ROIC for decades; the entry price matters less when long-term economics are strong. A wonderful business at fair price beats a fair business at wonderful price.",
+      "Acquisitions are easier than minority stakes.",
+      "Diversification is more important than concentration."
+    ],
+    "correctIndex": 1,
+    "explanation": "See's was a turning point. Paid $25M, earned $2B+ over 50 years with minimal capital reinvestment. Pure Graham (P/E < 15, P/B < 1.5) would have rejected the purchase. Buffett saw that a high-ROIC business with pricing power and a durable moat would compound value at rates that make initial purchase multiple secondary. The principle generalized: focus on long-term economic value generation, not just statistical cheapness."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Buffett's 'circle of competence' principle says:",
+    "choices": [
+      "Invest in industries you've worked in.",
+      "Only invest in businesses you can REALISTICALLY evaluate. Admitting what you don't know is more important than expanding what you do know.",
+      "Diversify across industries.",
+      "Always seek expert opinions."
+    ],
+    "correctIndex": 1,
+    "explanation": "The circle of competence is a discipline of HUMILITY. Within your circle, you can confidently estimate value and act. Outside it, you can't. Buffett famously avoided tech for decades because he couldn't predict the evolution of technology businesses; he stayed within his circle (insurance, consumer brands, banks, infrastructure). Cost: missed Microsoft/Google/Amazon. Benefit: avoided the dot-com bust losses. The discipline is more valuable than the boundary."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Buffett's 'dollar test' for retained earnings says management should retain a dollar ONLY IF:",
+    "choices": [
+      "The company has positive net income.",
+      "ROIC on the retained dollar will produce at least a dollar of additional MARKET VALUE (not just any positive return; the return must exceed cost of capital).",
+      "Shareholders prefer reinvestment over dividends.",
+      "There are no acquisition opportunities."
+    ],
+    "correctIndex": 1,
+    "explanation": "The dollar test is the cleanest capital-allocation lens. ROIC > cost of capital means retention CREATES value (shareholders are better off with the company holding the dollar than receiving it as a dividend and reinvesting at the market rate). ROIC < cost of capital means retention DESTROYS value; the cash should be returned. Many seemingly-profitable companies fail this test: they grow earnings, but the growth comes from low-return investments, so per-share intrinsic value isn't improving."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Berkshire Hathaway has underperformed the S&P 500 over the last 15-20 years. The MAIN structural reason is:",
+    "choices": [
+      "Buffett has lost his touch.",
+      "Berkshire's enormous size (over $700B in equity assets) makes it nearly impossible to find positions large enough to materially move the needle; the 'opportunity set' at Berkshire's scale is narrower than for smaller funds. Buffett has explicitly acknowledged this as a drag.",
+      "The S&P 500 is now passively managed.",
+      "Buffett's strategy was never sound."
+    ],
+    "correctIndex": 1,
+    "explanation": "Size as anchor on performance is Buffett's own framing. Berkshire holds $150B+ in cash and Treasuries because it can't find large enough positions. A meaningful new $10B position is too small to move Berkshire's $700B equity portfolio noticeably. Conversely, a $50B position would require buying a 5-10% stake of a mega-cap, which is operationally complex. The performance gap isn't a failure of philosophy; it's a structural drag of capital deployment at extreme scale."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Berkshire's 1995 shareholder letter (focus on Buffett's discussion of GEICO acquisition and his framework for evaluating insurance businesses).",
+    "url": "https://www.berkshirehathaway.com/letters/1995.html",
+    "title": "Berkshire 1995 Shareholder Letter",
+    "reflectionPrompt": "Identify TWO specific features of insurance that Buffett describes as making it a structurally good business for Berkshire's framework. Why does he value the 'float' specifically?"
+  }
+]

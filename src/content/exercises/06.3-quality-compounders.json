@@ -1,0 +1,60 @@
+[
+  {
+    "id": "q1",
+    "kind": "calc-input",
+    "prompt": "A company with 30% ROIC reinvests 50% of earnings each year. By approximately what factor does book value per share grow over 20 years (assuming sustained ROIC and reinvestment rate)? Round to nearest whole.",
+    "answer": 16,
+    "tolerance": 2,
+    "explanation": "Annual growth rate of book = ROIC × reinvestment rate = 30% × 50% = 15%. Over 20 years: 1.15^20 ≈ 16.4. Book value grows ~16x. Stock price grows similarly if P/B multiple doesn't compress. The math is straightforward; the rarity is finding businesses that SUSTAIN 30% ROIC for 20 years. Most businesses see ROIC decay with size and competition."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Pat Dorsey's five moat types (cost advantage, network effects, switching costs, intangibles, efficient scale). Which moat type is MOST RELEVANT to Visa and Mastercard's business?",
+    "choices": [
+      "Cost advantage.",
+      "Network effects: each additional merchant accepting V/MC increases the value to consumers; each additional consumer increases the value to merchants. Once dominant, near-impossible to displace.",
+      "Switching costs.",
+      "Efficient scale."
+    ],
+    "correctIndex": 1,
+    "explanation": "Visa and Mastercard run two-sided networks. Their value to consumers depends on merchant acceptance; their value to merchants depends on consumer use. Both sides reinforce each other. New entrants (PayPal, fintech alternatives) compete on margins but rarely break the core network. The result: V/MC have maintained 30%+ ROIC and 40%+ operating margins for decades, even as the underlying technology has migrated from physical card to mobile."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Sustained ROIC of 25%+ for 10+ years is a strong signal of a quality compounder because:",
+    "choices": [
+      "It guarantees future returns.",
+      "It demonstrates that the business has WITHSTOOD competitive pressure for a meaningful time; if the moat is real and durable, high returns continue; if it's not, returns would have decayed by year 5-7. The 10-year window provides a real test.",
+      "It's required by regulators.",
+      "It's the average ROIC."
+    ],
+    "correctIndex": 1,
+    "explanation": "Markets reward high ROIC, which attracts competitors, which compete the returns down. A business that sustains 25%+ for a decade has weathered competitive attacks and proven the moat is real. New entrants couldn't displace it; substitutes couldn't replace it; bargaining power of suppliers/customers couldn't compress margins. The 10-year sustained-ROIC signal is one of the cleanest empirical filters for finding durable compounders. Caveat: PAST sustained ROIC predicts moderate future performance, not extreme; sometimes moats erode in the next decade."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Quality compounders typically trade at P/E multiples of 25-40x while average businesses trade at ~18x. The premium is justified IF:",
+    "choices": [
+      "Recent earnings growth justifies it.",
+      "The MOAT IS DURABLE over the long horizon: the business will sustain high ROIC growth for 15-30+ years rather than 3-5 years. The DCF math at long durations makes the premium reasonable; at short durations it's overpayment.",
+      "Multiple expansion is the source of returns.",
+      "Other investors are paying it."
+    ],
+    "correctIndex": 1,
+    "explanation": "A 30x P/E for a business that compounds 15%/year for 30 years produces excellent IRRs. The same 30x for a business that grows 15%/year for 5 years and then stalls produces mediocre returns. Moat DURATION is the load-bearing assumption. Marks' 'There They Go Again' caution: in late-cycle expansions, EVERY growth company gets a compounder multiple; only those with genuine multi-decade moats deliver. Distinguishing genuine from cyclical multi compounders is the active investor's task."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Pick a public company you consider a candidate for 'quality compounder' status. List 2-3 SPECIFIC moat sources that support the high ROIC. Then identify the most credible THREAT to those moats over the next 10-20 years.",
+    "rubric": [
+      "Specific company identified.",
+      "Two or three specific moat sources (not generic 'brand'; specific mechanisms tying to Dorsey's five types).",
+      "Credible threat (technological substitution, regulatory change, customer behavior shift, competitive entry, moat decay) identified specifically, not generically.",
+      "Bonus credit: explicitly notes that the moat thesis is FALSIFIABLE; if the identified threat materializes, the thesis is broken; this kind of explicit pre-mortem is what Buffett's letters consistently recommend."
+    ]
+  }
+]

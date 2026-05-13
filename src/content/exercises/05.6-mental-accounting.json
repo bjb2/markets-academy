@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Thaler's 'mental accounting' framework claims that:",
+    "choices": [
+      "People are bad at math.",
+      "People mentally partition money into separate accounts (income vs windfall, retirement vs spending, etc.) and treat each as economically separate, even though all dollars are fungible; this creates predictable suboptimal decisions.",
+      "People don't track their spending.",
+      "People prefer cash over electronic payments."
+    ],
+    "correctIndex": 1,
+    "explanation": "Mental accounting is a SYSTEMATIC bias, not a computational error. People CAN do the math but DON'T integrate across accounts naturally. The same dollar received from a tax refund vs a recovered wallet leads to different spending; the same $100 lost as cash vs as a ticket leads to different ticket-purchase decisions. The bias is robust and well-documented."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "The 'house money effect' in trading refers to:",
+    "choices": [
+      "Borrowing from family.",
+      "After winning trades, traders increase risk on subsequent trades, treating recent profits as 'casino chips' (a separate, more-expendable mental account) rather than as their own capital.",
+      "Trading from a home office.",
+      "Using broker margin."
+    ],
+    "correctIndex": 1,
+    "explanation": "Recent profits get mentally categorized as 'house money' (the casino's chips, easier to gamble with). Same dollars, same economic value as 'your money,' but the behavior changes. Documented in both laboratory experiments and real trading data. The structural defense: regularly 'rebase' your mental accounting; treat all dollars as your own capital regardless of recent realized P/L."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Why do dividend-paying stocks trade at a small but persistent premium over economically-equivalent non-dividend-paying stocks?",
+    "choices": [
+      "Dividends are tax-advantaged.",
+      "Mental accounting: many retail investors prefer the psychological 'income' framing of dividends over equivalent total-return from price appreciation. The premium reflects the price of accommodating this preference. Some institutional explanations (governance signal, payout discipline) also contribute, but the mental-accounting story is the dominant behavioral component.",
+      "Dividend payers are less volatile.",
+      "Regulators favor dividend payers."
+    ],
+    "correctIndex": 1,
+    "explanation": "Empirically, dividend-paying stocks trade at a small premium to economically-equivalent non-dividend payers (controlling for size, sector, fundamentals). The mental-accounting explanation is best-supported: investors mentally categorize dividends as 'income to spend' and capital gains as 'wealth to preserve.' Selling appreciated stock to fund spending FEELS different from receiving the same cash as a dividend, even though the after-tax economics are similar (often favoring the capital gain via deferral). The premium reflects the market clearing for this preference."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A trader has $20K in checking earning 0.01% AND $10K in credit card debt at 22%. From a pure-economics view:",
+    "choices": [
+      "Keep both; they're different accounts.",
+      "Use $10K of checking to pay off the credit card immediately; the 22% guaranteed return crushes the 0.01% yield, and the action is mathematically dominant regardless of mental-account preferences.",
+      "Invest the $20K in stocks first.",
+      "Take on more credit card debt to invest."
+    ],
+    "correctIndex": 1,
+    "explanation": "The math is unambiguous. $10K invested at 0.01% earns $1/year. $10K paying down 22% debt saves $2,200/year. The 'I should keep the emergency fund' justification is mental accounting: the checking account is 'emergency money' and the debt is 'separate problem,' so the actual joint decision (the $1 vs $2,200 trade-off) doesn't get made. The optimal play is to clear the debt first and then rebuild a smaller emergency fund (or accept slightly less buffer in exchange for the $2,199/year savings)."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Identify ONE mental account in your own financial life where the partition is producing a SUBOPTIMAL outcome. What's the partition? What suboptimal behavior does it enable? What would the consolidated-view alternative look like?",
+    "rubric": [
+      "Specific partition identified (e.g., 'fun money in brokerage = separate from retirement', 'cost basis on each position is its own account', 'house money from recent winners feels different from regular capital').",
+      "Specific suboptimal behavior driven by the partition (e.g., 'I take more option risk with house money than I would with my baseline capital').",
+      "Consolidated-view alternative (e.g., 'Track total net worth weekly; all financial decisions made against total, not against local accounts').",
+      "Bonus credit: distinguishes between USEFUL mental accounts (retirement separation, budgeting categories) that support beneficial behaviors and HARMFUL ones (the cost-basis trap, the house-money trap) that produce predictable mistakes."
+    ]
+  }
+]

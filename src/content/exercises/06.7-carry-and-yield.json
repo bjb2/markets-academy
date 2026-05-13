@@ -1,0 +1,66 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Why do FX carry trades work on AVERAGE despite the forward exchange rate predicting they shouldn't?",
+    "choices": [
+      "The forward rate is regulated.",
+      "Forward rates are POOR PREDICTORS of actual future spot rates; the implied currency depreciation in the forward typically doesn't fully materialize, leaving the interest rate differential as a structural carry premium.",
+      "Currencies are random walks.",
+      "Trading costs are too high."
+    ],
+    "correctIndex": 1,
+    "explanation": "This is the 'forward rate puzzle' in international finance. Under covered interest parity, forward FX should equal spot adjusted by rate differential. Empirically, forwards systematically predict more depreciation than actually occurs, especially for high-yield currencies. The gap is the carry premium. Various explanations have been proposed (peso problem, behavioral effects, structural capital-flow restrictions), but the empirical premium has persisted over decades."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Carry trades have NEGATIVE SKEW in returns. This means:",
+    "choices": [
+      "Returns are usually negative.",
+      "Most periods deliver small steady positive returns; occasional risk-off episodes produce sharp catastrophic losses; the distribution has a long left tail; sizing decisions must account for fat-tailed drawdowns.",
+      "Returns are guaranteed positive.",
+      "Returns are uncorrelated."
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'eating like a chicken, sh*tting like an elephant' pattern. Carry collects ~1-2% per month in calm markets for years; then a single risk-off event (Aug 2007 subprime, Oct 2008 Lehman, Aug 2015 China, Mar 2020 COVID, Aug 2024 BOJ shift) produces a 10-30% drawdown in days as multiple carry trades unwind simultaneously. Position sizing using Kelly-style metrics that assume Gaussian returns will overstate safe leverage; the empirical max drawdown captures the tail."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "An equity index future's 'carry' comes from:",
+    "choices": [
+      "Trading commissions.",
+      "Dividend yield on the underlying index MINUS the financing cost of holding the future to expiry. In low-rate regimes the carry is positive (dividends > financing); in higher-rate regimes it can be negative.",
+      "Index reconstitution events.",
+      "Settlement margins."
+    ],
+    "correctIndex": 1,
+    "explanation": "An equity future is a leveraged claim on the index. You don't pay for the dividends (the seller does), but you also don't have to put up the full notional capital; you finance the difference at some rate. Net carry = dividend yield - financing cost. In zero-rate environments (2009-2020), SPX futures had small positive carry from dividend yield. In modern higher-rate regimes (2022+), carry has flipped negative for shorter contracts as financing cost exceeds dividend yield."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "EMB (iShares JPMorgan USD Emerging Markets Bond ETF) yields 6.5%, vs the 10-year US Treasury at 4.5%. The 200 bp spread is best understood as:",
+    "choices": [
+      "Pure tax arbitrage.",
+      "A carry premium that compensates investors for credit risk (default probability for EM sovereigns), liquidity risk (lower volume than Treasuries), and risk premium (extra yield demanded beyond expected loss).",
+      "Currency hedging cost.",
+      "Inflation adjustment."
+    ],
+    "correctIndex": 1,
+    "explanation": "The 200 bp gap is fundamentally a credit spread (lesson 2.7) generalized to sovereign debt. Components: expected default loss for EM sovereigns (modest for most major EM countries), liquidity premium (EM corporate bonds harder to trade than Treasuries), and risk premium (investors demanding extra yield to bear sovereign risk). EMB carries this premium structurally; in normal periods it's collected; in EM crisis periods (Asia 1997, Russia 1998, Argentina multiple, COVID 2020) it produces sharp drawdowns."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Carry strategies are typically UNCORRELATED with broader equity returns in calm periods, but CORRELATED in crisis periods. Explain why this asymmetric correlation makes carry strategies a more complicated diversifier than they appear, and how a portfolio manager might mitigate the risk.",
+    "rubric": [
+      "Asymmetric correlation: in calm markets, carry seems to diversify equity exposure; in crises, carry crashes JOIN equity crashes, providing little or negative diversification at the moment it would matter most.",
+      "Mitigation 1: TIME-VARYING ALLOCATION. Reduce carry exposure when broad indicators (VIX, credit spreads, yield curve) signal elevated risk; increase when calm.",
+      "Mitigation 2: PAIR CARRY WITH NEGATIVELY-CORRELATED CRISIS ASSETS (long volatility, gold, managed futures). The combination produces convexity that single-strategy carry lacks.",
+      "Mitigation 3: ACCEPT SIZE LIMITS. Carry can be one of several strategy sleeves at 20-30% allocation, not the dominant exposure. Limits drawdown impact when the tail materializes.",
+      "Bonus credit: notes that the correlation asymmetry isn't a bug; it's a structural feature. Pretending it doesn't exist (or hedging only in calm periods) is more dangerous than acknowledging it."
+    ]
+  }
+]

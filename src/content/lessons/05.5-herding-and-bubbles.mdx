@@ -1,0 +1,100 @@
+<RetrievalPrompt
+  prompt="From 1995 to 2000, tech stocks rose to extreme valuations that even the buyers admitted, by 2001, were obviously unsustainable. Yet during the boom, professional investors kept buying. What rational mechanism explains buying something you suspect is overvalued? What's the difference between a 'rational bubble' and pure mass delusion?"
+  reveal="The 'greater fool' theory of bubbles: even if the asset is overvalued, you can profit by buying and selling to someone willing to pay more. This is a rational individual strategy as long as the bubble persists. The aggregation problem: ALL participants simultaneously hold the same view (someone else will pay more), which keeps the bubble inflated. Robert Shiller's 'Irrational Exuberance' adds a structural element: feedback loops between price, news coverage, and investor psychology that produce predictable bubble dynamics. Bubbles are not pure delusion; they are partly rational individual strategies operating in mutually-reinforcing crowds."
+/>
+
+## Herding: why crowds form
+
+Three mechanisms produce herding in markets, often combined:
+
+1. **Information cascades**: each new participant updates their belief partly from prior participants' actions. After enough people have bought, the public action ITSELF becomes evidence ("they must know something"). Even rational Bayesians herd when private information is weak relative to observed actions.
+
+2. **Career risk / professional norms**: an institutional manager who buys what their peers buy might be wrong but isn't FIRED. A manager who buys something contrarian and is wrong gets fired. This produces a structural bias toward consensus positioning. Keynes: "It is better for reputation to fail conventionally than to succeed unconventionally."
+
+3. **Emotional contagion**: simple psychological mirroring. Crowds of buyers feel exciting; crowds of sellers feel scary. Social-media-era markets have amplified this.
+
+The result: prices can drift far from fundamental value when herding becomes self-reinforcing. Shiller's <em>Irrational Exuberance</em> documents the mechanism through three centuries of asset bubbles.
+
+## Bubble anatomy
+
+Robert Shiller proposed a list of empirical bubble markers in <em>Irrational Exuberance</em> (2000, updated 2005, 2015):
+
+| Marker | Description |
+|---|---|
+| **Rapid price increase** | Prices well above historical norms, often doubling or tripling in 2-5 years |
+| **Public attention** | Mainstream media coverage; conversation at parties; books with titles like "Dow 36,000" |
+| **Story-driven narrative** | New-era thinking; "this time is different"; old metrics don't apply |
+| **New participants** | Retail entry, frequently at the top; expansion of participation |
+| **Leverage / new financing structures** | Margin lending, second-mortgages-to-invest, structured products optimized for the boom |
+| **Disappearance of skepticism** | Bearish views dismissed; bears mocked; consensus convergence to bullish view |
+| **Implausible projections** | "Nasdaq will be 10x" type claims taken seriously by mainstream press |
+
+Each marker has been present in: 1928-1929 (US equity), 1989 (Japan), 1999 (US tech), 2006 (US housing), 2021 (US crypto + meme stocks + SPACs).
+
+The reliability of the markers in identifying bubbles is decent but imperfect; some periods (2010-2014 emerging markets, 2017 crypto's first cycle) flashed several markers and didn't fully crash, or crashed but recovered fast.
+
+## Why bubbles persist (against the rational arbitrageur)
+
+A common confusion: "If a bubble is identifiable, why don't rational investors short and profit?" Three constraints:
+
+### 1. Limits to arbitrage (Shleifer-Vishny 1997)
+
+A rational arbitrageur sees an overvalued asset and shorts it. The bubble keeps inflating. The arbitrageur's short loses money. If they're managing other people's money, the clients pull their capital. The arbitrageur is FORCED TO CLOSE at the worst time (peak loss, before the bubble pops).
+
+This is the canonical "limits to arbitrage" story. Rational arbitrageurs CAN identify mispricings but CANNOT always trade them without bearing intolerable drawdowns. The market can stay irrational longer than you can stay solvent (Keynes).
+
+### 2. Keynes's beauty contest
+
+"It is not a case of choosing those [faces] which, to the best of one's judgment, are really the prettiest. We have reached the third degree where we devote our intelligences to anticipating what average opinion expects the average opinion to be."
+
+Markets are a beauty contest where participants try to predict what OTHER participants will think the price should be. A "rational" arbitrageur betting on intrinsic value alone competes with traders betting on the next move of the crowd. In bubble regimes, the second strategy dominates short-term.
+
+### 3. Greater-fool theory
+
+If you can buy at $100 with confidence you can sell at $150 to someone else, the trade is profitable EVEN IF you believe fundamental value is $50. As long as enough fools exist, the strategy is rational individually. The aggregation fails: every individual thinks they're the smart one who'll exit before the crash.
+
+Both #2 and #3 are rational strategies under the assumption "the bubble persists." They become catastrophic when the bubble pops.
+
+<WorkedExample
+  title="Walking through a recent bubble's anatomy"
+  problem="The 2021 'meme stock' episode: GameStop went from $20 to $483 in 3 weeks. AMC, BBBY, NOK followed similar patterns. Apply Shiller's markers; identify the rational and behavioral mechanisms at work."
+  steps={[
+    { label: "Marker check 1: rapid price increase", body: "Yes. GME went 20x in weeks. Far above any plausible fundamental anchor." },
+    { label: "Marker check 2: public attention", body: "Yes. WallStreetBets subreddit, Bloomberg coverage, congressional hearings, Netflix documentary." },
+    { label: "Marker check 3: story-driven narrative", body: "Yes. 'Squeeze the shorts,' 'this time it's the retail investors winning,' 'apes together strong.' Old valuation metrics dismissed." },
+    { label: "Marker check 4: new participants", body: "Yes. Robinhood added millions of accounts; retail option volume hit records." },
+    { label: "Marker check 5: leverage / new financing structures", body: "Yes. Heavy use of short-dated OTM call options, leveraged with new account margin." },
+    { label: "Mechanism: information cascades", body: "Each new GME buyer was partly responding to the SOCIAL EVIDENCE that other people were buying. The reddit posts were both the cause and effect of buying." },
+    { label: "Mechanism: career risk", body: "Asymmetric. Institutional shorts (Melvin) faced catastrophic losses; institutional non-participants on the long side faced relatively mild missed-opportunity costs. The asymmetry pushed institutions toward closing shorts faster than economically optimal, fueling the squeeze." },
+    { label: "Mechanism: greater fool", body: "Many buyers above $300 admitted in real time they didn't think GME was 'worth' that, but expected to sell to someone willing to pay $400. The strategy worked for early buyers and failed catastrophically for late ones; the trade asymmetry was visible to anyone watching." },
+    { label: "What this teaches", body: "Bubbles are not pure delusion. They have a rational individual strategy embedded (greater fool), reinforced by behavioral mechanisms (information cascade, narrative). Recognizing this in real time DOESN'T necessarily let you profit from it (limits to arbitrage), but it can prevent you from being the late buyer." },
+  ]}
+/>
+
+## Aftermath dynamics
+
+Three patterns repeat in the post-bubble period:
+
+1. **Overshooting on the downside**: prices fall BELOW fair value after bubbles pop, because participants who got burned are slow to return. The tech bust drove NASDAQ to -78%; recovery to its 2000 peak took 15 years. Equilibrium-driven mean reversion would have predicted maybe a -50% decline to fair value; actual was much worse.
+
+2. **Sectoral scars**: the asset class that bubbled becomes structurally avoided for years. After 1989 Japan crashed, Japanese equity allocation was permanently scarred. After 2000 tech, the asset class was avoided into 2003-2005 by many institutional allocators.
+
+3. **Generational lesson**: investors who experienced the bubble carry a permanent risk aversion to similar setups; investors who didn't (younger cohorts) repeat the pattern decades later. The Great Depression survivors avoided stocks lifelong; their grandchildren and great-grandchildren bought GME.
+
+The implication for an active investor: bubbles in adjacent asset classes are EXPECTED. They don't represent a failure of markets; they're a structural feature of how human institutions interact with feedback-prone signal systems. The discipline is to recognize them in real time without being trapped by them.
+
+## Where this lives in our work
+
+Marks' memos (Layer 6.4) explicitly use bubble awareness as a portfolio discipline. The "two-second rule" Marks describes: at any given moment, ask yourself whether the broader market is in "buy the dip" mode (late-cycle exuberance) or "sell the rally" mode (late-bear capitulation). Recognizing this isn't market timing; it's positioning awareness.
+
+For our paper-trading-longcall project, bubble awareness affects the universe of trades. In late-cycle exuberance, long-call strategies on names that have already had ridiculous runs are particularly vulnerable to mean-reversion in IV. Adjusting strategy aggression to cycle position is a discipline that Layers 6 and 8 develop further.
+
+<LessonRecap points={[
+  "Three mechanisms produce herding: information cascades, career risk / professional norms, emotional contagion. Each is partly rational; aggregation produces mispricing.",
+  "Shiller's bubble markers: rapid price increase, public attention, story-driven narrative, new participants, leverage, disappearance of skepticism, implausible projections.",
+  "Bubbles persist against rational arbitrage because of limits to arbitrage (Shleifer-Vishny), Keynes's beauty contest, and greater-fool dynamics. 'The market can stay irrational longer than you can stay solvent.'",
+  "Aftermath: prices overshoot below fair value; affected sectors become structurally avoided; generational scars produce long-cycle behavioral patterns.",
+  "Active investors should expect bubbles in adjacent asset classes. The discipline is real-time recognition without being trapped, not perfect timing."
+]} />
+
+<ExerciseRunner lessonId="05.5-herding-and-bubbles" />

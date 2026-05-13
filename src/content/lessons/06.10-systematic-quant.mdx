@@ -1,0 +1,139 @@
+<RetrievalPrompt
+  prompt="A discretionary trader makes a judgment call: 'I think this stock will rise.' A systematic trader applies a rule: 'BUY when 50-day MA crosses above 200-day MA, exit when 50-day MA crosses below.' Both can produce similar returns over long periods. What are the SPECIFIC advantages of the systematic approach, and what does it give up in exchange?"
+  reveal="Systematic trading replaces JUDGMENT with RULES. Advantages: (1) eliminates emotion-driven errors in real time; (2) backtestable, falsifiable, and reproducible; (3) scales without human bottleneck; (4) consistent execution under stress when judgment is weakest. Tradeoffs: (1) cannot adapt to novel circumstances; (2) risk of overfitting historical data; (3) ignores qualitative information that doesn't fit the model; (4) feels mechanical and emotionally hard to maintain in long drawdowns. The choice is one of constitutional fit, not theoretical superiority."
+/>
+
+## The fundamental promise of systematic
+
+A systematic trader writes down a strategy as RULES (often in code), backtests them on historical data, and follows them mechanically in live trading. The discipline replaces:
+- "Should I buy here?" with "Does the signal fire?"
+- "Is this scary?" with "Does the stop trigger?"
+- "How much should I bet?" with "What's the position-sizing rule?"
+
+The cleanest systematic frameworks express the entire strategy in mathematical terms. The behavior is COMPLETELY DETERMINISTIC given the input data: same data → same trade. No judgment, no improvisation, no panic.
+
+## Carver's framework: <em>Systematic Trading</em>
+
+Robert Carver (former AHL portfolio manager, author of <em>Systematic Trading</em> and <em>Leveraged Trading</em>) provides the most accessible practitioner framework for retail systematic trading.
+
+The core principles:
+
+### 1. Forecast quality > strategy complexity
+
+A simple rule with good forecast quality beats a complex rule with poor forecast quality. Most strategy complexity is overfit; simple rules with proven generalizability survive longer.
+
+Carver's preferred forecasts:
+- Trend following (current price vs N-day moving average; works as time-series momentum)
+- Carry (yield differential; works for FX, bonds, commodities)
+- Mean reversion (overshoots reverting)
+- Cross-instrument relative value (one asset vs another)
+
+Each forecast generates a NORMALIZED SIGNAL (-1 to +1 typically). Position size scales with signal strength.
+
+### 2. Diversification across instruments AND strategies
+
+A single trend-following rule across 50 futures markets has more diversification than 50 different strategies in one market. The Carver framework recommends:
+- 30-100 instruments (futures, FX pairs, equity indexes)
+- 4-8 distinct strategy types (different forecasts)
+- Combine via weighted averaging of signals
+
+The result: a portfolio with hundreds of marginal positions, each small, where any single bad trade is irrelevant and the strategy-level performance smooths out via diversification.
+
+### 3. Volatility targeting
+
+The position size for each instrument scales with the INVERSE of its volatility. A high-vol commodity (crude oil) gets smaller size than a low-vol bond. Target portfolio volatility (typically 20-30% annualized) drives the total leverage.
+
+Vol targeting has two benefits:
+- Each position contributes roughly equal risk (mathematical diversification).
+- Portfolio vol stays roughly constant through market regimes (the natural defense against vol expansion is reduced size).
+
+### 4. Realistic expectations
+
+Carver explicitly cautions against expecting institutional-grade Sharpe ratios. Achievable retail-scale systematic Sharpe: 0.4-0.8 across a multi-instrument multi-strategy framework, after costs. Single-instrument single-strategy implementations rarely exceed 0.3 net.
+
+## How systematic differs from discretionary
+
+| Dimension | Discretionary | Systematic |
+|---|---|---|
+| Decision basis | Judgment + experience | Quantitative rules |
+| Backtest | Hard | Easy and necessary |
+| Capacity | Manageable across few names | Scales across hundreds of instruments |
+| Behavioral robustness | Vulnerable to emotion | Insulated by rules |
+| Adaptability | High (responds to novel events) | Low (rules don't update) |
+| Falsifiability | Hard (was the bad trade a mistake or unlucky?) | Clear (rule fired, outcome is known) |
+| Execution speed | Slow (deliberation) | Fast (no decision required) |
+
+Neither is inherently superior. The choice depends on:
+- Your constitutional fit (do you panic in drawdowns? systematic is your friend).
+- Your edge source (qualitative judgment vs rule-finding).
+- Your time availability (systematic requires upfront work but light maintenance; discretionary requires constant attention).
+- Your scale (systematic scales naturally; discretionary requires more time per dollar at scale).
+
+## A simple systematic example
+
+Carver's <em>Leveraged Trading</em> book walks through a starter system. Simplified:
+
+1. **Instrument universe**: 5-10 liquid futures (S&P 500, Treasuries, gold, crude oil, copper, soy).
+2. **Forecasts**: 64-day trend (current price - 64-day MA, normalized by vol), 16-day trend, 32-day carry. Three signals per instrument.
+3. **Combined signal**: weighted average of three signals, capped at ±2.
+4. **Position size**: signal × vol target / instrument vol. Higher signal AND lower-vol instrument = larger position.
+5. **Rebalance**: weekly, or when signal changes meaningfully.
+
+This implements the four Carver principles. Backtests on this simple structure produce Sharpe 0.6-0.9 across the 1990-2024 window. Real-world implementation incurs costs that may push Sharpe to 0.4-0.6. Not magic; honest.
+
+<WorkedExample
+  title="Systematic trade in our paper-trading project"
+  problem="Our paper-trading-longcall project is largely systematic: entries require specific signal conditions (breakout above 20-day high + 50-day SMA > 200-day SMA + IV rank < 30 + 75-delta options + 90-180 DTE). Walk through what makes this approach SYSTEMATIC and what the framework gives up."
+  steps={[
+    { label: "Step 1: rule clarity", body: "Every entry/exit condition is specified in code. No discretion in the moment. Same data on a given day will produce the same trade decisions regardless of who's running the system." },
+    { label: "Step 2: backtestable", body: "We can run the strategy on historical data (e.g., 1995-2024) and produce performance statistics: Sharpe, drawdown, win rate, profit factor. This is impossible with discretionary trading; you can't easily replay 'I would have bought XYZ if I were trading then.'" },
+    { label: "Step 3: behavioral insulation", body: "When SPY drops 15%, the rules either fire or don't. The trader's panic isn't in the loop. No 'I think this is the bottom' or 'I think we've already turned' judgments." },
+    { label: "Step 4: what we give up", body: "(a) We can't quickly adapt to truly novel circumstances (COVID, the 2008 deleveraging) without re-engineering rules. (b) Qualitative information that wouldn't fit the rules (e.g., 'this company just lost its key patent') doesn't influence the decision. (c) The rules are necessarily a SIMPLIFICATION of reality; some opportunities the trader's intuition would catch are missed. (d) Drawdowns are psychologically harder to endure when you can't 'change your mind'; you have to trust the rules." },
+    { label: "Step 5: hybrid possibilities", body: "Even our 'systematic' strategy has discretionary elements: we choose the universe (specific tickers); we set parameters (50-day SMA, not 53-day); we override during specific events. A pure-systematic strategy would remove these too. The line between systematic and discretionary is a spectrum." },
+    { label: "Step 6: where systematic discipline pays", body: "The biggest payoff: executing the strategy consistently during the unpleasant periods. Most discretionary strategies fail not because the framework was wrong but because the trader abandoned it during drawdown. Systematic execution removes this failure mode mechanically." },
+  ]}
+/>
+
+## Common systematic strategy archetypes
+
+The Carver framework's diversified portfolio typically includes:
+
+1. **Trend following**: time-series momentum on futures (lesson 6.5).
+2. **Carry**: yield-differential trades (lesson 6.7).
+3. **Cross-sectional momentum**: long-short equity momentum (lesson 6.5).
+4. **Volatility carry**: short volatility, long realized (the VIX risk premium).
+5. **Mean reversion**: short-horizon reversal trades (lesson 6.6).
+6. **Statistical arbitrage**: paired trades on correlated assets (lesson 6.6).
+
+Each has been validated across decades. Each has periods of underperformance. Combining 4-8 of them via Carver-style diversification produces meaningful long-run Sharpe (0.6-1.0) net of costs in retail-accessible implementations.
+
+## Modern systematic firms
+
+For context: the institutional systematic landscape includes:
+
+- **Two Sigma, Renaissance, DE Shaw, Citadel**: massive multi-strategy systematic firms with proprietary research and infrastructure. Returns reported in the 15-30% range historically, with Sharpe ratios 1.5+.
+- **AQR, Man AHL, Winton, Aspect**: factor and trend-following systematic firms. More accessible to institutional investors via fund products. Returns more modest (8-15%) but with strong diversification.
+- **CMT funds and managed futures**: trend-following on futures. Mixed performance across the post-2010 era.
+
+Retail systematic is a small-scale version of this. The principles are the same; the infrastructure is much smaller.
+
+## Where systematic fits
+
+For our paper-trading-longcall project, we're effectively a systematic strategy: rules-based entry, position sizing, exit. The framework's strength is consistent execution. Its weakness is rigidity in novel circumstances.
+
+For broader portfolio construction:
+- 80% broad index funds (passive)
+- 10-15% multi-factor ETFs (systematic factor harvest)
+- 5-10% individual stocks or active strategies (paper-trading-longcall)
+
+This is a systematic approach to total portfolio construction. The active component is a small (~10%) allocation that adds optionality without overwhelming the long-term compounding from the passive base.
+
+<LessonRecap points={[
+  "Systematic trading replaces judgment with rules. Strengths: behavioral insulation, falsifiability, backtestability, scalability. Tradeoffs: rigidity, overfit risk, qualitative info loss.",
+  "Carver framework: forecast quality > complexity, diversify across instruments + strategies, volatility targeting, realistic expectations (Sharpe 0.4-0.8 for retail).",
+  "Common strategy archetypes: trend, carry, cross-sectional momentum, vol carry, mean reversion, stat arb. Combine 4-8 for diversified systematic exposure.",
+  "Our paper-trading-longcall is systematic in entries/exits but has some discretionary elements (universe choice, parameter selection). The line between systematic and discretionary is a spectrum.",
+  "Choice between systematic and discretionary is constitutional (do you handle drawdown rules well or badly?) and operational (your edge source: rules or judgment?)."
+]} />
+
+<ExerciseRunner lessonId="06.10-systematic-quant" />

@@ -1,0 +1,123 @@
+<RetrievalPrompt
+  prompt="Howard Marks of Oaktree Capital has written over 100 memos to clients since 1990, all archived publicly. His central thesis is captured in a single line: 'You can't predict; you can prepare.' What does this mean for how an active investor should position a portfolio, and why does Marks consider it more important than any specific prediction or model?"
+  reveal="The market cycle (sentiment, credit availability, valuation extremes) is the dominant determinant of forward returns over multi-year horizons. You can't predict WHEN the cycle will turn, but you CAN observe WHERE in the cycle you are and position accordingly. In bullish/exuberant phases, reduce risk (smaller positions, more cash, higher-quality holdings, less leverage). In bearish/despondent phases, increase risk (larger positions, less cash, deploy patiently). The discipline isn't timing; it's CYCLE AWARENESS. Marks considers this more important than any specific call because cycle position is empirically the single strongest predictor of forward returns."
+/>
+
+## The two great cycles
+
+Marks discusses many cycles but two are foundational:
+
+### 1. The credit cycle
+
+When credit is loose (lenders willing, spreads tight, covenants weak): businesses can refinance easily, debt service is manageable, defaults are rare. Capital structure decisions favor more debt. Eventually, low-quality borrowers proliferate; defaults rise; capital becomes scarce; spreads widen; the cycle inverts.
+
+Marks: "Trees do not grow to the sky." Easy credit creates the seeds of the tightening that follows. The cycle is inherent; specific timing is unpredictable.
+
+### 2. The investor psychology cycle
+
+Connected to but distinct from credit. In euphoria, investors price extreme outcomes as the base case. In despondency, they price recovery as impossible. Both extremes are wrong; reality is more boring than either narrative.
+
+Marks: "Market behavior swings from euphoria to terror, but value moves slowly." The valuation-vs-fundamental gap is largest at cycle turns; recognizing these moments is the active investor's edge.
+
+## Where you are in the cycle
+
+Marks proposes a checklist for cycle position. In any given moment, ask:
+
+| Question | Late expansion | Late contraction |
+|---|---|---|
+| Are valuations high or low vs history? | High | Low |
+| Are spreads tight or wide? | Tight | Wide |
+| Is credit available easily? | Yes | No |
+| Are IPOs/SPACs proliferating? | Yes | No |
+| Are bearish views dismissed or amplified? | Dismissed | Amplified |
+| Does "this time is different" feel reasonable? | Yes | No |
+| Is leverage in the system high or low? | High | Low |
+| Are unconventional structures (covenant-lite, junk-rated, etc.) successful? | Yes | No |
+| Are first-time investors entering the market? | Yes | No |
+| Does winning seem easy? | Yes | No |
+
+Each question yields a binary signal. Multiple "Late expansion" answers = elevated risk position. Multiple "Late contraction" answers = elevated opportunity position. Few of each = mid-cycle (default state).
+
+The checklist isn't precise about TIMING. Late expansion can persist for months or years. Late contraction can deepen before reversing. But the asymmetry of forward returns at the extremes is real and documented.
+
+## The two great rules
+
+Marks' essential framework distills to two operating principles:
+
+### Rule 1: Risk management dominates return seeking
+
+Returns come from many sources; ruin comes from too many bad positions when the cycle turns. Surviving the down years is the prerequisite for compounding through them. Marks repeatedly emphasizes: a great year compounds with everything else; a year of -50% destroys decades of progress.
+
+Practical implication: SIZE POSITIONS for survival in adverse outcomes, not for maximum upside. Concentration is appropriate when conviction is high; even then, allocate so that the worst-case scenario doesn't kill the strategy.
+
+### Rule 2: Avoiding losers is more important than picking winners
+
+The math of compounding amplifies losses asymmetrically. A 50% drawdown requires a 100% gain to recover; a 75% drawdown requires 300%. Avoiding the catastrophe-class loss is structurally more important than capturing the maximum upside.
+
+Practical implication: DON'T DEPLOY at cycle extremes. Don't buy at the height of euphoria when even the experts are sure. Don't sell at the depth of despair when nothing feels safe. Just patience and discipline.
+
+## The Marks cycle framework in our paper-trading project
+
+The longcall strategy benefits from cycle awareness:
+
+- **Late expansion**: IV is typically compressed (vol is low when complacency reigns); long calls are CHEAPER but face mean-reversion risk if IV expands sharply. Trade smaller; favor names with the strongest moats.
+- **Late contraction**: IV is elevated (vol is high when panic reigns); long calls are EXPENSIVE but the underlying is cheap. Either the call works because the stock rebounds, or the IV mean-reversion provides exit returns even if the stock doesn't recover quickly. Trade larger; favor broadly-loved names.
+
+This is Marks' framework applied to our specific strategy. Cycle position changes the expected return profile of the same trade structure. Ignoring cycle = ignoring 60-70% of forward-return variance.
+
+<WorkedExample
+  title="Applying the Marks checklist to a current moment"
+  problem="It's December 2024. You're managing a portfolio. Run the Marks cycle checklist and decide whether to lean toward more aggressive (late-bear) or more defensive (late-bull) positioning."
+  steps={[
+    { label: "Step 1: valuations", body: "Shiller CAPE around 35 (high, but down from 38 in mid-2024). Mature large-caps trade at premium multiples. Late expansion." },
+    { label: "Step 2: credit spreads", body: "HY OAS around 280 bp. Tight by historical standards (avg ~500 bp). Late expansion." },
+    { label: "Step 3: credit availability", body: "IG and HY issuance robust; covenants somewhat tight (better than 2021 levels). Late expansion." },
+    { label: "Step 4: IPO/SPAC activity", body: "SPAC market dormant; IPO market open but selective. Less euphoric than 2021. Mixed." },
+    { label: "Step 5: bearish views", body: "Bearish views dismissed or considered out of touch with the cycle. Major bears (Roubini, Edwards, Hussman) have been wrong directionally for years. Late expansion." },
+    { label: "Step 6: leverage", body: "Margin debt at $850B, near record. Hedge fund leverage at record levels. Late expansion." },
+    { label: "Step 7: 'this time is different'", body: "AI productivity revolution thesis is widely accepted as supporting elevated multiples. Late expansion (this signal works particularly well at extremes)." },
+    { label: "Step 8: integrate", body: "Most signals point to LATE EXPANSION. The Marks framework recommends: smaller positions, higher cash, better-quality holdings, less leverage. Not 'sell everything' (timing the peak is impossible) but 'lean defensive.'" },
+    { label: "Step 9: practical implementation", body: "For longcall strategy: trade smaller per-name; favor highest-quality names; expect IV mean-reversion in coming quarters; don't max out positions. For broad portfolio: reduce equity beta exposure; increase quality tilt; raise cash modestly." },
+    { label: "Step 10: caveat", body: "Marks emphasizes: late-expansion can persist for years. Don't sell everything. Position size for the possibility that the bull continues 12-24 months, AND for the possibility that it turns immediately. Marks' framework is about POSITIONING, not perfect timing." },
+  ]}
+/>
+
+## The mood-cycle classics
+
+Marks' 2007 memo "It's All a Big Mistake" warned about LBO-era overvaluation just before the 2008 collapse. His 2009 memo "The Long View" articulated why deploying capital at the panic lows was rational. Both memos are referenced in his collected memos book (<SourceLink id="marks-memos-best-of" />).
+
+The pattern: late-bull memos warn (and are dismissed for being "negative" until proven right). Late-bear memos encourage (and are dismissed for being "naive" until proven right). The discipline isn't about catching the exact turn; it's about being POSITIONED to participate when the cycle turns.
+
+## What Marks doesn't claim
+
+To be clear about the limits of cycle awareness:
+
+1. **Marks doesn't predict turns precisely.** "We never know what's going to happen with certainty." Late-cycle can extend; recoveries can be delayed.
+
+2. **Cycle awareness doesn't replace fundamental analysis.** You still need to understand which businesses are well-priced regardless of cycle.
+
+3. **Cycle positioning is portfolio-level**, not always position-level. You can hold quality compounders through the cycle (the whole point is they recover faster than less-durable businesses). The cycle awareness affects net portfolio risk, not necessarily each individual position.
+
+4. **Marks doesn't claim to be unique in his framework.** He explicitly references Graham, Buffett, and his own intellectual debts to academic and practitioner predecessors. The framework is the synthesis, not the source.
+
+## How to use Marks' memos
+
+<SourceLink id="marks-memos-best-of" /> is the curated collection of Marks' most important memos. Read them in chronological order (1990s onward); the recurrence of themes through different cycle moments is itself the lesson. Each memo is 10-20 pages, accessible language, lots of practical detail. Particularly useful:
+
+- "You Can't Predict, You Can Prepare" (2001): the foundational framework.
+- "It's All a Big Mistake" (2007): late-bull warning.
+- "The Long View" (2009): late-bear encouragement.
+- "There They Go Again" (2005, 2007): bubble warning.
+- "Sea Change" (2022): regime shift to higher rates and inflation.
+
+The collected reading rewards careful attention. The frameworks evolve gradually but the core thesis (cycle awareness > prediction) remains constant.
+
+<LessonRecap points={[
+  "Marks' central thesis: 'You can't predict; you can prepare.' Cycle position (sentiment, credit, valuation extremes) drives forward returns more than any specific prediction.",
+  "Two great cycles: credit (loose → tight) and investor psychology (euphoria → terror). Both inherent in the system; both with unpredictable timing.",
+  "Cycle position checklist: valuations, spreads, credit availability, IPO/SPAC activity, bearish views' reception, leverage, 'this time is different' rhetoric. Multiple late-expansion signals = lean defensive; multiple late-contraction = lean aggressive.",
+  "Two operating rules: (1) risk management dominates return seeking; (2) avoiding losers is more important than picking winners. Math of compounding amplifies losses asymmetrically.",
+  "Marks doesn't claim precise timing; the framework is about POSITIONING for the possibility of cycle turn, not betting on its exact moment. Late-cycle can persist; the discipline is patience."
+]} />
+
+<ExerciseRunner lessonId="06.4-marks-cycle-awareness" />

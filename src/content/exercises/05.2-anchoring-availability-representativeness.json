@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "A trader bought XYZ at $50; it's currently $35. They tell a friend, 'I'll sell when it gets back to my cost.' Which bias is the dominant driver?",
+    "choices": [
+      "Confirmation bias.",
+      "Anchoring on the purchase price ($50), which has no relevance to the stock's current intrinsic value.",
+      "Availability.",
+      "Representativeness."
+    ],
+    "correctIndex": 1,
+    "explanation": "The cost basis is an irrelevant anchor for the SELL decision. Whether the stock is currently overvalued or undervalued depends on current price vs current intrinsic value, not on what you paid. 'I'll sell when I'm back to even' is one of the most expensive anchoring patterns in retail trading."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Following a vivid news event (e.g., a major plane crash, a high-profile accounting fraud), retail trading volume in the affected name typically peaks:",
+    "choices": [
+      "Immediately at the news headline.",
+      "Days later, AFTER the institutional reaction has already priced in the news; retail availability of the headline drives delayed action.",
+      "Weeks before the news (insider trading).",
+      "Never; retail ignores news."
+    ],
+    "correctIndex": 1,
+    "explanation": "The institutional reaction is fast (within minutes/hours), efficient pricing usually happens that day. Retail volume peaks days later as the news cycle saturates retail attention; the trade is acted on when the price has already moved. This is availability heuristic + reaction delay; the trade is usually a loser because the price has already incorporated the information."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "A friend recommends a stock because 'it looks like the next NVIDIA': fabless semis, AI exposure, fast revenue growth. Most likely bias and its market consequence:",
+    "choices": [
+      "Anchoring; cost basis irrelevant.",
+      "Representativeness: matching to a successful template (NVDA's path), ignoring base rates (most 'next-X' candidates don't replicate the original's outcome). Consequence: glamour-stock overvaluation that often mean-reverts.",
+      "Availability: vivid recent winner.",
+      "Confirmation bias."
+    ],
+    "correctIndex": 1,
+    "explanation": "Representativeness ignores base rates. For every NVIDIA, there are dozens of fabless semi/AI startups that didn't make it. The 'looks like NVIDIA' template is a stereotype; the base rate of stocks matching the template that ACHIEVE NVIDIA-like outcomes is low (under 10% historically). Pricing the stock as if it's already the next NVIDIA reflects representativeness."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "A pre-trade checklist that forces you to write down your thesis, target price, stop level, and time horizon BEFORE entering a position works against bias by:",
+    "choices": [
+      "Making you smarter.",
+      "Forcing System 2 engagement before System 1 reaches the action, and creating a written record that prevents post-trade hindsight bias.",
+      "Reducing taxes.",
+      "Improving execution."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pre-trade checklists are the most-recommended structural defense in trading-psychology literature (Tetlock, Carver, et al.). They force System 2 deliberation BEFORE you click. They create a record that prevents you from later remembering 'I always knew this would work' (hindsight bias). They cap conviction-driven position sizing because the stop must be defined upfront."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Identify ONE specific structural rule you could add to your own trading or investment process that addresses one of the biases from this lesson. Be concrete: what's the rule, which bias does it target, and when does it trigger?",
+    "rubric": [
+      "Concrete rule (e.g., 'Position size capped at 5% regardless of conviction', 'Mandatory 24-hour cooldown after any news-driven impulse', 'Pre-trade checklist with thesis + stop + horizon').",
+      "Identifies which bias it targets (e.g., conviction-driven sizing = overconfidence; cooldown = availability; checklist = system-1 dominance).",
+      "Defines when the rule triggers (every trade? trades above $X? after any news event?). Operational clarity matters more than theoretical correctness."
+    ]
+  }
+]

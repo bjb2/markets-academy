@@ -1,0 +1,66 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "OVERPRECISION (one of three overconfidence flavors) refers to:",
+    "choices": [
+      "Believing you'll do better than average.",
+      "Confidence intervals being TOO NARROW: when you say '90% confidence,' the truth falls in your interval only 50-70% of the time.",
+      "Trading too frequently.",
+      "Over-diversifying."
+    ],
+    "correctIndex": 1,
+    "explanation": "Overprecision is the under-appreciation of uncertainty. Empirical studies asking subjects to give 90% confidence intervals around quantities (population of Brazil, year a battle happened, etc.) consistently find 30-50% miss rates. The bias is robust across domains. For traders, overprecision manifests as 'I'm sure this works' sizing that doesn't account for the actual probability of being wrong."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "Brier score for a single prediction at probability 0.7, where the event DID happen, is:",
+    "choices": [
+      "0.09 (= (0.7 - 1)² = 0.09).",
+      "0.49.",
+      "0.7.",
+      "1.0."
+    ],
+    "correctIndex": 0,
+    "explanation": "Brier = (probability - outcome)². With outcome = 1 (event happened) and probability = 0.7: (0.7 - 1)² = (-0.3)² = 0.09. If the event had NOT happened (outcome = 0): (0.7 - 0)² = 0.49. Lower scores are better calibrated. A 0.5 prediction gives 0.25 regardless of outcome, the maximum penalty for being uninformative."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Tetlock's 'superforecasters' outperformed average forecasters by approximately what Brier-score margin?",
+    "choices": [
+      "10% better.",
+      "30% better (Brier scores ~30% lower than competing groups, sustained over years).",
+      "100% better.",
+      "Random; no consistent outperformance."
+    ],
+    "correctIndex": 1,
+    "explanation": "Superforecasters in Tetlock's Good Judgment Project outperformed competing forecasters by ~30% in Brier score. This held over multiple geopolitical and economic forecasting rounds. The traits associated with their performance (probabilistic thinking, willingness to update, comfort with uncertainty) are LEARNABLE; they don't require unusual intelligence."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Barber & Odean's research on retail brokerage data found that:",
+    "choices": [
+      "Active traders outperform passive investors.",
+      "Returns are uncorrelated with trade frequency.",
+      "Active traders UNDERPERFORM passive investors; the most active accounts underperform the least active by several percentage points per year, primarily due to friction costs and overconfidence-driven trade selection.",
+      "Trade frequency is unrelated to demographics."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Barber-Odean studies are among the most robust empirical findings in retail finance. Higher turnover → lower net returns. The mechanism: overconfidence drives trade frequency; each trade has subjective positive expected return but actual alpha doesn't materialize; transaction costs compound. The single most reliable retail-trading improvement is TRADE LESS."
+  },
+  {
+    "id": "q5",
+    "kind": "free-text",
+    "prompt": "Design a PRE-MORTEM exercise for the most recent significant position you took (or would take). Specifically: write 3 specific failure scenarios in which the position loses money over the next 6 months. For each, assign a probability. What does the cumulative probability of FAILURE suggest about your initial position sizing?",
+    "rubric": [
+      "Three specific failure scenarios (not generic 'market crashes'; specific to the thesis, e.g., 'earnings miss with weak guidance,' 'competitor launches a successful product,' 'regulatory change reduces margin').",
+      "Probability assigned to each scenario.",
+      "Cumulative probability of failure across scenarios (acknowledging some overlap).",
+      "Implication for sizing: if cumulative failure probability is 30-40%+, the felt 'I'm 90% sure' conviction is miscalibrated; position size should be smaller than the initial impulse.",
+      "Bonus credit: notes that the pre-mortem is most useful BEFORE entering, not after; it forces the failure modes to be mentally available at the decision moment."
+    ]
+  }
+]

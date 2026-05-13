@@ -1,0 +1,109 @@
+<RetrievalPrompt
+  prompt="Buy-and-hold investors and value investors look for assets trading BELOW fundamental value. Momentum investors do something different: they buy assets that have RECENTLY GONE UP and sell assets that have recently gone down. This sounds like 'buy high, sell higher' which contradicts every grandmother's advice. What's the empirical evidence that it works, and what behavioral mechanism makes it work?"
+  reveal="Cross-sectional momentum (buying assets that have outperformed over the past 6-12 months and selling those that have underperformed) has produced about 8-10% annualized excess returns over decades and across asset classes. The behavioral mechanism: humans UNDERREACT to new information (anchoring + slow narrative diffusion), causing prices to move in a sustained direction rather than jumping immediately to the new equilibrium. Eventually they OVERREACT and the trend reverses (mean reversion). Momentum exploits the underreaction phase; mean reversion exploits the overreaction phase. Both are real, both are tradable, both have specific entry and exit logic."
+/>
+
+## What momentum actually is
+
+There are two distinct momentum strategies, often conflated:
+
+### Cross-sectional momentum
+
+Rank all stocks (or all assets in some universe) by their past 6-12 month return. Buy the top decile (winners). Short or avoid the bottom decile (losers). Hold for 1-12 months, rebalance, repeat.
+
+The classic study: Jegadeesh & Titman 1993 documented the effect in US equities 1965-1989. Top-decile-past-12-month winners outperformed bottom-decile losers by 0.95% per month, gross of costs. The result has been replicated in international equities, fixed income, commodities, FX, sectors, and individual stocks over decades.
+
+### Time-series momentum (trend following)
+
+For each asset INDIVIDUALLY: if recent return is positive, go long. If recent return is negative, go short (or flat). The lookback is typically 1-12 months; signals can be based on simple price returns, moving averages, or breakouts.
+
+Classic systematic trend funds (Winton, Man AHL, AQR Managed Futures) implement this across hundreds of futures markets simultaneously. Performance: long-run Sharpe ~0.7-1.0 with positive crisis-period correlation to the upside (trend funds typically do WELL when broad markets do poorly, because trends compound; this is the structural defensiveness of trend following).
+
+## The mechanism: why momentum works
+
+Several complementary explanations:
+
+### 1. Behavioral underreaction
+
+When new information arrives (earnings surprise, regulatory change), the price doesn't fully impound it immediately. Reasons:
+- **Anchoring** (lesson 5.2): traders anchor on prior prices, adjust insufficiently to the new equilibrium.
+- **Slow information diffusion**: from sell-side analysts to institutional clients to retail; the signal propagates over weeks.
+- **Confirmation bias**: existing holders rationalize the news as consistent with their thesis; the price reflects the median view, not the new equilibrium.
+
+The result: price keeps drifting in the direction of the news for weeks or months. A 12-month momentum holder buys after the initial reaction and captures the slow drift.
+
+### 2. Career risk constraint (Shleifer-Vishny)
+
+Lesson 5.5 covered limits to arbitrage. The flip side: managers willing to lean into trends (buy past winners) are amplifying the underlying behavioral pattern because they don't want to be wrong AGAINST consensus. The trend keeps trending because participants who SEE it don't want to fight it.
+
+### 3. Empirical anomaly: it just works
+
+Whatever the mechanism, momentum has been one of the most robust empirical anomalies in finance. Replicated across decades, geographies, asset classes, with implementation costs that don't eliminate the signal. The premium has compressed somewhat in recent decades (it was 14% gross in early studies, ~8% gross in modern implementations), but hasn't disappeared.
+
+## The downside: momentum crashes
+
+Momentum has a particularly nasty tail risk: PERIODIC CRASHES. After bull markets, when the top-decile winners revert sharply, the bottom-decile losers can outperform spectacularly. Momentum portfolios can lose 20-50% in a few months.
+
+The 1932 momentum crash (post-Depression rally) and the 2009 momentum crash (post-Lehman rally) are the canonical examples. Both saw "losers" (small caps, distressed financials) outperform "winners" (defensive large caps) by 50%+ in 3-6 months. Momentum portfolios sized for normal vol regimes saw catastrophic drawdowns.
+
+The asymmetric tail risk means momentum has POSITIVE excess return on average but NEGATIVE skew in returns. Sharpe is good; max drawdown is ugly. For our paper-trading-longcall project: momentum-style signals should be paired with vol-control mechanisms or with diversification across momentum vs mean-reversion sleeves.
+
+## How retail can implement momentum
+
+Three practical paths:
+
+### 1. Momentum ETFs
+
+MTUM (iShares MSCI USA Momentum Factor ETF), VFMO (Vanguard US Momentum Factor ETF), and similar. They mechanically track a momentum-screened universe with ~50-150 names. Expense ratios 0.15-0.30%. The systematic exposure is cheap and accessible.
+
+Empirically: these have produced excess returns vs S&P 500 over multi-year windows, with the expected drawdown profile (significant underperformance during momentum crashes).
+
+### 2. Manual cross-sectional implementation
+
+Screen for top-decile 12-month-return stocks; allocate equally; rebalance quarterly or monthly. The DIY approach. Friction costs are higher than ETFs, but you can apply additional quality filters or sector tilts.
+
+### 3. Trend-following on futures
+
+For sophisticated retail with margin accounts: implement time-series momentum on liquid futures (S&P, Treasuries, currencies, commodities). The cleanest implementation systematic-trend frameworks; libraries like pysystemtrade make implementation tractable.
+
+<WorkedExample
+  title="A momentum strategy on the S&P 500"
+  problem="Rank S&P 500 stocks by 12-month price return. Buy the top quintile (~100 stocks) equally weighted. Rebalance monthly: stocks that fall out of the top quintile get sold; new entrants get bought. Estimate the long-run excess return vs S&P 500 and identify the main risks."
+  steps={[
+    { label: "Step 1: empirical expected excess return", body: "Long-run cross-sectional momentum studies suggest ~3-5% annualized excess return vs S&P 500, net of standard implementation costs. Less than the gross 8-10% because real-world frictions (turnover costs, market impact, tax inefficiency) eat 4-5%." },
+    { label: "Step 2: turnover", body: "Monthly rebalance of a quintile typically generates 50-150% annual turnover. At 5 bp roundtrip cost, that's 25-75 bp of friction. In a taxable account, you trigger short-term capital gains on most positions, which can drag another 100-200 bp in after-tax return." },
+    { label: "Step 3: drawdown risk", body: "Momentum crash risk: 20-40% drawdowns are realistic in 1-2 specific years per decade. The recovery is usually fast (3-12 months) but the drawdown is psychologically punishing." },
+    { label: "Step 4: practical implementation choice", body: "MTUM ETF eliminates implementation friction; expense ratio 0.15%. Manual implementation requires tax-loss-harvesting discipline and acceptance of high turnover. For most retail, MTUM is the more efficient path." },
+    { label: "Step 5: combined with paper-trading-longcall", body: "Momentum sleeve and longcall sleeve are conceptually compatible (both ride trends in different ways). Daily-PnL correlation likely moderate (~0.3-0.5). The lesson 3.8 gate suggests the combination would improve portfolio Sharpe vs running longcall alone. Specific testing required to confirm." },
+  ]}
+/>
+
+## Trend-following: why managed futures work
+
+Time-series momentum in futures markets (managed futures, CTAs) has a different return profile from equity cross-sectional momentum:
+
+- **Sharpe ratio**: 0.5-0.9 long run; lower than equity momentum but with crisis-period upside.
+- **Correlation with equities**: ~0 over long horizons; -0.3 to -0.5 during equity drawdowns.
+- **Capacity**: enormous (billions can be deployed because the underlying markets are deep).
+
+The "crisis alpha" property is the structural appeal: when equities fall, trend funds typically capture the equity downtrend on the short side AND ride bond rallies on the long side. The 2008 GFC saw trend funds gain 20-40% while equities fell 30-50%. The 2020 COVID episode saw similar (smaller magnitude). The 2022 stagflation regime saw mixed results because the trend changed direction multiple times.
+
+Trend funds are NOT a magic hedge. They produce poor returns in "whipsaw" markets where prices reverse direction frequently. But their structural positive convexity to equity drawdowns makes them valuable as a portfolio diversifier for capital that can absorb their volatility.
+
+## The factor-investing interpretation
+
+Lesson 3.5 covered factor models. Cross-sectional momentum is one of the empirically-validated factors. The 2015 Fama-French 5-factor extension added momentum (though FF themselves remained cautious about whether the premium would persist out-of-sample).
+
+A useful framing for portfolio construction: choose factor exposures (value, momentum, quality, low-vol, size) explicitly rather than implicitly. A diversified equity portfolio with deliberate factor tilts (e.g., 40% market, 20% quality, 20% momentum, 20% value) targets multiple validated premia simultaneously, reducing reliance on any one factor's regime-dependent performance.
+
+For our paper-trading-longcall: the longcall strategy ITSELF has momentum exposure (entries require breakout above 20-day high, which is a trend-following filter). The sleeve isn't pure momentum (it has options-specific dynamics, IV exposure, etc.) but momentum is one of its driving signals.
+
+<LessonRecap points={[
+  "Cross-sectional momentum: buy past 6-12 month winners, sell past losers. Long-run excess return ~8-10% gross, ~3-5% net of costs. Replicated across decades and asset classes.",
+  "Time-series momentum (trend following): for each asset, follow its own trend. Implementation: managed futures, systematic CTA funds. Long-run Sharpe 0.5-0.9 with crisis-period positive correlation to portfolio losses.",
+  "Mechanism: behavioral underreaction (anchoring + slow information diffusion + confirmation bias) keeps prices trending after news, before eventual reversal.",
+  "Periodic momentum crashes: after bull markets, losers can outperform winners by 50%+ in months. Negative skew is the structural feature.",
+  "Practical paths: momentum ETFs (MTUM, VFMO), manual cross-sectional, futures-based trend following. Each has different cost and complexity tradeoffs."
+]} />
+
+<ExerciseRunner lessonId="06.5-momentum-and-trend" />

@@ -1,0 +1,122 @@
+<RetrievalPrompt
+  prompt="You make 100 predictions, each with what you estimate is a 70% chance of being right. After the fact, you check: how many should turn out to be correct if your estimates are well-calibrated? How many DO turn out correct for most humans, including professionals? What's the gap, and what's it called?"
+  reveal="Well-calibrated: ~70 should be right (in a long-run sense). Empirically: most humans land around 50-60% correct when they think they're 70% sure. The gap (predictions are 'more confident than warranted') is OVERCONFIDENCE. The most replicated finding in judgment-and-decision-making. It survives expertise, training, feedback, financial incentives. The only reliable remedy is BRIER SCORING: track predictions over time and observe your calibration error."
+/>
+
+## Overconfidence in three flavors
+
+The term covers three distinct phenomena, often conflated:
+
+1. **Overprecision**: confidence intervals are too narrow. When you estimate a quantity and give "90% confidence," your interval actually captures the truth only 50-70% of the time. The interval is too tight; your sense of precision is wrong.
+
+2. **Overestimation**: you think you'll do better than you actually will. Estimate of own future returns, estimate of own driving skill, estimate of own diet adherence. All systematically optimistic.
+
+3. **Overplacement**: you think you're better than average. ~80% of drivers think they're above-average. ~70% of mutual fund managers think they're above-average. Mathematically impossible.
+
+For traders, overprecision is the most expensive flavor. It manifests as: "I'm 90% sure this trade will work" → position sized at 10% of capital → fails 30-40% of the time, not 10%.
+
+## Calibration: what good prediction-tracking looks like
+
+A well-calibrated forecaster, asked to give probabilities on many events:
+- When they say "70%", the events happen 70% of the time.
+- When they say "50%", the events happen 50% of the time.
+- The line of average outcome vs stated probability has slope 1.
+
+A poorly-calibrated forecaster (most humans):
+- When they say "90%", the events happen 70% of the time.
+- When they say "50%", the events happen 45-55% of the time.
+- The line is below the 45-degree calibration line, especially at high-confidence levels.
+
+To MEASURE your own calibration, you need a tracking system. The standard tool is the BRIER SCORE.
+
+## Brier scoring
+
+Define: for each prediction, you stated probability p of the event happening. The actual outcome o is 0 or 1.
+
+Brier score for one prediction = (p - o)².
+
+For many predictions, average the scores. Lower = better calibrated.
+
+- Perfect: 0 (every probability matches the actual outcome).
+- Random: 0.25 (every probability is 0.5; outcomes are 50/50).
+- Worst possible: 1 (every probability is 1.0 and outcome is 0, or vice versa).
+
+A useful benchmark: weather forecasters have Brier scores around 0.10-0.15. Trained intelligence analysts: 0.13-0.18. Untrained pundits: 0.25-0.40 (slightly worse than random for some).
+
+The mechanism that makes calibration improvable: explicit feedback. Once you score 100+ predictions, you can see WHERE you're miscalibrated and adjust. Pure intuition + no feedback = chronically miscalibrated; many predictions + tracking = improvement over months.
+
+## Why overconfidence persists despite feedback
+
+A natural question: people make trades, see outcomes, get years of feedback. Why doesn't overconfidence get corrected?
+
+Several mechanisms keep it intact:
+
+- **Selective recall**: winning trades are vividly remembered; losing trades blur. After 5 years, the trader's mental record is 70% wins, even though actual record is 50%.
+- **Hindsight bias**: after an outcome, "I knew this would happen" is the default narrative. Forecasts that turned out wrong get re-remembered as having been uncertain.
+- **Attribution asymmetry**: wins are attributed to skill, losses to bad luck or "unforeseen events." Skill estimate doesn't update on losses.
+- **No comparison group**: you don't see the trades you DIDN'T make. The hypothetical "what if I'd not done X" is hard to evaluate, so the actual win rate is the only data point, and it's biased.
+
+The defense: a TRADE JOURNAL. Pre-trade, write the thesis, target, stop, and assigned probability. Post-trade, score honestly: did the thesis play out? Was the probability assignment accurate? Score yourself with Brier. Over months, the data forces calibration even when intuition doesn't.
+
+## Tetlock and Superforecasting
+
+Philip Tetlock spent decades studying forecast accuracy. Headline findings from <em>Expert Political Judgment</em> (2005) and <em>Superforecasting</em> (2015):
+
+1. Experts in political forecasting are about as accurate as well-informed laypeople. Pundits with strong narratives ("hedgehogs") were systematically WORSE than analysts who held multiple perspectives ("foxes").
+2. A small subset of forecasters (the "superforecasters") consistently outperformed both experts and average citizens, with Brier scores ~30% better than competing forecasters.
+3. Superforecasters share traits: probabilistic thinking, willingness to update on evidence, deliberate practice with feedback, comfortable with uncertainty.
+
+The lesson for traders: the superforecaster traits are LEARNABLE. They're not innate. The path is journaling, scoring, and deliberate practice with calibration feedback.
+
+<WorkedExample
+  title="A calibration exercise"
+  problem="Run 20 predictions on stock-market questions. For each, state your probability (any value 0.05-0.95). After all 20 are resolved, compute your Brier score. What does the result tell you?"
+  steps={[
+    { label: "Step 1: generate 20 questions", body: "Examples: 'Will SPY end this month higher than today?' (current p?). 'Will the next CPI print be 0.3% or below?' 'Will [specific name] beat consensus EPS on the next print?' Mix easy (high or low confidence) and hard (closer to 50/50) questions." },
+    { label: "Step 2: state your probability for each", body: "Honest probabilities, not 'desired' probabilities. If you don't know, write 0.5. If you're very confident, write 0.85 or 0.90 (you should rarely write 0.95+ unless the outcome is essentially settled)." },
+    { label: "Step 3: let them resolve", body: "Wait until all 20 outcomes are known (days, weeks, or months depending on questions). Record outcome = 1 (happened) or 0 (didn't)." },
+    { label: "Step 4: compute Brier score", body: "For each prediction, (p - outcome)². Sum across all 20. Divide by 20." },
+    { label: "Step 5: interpret", body: "Brier 0.10-0.15: trained forecaster level. 0.16-0.20: decent amateur. 0.21-0.25: average. 0.26+: worse than random for the events at hand. The biggest miscalibration usually shows up at the HIGH confidence levels: questions you marked 0.85 that resolved 60-70% of the time." },
+    { label: "Step 6: what to do next", body: "Run another 20-50 predictions over the next 3-6 months. Track Brier over time. The expected pattern: initial 0.22, drift to 0.18 after 50 predictions, plateau at 0.14-0.16 after 100. Most of the improvement comes from REDUCING the confidence assigned to mid-confidence predictions (stop calling things 70-80% when they're really 55%)." },
+  ]}
+/>
+
+## Specific trading manifestations
+
+Three places overconfidence chronically costs money:
+
+### 1. Position sizing
+
+If you say "I'm 90% sure" and size accordingly, but you're actually 60%, your expected utility is materially negative. Position sizing should account for your CALIBRATED probability, not your felt probability. The "Kelly fraction" position size with miscalibrated probabilities is the canonical way to blow up an account.
+
+### 2. Entries and exits
+
+Holding losers because "I'm sure it'll come back" is overconfidence dressed as conviction. Selling winners because "I'm sure it's topped" is the same bias in the opposite direction. Both reflect false certainty about future direction.
+
+### 3. Trade frequency
+
+Overconfident traders trade more often. Each trade has a positive subjective expected return; the trader is sure this one will work. Empirically (Barber & Odean): retail traders' returns DECREASE with trade frequency, because frictions accumulate and the assumed alpha doesn't materialize. The most active retail accounts underperform the least active.
+
+The single most reliable improvement for many retail traders: trade LESS. The calibrated cost of overconfidence + trading frictions usually exceeds the alpha being chased.
+
+## Pre-mortems: a structural defense
+
+A useful technique from Gary Klein and used in Superforecasting circles:
+
+Before entering a trade or making a decision, ask:
+- "Imagine it's 6 months from now and this position has lost money. WHY did it lose?"
+- Generate 3-5 plausible reasons in writing.
+
+This forces the mind to consider FAILURE MODES that overconfidence is suppressing. The pre-mortem makes counterfactuals concrete, which they aren't otherwise (the bias is "this will work because [my thesis]"). After the pre-mortem, position sizing often shrinks because the failure modes are now mentally available.
+
+Cousin technique: write the THREE reasons you'd be wrong, and explicitly assign probability to each. If the assigned probability of being wrong exceeds 30-40%, sizing should be smaller than your initial impulse suggested.
+
+<LessonRecap points={[
+  "Overconfidence has three flavors: overprecision (confidence intervals too narrow), overestimation (predicted outcomes too rosy), overplacement (think you're above average). Overprecision is the most expensive for traders.",
+  "Well-calibrated forecaster: when they say '70%', events happen ~70% of the time. Most humans miscalibrated by 10-20 percentage points at high-confidence levels.",
+  "Brier score = mean of (probability - outcome)². Lower is better. Weather forecasters: ~0.10-0.15. Pundits: 0.25+. Improvement requires explicit feedback.",
+  "Tetlock's 'superforecasters' outperform via probabilistic thinking, willingness to update, deliberate practice. Traits are LEARNABLE, not innate.",
+  "Defenses: trade journal with probabilities, pre-mortems forcing failure-mode visibility, reduced trade frequency. The retail-trader frequency-vs-return relationship is robustly negative."
+]} />
+
+<ExerciseRunner lessonId="05.4-overconfidence-and-calibration" />

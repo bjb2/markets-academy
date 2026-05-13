@@ -1,0 +1,101 @@
+<RetrievalPrompt
+  prompt="You have $50,000 saved for a house down payment in a checking account earning 0.01%. Simultaneously, you have $20,000 of credit card debt at 22% APR. From a pure-economics standpoint, what should you do? Why do most people NOT do it, even when they understand the math?"
+  reveal="Economically: use the savings to pay down the high-interest debt immediately. The 22% you save is wildly better than the 0.01% you earn. Most people don't do it because they mentally separate 'house down payment savings' from 'credit card debt' as different ACCOUNTS, even though all money is fungible. This is MENTAL ACCOUNTING (Thaler 1980, 2016). Money is mentally categorized into buckets that don't speak to each other; the same dollar is treated differently depending on which bucket it lives in. The bias creates documented financial mistakes at retail and contributes to several institutional pricing anomalies."
+/>
+
+## Thaler's mental accounting
+
+Richard Thaler's 2016 AEA Address (<SourceLink id="thaler-2016-aea" />) summarizes decades of research on this single bias. The core claim: people mentally partition money into accounts (food budget, vacation savings, retirement, college fund, etc.) and TREAT EACH ACCOUNT AS A SEPARATE ECONOMIC ENTITY. Trades-offs between accounts are systematically suboptimal.
+
+The classic demonstrations:
+
+### 1. The taxi receipt
+
+> "You're at a restaurant. The bill is $30. You realize you've lost your wallet on the way over. You have $35 cash. Would you order a $5 dessert?"
+
+vs
+
+> "Same restaurant, same wallet. You receive a $35 refund from a tax overpayment in the mail this morning. Would you spend $5 on dessert tonight?"
+
+Same final state ($35 in cash), same dessert decision. Subjects systematically spend the tax refund and not the recovered cash. The refund is in a "windfall" account; the recovered cash is in a "regular money" account. Same dollars; different mental categorization; different decisions.
+
+### 2. The opera tickets
+
+> "You're going to the opera tonight. The ticket was $100. As you arrive, you realize you've LOST the ticket. Would you spend another $100 on a new ticket?"
+
+vs
+
+> "You're going to the opera tonight. As you arrive, you realize you've LOST $100 cash on the way in. Would you go ahead and pay $100 for the ticket?"
+
+Economically identical: in both cases, you're $100 poorer and have an opera ticket. Empirically, more subjects buy the new ticket in the cash-loss case than in the ticket-loss case. The first feels like "paying $200 for opera"; the second feels like "paying $100 for opera, and a separate $100 loss." The mental accounts are different even though the net wealth is identical.
+
+## Market manifestations
+
+Mental accounting shows up in financial decisions in predictable ways:
+
+### 1. Dividend stocks and 'income'
+
+Many retail investors strongly prefer dividend stocks over equivalent total-return strategies, even when the dividend produces tax-inefficient income they'd be better off without. The "dividends" are in an INCOME account; capital gains are in a WEALTH account. The same dollar received as dividend feels more spendable than the same dollar received via selling appreciated stock.
+
+This drives a documented "dividend premium" anomaly: dividend-paying stocks trade at a small but persistent multiple to economically-equivalent non-dividend-paying stocks. The premium is the price of accommodating the bias.
+
+### 2. House money effect
+
+After a winning trade, investors often increase position sizes on subsequent trades, treating the recent profits as "house money" (the casino's chips) rather than as their own capital. This is mental-account creation in real time: profits go into a separate, more-expendable mental pocket.
+
+Same individual, same dollars; their economic value is identical to "regular" money. The behavior asymmetry (more risk-taking with "house money") is documented in lab and in real trading data.
+
+### 3. Sunk costs and held positions
+
+A trader bought a stock at $50; it's now at $30. They tell themselves: "I'll wait until it recovers to my cost to sell." The $20 paper loss is in a separate mental account from current trading decisions. The economically rational view: cost is sunk and irrelevant; the only question is the forward expected return from $30 vs the opportunity cost.
+
+Mental accounting makes the cost basis FEEL load-bearing, even when the math says it isn't. (We saw this in lessons 5.2 and 5.3; mental accounting is the unifying mechanism.)
+
+### 4. Retirement vs taxable account behavior
+
+Investors often hold very different assets in their retirement vs taxable accounts, claiming "different time horizons." The actual driver is mental accounting: the retirement account is "future me's money"; the taxable account is "present me's money." Decisions about each are made by different sub-personalities with different risk preferences.
+
+The economically correct view: your total portfolio is one entity. Asset allocation should optimize ACROSS accounts (tax-inefficient assets in retirement, tax-efficient in taxable). Most retail allocate suboptimally because the accounts don't talk to each other in their minds.
+
+<WorkedExample
+  title="Spotting mental accounting in your own behavior"
+  problem="A trader has: $30K in checking earning 0.01%, $50K in a non-IRA brokerage account, $80K in a Roth IRA, $15K credit card debt at 18%. They want to take a $5K vacation. Walk through the bias-aware decision."
+  steps={[
+    { label: "Step 1: spot the mental accounts", body: "Checking ($30K) is 'available money' mentally. Brokerage ($50K) is 'investments.' Roth ($80K) is 'retirement, untouchable.' Credit card debt ($15K) is 'separate problem.'" },
+    { label: "Step 2: economically correct view", body: "Total liquid wealth: $30K + $50K = $80K (Roth excluded by tax penalty). Total economic position: $80K liquid - $15K debt = $65K net. The vacation comes out of net wealth; the question is whether $5K vacation is worth 7.7% of net liquid wealth right now." },
+    { label: "Step 3: what mental accounting hides", body: "The 18% credit card debt is bleeding $2,700/year. Funding the vacation from checking means: $30K stays low; the debt stays high; debt service is unchanged. Funding the vacation by NOT paying down debt: same. Either way, the trade-off is 'lose $2,700/yr in interest on $15K, gain a $5K vacation now.'" },
+    { label: "Step 4: optimal allocation", body: "Use $15K of brokerage cash to pay off credit card debt FIRST. The 18% guaranteed return beats any equity expected return. Then ask whether the $5K vacation is worth it from the remaining $35K brokerage / $30K checking. The vacation question and the debt question are NOT separate; same money, same trade-off." },
+    { label: "Step 5: why most retail doesn't do this", body: "Mental accounting separates the checking, brokerage, and credit-card accounts. The trader thinks 'I can afford the vacation from checking' (the vacation account) while ignoring 'I'm bleeding on credit card debt' (the debt account). Both decisions are local-optimal; the joint decision is suboptimal." },
+    { label: "Step 6: structural defense", body: "Maintain a CONSOLIDATED VIEW of all accounts and obligations. Net worth = sum of accounts - sum of debts. All financial decisions are made against net worth, not against the relevant local account. Some retail finance tools (Personal Capital, Mint, YNAB) explicitly force this consolidated view; the friction of using them is a tax that mental accounting otherwise imposes by allowing local decisions to be wrong." },
+  ]}
+/>
+
+## Lottery tickets and small-dollar decisions
+
+A particularly persistent mental-accounting category: "fun money" or "lottery money." People with otherwise reasonable financial behavior will buy lottery tickets, play stock-meme momentum, or trade short-dated OTM options with small dollar amounts that they mentally categorize as "play money."
+
+The behavior pattern is documented: same individual avoids 5% market positions because they "can't afford the risk," then buys $200 of GME OTM calls. The two decisions are made in DIFFERENT mental accounts with different rules.
+
+This isn't necessarily irrational at small dollar amounts (entertainment value exists, expected loss is bounded). It IS irrational when the "fun money" category grows unchecked into 5-10% of net worth, at which point the playful framing has imported lottery-economics into a major slice of the portfolio.
+
+## The good news
+
+Mental accounting isn't all bad. Some accounts are USEFUL:
+
+- **Retirement vs spending**: separating retirement accounts (with penalty for early withdrawal) makes retirement-saving behavior MORE robust than pure rational integration would predict.
+- **Budgeting categories**: a fixed grocery budget makes consumption more disciplined than treating all spending as fungible.
+- **Tax-account separation**: the actual tax treatment of accounts differs (Roth/Traditional/Taxable), so mental separation aligns with real-world treatment.
+
+The bias is HARMFUL when the mental partitions don't reflect economic reality (windfall vs regular money has no economic difference; cost basis vs current price has no forward-looking economic relevance). It is HELPFUL when partitions support beneficial behaviors (budgeting, retirement saving, tax planning).
+
+Self-aware mental accounting: design your partitions for the behaviors you want. Don't fight the bias entirely; use it for budgeting and retirement, defeat it for fungibility-relevant decisions like the vacation/debt example.
+
+<LessonRecap points={[
+  "Mental accounting (Thaler): people partition money into accounts that don't speak to each other, treating each as a separate economic entity even when all dollars are fungible.",
+  "Demonstrated by taxi receipts, opera tickets, dividend preferences, 'house money' effect, sunk-cost holding, and account-by-account asset allocation.",
+  "Specific market manifestations: dividend premium (paying more for income-feeling cash flows), riskier behavior with recent profits, holding losers because cost basis is in a different mental bucket, suboptimal cross-account asset allocation.",
+  "Defense: consolidated net-worth view. All financial decisions made against total net worth, not against the local account holding the funds being deployed.",
+  "Useful mental accounting (retirement, budgeting) supports beneficial behaviors; harmful mental accounting (windfall vs regular, cost basis vs current value) produces predictable mistakes. Design your partitions intentionally."
+]} />
+
+<ExerciseRunner lessonId="05.6-mental-accounting" />

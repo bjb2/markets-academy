@@ -96,7 +96,14 @@
       "subtitle": "Heuristics, biases, prospect theory, bubbles. Why EMH is not the whole story.",
       "objective": "Identify five biases that have personally cost you money, with the trade or decision attached to each.",
       "estWeeks": "2 weeks",
-      "lessons": []
+      "lessons": [
+        "05.1-heuristics-and-biases",
+        "05.2-anchoring-availability-representativeness",
+        "05.3-prospect-theory-loss-aversion",
+        "05.4-overconfidence-and-calibration",
+        "05.5-herding-and-bubbles",
+        "05.6-mental-accounting"
+      ]
     },
     {
       "id": 6,
@@ -104,7 +111,18 @@
       "subtitle": "Value, momentum, mean-reversion, carry, factor. Where each named investor sits in the taxonomy.",
       "objective": "Place every named investor (Buffett, Marks, Asness, Simons, Carver, Soros) into an archetype, and explain what they're trading and against whom.",
       "estWeeks": "3–4 weeks",
-      "lessons": []
+      "lessons": [
+        "06.1-value-investing-graham",
+        "06.2-buffetts-evolution",
+        "06.3-quality-compounders",
+        "06.4-marks-cycle-awareness",
+        "06.5-momentum-and-trend",
+        "06.6-mean-reversion",
+        "06.7-carry-and-yield",
+        "06.8-factor-investing",
+        "06.9-macro-discretionary",
+        "06.10-systematic-quant"
+      ]
     },
     {
       "id": 7,
@@ -598,6 +616,166 @@
       "prereqs": ["02.9-index-funds-passive"],
       "estMinutes": 40,
       "sources": ["lyn-alden-newsletter", "khan-fx"],
+      "exerciseCount": 5
+    },
+    "05.1-heuristics-and-biases": {
+      "id": "05.1-heuristics-and-biases",
+      "layer": 5,
+      "order": 1,
+      "title": "Heuristics and biases (Kahneman-Tversky)",
+      "prereqs": ["02.10-commodities-fx-crypto"],
+      "estMinutes": 40,
+      "sources": ["kahneman-tversky-1974"],
+      "exerciseCount": 5
+    },
+    "05.2-anchoring-availability-representativeness": {
+      "id": "05.2-anchoring-availability-representativeness",
+      "layer": 5,
+      "order": 2,
+      "title": "Anchoring, availability, representativeness",
+      "prereqs": ["05.1-heuristics-and-biases"],
+      "estMinutes": 35,
+      "sources": ["kahneman-tversky-1974"],
+      "exerciseCount": 5
+    },
+    "05.3-prospect-theory-loss-aversion": {
+      "id": "05.3-prospect-theory-loss-aversion",
+      "layer": 5,
+      "order": 3,
+      "title": "Prospect theory and loss aversion",
+      "prereqs": ["05.2-anchoring-availability-representativeness"],
+      "estMinutes": 40,
+      "sources": ["kahneman-tversky-1974"],
+      "exerciseCount": 5
+    },
+    "05.4-overconfidence-and-calibration": {
+      "id": "05.4-overconfidence-and-calibration",
+      "layer": 5,
+      "order": 4,
+      "title": "Overconfidence and calibration",
+      "prereqs": ["05.3-prospect-theory-loss-aversion"],
+      "estMinutes": 40,
+      "sources": ["taleb-essays"],
+      "exerciseCount": 5
+    },
+    "05.5-herding-and-bubbles": {
+      "id": "05.5-herding-and-bubbles",
+      "layer": 5,
+      "order": 5,
+      "title": "Herding and bubbles (Shiller)",
+      "prereqs": ["05.4-overconfidence-and-calibration"],
+      "estMinutes": 40,
+      "sources": ["shiller-yale-econ-252", "shiller-nobel-2014"],
+      "exerciseCount": 5
+    },
+    "05.6-mental-accounting": {
+      "id": "05.6-mental-accounting",
+      "layer": 5,
+      "order": 6,
+      "title": "Mental accounting (Thaler)",
+      "prereqs": ["05.5-herding-and-bubbles"],
+      "estMinutes": 35,
+      "sources": ["thaler-2016-aea"],
+      "exerciseCount": 5
+    },
+    "06.1-value-investing-graham": {
+      "id": "06.1-value-investing-graham",
+      "layer": 6,
+      "order": 1,
+      "title": "Value investing (Graham roots)",
+      "prereqs": ["05.6-mental-accounting"],
+      "estMinutes": 45,
+      "sources": ["buffett-superinvestors", "bogleheads-cs-investing"],
+      "exerciseCount": 5
+    },
+    "06.2-buffetts-evolution": {
+      "id": "06.2-buffetts-evolution",
+      "layer": 6,
+      "order": 2,
+      "title": "Buffett's evolution",
+      "prereqs": ["06.1-value-investing-graham"],
+      "estMinutes": 45,
+      "sources": ["buffett-letters"],
+      "exerciseCount": 5
+    },
+    "06.3-quality-compounders": {
+      "id": "06.3-quality-compounders",
+      "layer": 6,
+      "order": 3,
+      "title": "Quality compounders",
+      "prereqs": ["06.2-buffetts-evolution"],
+      "estMinutes": 45,
+      "sources": ["buffett-letters"],
+      "exerciseCount": 5
+    },
+    "06.4-marks-cycle-awareness": {
+      "id": "06.4-marks-cycle-awareness",
+      "layer": 6,
+      "order": 4,
+      "title": "Howard Marks and cycle awareness",
+      "prereqs": ["06.3-quality-compounders"],
+      "estMinutes": 50,
+      "sources": ["marks-memos-best-of"],
+      "exerciseCount": 5
+    },
+    "06.5-momentum-and-trend": {
+      "id": "06.5-momentum-and-trend",
+      "layer": 6,
+      "order": 5,
+      "title": "Momentum and trend following",
+      "prereqs": ["06.4-marks-cycle-awareness"],
+      "estMinutes": 45,
+      "sources": ["mit-15.402"],
+      "exerciseCount": 5
+    },
+    "06.6-mean-reversion": {
+      "id": "06.6-mean-reversion",
+      "layer": 6,
+      "order": 6,
+      "title": "Mean reversion",
+      "prereqs": ["06.5-momentum-and-trend"],
+      "estMinutes": 40,
+      "sources": ["quantconnect-tutorials"],
+      "exerciseCount": 5
+    },
+    "06.7-carry-and-yield": {
+      "id": "06.7-carry-and-yield",
+      "layer": 6,
+      "order": 7,
+      "title": "Carry and yield",
+      "prereqs": ["06.6-mean-reversion"],
+      "estMinutes": 40,
+      "sources": ["mit-15.402"],
+      "exerciseCount": 5
+    },
+    "06.8-factor-investing": {
+      "id": "06.8-factor-investing",
+      "layer": 6,
+      "order": 8,
+      "title": "Factor investing (smart beta)",
+      "prereqs": ["06.7-carry-and-yield"],
+      "estMinutes": 40,
+      "sources": ["fama-french-1992"],
+      "exerciseCount": 5
+    },
+    "06.9-macro-discretionary": {
+      "id": "06.9-macro-discretionary",
+      "layer": 6,
+      "order": 9,
+      "title": "Macro discretionary (Soros)",
+      "prereqs": ["06.8-factor-investing"],
+      "estMinutes": 45,
+      "sources": ["lyn-alden-newsletter"],
+      "exerciseCount": 5
+    },
+    "06.10-systematic-quant": {
+      "id": "06.10-systematic-quant",
+      "layer": 6,
+      "order": 10,
+      "title": "Systematic and quant (Carver)",
+      "prereqs": ["06.9-macro-discretionary"],
+      "estMinutes": 45,
+      "sources": ["quantconnect-tutorials"],
       "exerciseCount": 5
     }
   }

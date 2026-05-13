@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "kind": "multi-choice",
+    "prompt": "Howard Marks' central thesis 'You can't predict; you can prepare' means that:",
+    "choices": [
+      "Investors should never make predictions.",
+      "Specific cycle turns and timing are unpredictable, but cycle POSITION (where you are in the credit/psychology cycle) is observable; positioning the portfolio for the asymmetric forward-return distribution is the active investor's job.",
+      "Predictions are wrong.",
+      "Cycle analysis is the only useful tool."
+    ],
+    "correctIndex": 1,
+    "explanation": "The distinction: PREDICTING when the cycle turns is impossible (Marks repeatedly says this); OBSERVING where you are in the cycle and positioning accordingly is achievable. The asymmetry: late-cycle positioning that's slightly early might cost you upside; aggressive positioning at cycle peaks can cost you decades of compounding. The asymmetric risk-adjusted return favors cycle-aware positioning even with imperfect timing."
+  },
+  {
+    "id": "q2",
+    "kind": "multi-choice",
+    "prompt": "In the Marks framework, which of the following is the MOST relevant signal that you're in late-cycle expansion?",
+    "choices": [
+      "Volatility has been low.",
+      "VIX is below 15.",
+      "Multiple signals align: high valuations, tight credit spreads, easy credit availability, dismissed bearish views, high leverage, 'this time is different' narratives accepted as reasonable.",
+      "The Fed is raising rates."
+    ],
+    "correctIndex": 2,
+    "explanation": "Single signals are noisy. Marks' framework requires MULTIPLE simultaneous signals because any one can be misleading (high valuations alone could be justified by structural growth; tight spreads alone could reflect monetary policy). When several signals align (valuation + spreads + leverage + psychology + structures), the cycle position is unambiguous. This multi-signal approach is what distinguishes Marks' framework from one-variable cycle calls."
+  },
+  {
+    "id": "q3",
+    "kind": "multi-choice",
+    "prompt": "Marks' first operating rule, 'Risk management dominates return seeking,' rests on which mathematical observation about compounding?",
+    "choices": [
+      "Higher returns are riskier.",
+      "Asymmetric impact of large drawdowns: a 50% loss requires a 100% gain to recover; a 75% loss requires 300%. Avoiding catastrophic losses is structurally more important than capturing maximum upside because losses compound against you exponentially.",
+      "Diversification reduces returns.",
+      "Active management is better than passive."
+    ],
+    "correctIndex": 1,
+    "explanation": "The drawdown math is the cleanest argument for risk management priority. A great year of +50% pairs with a bad year of -50% to leave you at 75% of starting value, not breakeven. The asymmetry compounds: large drawdowns are existentially destructive to compounding. Marks' practical implication: position for survival in adverse outcomes; the upside takes care of itself if you survive."
+  },
+  {
+    "id": "q4",
+    "kind": "multi-choice",
+    "prompt": "Late-cycle expansion can persist for HOW LONG, in Marks' framework?",
+    "choices": [
+      "Days.",
+      "Weeks.",
+      "Months to years; late-cycle is a tendency, not a deadline. Marks' framework recommends positioning for the cycle position, not betting on specific turn dates.",
+      "Until the next election."
+    ],
+    "correctIndex": 2,
+    "explanation": "Late-cycle can run for 12-36 months or more before the turn. Marks' famous example: he warned in 2005-2006 about credit bubble; the turn came in 2007-2008. Selling everything in 2005 would have missed substantial returns. Position for the asymmetry without trying to time the turn. This is why his framework explicitly rejects market timing and embraces cycle-aware positioning."
+  },
+  {
+    "id": "q5",
+    "kind": "read-primary",
+    "prompt": "Read Howard Marks' memo 'You Can't Predict, You Can Prepare' (December 2001).",
+    "url": "https://www.oaktreecapital.com/insights/memo/you-cant-predict-you-can-prepare",
+    "title": "Marks - You Can't Predict, You Can Prepare",
+    "reflectionPrompt": "Marks distinguishes between 'first-level thinking' (the obvious view that everyone holds) and 'second-level thinking' (the contrarian view that recognizes consensus might be wrong). In one sentence, give a specific recent example of a market topic where the first-level and second-level views diverged, and which has been right."
+  }
+]
