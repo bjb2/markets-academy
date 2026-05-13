@@ -115,7 +115,9 @@ export function mastery(lessonId: string, totalExercises: number): number {
   if (!lesson || totalExercises === 0) return 0;
   let score = 0;
   for (const att of Object.values(lesson.exerciseAttempts)) {
-    score += att.firstAttemptCorrect ? 1 : att.attempts > 1 ? 0.5 : 0;
+    // Full credit if first try was right OR most recent try was right (srs.reps resets to 0 on wrong, so reps > 0 means currently correct).
+    if (att.firstAttemptCorrect || att.srs.reps > 0) score += 1;
+    else if (att.attempts > 0) score += 0.5;
   }
   return Math.min(1, score / totalExercises);
 }
